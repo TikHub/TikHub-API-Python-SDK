@@ -19,7 +19,11 @@ jobs:
       - name: Verify version matches tag
         run: |
           TAG="${GITHUB_REF#refs/tags/v}"
-          PKG_VERSION=$(python -c "from src.tikhub._version import __version__; print(__version__)")
+          PKG_VERSION=$(python -c "
+import re, pathlib
+text = pathlib.Path('src/tikhub/_version.py').read_text()
+print(re.search(r'__version__\s*=\s*[\"'\''](.*?)[\"'\'']', text).group(1))
+")
           if [ "$TAG" != "$PKG_VERSION" ]; then
             echo "::error::tag $TAG does not match package version $PKG_VERSION"
             exit 1
