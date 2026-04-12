@@ -242,7 +242,7 @@ def render_example_file(
     lines.append("")
     lines.append("")
     lines.append("async def main():")
-    lines.append(f"    async with AsyncTikHub(api_key=API_KEY) as client:")
+    lines.append("    async with AsyncTikHub(api_key=API_KEY) as client:")
 
     for entry in ops:
         kwargs, body_kind = collect_call_kwargs(entry["op"], spec)
@@ -257,7 +257,7 @@ def render_example_file(
             lines.append(f"        # {summary.rstrip()}")
 
         if body_kind == "multipart":
-            lines.append(f"        # Skipped: multipart upload (needs a real file)")
+            lines.append("        # Skipped: multipart upload (needs a real file)")
         else:
             if kwargs:
                 args = ", ".join(f"{k}={py_literal(v)}" for k, v in kwargs.items())

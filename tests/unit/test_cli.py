@@ -150,7 +150,7 @@ def test_health_no_api_key():
     result = runner.invoke(app, ["health"])
     assert result.exit_code == 2
     # Confirm it's the SDK config error, not a typer crash.
-    assert "API key" in result.stderr or "API key" in result.stdout
+    assert "API key" in result.output
 
 
 def test_health_upstream_error(monkeypatch: pytest.MonkeyPatch):
@@ -173,4 +173,4 @@ def test_health_upstream_error(monkeypatch: pytest.MonkeyPatch):
     )
     result = runner.invoke(app, ["health"])
     assert result.exit_code == 1
-    assert "500" in (result.stderr + result.stdout)
+    assert "500" in result.output
