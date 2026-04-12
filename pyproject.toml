@@ -1,0 +1,134 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tikhub"
+version = "2.1.0"
+description = "Modern Python SDK for the TikHub social-media data API."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [{ name = "TikHub" }]
+keywords = [
+    "tikhub",
+    "douyin",
+    "tiktok",
+    "xiaohongshu",
+    "bilibili",
+    "weibo",
+    "instagram",
+    "youtube",
+    "twitter",
+    "social-media",
+    "api",
+    "sdk",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+dependencies = [
+    "httpx>=0.27",
+    "pydantic>=2.6",
+    "anyio>=4.0",
+]
+
+[project.optional-dependencies]
+cli = ["typer>=0.12"]
+docs = [
+    "mkdocs>=1.6",
+    "mkdocs-material>=9.5",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "respx>=0.21",
+    "ruff>=0.5",
+    "mypy>=1.10",
+    "typer>=0.12",
+    "mkdocs>=1.6",
+    "mkdocs-material>=9.5",
+]
+
+[project.scripts]
+tikhub = "tikhub.cli.main:main"
+
+[project.urls]
+Homepage = "https://github.com/TikHub/TikHub-API-Python-SDK-V2"
+Documentation = "https://docs.tikhub.io"
+Issues = "https://github.com/TikHub/TikHub-API-Python-SDK-V2/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tikhub"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/tikhub",
+    "tests",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "pyproject.toml",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+    "N",   # pep8-naming
+    "RUF", # ruff-specific
+]
+ignore = [
+    "E501",  # handled by formatter
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["N802", "N803"]
+# Generated resource files mirror the OpenAPI spec verbatim:
+# - bilingual docstrings include CJK punctuation (RUF002, RUF003)
+# - method and parameter names match the API exactly (N802, N803)
+"src/tikhub/resources/*.py" = ["RUF002", "RUF003", "N802", "N803"]
+# Generated example scripts contain the same bilingual upstream comments
+# and pass through the API's verbatim parameter names.
+"examples/*.py" = ["RUF002", "RUF003", "N802", "N803", "E501"]
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
+warn_unreachable = true
+warn_unused_ignores = true
+files = ["src/tikhub"]
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+filterwarnings = [
+    "error",
+    "ignore::DeprecationWarning",
+]

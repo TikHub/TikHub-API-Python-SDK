@@ -1,0 +1,86 @@
+site_name: tikhub
+site_description: Modern Python SDK for the TikHub social-media data API.
+site_url: https://docs.tikhub.io/
+repo_url: https://github.com/TikHub/TikHub-API-Python-SDK-V2
+repo_name: TikHub/TikHub-API-Python-SDK-V2
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Home: index.md
+  - Quickstart: quickstart.md
+  - Guides:
+      - Authentication: authentication.md
+      - Async: async.md
+      - Errors: errors.md
+      - Pagination: pagination.md
+      - Retries & rate limits: retries.md
+      - Logging: logging.md
+      - CLI: cli.md
+  - Reference:
+      - Naming rules: naming.md
+      - All endpoints: reference.md
+  - Migration:
+      - From V2: migrating-from-v2.md
+  - Project:
+      - Changelog: changelog.md
+
+plugins:
+  - search
+
+extra:
+  generator: false
