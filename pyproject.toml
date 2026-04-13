@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "tikhub"
-version = "2.1.0"
+version = "2.1.1"
 description = "Modern Python SDK for the TikHub social-media data API."
 readme = "README.md"
 license = "MIT"
