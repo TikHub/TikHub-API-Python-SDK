@@ -12,12 +12,7 @@ import json
 import sys
 from typing import Any, Callable
 
-try:
-    import typer
-except ImportError as exc:  # pragma: no cover
-    raise ImportError(
-        "The CLI requires the 'cli' extra. Install with: pip install 'tikhub[cli]'"
-    ) from exc
+import typer
 
 from tikhub import TikHub, TikHubError, __version__
 
