@@ -1,10 +1,6 @@
-"""Optional command-line wrapper for the TikHub SDK.
+"""Command-line wrapper for the TikHub SDK.
 
-Install with the ``cli`` extra::
-
-    pip install "tikhub[cli]"
-
-Then::
+Usage::
 
     tikhub health
     tikhub fetch https://v.douyin.com/abc/
