@@ -1,6 +1,20 @@
 # TikHub API Python SDK
 
-English | [中文](README_CN.md)
+<p align="center">
+  <a href="https://github.com/TikHub/TikHub-API-Python-SDK/stargazers"><img src="https://img.shields.io/github/stars/TikHub/TikHub-API-Python-SDK?style=social" alt="GitHub Stars"></a>
+  <a href="https://github.com/TikHub/TikHub-API-Python-SDK/network/members"><img src="https://img.shields.io/github/forks/TikHub/TikHub-API-Python-SDK?style=social" alt="GitHub Forks"></a>
+  <a href="https://github.com/TikHub/TikHub-API-Python-SDK/issues"><img src="https://img.shields.io/github/issues/TikHub/TikHub-API-Python-SDK" alt="GitHub Issues"></a>
+  <a href="https://github.com/TikHub/TikHub-API-Python-SDK/pulls"><img src="https://img.shields.io/github/issues-pr/TikHub/TikHub-API-Python-SDK" alt="GitHub Pull Requests"></a>
+  <a href="https://github.com/TikHub/TikHub-API-Python-SDK/blob/main/LICENSE"><img src="https://img.shields.io/github/license/TikHub/TikHub-API-Python-SDK" alt="License"></a>
+</p>
+
+<p align="center">
+  English | <a href="README_CN.md">中文</a> | <a href="README_FR.md">Fran&ccedil;ais</a> | <a href="README_ES.md">Espa&ntilde;ol</a> | <a href="README_JP.md">日本語</a>
+</p>
+
+<p align="center">
+  <img src="TikHub_Banner.jpg" alt="TikHub Banner">
+</p>
 
 The official Python SDK for the [TikHub](https://tikhub.io) social media data API — a unified REST API that provides real-time access to **16+ social media platforms** including TikTok, Douyin, Instagram, YouTube, Twitter/X, Xiaohongshu (Red Note), Bilibili, Weibo, Threads, LinkedIn, Reddit, Kuaishou, WeChat, Lemon8, Zhihu, and more.
 
