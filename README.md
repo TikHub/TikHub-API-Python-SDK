@@ -1,5 +1,7 @@
 # TikHub API Python SDK
 
+English | [中文](README_CN.md)
+
 The official Python SDK for the [TikHub](https://tikhub.io) social media data API — a unified REST API that provides real-time access to **16+ social media platforms** including TikTok, Douyin, Instagram, YouTube, Twitter/X, Xiaohongshu (Red Note), Bilibili, Weibo, Threads, LinkedIn, Reddit, Kuaishou, WeChat, Lemon8, Zhihu, and more.
 
 Built for developers, data scientists, and AI engineers who need structured social media data at scale — for **AI training**, **influencer analytics**, **trend monitoring**, **sentiment analysis**, **market research**, and **competitive intelligence**.
@@ -20,7 +22,7 @@ Built for developers, data scientists, and AI engineers who need structured soci
 - **Type-safe** — `mypy --strict` clean, built on `httpx` + `pydantic v2`
 - **Zero config** — flat kwargs, no config objects; set one env var and go
 
-> **Version:** `2.1.0` — Requires Python 3.9+
+> **Version:** `2.1.1` — Requires Python 3.9+
 
 ## Supported Platforms
 
@@ -45,37 +47,30 @@ Built for developers, data scientists, and AI engineers who need structured soci
 
 ## Install
 
-### From GitHub (recommended for now)
-
-```bash
-# Latest from the v2.1.0 branch
-pip install "git+https://github.com/TikHub/TikHub-API-Python-SDK.git@v2.1.0"
-
-# With the optional CLI extra
-pip install "tikhub[cli] @ git+https://github.com/TikHub/TikHub-API-Python-SDK.git@v2.1.0"
-
-# Pin to a specific commit (recommended for production)
-pip install "git+https://github.com/TikHub/TikHub-API-Python-SDK.git@<commit-sha>"
-```
-
-Once merged into `main`, the `@v2.1.0` ref can be dropped.
-
-### From source
-
-```bash
-git clone -b v2.1.0 https://github.com/TikHub/TikHub-API-Python-SDK.git
-cd TikHub-API-Python-SDK
-pip install -e ".[dev]"
-pytest -q
-```
-
-### From PyPI _(coming soon)_
-
 ```bash
 pip install tikhub
 ```
 
 Requires Python 3.9+.
+
+### From source
+
+```bash
+git clone https://github.com/TikHub/TikHub-API-Python-SDK.git
+cd TikHub-API-Python-SDK
+pip install -e ".[dev]"
+pytest -q
+```
+
+## Get your API Key
+
+1. Go to [https://user.tikhub.io/login](https://user.tikhub.io/login) and sign up / log in.
+2. Copy your API key from the dashboard.
+3. Set it as an environment variable or pass it directly:
+
+```bash
+export TIKHUB_API_KEY="YOUR_API_KEY"
+```
 
 ## Quickstart
 
