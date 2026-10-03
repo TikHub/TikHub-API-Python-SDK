@@ -99,14 +99,17 @@ def collect_operations(spec: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
 
         {"http_method": "GET", "path": "/api/v1/...", "op": <openapi op dict>}
 
-    Within a tag, identical ``(http_method, path)`` pairs are deduplicated
-    (handles spec quirks where the same operation is listed twice).
+    Operations marked ``deprecated: true`` upstream are skipped. Within a
+    tag, identical ``(http_method, path)`` pairs are deduplicated (handles
+    spec quirks where the same operation is listed twice).
     """
     by_tag: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for path, methods in spec["paths"].items():
         for http_method, op in methods.items():
             if http_method.lower() not in {"get", "post", "put", "delete", "patch"}:
                 continue
+            if op.get("deprecated"):
+                continue  # deprecated upstream: not exposed by the SDK
             seen_tags: list[str] = []
             for tag in op.get("tags") or ["_untagged"]:
                 if tag not in seen_tags:
@@ -254,7 +257,6 @@ def render_method(entry: dict[str, Any], *, is_async: bool, spec: dict[str, Any]
     path = entry["path"]
     op = entry["op"]
     summary = (op.get("summary") or "").strip()
-    deprecated = bool(op.get("deprecated", False))
 
     query_params, body_params, body_kind = collect_parameters(op, spec)
 
@@ -330,9 +332,6 @@ def render_method(entry: dict[str, Any], *, is_async: bool, spec: dict[str, Any]
     doc_lines.append(f'        """{title}')
     doc_lines.append("")
     doc_lines.append(f"        ``{http_method} {path}``")
-    if deprecated:
-        doc_lines.append("")
-        doc_lines.append("        .. deprecated:: this endpoint is marked deprecated upstream.")
     doc_lines.append('        """')
 
     # Assemble.

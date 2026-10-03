@@ -5,7 +5,7 @@
 OpenAPI tag: ``LinkedIn-Web-V2-API``
 SDK attribute: ``client.linkedin_web_v2`` / ``async_client.linkedin_web_v2``
 
-Endpoints: 43
+Endpoints: 8
 """
 
 from __future__ import annotations
@@ -24,705 +24,111 @@ __all__ = ["AsyncLinkedinWebV2", "LinkedinWebV2"]
 
 
 class LinkedinWebV2(SyncResource):
-    """Sync ``LinkedIn-Web-V2-API`` resource (43 endpoints)."""
+    """Sync ``LinkedIn-Web-V2-API`` resource (8 endpoints)."""
 
     def get_user_profile(
         self,
         *,
-        username: str,
-        include_follower_and_connection: Any | None = None,
-        include_experiences: Any | None = None,
-        include_skills: Any | None = None,
-        include_certifications: Any | None = None,
-        include_publications: Any | None = None,
-        include_educations: Any | None = None,
-        include_volunteers: Any | None = None,
-        include_honors: Any | None = None,
-        include_interests: Any | None = None,
-        include_bio: Any | None = None,
+        url: str,
     ) -> Any:
-        """获取用户主页基础信息（可选附带子节）/Get user profile (optional sub-sections)
+        """获取用户主页信息/Get user profile
 
         ``GET /api/v1/linkedin/web_v2/get_user_profile``
         """
         params = _drop_none({
-            "username": username,
-            "include_follower_and_connection": include_follower_and_connection,
-            "include_experiences": include_experiences,
-            "include_skills": include_skills,
-            "include_certifications": include_certifications,
-            "include_publications": include_publications,
-            "include_educations": include_educations,
-            "include_volunteers": include_volunteers,
-            "include_honors": include_honors,
-            "include_interests": include_interests,
-            "include_bio": include_bio,
+            "url": url,
         })
         return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_profile", params=params)
 
     def get_user_posts(
         self,
         *,
-        username: str,
-        start: int | None = None,
-        count: int | None = None,
+        url: str,
+        type: str | None = None,
+        start: Any | None = None,
+        pagination_token: Any | None = None,
     ) -> Any:
-        """获取用户帖子（动态标签）/Get user posts
+        """获取用户帖子/Get user's posts
 
         ``GET /api/v1/linkedin/web_v2/get_user_posts``
         """
         params = _drop_none({
-            "username": username,
+            "url": url,
+            "type": type,
             "start": start,
-            "count": count,
+            "pagination_token": pagination_token,
         })
         return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_posts", params=params)
-
-    def get_user_comments(
-        self,
-        *,
-        username: str,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取用户评论（在他人帖子下的评论）/Get user comments
-
-        ``GET /api/v1/linkedin/web_v2/get_user_comments``
-        """
-        params = _drop_none({
-            "username": username,
-            "start": start,
-            "count": count,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_comments", params=params)
-
-    def get_user_contact_info(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户公开联系信息/Get contact info
-
-        ``GET /api/v1/linkedin/web_v2/get_user_contact_info``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_contact_info", params=params)
-
-    def get_user_recommendations(
-        self,
-        *,
-        username: str,
-        direction: str | None = None,
-    ) -> Any:
-        """获取用户推荐信/Get recommendations
-
-        ``GET /api/v1/linkedin/web_v2/get_user_recommendations``
-        """
-        params = _drop_none({
-            "username": username,
-            "direction": direction,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_recommendations", params=params)
-
-    def get_user_videos(
-        self,
-        *,
-        username: str,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取用户视频帖子/Get user videos
-
-        ``GET /api/v1/linkedin/web_v2/get_user_videos``
-        """
-        params = _drop_none({
-            "username": username,
-            "start": start,
-            "count": count,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_videos", params=params)
-
-    def get_user_images(
-        self,
-        *,
-        username: str,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取用户图片帖子/Get user images
-
-        ``GET /api/v1/linkedin/web_v2/get_user_images``
-        """
-        params = _drop_none({
-            "username": username,
-            "start": start,
-            "count": count,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_images", params=params)
-
-    def get_user_bio(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户简介摘要/Get user bio
-
-        ``GET /api/v1/linkedin/web_v2/get_user_bio``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_bio", params=params)
-
-    def get_user_follower_and_connection_count(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户粉丝/连接数/Get follower & connection count
-
-        ``GET /api/v1/linkedin/web_v2/get_user_follower_and_connection_count``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_follower_and_connection_count", params=params)
-
-    def get_user_profile_cards(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户主页全部卡片原始结构/Get full profile cards
-
-        ``GET /api/v1/linkedin/web_v2/get_user_profile_cards``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_profile_cards", params=params)
-
-    def get_user_experiences(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户工作经历/Get experiences
-
-        ``GET /api/v1/linkedin/web_v2/get_user_experiences``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_experiences", params=params)
-
-    def get_user_skills(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户技能/Get skills
-
-        ``GET /api/v1/linkedin/web_v2/get_user_skills``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_skills", params=params)
-
-    def get_user_educations(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户教育背景/Get educations
-
-        ``GET /api/v1/linkedin/web_v2/get_user_educations``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_educations", params=params)
-
-    def get_user_publications(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户出版物/Get publications
-
-        ``GET /api/v1/linkedin/web_v2/get_user_publications``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_publications", params=params)
-
-    def get_user_certifications(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户认证/Get certifications
-
-        ``GET /api/v1/linkedin/web_v2/get_user_certifications``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_certifications", params=params)
-
-    def get_user_honors(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户荣誉奖项/Get honors
-
-        ``GET /api/v1/linkedin/web_v2/get_user_honors``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_honors", params=params)
-
-    def get_user_interested_groups(
-        self,
-        *,
-        username: str,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取用户关注的群组/Get followed groups
-
-        ``GET /api/v1/linkedin/web_v2/get_user_interested_groups``
-        """
-        params = _drop_none({
-            "username": username,
-            "start": start,
-            "count": count,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_interested_groups", params=params)
-
-    def get_user_interested_companies(
-        self,
-        *,
-        username: str,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取用户关注的公司/Get followed companies
-
-        ``GET /api/v1/linkedin/web_v2/get_user_interested_companies``
-        """
-        params = _drop_none({
-            "username": username,
-            "start": start,
-            "count": count,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_interested_companies", params=params)
-
-    def get_user_top_card(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户主页顶部卡片/Get profile top card
-
-        ``GET /api/v1/linkedin/web_v2/get_user_top_card``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_top_card", params=params)
-
-    def get_user_top_card_supplementary(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户主页顶部卡片补充信息/Get top card supplementary
-
-        ``GET /api/v1/linkedin/web_v2/get_user_top_card_supplementary``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_top_card_supplementary", params=params)
-
-    def get_user_recent_activity(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户近期动态聚合/Get recent activity summary
-
-        ``GET /api/v1/linkedin/web_v2/get_user_recent_activity``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_recent_activity", params=params)
-
-    def get_discovery_relevant_to_company(
-        self,
-        *,
-        universal_name: str,
-        count: int | None = None,
-        start: int | None = None,
-        pagination_token: Any | None = None,
-    ) -> Any:
-        """发现："基于公司 X"的相关推荐/Discovery relevant to company
-
-        ``GET /api/v1/linkedin/web_v2/get_discovery_relevant_to_company``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-            "count": count,
-            "start": start,
-            "pagination_token": pagination_token,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_discovery_relevant_to_company", params=params)
-
-    def get_discovery_relevant_to_user(
-        self,
-        *,
-        username: str,
-        count: int | None = None,
-        start: int | None = None,
-        pagination_token: Any | None = None,
-    ) -> Any:
-        """发现："基于用户 X"的相关推荐/Discovery relevant to user
-
-        ``GET /api/v1/linkedin/web_v2/get_discovery_relevant_to_user``
-        """
-        params = _drop_none({
-            "username": username,
-            "count": count,
-            "start": start,
-            "pagination_token": pagination_token,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_discovery_relevant_to_user", params=params)
 
     def get_company_profile(
         self,
         *,
-        universal_name: str,
+        url: str,
     ) -> Any:
         """获取公司主页资料/Get company profile
 
         ``GET /api/v1/linkedin/web_v2/get_company_profile``
         """
         params = _drop_none({
-            "universal_name": universal_name,
+            "url": url,
         })
         return self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_profile", params=params)
-
-    def get_company_employees(
-        self,
-        *,
-        universal_name: str,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取公司员工列表/Get employees
-
-        ``GET /api/v1/linkedin/web_v2/get_company_employees``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-            "start": start,
-            "count": count,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_employees", params=params)
 
     def get_company_posts(
         self,
         *,
-        universal_name: str,
-        start: int | None = None,
-        count: int | None = None,
+        url: str,
+        start: Any | None = None,
+        pagination_token: Any | None = None,
+        sort_by: Any | None = None,
     ) -> Any:
-        """获取公司主页帖子流/Get company posts
+        """获取公司帖子/Get company's posts
 
         ``GET /api/v1/linkedin/web_v2/get_company_posts``
         """
         params = _drop_none({
-            "universal_name": universal_name,
+            "url": url,
             "start": start,
-            "count": count,
+            "pagination_token": pagination_token,
+            "sort_by": sort_by,
         })
         return self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_posts", params=params)
-
-    def get_company_jobs(
-        self,
-        *,
-        universal_name: str,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取公司在招职位列表/Get company jobs
-
-        ``GET /api/v1/linkedin/web_v2/get_company_jobs``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-            "start": start,
-            "count": count,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_jobs", params=params)
-
-    def get_company_job_count(
-        self,
-        *,
-        universal_name: str,
-    ) -> Any:
-        """获取公司在招职位总数/Get job count
-
-        ``GET /api/v1/linkedin/web_v2/get_company_job_count``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_job_count", params=params)
-
-    def get_company_similar_companies(
-        self,
-        *,
-        universal_name: str,
-    ) -> Any:
-        """获取相似公司（People also viewed）/Get similar companies
-
-        ``GET /api/v1/linkedin/web_v2/get_company_similar_companies``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_similar_companies", params=params)
-
-    def get_company_competitors(
-        self,
-        *,
-        universal_name: str,
-    ) -> Any:
-        """获取公司竞争对手/Get competitors
-
-        ``GET /api/v1/linkedin/web_v2/get_company_competitors``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_competitors", params=params)
-
-    def get_company_stock_quote(
-        self,
-        *,
-        universal_name: str,
-    ) -> Any:
-        """获取上市公司股价/Get stock quote
-
-        ``GET /api/v1/linkedin/web_v2/get_company_stock_quote``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_stock_quote", params=params)
-
-    def get_company_call_to_actions(
-        self,
-        *,
-        universal_name: str,
-    ) -> Any:
-        """获取公司主页 CTA 按钮配置/Get CTA buttons
-
-        ``GET /api/v1/linkedin/web_v2/get_company_call_to_actions``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_call_to_actions", params=params)
-
-    def get_company_employee_count_ranges(
-        self,
-        *,
-        universal_name: str,
-    ) -> Any:
-        """获取公司员工数量范围（各 segment）/Get employee count by segment
-
-        ``GET /api/v1/linkedin/web_v2/get_company_employee_count_ranges``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_employee_count_ranges", params=params)
-
-    def get_company_grouped_locations(
-        self,
-        *,
-        universal_name: str,
-    ) -> Any:
-        """获取公司全部办公地点（按地理分组）/Get grouped locations
-
-        ``GET /api/v1/linkedin/web_v2/get_company_grouped_locations``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_grouped_locations", params=params)
-
-    def get_post_detail(
-        self,
-        *,
-        post_urn: str,
-    ) -> Any:
-        """获取单条帖子详情（按 post URN）/Get post detail by URN
-
-        ``GET /api/v1/linkedin/web_v2/get_post_detail``
-        """
-        params = _drop_none({
-            "post_urn": post_urn,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_post_detail", params=params)
-
-    def get_post_detail_by_slug(
-        self,
-        *,
-        slug: str,
-    ) -> Any:
-        """按 URL slug 获取帖子/Get post by URL slug
-
-        ``GET /api/v1/linkedin/web_v2/get_post_detail_by_slug``
-        """
-        params = _drop_none({
-            "slug": slug,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_post_detail_by_slug", params=params)
-
-    def get_post_comments(
-        self,
-        *,
-        post_urn: str,
-        start: int | None = None,
-        count: int | None = None,
-        sort_order: str | None = None,
-    ) -> Any:
-        """获取帖子顶层评论/Get post top-level comments
-
-        ``GET /api/v1/linkedin/web_v2/get_post_comments``
-        """
-        params = _drop_none({
-            "post_urn": post_urn,
-            "start": start,
-            "count": count,
-            "sort_order": sort_order,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_post_comments", params=params)
-
-    def get_comment_replies(
-        self,
-        *,
-        comment_urn: str,
-        post_urn: Any | None = None,
-        count: int | None = None,
-        pagination_token: Any | None = None,
-    ) -> Any:
-        """获取评论的回复/Get comment replies
-
-        ``GET /api/v1/linkedin/web_v2/get_comment_replies``
-        """
-        params = _drop_none({
-            "comment_urn": comment_urn,
-            "post_urn": post_urn,
-            "count": count,
-            "pagination_token": pagination_token,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_comment_replies", params=params)
-
-    def get_post_reactions(
-        self,
-        *,
-        post_urn: str,
-        reaction_type: Any | None = None,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取帖子点赞/反应人列表/Get post reactions
-
-        ``GET /api/v1/linkedin/web_v2/get_post_reactions``
-        """
-        params = _drop_none({
-            "post_urn": post_urn,
-            "reaction_type": reaction_type,
-            "start": start,
-            "count": count,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_post_reactions", params=params)
-
-    def get_hashtag_feed(
-        self,
-        *,
-        hashtag: str,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """按 hashtag 获取话题动态流/Get hashtag feed
-
-        ``GET /api/v1/linkedin/web_v2/get_hashtag_feed``
-        """
-        params = _drop_none({
-            "hashtag": hashtag,
-            "start": start,
-            "count": count,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_hashtag_feed", params=params)
 
     def get_job_detail(
         self,
         *,
-        job_id: str,
+        url: str,
+        include_skills: bool | None = None,
+        include_hiring_team: bool | None = None,
     ) -> Any:
         """获取职位详情/Get job detail
 
         ``GET /api/v1/linkedin/web_v2/get_job_detail``
         """
         params = _drop_none({
-            "job_id": job_id,
+            "url": url,
+            "include_skills": include_skills,
+            "include_hiring_team": include_hiring_team,
         })
         return self._client._request("GET", "/api/v1/linkedin/web_v2/get_job_detail", params=params)
-
-    def search_users(
-        self,
-        *,
-        keywords: str,
-        start: int | None = None,
-        count: int | None = None,
-        geo_urn: Any | None = None,
-        industry_urn: Any | None = None,
-        current_company_urn: Any | None = None,
-    ) -> Any:
-        """搜索用户/Search users
-
-        ``GET /api/v1/linkedin/web_v2/search_users``
-        """
-        params = _drop_none({
-            "keywords": keywords,
-            "start": start,
-            "count": count,
-            "geo_urn": geo_urn,
-            "industry_urn": industry_urn,
-            "current_company_urn": current_company_urn,
-        })
-        return self._client._request("GET", "/api/v1/linkedin/web_v2/search_users", params=params)
 
     def search_jobs(
         self,
         *,
-        keywords: str,
-        location: Any | None = None,
-        start: int | None = None,
-        count: int | None = None,
+        keywords: Any | None = None,
+        geo_code: Any | None = None,
+        date_posted: Any | None = None,
+        experience_levels: Any | None = None,
+        company_ids: Any | None = None,
+        title_ids: Any | None = None,
+        onsite_remotes: Any | None = None,
+        functions: Any | None = None,
+        industries: Any | None = None,
+        job_types: Any | None = None,
+        sort_by: Any | None = None,
+        easy_apply: bool | None = None,
+        under_10_applicants: bool | None = None,
+        start: Any | None = None,
     ) -> Any:
         """搜索职位/Search jobs
 
@@ -730,713 +136,165 @@ class LinkedinWebV2(SyncResource):
         """
         params = _drop_none({
             "keywords": keywords,
-            "location": location,
+            "geo_code": geo_code,
+            "date_posted": date_posted,
+            "experience_levels": experience_levels,
+            "company_ids": company_ids,
+            "title_ids": title_ids,
+            "onsite_remotes": onsite_remotes,
+            "functions": functions,
+            "industries": industries,
+            "job_types": job_types,
+            "sort_by": sort_by,
+            "easy_apply": easy_apply,
+            "under_10_applicants": under_10_applicants,
             "start": start,
-            "count": count,
         })
         return self._client._request("GET", "/api/v1/linkedin/web_v2/search_jobs", params=params)
 
+    def get_post_detail(
+        self,
+        *,
+        url: str,
+    ) -> Any:
+        """获取帖子或文章详情/Get post or article detail
+
+        ``GET /api/v1/linkedin/web_v2/get_post_detail``
+        """
+        params = _drop_none({
+            "url": url,
+        })
+        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_post_detail", params=params)
+
+    def get_post_comments(
+        self,
+        *,
+        urn: str,
+        sort_by: Any | None = None,
+        page: Any | None = None,
+        pagination_token: Any | None = None,
+        share_urn: Any | None = None,
+    ) -> Any:
+        """获取帖子评论/Get post comments
+
+        ``GET /api/v1/linkedin/web_v2/get_post_comments``
+        """
+        params = _drop_none({
+            "urn": urn,
+            "sort_by": sort_by,
+            "page": page,
+            "pagination_token": pagination_token,
+            "share_urn": share_urn,
+        })
+        return self._client._request("GET", "/api/v1/linkedin/web_v2/get_post_comments", params=params)
+
 
 class AsyncLinkedinWebV2(AsyncResource):
-    """Async ``LinkedIn-Web-V2-API`` resource (43 endpoints)."""
+    """Async ``LinkedIn-Web-V2-API`` resource (8 endpoints)."""
 
     async def get_user_profile(
         self,
         *,
-        username: str,
-        include_follower_and_connection: Any | None = None,
-        include_experiences: Any | None = None,
-        include_skills: Any | None = None,
-        include_certifications: Any | None = None,
-        include_publications: Any | None = None,
-        include_educations: Any | None = None,
-        include_volunteers: Any | None = None,
-        include_honors: Any | None = None,
-        include_interests: Any | None = None,
-        include_bio: Any | None = None,
+        url: str,
     ) -> Any:
-        """获取用户主页基础信息（可选附带子节）/Get user profile (optional sub-sections)
+        """获取用户主页信息/Get user profile
 
         ``GET /api/v1/linkedin/web_v2/get_user_profile``
         """
         params = _drop_none({
-            "username": username,
-            "include_follower_and_connection": include_follower_and_connection,
-            "include_experiences": include_experiences,
-            "include_skills": include_skills,
-            "include_certifications": include_certifications,
-            "include_publications": include_publications,
-            "include_educations": include_educations,
-            "include_volunteers": include_volunteers,
-            "include_honors": include_honors,
-            "include_interests": include_interests,
-            "include_bio": include_bio,
+            "url": url,
         })
         return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_profile", params=params)
 
     async def get_user_posts(
         self,
         *,
-        username: str,
-        start: int | None = None,
-        count: int | None = None,
+        url: str,
+        type: str | None = None,
+        start: Any | None = None,
+        pagination_token: Any | None = None,
     ) -> Any:
-        """获取用户帖子（动态标签）/Get user posts
+        """获取用户帖子/Get user's posts
 
         ``GET /api/v1/linkedin/web_v2/get_user_posts``
         """
         params = _drop_none({
-            "username": username,
+            "url": url,
+            "type": type,
             "start": start,
-            "count": count,
+            "pagination_token": pagination_token,
         })
         return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_posts", params=params)
-
-    async def get_user_comments(
-        self,
-        *,
-        username: str,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取用户评论（在他人帖子下的评论）/Get user comments
-
-        ``GET /api/v1/linkedin/web_v2/get_user_comments``
-        """
-        params = _drop_none({
-            "username": username,
-            "start": start,
-            "count": count,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_comments", params=params)
-
-    async def get_user_contact_info(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户公开联系信息/Get contact info
-
-        ``GET /api/v1/linkedin/web_v2/get_user_contact_info``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_contact_info", params=params)
-
-    async def get_user_recommendations(
-        self,
-        *,
-        username: str,
-        direction: str | None = None,
-    ) -> Any:
-        """获取用户推荐信/Get recommendations
-
-        ``GET /api/v1/linkedin/web_v2/get_user_recommendations``
-        """
-        params = _drop_none({
-            "username": username,
-            "direction": direction,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_recommendations", params=params)
-
-    async def get_user_videos(
-        self,
-        *,
-        username: str,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取用户视频帖子/Get user videos
-
-        ``GET /api/v1/linkedin/web_v2/get_user_videos``
-        """
-        params = _drop_none({
-            "username": username,
-            "start": start,
-            "count": count,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_videos", params=params)
-
-    async def get_user_images(
-        self,
-        *,
-        username: str,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取用户图片帖子/Get user images
-
-        ``GET /api/v1/linkedin/web_v2/get_user_images``
-        """
-        params = _drop_none({
-            "username": username,
-            "start": start,
-            "count": count,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_images", params=params)
-
-    async def get_user_bio(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户简介摘要/Get user bio
-
-        ``GET /api/v1/linkedin/web_v2/get_user_bio``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_bio", params=params)
-
-    async def get_user_follower_and_connection_count(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户粉丝/连接数/Get follower & connection count
-
-        ``GET /api/v1/linkedin/web_v2/get_user_follower_and_connection_count``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_follower_and_connection_count", params=params)
-
-    async def get_user_profile_cards(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户主页全部卡片原始结构/Get full profile cards
-
-        ``GET /api/v1/linkedin/web_v2/get_user_profile_cards``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_profile_cards", params=params)
-
-    async def get_user_experiences(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户工作经历/Get experiences
-
-        ``GET /api/v1/linkedin/web_v2/get_user_experiences``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_experiences", params=params)
-
-    async def get_user_skills(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户技能/Get skills
-
-        ``GET /api/v1/linkedin/web_v2/get_user_skills``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_skills", params=params)
-
-    async def get_user_educations(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户教育背景/Get educations
-
-        ``GET /api/v1/linkedin/web_v2/get_user_educations``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_educations", params=params)
-
-    async def get_user_publications(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户出版物/Get publications
-
-        ``GET /api/v1/linkedin/web_v2/get_user_publications``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_publications", params=params)
-
-    async def get_user_certifications(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户认证/Get certifications
-
-        ``GET /api/v1/linkedin/web_v2/get_user_certifications``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_certifications", params=params)
-
-    async def get_user_honors(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户荣誉奖项/Get honors
-
-        ``GET /api/v1/linkedin/web_v2/get_user_honors``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_honors", params=params)
-
-    async def get_user_interested_groups(
-        self,
-        *,
-        username: str,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取用户关注的群组/Get followed groups
-
-        ``GET /api/v1/linkedin/web_v2/get_user_interested_groups``
-        """
-        params = _drop_none({
-            "username": username,
-            "start": start,
-            "count": count,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_interested_groups", params=params)
-
-    async def get_user_interested_companies(
-        self,
-        *,
-        username: str,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取用户关注的公司/Get followed companies
-
-        ``GET /api/v1/linkedin/web_v2/get_user_interested_companies``
-        """
-        params = _drop_none({
-            "username": username,
-            "start": start,
-            "count": count,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_interested_companies", params=params)
-
-    async def get_user_top_card(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户主页顶部卡片/Get profile top card
-
-        ``GET /api/v1/linkedin/web_v2/get_user_top_card``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_top_card", params=params)
-
-    async def get_user_top_card_supplementary(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户主页顶部卡片补充信息/Get top card supplementary
-
-        ``GET /api/v1/linkedin/web_v2/get_user_top_card_supplementary``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_top_card_supplementary", params=params)
-
-    async def get_user_recent_activity(
-        self,
-        *,
-        username: str,
-    ) -> Any:
-        """获取用户近期动态聚合/Get recent activity summary
-
-        ``GET /api/v1/linkedin/web_v2/get_user_recent_activity``
-        """
-        params = _drop_none({
-            "username": username,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_user_recent_activity", params=params)
-
-    async def get_discovery_relevant_to_company(
-        self,
-        *,
-        universal_name: str,
-        count: int | None = None,
-        start: int | None = None,
-        pagination_token: Any | None = None,
-    ) -> Any:
-        """发现："基于公司 X"的相关推荐/Discovery relevant to company
-
-        ``GET /api/v1/linkedin/web_v2/get_discovery_relevant_to_company``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-            "count": count,
-            "start": start,
-            "pagination_token": pagination_token,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_discovery_relevant_to_company", params=params)
-
-    async def get_discovery_relevant_to_user(
-        self,
-        *,
-        username: str,
-        count: int | None = None,
-        start: int | None = None,
-        pagination_token: Any | None = None,
-    ) -> Any:
-        """发现："基于用户 X"的相关推荐/Discovery relevant to user
-
-        ``GET /api/v1/linkedin/web_v2/get_discovery_relevant_to_user``
-        """
-        params = _drop_none({
-            "username": username,
-            "count": count,
-            "start": start,
-            "pagination_token": pagination_token,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_discovery_relevant_to_user", params=params)
 
     async def get_company_profile(
         self,
         *,
-        universal_name: str,
+        url: str,
     ) -> Any:
         """获取公司主页资料/Get company profile
 
         ``GET /api/v1/linkedin/web_v2/get_company_profile``
         """
         params = _drop_none({
-            "universal_name": universal_name,
+            "url": url,
         })
         return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_profile", params=params)
-
-    async def get_company_employees(
-        self,
-        *,
-        universal_name: str,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取公司员工列表/Get employees
-
-        ``GET /api/v1/linkedin/web_v2/get_company_employees``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-            "start": start,
-            "count": count,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_employees", params=params)
 
     async def get_company_posts(
         self,
         *,
-        universal_name: str,
-        start: int | None = None,
-        count: int | None = None,
+        url: str,
+        start: Any | None = None,
+        pagination_token: Any | None = None,
+        sort_by: Any | None = None,
     ) -> Any:
-        """获取公司主页帖子流/Get company posts
+        """获取公司帖子/Get company's posts
 
         ``GET /api/v1/linkedin/web_v2/get_company_posts``
         """
         params = _drop_none({
-            "universal_name": universal_name,
+            "url": url,
             "start": start,
-            "count": count,
+            "pagination_token": pagination_token,
+            "sort_by": sort_by,
         })
         return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_posts", params=params)
-
-    async def get_company_jobs(
-        self,
-        *,
-        universal_name: str,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取公司在招职位列表/Get company jobs
-
-        ``GET /api/v1/linkedin/web_v2/get_company_jobs``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-            "start": start,
-            "count": count,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_jobs", params=params)
-
-    async def get_company_job_count(
-        self,
-        *,
-        universal_name: str,
-    ) -> Any:
-        """获取公司在招职位总数/Get job count
-
-        ``GET /api/v1/linkedin/web_v2/get_company_job_count``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_job_count", params=params)
-
-    async def get_company_similar_companies(
-        self,
-        *,
-        universal_name: str,
-    ) -> Any:
-        """获取相似公司（People also viewed）/Get similar companies
-
-        ``GET /api/v1/linkedin/web_v2/get_company_similar_companies``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_similar_companies", params=params)
-
-    async def get_company_competitors(
-        self,
-        *,
-        universal_name: str,
-    ) -> Any:
-        """获取公司竞争对手/Get competitors
-
-        ``GET /api/v1/linkedin/web_v2/get_company_competitors``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_competitors", params=params)
-
-    async def get_company_stock_quote(
-        self,
-        *,
-        universal_name: str,
-    ) -> Any:
-        """获取上市公司股价/Get stock quote
-
-        ``GET /api/v1/linkedin/web_v2/get_company_stock_quote``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_stock_quote", params=params)
-
-    async def get_company_call_to_actions(
-        self,
-        *,
-        universal_name: str,
-    ) -> Any:
-        """获取公司主页 CTA 按钮配置/Get CTA buttons
-
-        ``GET /api/v1/linkedin/web_v2/get_company_call_to_actions``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_call_to_actions", params=params)
-
-    async def get_company_employee_count_ranges(
-        self,
-        *,
-        universal_name: str,
-    ) -> Any:
-        """获取公司员工数量范围（各 segment）/Get employee count by segment
-
-        ``GET /api/v1/linkedin/web_v2/get_company_employee_count_ranges``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_employee_count_ranges", params=params)
-
-    async def get_company_grouped_locations(
-        self,
-        *,
-        universal_name: str,
-    ) -> Any:
-        """获取公司全部办公地点（按地理分组）/Get grouped locations
-
-        ``GET /api/v1/linkedin/web_v2/get_company_grouped_locations``
-        """
-        params = _drop_none({
-            "universal_name": universal_name,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_company_grouped_locations", params=params)
-
-    async def get_post_detail(
-        self,
-        *,
-        post_urn: str,
-    ) -> Any:
-        """获取单条帖子详情（按 post URN）/Get post detail by URN
-
-        ``GET /api/v1/linkedin/web_v2/get_post_detail``
-        """
-        params = _drop_none({
-            "post_urn": post_urn,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_post_detail", params=params)
-
-    async def get_post_detail_by_slug(
-        self,
-        *,
-        slug: str,
-    ) -> Any:
-        """按 URL slug 获取帖子/Get post by URL slug
-
-        ``GET /api/v1/linkedin/web_v2/get_post_detail_by_slug``
-        """
-        params = _drop_none({
-            "slug": slug,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_post_detail_by_slug", params=params)
-
-    async def get_post_comments(
-        self,
-        *,
-        post_urn: str,
-        start: int | None = None,
-        count: int | None = None,
-        sort_order: str | None = None,
-    ) -> Any:
-        """获取帖子顶层评论/Get post top-level comments
-
-        ``GET /api/v1/linkedin/web_v2/get_post_comments``
-        """
-        params = _drop_none({
-            "post_urn": post_urn,
-            "start": start,
-            "count": count,
-            "sort_order": sort_order,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_post_comments", params=params)
-
-    async def get_comment_replies(
-        self,
-        *,
-        comment_urn: str,
-        post_urn: Any | None = None,
-        count: int | None = None,
-        pagination_token: Any | None = None,
-    ) -> Any:
-        """获取评论的回复/Get comment replies
-
-        ``GET /api/v1/linkedin/web_v2/get_comment_replies``
-        """
-        params = _drop_none({
-            "comment_urn": comment_urn,
-            "post_urn": post_urn,
-            "count": count,
-            "pagination_token": pagination_token,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_comment_replies", params=params)
-
-    async def get_post_reactions(
-        self,
-        *,
-        post_urn: str,
-        reaction_type: Any | None = None,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取帖子点赞/反应人列表/Get post reactions
-
-        ``GET /api/v1/linkedin/web_v2/get_post_reactions``
-        """
-        params = _drop_none({
-            "post_urn": post_urn,
-            "reaction_type": reaction_type,
-            "start": start,
-            "count": count,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_post_reactions", params=params)
-
-    async def get_hashtag_feed(
-        self,
-        *,
-        hashtag: str,
-        start: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """按 hashtag 获取话题动态流/Get hashtag feed
-
-        ``GET /api/v1/linkedin/web_v2/get_hashtag_feed``
-        """
-        params = _drop_none({
-            "hashtag": hashtag,
-            "start": start,
-            "count": count,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_hashtag_feed", params=params)
 
     async def get_job_detail(
         self,
         *,
-        job_id: str,
+        url: str,
+        include_skills: bool | None = None,
+        include_hiring_team: bool | None = None,
     ) -> Any:
         """获取职位详情/Get job detail
 
         ``GET /api/v1/linkedin/web_v2/get_job_detail``
         """
         params = _drop_none({
-            "job_id": job_id,
+            "url": url,
+            "include_skills": include_skills,
+            "include_hiring_team": include_hiring_team,
         })
         return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_job_detail", params=params)
-
-    async def search_users(
-        self,
-        *,
-        keywords: str,
-        start: int | None = None,
-        count: int | None = None,
-        geo_urn: Any | None = None,
-        industry_urn: Any | None = None,
-        current_company_urn: Any | None = None,
-    ) -> Any:
-        """搜索用户/Search users
-
-        ``GET /api/v1/linkedin/web_v2/search_users``
-        """
-        params = _drop_none({
-            "keywords": keywords,
-            "start": start,
-            "count": count,
-            "geo_urn": geo_urn,
-            "industry_urn": industry_urn,
-            "current_company_urn": current_company_urn,
-        })
-        return await self._client._request("GET", "/api/v1/linkedin/web_v2/search_users", params=params)
 
     async def search_jobs(
         self,
         *,
-        keywords: str,
-        location: Any | None = None,
-        start: int | None = None,
-        count: int | None = None,
+        keywords: Any | None = None,
+        geo_code: Any | None = None,
+        date_posted: Any | None = None,
+        experience_levels: Any | None = None,
+        company_ids: Any | None = None,
+        title_ids: Any | None = None,
+        onsite_remotes: Any | None = None,
+        functions: Any | None = None,
+        industries: Any | None = None,
+        job_types: Any | None = None,
+        sort_by: Any | None = None,
+        easy_apply: bool | None = None,
+        under_10_applicants: bool | None = None,
+        start: Any | None = None,
     ) -> Any:
         """搜索职位/Search jobs
 
@@ -1444,8 +302,54 @@ class AsyncLinkedinWebV2(AsyncResource):
         """
         params = _drop_none({
             "keywords": keywords,
-            "location": location,
+            "geo_code": geo_code,
+            "date_posted": date_posted,
+            "experience_levels": experience_levels,
+            "company_ids": company_ids,
+            "title_ids": title_ids,
+            "onsite_remotes": onsite_remotes,
+            "functions": functions,
+            "industries": industries,
+            "job_types": job_types,
+            "sort_by": sort_by,
+            "easy_apply": easy_apply,
+            "under_10_applicants": under_10_applicants,
             "start": start,
-            "count": count,
         })
         return await self._client._request("GET", "/api/v1/linkedin/web_v2/search_jobs", params=params)
+
+    async def get_post_detail(
+        self,
+        *,
+        url: str,
+    ) -> Any:
+        """获取帖子或文章详情/Get post or article detail
+
+        ``GET /api/v1/linkedin/web_v2/get_post_detail``
+        """
+        params = _drop_none({
+            "url": url,
+        })
+        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_post_detail", params=params)
+
+    async def get_post_comments(
+        self,
+        *,
+        urn: str,
+        sort_by: Any | None = None,
+        page: Any | None = None,
+        pagination_token: Any | None = None,
+        share_urn: Any | None = None,
+    ) -> Any:
+        """获取帖子评论/Get post comments
+
+        ``GET /api/v1/linkedin/web_v2/get_post_comments``
+        """
+        params = _drop_none({
+            "urn": urn,
+            "sort_by": sort_by,
+            "page": page,
+            "pagination_token": pagination_token,
+            "share_urn": share_urn,
+        })
+        return await self._client._request("GET", "/api/v1/linkedin/web_v2/get_post_comments", params=params)

@@ -1,7 +1,7 @@
 """Example: Zhihu-Web-API
 
 SDK attribute: ``client.zhihu_web``
-Endpoints: 34
+Endpoints: 41
 
 Usage::
 
@@ -79,16 +79,6 @@ async def main():
         # POST /api/v1/zhihu/web/fetch_scholar_search_v3
         # 获取知乎论文搜索V3/Get Zhihu Scholar Search V3
         result = await client.zhihu_web.fetch_scholar_search_v3(keyword='test', offset='0', limit='25', body=None)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/zhihu/web/fetch_ai_search
-        # 获取知乎AI搜索/Get Zhihu AI Search
-        result = await client.zhihu_web.fetch_ai_search(message_content='test')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/zhihu/web/fetch_ai_search_result
-        # 获取知乎AI搜索结果/Get Zhihu AI Search Result
-        result = await client.zhihu_web.fetch_ai_search_result(message_id='test')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/zhihu/web/fetch_video_search_v3
@@ -189,6 +179,51 @@ async def main():
         # GET /api/v1/zhihu/web/fetch_question_answers
         # 获取知乎问题回答列表/Get Zhihu Question Answers
         result = await client.zhihu_web.fetch_question_answers(question_id='test', cursor='', limit=5, offset=0, order='default', session_id='')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/zhihu/web/fetch_question_detail
+        # 获取知乎问题详情/Get Zhihu Question Detail
+        result = await client.zhihu_web.fetch_question_detail(question_id='test')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/zhihu/web/fetch_answer_detail
+        # 获取知乎回答详情/Get Zhihu Answer Detail
+        result = await client.zhihu_web.fetch_answer_detail(answer_id='test')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/zhihu/web/fetch_user_answers
+        # 获取知乎用户的回答列表/Get Zhihu User Answers
+        result = await client.zhihu_web.fetch_user_answers(user_url_token='test', offset='0', limit='20', sort_type='created')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/zhihu/web/fetch_user_collections
+        # 获取知乎用户创建的收藏夹列表/Get Zhihu User Created Collections
+        result = await client.zhihu_web.fetch_user_collections(user_url_token='test', offset='0', limit='20')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/zhihu/web/fetch_user_segments
+        # 获取知乎用户的划线列表/Get Zhihu User Segments
+        result = await client.zhihu_web.fetch_user_segments(user_url_token='test', content_type='all', offset='0', limit='20')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/zhihu/web/fetch_user_pins
+        # 获取知乎用户的想法列表/Get Zhihu User Pins
+        result = await client.zhihu_web.fetch_user_pins(user_url_token='test', offset='0', limit='20')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/zhihu/web/fetch_pin_detail
+        # 获取知乎想法详情/Get Zhihu Pin Detail
+        result = await client.zhihu_web.fetch_pin_detail(pin_id='test')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/zhihu/web/fetch_pin_comments
+        # 获取知乎想法评论区/Get Zhihu Pin Comments
+        result = await client.zhihu_web.fetch_pin_comments(pin_id='test', order_by='score', limit='20', offset='')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/zhihu/web/fetch_ai_search_stream
+        # 获取知乎AI搜索(新版)/Get Zhihu AI Search (v2)
+        result = await client.zhihu_web.fetch_ai_search_stream(message_content='test', chat_mode='FAST', session_id='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

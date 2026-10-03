@@ -5,7 +5,7 @@
 OpenAPI tag: ``Health-Check``
 SDK attribute: ``client.health_check`` / ``async_client.health_check``
 
-Endpoints: 1
+Endpoints: 2
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncHealthCheck", "HealthCheck"]
 
 
 class HealthCheck(SyncResource):
-    """Sync ``Health-Check`` resource (1 endpoints)."""
+    """Sync ``Health-Check`` resource (2 endpoints)."""
 
     def check(
         self,
@@ -35,9 +35,18 @@ class HealthCheck(SyncResource):
         """
         return self._client._request("GET", "/api/v1/health/check")
 
+    def deep(
+        self,
+    ) -> Any:
+        """深度健康检查（实测依赖与资源）/ Deep health check (probes dependencies and resources)
+
+        ``GET /api/v1/health/deep``
+        """
+        return self._client._request("GET", "/api/v1/health/deep")
+
 
 class AsyncHealthCheck(AsyncResource):
-    """Async ``Health-Check`` resource (1 endpoints)."""
+    """Async ``Health-Check`` resource (2 endpoints)."""
 
     async def check(
         self,
@@ -47,3 +56,12 @@ class AsyncHealthCheck(AsyncResource):
         ``GET /api/v1/health/check``
         """
         return await self._client._request("GET", "/api/v1/health/check")
+
+    async def deep(
+        self,
+    ) -> Any:
+        """深度健康检查（实测依赖与资源）/ Deep health check (probes dependencies and resources)
+
+        ``GET /api/v1/health/deep``
+        """
+        return await self._client._request("GET", "/api/v1/health/deep")

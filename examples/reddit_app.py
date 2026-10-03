@@ -23,142 +23,142 @@ async def main():
 
         # GET /api/v1/reddit/app/fetch_home_feed
         # 获取Reddit APP首页推荐内容/Fetch Reddit APP Home Feed
-        result = await client.reddit_app.fetch_home_feed(sort='BEST', filter_posts=['t3_1ojjquz', 't3_1ohepm2', 't3_1ojxzzz', 't3_1ojnvca', 't3_1oj9dcb', 't3_1ojxubp', 't3_1oj5x2b'], after='dDNfMW9qNXgyYg==', need_format=False)
+        result = await client.reddit_app.fetch_home_feed(language='en-US', sort='BEST', filter_posts=['t3_1ojjquz', 't3_1ohepm2', 't3_1ojxzzz', 't3_1ojnvca', 't3_1oj9dcb', 't3_1ojxubp', 't3_1oj5x2b'], after='dDNfMW9qNXgyYg==', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_popular_feed
         # 获取Reddit APP流行推荐内容/Fetch Reddit APP Popular Feed
-        result = await client.reddit_app.fetch_popular_feed(sort='HOT', time='DAY', filter_posts=[], after='', need_format=False)
+        result = await client.reddit_app.fetch_popular_feed(language='en-US', sort='HOT', time='DAY', filter_posts=[], after='', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_games_feed
         # 获取Reddit APP游戏推荐内容/Fetch Reddit APP Games Feed
-        result = await client.reddit_app.fetch_games_feed(sort='HOT', time='WEEK', after='', need_format=False)
+        result = await client.reddit_app.fetch_games_feed(language='en-US', sort='HOT', time='WEEK', after='', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_news_feed
         # 获取Reddit APP资讯推荐内容/Fetch Reddit APP News Feed
-        result = await client.reddit_app.fetch_news_feed(subtopic_ids=['all'], after='', need_format=False)
+        result = await client.reddit_app.fetch_news_feed(language='en-US', subtopic_ids=['all'], after='', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_explore_feed
         # 获取Reddit APP发现页(社区分类+推荐社区)/Fetch Reddit APP Explore Feed
-        result = await client.reddit_app.fetch_explore_feed(sort='BEST', time='ALL', need_format=False)
+        result = await client.reddit_app.fetch_explore_feed(language='en-US', sort='BEST', time='ALL', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_topic_feed
         # 按分类获取Reddit APP feed/Fetch Reddit APP Topic Feed
-        result = await client.reddit_app.fetch_topic_feed(topic_id='tx1_29m4k39', scheme_name='communities_tab_taxonomy_topics_default', sort='BEST', time='ALL', need_format=False)
+        result = await client.reddit_app.fetch_topic_feed(language='en-US', topic_id='tx1_29m4k39', scheme_name='communities_tab_taxonomy_topics_default', sort='BEST', time='ALL', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_post_details
         # 获取单个Reddit帖子详情/Fetch Single Reddit Post Details
-        result = await client.reddit_app.fetch_post_details(post_id='t3_1ojnh50', include_comment_id=False, comment_id='', need_format=False)
+        result = await client.reddit_app.fetch_post_details(language='en-US', post_id='t3_1ojnh50', include_comment_id=False, comment_id='', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_post_details_batch
         # 批量获取Reddit帖子详情(最多5条)/Fetch Reddit Post Details in Batch (Max 5)
-        result = await client.reddit_app.fetch_post_details_batch(post_ids='t3_1ojnh50,t3_1ok432f,t3_1nwil8j', include_comment_id=False, comment_id='', need_format=False)
+        result = await client.reddit_app.fetch_post_details_batch(language='en-US', post_ids='t3_1ojnh50,t3_1ok432f,t3_1nwil8j', include_comment_id=False, comment_id='', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_post_details_batch_large
         # 大批量获取Reddit帖子详情(最多30条)/Fetch Reddit Post Details in Large Batch (Max 30)
-        result = await client.reddit_app.fetch_post_details_batch_large(post_ids='t3_1ojnh50,t3_1ok432f,t3_1nwil8j,t3_1oj6vn6,t3_1nuenmd', include_comment_id=False, comment_id='', need_format=False)
+        result = await client.reddit_app.fetch_post_details_batch_large(language='en-US', post_ids='t3_1ojnh50,t3_1ok432f,t3_1nwil8j,t3_1oj6vn6,t3_1nuenmd', include_comment_id=False, comment_id='', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_post_comments
         # 获取Reddit APP帖子评论/Fetch Reddit APP Post Comments
-        result = await client.reddit_app.fetch_post_comments(post_id='t3_1ojnvca', sort_type='CONFIDENCE', after='', need_format=False)
+        result = await client.reddit_app.fetch_post_comments(language='en-US', post_id='t3_1ojnvca', sort_type='CONFIDENCE', after='', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_comment_replies
         # 获取Reddit APP评论回复（二级评论）/Fetch Reddit APP Comment Replies (Sub-comments)
-        result = await client.reddit_app.fetch_comment_replies(post_id='t3_1qmup73', cursor='commenttree:ex:(RjiJd', sort_type='CONFIDENCE', need_format=False)
+        result = await client.reddit_app.fetch_comment_replies(language='en-US', post_id='t3_1qmup73', cursor='commenttree:ex:(RjiJd', sort_type='CONFIDENCE', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_subreddit_style
         # 获取Reddit APP版块规则样式信息/Fetch Reddit APP Subreddit Rules and Style Info
-        result = await client.reddit_app.fetch_subreddit_style(subreddit_name='pics', need_format=False)
+        result = await client.reddit_app.fetch_subreddit_style(language='en-US', subreddit_name='pics', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_subreddit_post_channels
         # 获取Reddit APP版块帖子频道信息/Fetch Reddit APP Subreddit Post Channels
-        result = await client.reddit_app.fetch_subreddit_post_channels(subreddit_name='pics', sort='HOT', range='DAY', need_format=False)
+        result = await client.reddit_app.fetch_subreddit_post_channels(language='en-US', subreddit_name='pics', sort='HOT', range='DAY', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_subreddit_info
         # 获取Reddit APP版块信息/Fetch Reddit APP Subreddit Info
-        result = await client.reddit_app.fetch_subreddit_info(subreddit_name='pics', need_format=False)
+        result = await client.reddit_app.fetch_subreddit_info(language='en-US', subreddit_name='pics', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_subreddit_settings
         # 获取Reddit APP版块设置/Fetch Reddit APP Subreddit Settings
-        result = await client.reddit_app.fetch_subreddit_settings(subreddit_id='t5_2qh0u', need_format=False)
+        result = await client.reddit_app.fetch_subreddit_settings(language='en-US', subreddit_id='t5_2qh0u', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_search_typeahead
         # 获取Reddit APP搜索自动补全建议/Fetch Reddit APP Search Typeahead Suggestions
-        result = await client.reddit_app.fetch_search_typeahead(query='programming', safe_search='unset', allow_nsfw='0', need_format=False)
+        result = await client.reddit_app.fetch_search_typeahead(language='en-US', query='programming', safe_search='unset', allow_nsfw='0', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_dynamic_search
         # 获取Reddit APP动态搜索结果/Fetch Reddit APP Dynamic Search Results
-        result = await client.reddit_app.fetch_dynamic_search(query='python programming', search_type='post', sort='RELEVANCE', time_range='all', safe_search='unset', allow_nsfw='0', after='', need_format=False)
+        result = await client.reddit_app.fetch_dynamic_search(language='en-US', query='test', search_type='post', sort='RELEVANCE', time_range='all', safe_search='unset', allow_nsfw='0', after='', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_community_highlights
         # 获取Reddit APP社区亮点/Fetch Reddit APP Community Highlights
-        result = await client.reddit_app.fetch_community_highlights(subreddit_id='t5_2qh0u', need_format=False)
+        result = await client.reddit_app.fetch_community_highlights(language='en-US', subreddit_id='t5_2qh0u', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_trending_searches
         # 获取Reddit APP今日热门搜索/Fetch Reddit APP Trending Searches
-        result = await client.reddit_app.fetch_trending_searches(need_format=False)
+        result = await client.reddit_app.fetch_trending_searches(language='en-US', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_generated_posts
         # 批量获取Reddit Answers卡片精简帖子信息/Fetch Reddit Answers Generated Posts
-        result = await client.reddit_app.fetch_generated_posts(post_ids='t3_1tlh0ir,t3_1tl1dlj,t3_1tl0br7', need_format=False)
+        result = await client.reddit_app.fetch_generated_posts(language='en-US', post_ids='t3_1tlh0ir,t3_1tl1dlj,t3_1tl0br7', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_generated_comments
         # 批量获取Reddit Answers卡片精简评论信息/Fetch Reddit Answers Generated Comments
-        result = await client.reddit_app.fetch_generated_comments(comment_ids='t1_onfhplx,t1_onfk44g,t1_onfmbu3', need_format=False)
+        result = await client.reddit_app.fetch_generated_comments(language='en-US', comment_ids='t1_onfhplx,t1_onfk44g,t1_onfmbu3', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_user_profile
         # 获取Reddit APP用户资料信息/Fetch Reddit APP User Profile
-        result = await client.reddit_app.fetch_user_profile(username='spez', need_format=False)
+        result = await client.reddit_app.fetch_user_profile(language='en-US', username='spez', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_user_active_subreddits
         # 获取用户活跃的社区列表/Fetch User's Active Subreddits
-        result = await client.reddit_app.fetch_user_active_subreddits(username='spez', need_format=False)
+        result = await client.reddit_app.fetch_user_active_subreddits(language='en-US', username='spez', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_user_comments
         # 获取用户评论列表/Fetch User Comments
-        result = await client.reddit_app.fetch_user_comments(username='spez', sort='NEW', page_size=25, after='', need_format=False)
+        result = await client.reddit_app.fetch_user_comments(language='en-US', username='spez', sort='NEW', page_size=25, after='', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_user_posts
         # 获取用户发布的帖子列表/Fetch User Posts
-        result = await client.reddit_app.fetch_user_posts(username='spez', sort='NEW', after='', need_format=False)
+        result = await client.reddit_app.fetch_user_posts(language='en-US', username='spez', sort='NEW', after='', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_subreddit_feed
         # 获取Reddit APP版块Feed内容/Fetch Reddit APP Subreddit Feed
-        result = await client.reddit_app.fetch_subreddit_feed(subreddit_name='AskReddit', sort='HOT', filter_posts=[], after='', need_format=False)
+        result = await client.reddit_app.fetch_subreddit_feed(language='en-US', subreddit_name='AskReddit', sort='HOT', filter_posts=[], after='', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/check_subreddit_muted
         # 检查版块是否静音/Check if Subreddit is Muted
-        result = await client.reddit_app.check_subreddit_muted(subreddit_id='t5_2qh0u', need_format=False)
+        result = await client.reddit_app.check_subreddit_muted(language='en-US', subreddit_id='t5_2qh0u', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/reddit/app/fetch_user_trophies
         # 获取用户公开奖杯/Fetch User Public Trophies
-        result = await client.reddit_app.fetch_user_trophies(username='spez', need_format=False)
+        result = await client.reddit_app.fetch_user_trophies(language='en-US', username='spez', need_format=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

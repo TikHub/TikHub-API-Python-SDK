@@ -12,12 +12,14 @@ import httpx
 
 from tikhub._base_client import DEFAULT_TIMEOUT, BaseClient
 from tikhub.resources.bilibili_app import BilibiliApp
+from tikhub.resources.bilibili_huahuo import BilibiliHuahuo
 from tikhub.resources.bilibili_web import BilibiliWeb
 from tikhub.resources.demo import Demo
 from tikhub.resources.douyin_app_v3 import DouyinAppV3
 from tikhub.resources.douyin_billboard import DouyinBillboard
 from tikhub.resources.douyin_creator import DouyinCreator
 from tikhub.resources.douyin_creator_v2 import DouyinCreatorV2
+from tikhub.resources.douyin_douplus import DouyinDouplus
 from tikhub.resources.douyin_index import DouyinIndex
 from tikhub.resources.douyin_search import DouyinSearch
 from tikhub.resources.douyin_web import DouyinWeb
@@ -32,12 +34,10 @@ from tikhub.resources.ios_shortcut import IosShortcut
 from tikhub.resources.kuaishou_app import KuaishouApp
 from tikhub.resources.kuaishou_web import KuaishouWeb
 from tikhub.resources.lemon8_app import Lemon8App
-from tikhub.resources.linkedin_web import LinkedinWeb
 from tikhub.resources.linkedin_web_v2 import LinkedinWebV2
 from tikhub.resources.pipixia_app import PipixiaApp
 from tikhub.resources.reddit_app import RedditApp
-from tikhub.resources.sora2 import Sora2
-from tikhub.resources.temp_mail import TempMail
+from tikhub.resources.telegram_web import TelegramWeb
 from tikhub.resources.threads_web import ThreadsWeb
 from tikhub.resources.tikhub_downloader import TikhubDownloader
 from tikhub.resources.tikhub_user import TikhubUser
@@ -45,21 +45,18 @@ from tikhub.resources.tiktok_ads import TiktokAds
 from tikhub.resources.tiktok_analytics import TiktokAnalytics
 from tikhub.resources.tiktok_app_v3 import TiktokAppV3
 from tikhub.resources.tiktok_creator import TiktokCreator
-from tikhub.resources.tiktok_interaction import TiktokInteraction
 from tikhub.resources.tiktok_shop_web import TiktokShopWeb
 from tikhub.resources.tiktok_web import TiktokWeb
 from tikhub.resources.toutiao_app import ToutiaoApp
 from tikhub.resources.toutiao_web import ToutiaoWeb
 from tikhub.resources.twitter_web import TwitterWeb
-from tikhub.resources.wechat_channels import WechatChannels
-from tikhub.resources.wechat_media_platform_web import WechatMediaPlatformWeb
+from tikhub.resources.wechat_channels_v2 import WechatChannelsV2
+from tikhub.resources.wechat_media_platform_v2 import WechatMediaPlatformV2
+from tikhub.resources.wechat_search_v2 import WechatSearchV2
 from tikhub.resources.weibo_app import WeiboApp
-from tikhub.resources.weibo_web import WeiboWeb
 from tikhub.resources.weibo_web_v2 import WeiboWebV2
-from tikhub.resources.xiaohongshu_app import XiaohongshuApp
 from tikhub.resources.xiaohongshu_app_v2 import XiaohongshuAppV2
-from tikhub.resources.xiaohongshu_web import XiaohongshuWeb
-from tikhub.resources.xiaohongshu_web_v2 import XiaohongshuWebV2
+from tikhub.resources.xiaohongshu_pgy import XiaohongshuPgy
 from tikhub.resources.xiaohongshu_web_v3 import XiaohongshuWebV3
 from tikhub.resources.xigua_app_v2 import XiguaAppV2
 from tikhub.resources.youtube_web import YoutubeWeb
@@ -110,12 +107,14 @@ class TikHub(BaseClient):
 
         # ----- Resources (one attribute per OpenAPI tag) ------------------
         self.bilibili_app: BilibiliApp = BilibiliApp(self)
+        self.bilibili_huahuo: BilibiliHuahuo = BilibiliHuahuo(self)
         self.bilibili_web: BilibiliWeb = BilibiliWeb(self)
         self.demo: Demo = Demo(self)
         self.douyin_app_v3: DouyinAppV3 = DouyinAppV3(self)
         self.douyin_billboard: DouyinBillboard = DouyinBillboard(self)
         self.douyin_creator: DouyinCreator = DouyinCreator(self)
         self.douyin_creator_v2: DouyinCreatorV2 = DouyinCreatorV2(self)
+        self.douyin_douplus: DouyinDouplus = DouyinDouplus(self)
         self.douyin_index: DouyinIndex = DouyinIndex(self)
         self.douyin_search: DouyinSearch = DouyinSearch(self)
         self.douyin_web: DouyinWeb = DouyinWeb(self)
@@ -130,12 +129,10 @@ class TikHub(BaseClient):
         self.kuaishou_app: KuaishouApp = KuaishouApp(self)
         self.kuaishou_web: KuaishouWeb = KuaishouWeb(self)
         self.lemon8_app: Lemon8App = Lemon8App(self)
-        self.linkedin_web: LinkedinWeb = LinkedinWeb(self)
         self.linkedin_web_v2: LinkedinWebV2 = LinkedinWebV2(self)
         self.pipixia_app: PipixiaApp = PipixiaApp(self)
         self.reddit_app: RedditApp = RedditApp(self)
-        self.sora2: Sora2 = Sora2(self)
-        self.temp_mail: TempMail = TempMail(self)
+        self.telegram_web: TelegramWeb = TelegramWeb(self)
         self.threads_web: ThreadsWeb = ThreadsWeb(self)
         self.tikhub_downloader: TikhubDownloader = TikhubDownloader(self)
         self.tikhub_user: TikhubUser = TikhubUser(self)
@@ -143,21 +140,18 @@ class TikHub(BaseClient):
         self.tiktok_analytics: TiktokAnalytics = TiktokAnalytics(self)
         self.tiktok_app_v3: TiktokAppV3 = TiktokAppV3(self)
         self.tiktok_creator: TiktokCreator = TiktokCreator(self)
-        self.tiktok_interaction: TiktokInteraction = TiktokInteraction(self)
         self.tiktok_shop_web: TiktokShopWeb = TiktokShopWeb(self)
         self.tiktok_web: TiktokWeb = TiktokWeb(self)
         self.toutiao_app: ToutiaoApp = ToutiaoApp(self)
         self.toutiao_web: ToutiaoWeb = ToutiaoWeb(self)
         self.twitter_web: TwitterWeb = TwitterWeb(self)
-        self.wechat_channels: WechatChannels = WechatChannels(self)
-        self.wechat_media_platform_web: WechatMediaPlatformWeb = WechatMediaPlatformWeb(self)
+        self.wechat_channels_v2: WechatChannelsV2 = WechatChannelsV2(self)
+        self.wechat_media_platform_v2: WechatMediaPlatformV2 = WechatMediaPlatformV2(self)
+        self.wechat_search_v2: WechatSearchV2 = WechatSearchV2(self)
         self.weibo_app: WeiboApp = WeiboApp(self)
-        self.weibo_web: WeiboWeb = WeiboWeb(self)
         self.weibo_web_v2: WeiboWebV2 = WeiboWebV2(self)
-        self.xiaohongshu_app: XiaohongshuApp = XiaohongshuApp(self)
         self.xiaohongshu_app_v2: XiaohongshuAppV2 = XiaohongshuAppV2(self)
-        self.xiaohongshu_web: XiaohongshuWeb = XiaohongshuWeb(self)
-        self.xiaohongshu_web_v2: XiaohongshuWebV2 = XiaohongshuWebV2(self)
+        self.xiaohongshu_pgy: XiaohongshuPgy = XiaohongshuPgy(self)
         self.xiaohongshu_web_v3: XiaohongshuWebV3 = XiaohongshuWebV3(self)
         self.xigua_app_v2: XiguaAppV2 = XiguaAppV2(self)
         self.youtube_web: YoutubeWeb = YoutubeWeb(self)

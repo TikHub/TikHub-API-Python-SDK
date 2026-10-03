@@ -5,7 +5,7 @@
 OpenAPI tag: ``Bilibili-Web-API``
 SDK attribute: ``client.bilibili_web`` / ``async_client.bilibili_web``
 
-Endpoints: 30
+Endpoints: 31
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncBilibiliWeb", "BilibiliWeb"]
 
 
 class BilibiliWeb(SyncResource):
-    """Sync ``Bilibili-Web-API`` resource (30 endpoints)."""
+    """Sync ``Bilibili-Web-API`` resource (31 endpoints)."""
 
     def fetch_one_video(
         self,
@@ -193,6 +193,7 @@ class BilibiliWeb(SyncResource):
         *,
         uid: str,
         pn: int | None = None,
+        ps: int | None = None,
         order: str | None = None,
     ) -> Any:
         """获取用户主页作品数据/Get user homepage video data
@@ -202,9 +203,30 @@ class BilibiliWeb(SyncResource):
         params = _drop_none({
             "uid": uid,
             "pn": pn,
+            "ps": ps,
             "order": order,
         })
         return self._client._request("GET", "/api/v1/bilibili/web/fetch_user_post_videos", params=params)
+
+    def fetch_user_post_videos_v2(
+        self,
+        *,
+        uid: str,
+        pn: int | None = None,
+        ps: int | None = None,
+        keyword: str | None = None,
+    ) -> Any:
+        """获取用户主页作品数据V2/Get user homepage video data V2
+
+        ``GET /api/v1/bilibili/web/fetch_user_post_videos_v2``
+        """
+        params = _drop_none({
+            "uid": uid,
+            "pn": pn,
+            "ps": ps,
+            "keyword": keyword,
+        })
+        return self._client._request("GET", "/api/v1/bilibili/web/fetch_user_post_videos_v2", params=params)
 
     def fetch_collect_folders(
         self,
@@ -255,7 +277,7 @@ class BilibiliWeb(SyncResource):
         *,
         uid: str,
     ) -> Any:
-        """获取UP主状态统计/Get UP stat (total likes and views)
+        """获取UP主状态统计/Get UP stat (total views and likes)
 
         ``GET /api/v1/bilibili/web/fetch_user_up_stat``
         """
@@ -481,7 +503,7 @@ class BilibiliWeb(SyncResource):
 
 
 class AsyncBilibiliWeb(AsyncResource):
-    """Async ``Bilibili-Web-API`` resource (30 endpoints)."""
+    """Async ``Bilibili-Web-API`` resource (31 endpoints)."""
 
     async def fetch_one_video(
         self,
@@ -650,6 +672,7 @@ class AsyncBilibiliWeb(AsyncResource):
         *,
         uid: str,
         pn: int | None = None,
+        ps: int | None = None,
         order: str | None = None,
     ) -> Any:
         """获取用户主页作品数据/Get user homepage video data
@@ -659,9 +682,30 @@ class AsyncBilibiliWeb(AsyncResource):
         params = _drop_none({
             "uid": uid,
             "pn": pn,
+            "ps": ps,
             "order": order,
         })
         return await self._client._request("GET", "/api/v1/bilibili/web/fetch_user_post_videos", params=params)
+
+    async def fetch_user_post_videos_v2(
+        self,
+        *,
+        uid: str,
+        pn: int | None = None,
+        ps: int | None = None,
+        keyword: str | None = None,
+    ) -> Any:
+        """获取用户主页作品数据V2/Get user homepage video data V2
+
+        ``GET /api/v1/bilibili/web/fetch_user_post_videos_v2``
+        """
+        params = _drop_none({
+            "uid": uid,
+            "pn": pn,
+            "ps": ps,
+            "keyword": keyword,
+        })
+        return await self._client._request("GET", "/api/v1/bilibili/web/fetch_user_post_videos_v2", params=params)
 
     async def fetch_collect_folders(
         self,
@@ -712,7 +756,7 @@ class AsyncBilibiliWeb(AsyncResource):
         *,
         uid: str,
     ) -> Any:
-        """获取UP主状态统计/Get UP stat (total likes and views)
+        """获取UP主状态统计/Get UP stat (total views and likes)
 
         ``GET /api/v1/bilibili/web/fetch_user_up_stat``
         """

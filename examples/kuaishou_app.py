@@ -1,7 +1,7 @@
 """Example: Kuaishou-App-API
 
 SDK attribute: ``client.kuaishou_app``
-Endpoints: 20
+Endpoints: 26
 
 Usage::
 
@@ -36,9 +36,24 @@ async def main():
         result = await client.kuaishou_app.fetch_one_video_by_url(share_text='https://v.kuaishou.com/cNYP0Z')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
-        # GET /api/v1/kuaishou/app/fetch_one_video_comment
+        # GET /api/v1/kuaishou/app/fetch_selection_feed
+        # 精选/推荐Feed流/Selection feed
+        result = await client.kuaishou_app.fetch_selection_feed()
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/kuaishou/app/generate_kuaishou_share_link
+        # 生成快手分享链接/Generate Kuaishou share link
+        result = await client.kuaishou_app.generate_kuaishou_share_link(shareObjectId='3xg5wjqdtekbb3u')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/kuaishou/app/fetch_video_comment
         # 获取单个作品评论数据/Get single video comment data
-        result = await client.kuaishou_app.fetch_one_video_comment(photo_id='3x7gxp2zhgjv832')
+        result = await client.kuaishou_app.fetch_video_comment(photo_id='3x7gxp2zhgjv832')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/kuaishou/app/fetch_video_sub_comments
+        # 评论二级回复/Video sub comments
+        result = await client.kuaishou_app.fetch_video_sub_comments(photo_id='5218546261880462502', root_comment_id='14000000123456789', pcursor='', count=8)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/kuaishou/app/fetch_one_user_v2
@@ -46,9 +61,9 @@ async def main():
         result = await client.kuaishou_app.fetch_one_user_v2(user_id='3xz63mn6fngqtiq')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
-        # GET /api/v1/kuaishou/app/fetch_user_live_info
-        # 获取用户直播信息/Get user live info
-        result = await client.kuaishou_app.fetch_user_live_info(user_id='1377082950')
+        # GET /api/v1/kuaishou/app/fetch_user_post_v2
+        # 用户视频列表V2/User video list V2
+        result = await client.kuaishou_app.fetch_user_post_v2(user_id='903511772', pcursor='', sort='latest')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/kuaishou/app/fetch_user_hot_post
@@ -56,24 +71,54 @@ async def main():
         result = await client.kuaishou_app.fetch_user_hot_post(user_id='228905802')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
-        # GET /api/v1/kuaishou/app/fetch_user_post_v2
-        # 用户视频列表V2/User video list V2
-        result = await client.kuaishou_app.fetch_user_post_v2(user_id='903511772')
+        # GET /api/v1/kuaishou/app/fetch_user_live_info
+        # 获取用户直播信息/Get user live info
+        result = await client.kuaishou_app.fetch_user_live_info(user_id='1377082950')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/kuaishou/app/search_comprehensive
         # 综合搜索/Comprehensive search
-        result = await client.kuaishou_app.search_comprehensive(keyword='汽车之家', sort_type='all', publish_time='all', duration='all', search_scope='all')
+        result = await client.kuaishou_app.search_comprehensive(keyword='汽车之家', sort_type='all', publish_time='all', duration='all')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/kuaishou/app/search_video_v2
         # 搜索视频V2/Search video V2
-        result = await client.kuaishou_app.search_video_v2(keyword='人工智能', page='1')
+        result = await client.kuaishou_app.search_video_v2(keyword='人工智能', pcursor='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/kuaishou/app/search_user_v2
         # 搜索用户V2/Search user V2
-        result = await client.kuaishou_app.search_user_v2(keyword='人工智能', page='1')
+        result = await client.kuaishou_app.search_user_v2(keyword='人工智能', pcursor='', user_relation='all', user_gender='all', fans_sort='default')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/kuaishou/app/search_image
+        # 搜索图片作品/Search image
+        result = await client.kuaishou_app.search_image(keyword='风景', pcursor='')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/kuaishou/app/search_live
+        # 搜索直播间/Search live
+        result = await client.kuaishou_app.search_live(keyword='带货', pcursor='')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/kuaishou/app/search_music
+        # 搜索音乐/Search music
+        result = await client.kuaishou_app.search_music(keyword='周杰伦', pcursor='')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/kuaishou/app/search_tag
+        # 搜索话题标签/Search tag
+        result = await client.kuaishou_app.search_tag(keyword='挑战', pcursor='')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/kuaishou/app/fetch_tag_feed
+        # 话题标签聚合页/Tag feed
+        result = await client.kuaishou_app.fetch_tag_feed(general_tag_id='清纯甜美少女', tab='hot', tag_type=1, tag_source=2, pcursor='')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/kuaishou/app/fetch_live_top_list
+        # 快手直播榜单/Kuaishou live top list
+        result = await client.kuaishou_app.fetch_live_top_list(subTabId=0, subTabName='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/kuaishou/app/fetch_hot_board_categories
@@ -91,11 +136,6 @@ async def main():
         result = await client.kuaishou_app.fetch_hot_search_person()
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
-        # GET /api/v1/kuaishou/app/fetch_live_top_list
-        # 快手直播榜单/Kuaishou live top list
-        result = await client.kuaishou_app.fetch_live_top_list(subTabId=0, subTabName='')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
         # GET /api/v1/kuaishou/app/fetch_shopping_top_list
         # 快手购物榜单/Kuaishou shopping top list
         result = await client.kuaishou_app.fetch_shopping_top_list(subTabId=0, subTabName='')
@@ -106,19 +146,9 @@ async def main():
         result = await client.kuaishou_app.fetch_brand_top_list(subTabId=0, subTabName='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
-        # GET /api/v1/kuaishou/app/generate_kuaishou_share_link
-        # 生成快手分享链接/Generate Kuaishou share link
-        result = await client.kuaishou_app.generate_kuaishou_share_link(shareObjectId='3xg5wjqdtekbb3u')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/kuaishou/app/fetch_magic_face_usage
-        # 获取魔法表情使用人数/Fetch magic face usage count
-        result = await client.kuaishou_app.fetch_magic_face_usage(magic_face_id='11541661')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/kuaishou/app/fetch_magic_face_hot
-        # 获取魔法表情热门视频/Fetch magic face hot videos
-        result = await client.kuaishou_app.fetch_magic_face_hot(magic_face_id='11541661', pcursor='0', count=18)
+        # GET /api/v1/kuaishou/app/fetch_music_ranking
+        # 音乐榜单/Music ranking
+        result = await client.kuaishou_app.fetch_music_ranking(tab_id=100002, count=20, pcursor='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

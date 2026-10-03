@@ -5,7 +5,7 @@
 OpenAPI tag: ``TikTok-App-V3-API``
 SDK attribute: ``client.tiktok_app_v3`` / ``async_client.tiktok_app_v3``
 
-Endpoints: 75
+Endpoints: 58
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncTiktokAppV3", "TiktokAppV3"]
 
 
 class TiktokAppV3(SyncResource):
-    """Sync ``TikTok-App-V3-API`` resource (75 endpoints)."""
+    """Sync ``TikTok-App-V3-API`` resource (58 endpoints)."""
 
     def fetch_one_video(
         self,
@@ -226,6 +226,7 @@ class TiktokAppV3(SyncResource):
         max_cursor: int | None = None,
         count: int | None = None,
         sort_type: int | None = None,
+        region: str | None = None,
     ) -> Any:
         """获取用户主页作品数据 V1/Get user homepage video data V1
 
@@ -237,6 +238,7 @@ class TiktokAppV3(SyncResource):
             "max_cursor": max_cursor,
             "count": count,
             "sort_type": sort_type,
+            "region": region,
         })
         return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_user_post_videos", params=params)
 
@@ -526,6 +528,7 @@ class TiktokAppV3(SyncResource):
         self,
         *,
         ch_id: str,
+        region: str | None = None,
     ) -> Any:
         """获取指定话题的详情数据/Get details of specified hashtag
 
@@ -533,6 +536,7 @@ class TiktokAppV3(SyncResource):
         """
         params = _drop_none({
             "ch_id": ch_id,
+            "region": region,
         })
         return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_hashtag_detail", params=params)
 
@@ -542,6 +546,7 @@ class TiktokAppV3(SyncResource):
         ch_id: str,
         cursor: int | None = None,
         count: int | None = None,
+        region: str | None = None,
     ) -> Any:
         """获取指定话题的作品数据/Get video list of specified hashtag
 
@@ -551,6 +556,7 @@ class TiktokAppV3(SyncResource):
             "ch_id": ch_id,
             "cursor": cursor,
             "count": count,
+            "region": region,
         })
         return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_hashtag_video_list", params=params)
 
@@ -820,34 +826,6 @@ class TiktokAppV3(SyncResource):
         })
         return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_share_qr_code", params=params)
 
-    def fetch_product_search(
-        self,
-        *,
-        keyword: str,
-        cursor: int | None = None,
-        count: int | None = None,
-        sort_type: int | None = None,
-        customer_review_four_star: bool | None = None,
-        have_discount: bool | None = None,
-        min_price: str | None = None,
-        max_price: str | None = None,
-    ) -> Any:
-        """获取商品搜索结果/Get product search results
-
-        ``GET /api/v1/tiktok/app/v3/fetch_product_search``
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "cursor": cursor,
-            "count": count,
-            "sort_type": sort_type,
-            "customer_review_four_star": customer_review_four_star,
-            "have_discount": have_discount,
-            "min_price": min_price,
-            "max_price": max_price,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_product_search", params=params)
-
     def fetch_creator_info(
         self,
         *,
@@ -861,254 +839,6 @@ class TiktokAppV3(SyncResource):
             "creator_uid": creator_uid,
         })
         return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_creator_info", params=params)
-
-    def fetch_creator_showcase_product_list(
-        self,
-        *,
-        kol_id: str,
-        count: int | None = None,
-        next_scroll_param: str | None = None,
-    ) -> Any:
-        """获取创作者橱窗商品列表/Get creator showcase product list
-
-        ``GET /api/v1/tiktok/app/v3/fetch_creator_showcase_product_list``
-        """
-        params = _drop_none({
-            "kol_id": kol_id,
-            "count": count,
-            "next_scroll_param": next_scroll_param,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_creator_showcase_product_list", params=params)
-
-    def fetch_shop_id_by_share_link(
-        self,
-        *,
-        share_link: str,
-    ) -> Any:
-        """通过分享链接获取店铺ID/Get Shop ID by Share Link
-
-        ``GET /api/v1/tiktok/app/v3/fetch_shop_id_by_share_link``
-        """
-        params = _drop_none({
-            "share_link": share_link,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_shop_id_by_share_link", params=params)
-
-    def fetch_product_id_by_share_link(
-        self,
-        *,
-        share_link: str,
-    ) -> Any:
-        """通过分享链接获取商品ID/Get Product ID by Share Link
-
-        ``GET /api/v1/tiktok/app/v3/fetch_product_id_by_share_link``
-        """
-        params = _drop_none({
-            "share_link": share_link,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_product_id_by_share_link", params=params)
-
-    def fetch_product_detail(
-        self,
-        *,
-        product_id: str,
-    ) -> Any:
-        """获取商品详情数据（即将弃用，使用 fetch_product_detail_v2 代替）/Get product detail data (will be deprecated, use fetch_product_detail_v2 instead)
-
-        ``GET /api/v1/tiktok/app/v3/fetch_product_detail``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_product_detail", params=params)
-
-    def fetch_product_detail_v2(
-        self,
-        *,
-        product_id: str,
-    ) -> Any:
-        """获取商品详情数据V2/Get product detail data V2
-
-        ``GET /api/v1/tiktok/app/v3/fetch_product_detail_v2``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_product_detail_v2", params=params)
-
-    def fetch_product_detail_v3(
-        self,
-        *,
-        product_id: str,
-        region: str | None = None,
-    ) -> Any:
-        """获取商品详情数据V3 / Get product detail data V3
-
-        ``GET /api/v1/tiktok/app/v3/fetch_product_detail_v3``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-            "region": region,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_product_detail_v3", params=params)
-
-    def fetch_product_detail_v4(
-        self,
-        *,
-        product_id: str,
-        region: str | None = None,
-    ) -> Any:
-        """获取商品详情数据V4 / Get product detail data V4
-
-        ``GET /api/v1/tiktok/app/v3/fetch_product_detail_v4``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-            "region": region,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_product_detail_v4", params=params)
-
-    def fetch_product_review(
-        self,
-        *,
-        product_id: str,
-        cursor: int | None = None,
-        size: int | None = None,
-        filter_id: int | None = None,
-        sort_type: int | None = None,
-    ) -> Any:
-        """获取商品评价数据/Get product review data
-
-        ``GET /api/v1/tiktok/app/v3/fetch_product_review``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-            "cursor": cursor,
-            "size": size,
-            "filter_id": filter_id,
-            "sort_type": sort_type,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_product_review", params=params)
-
-    def fetch_shop_home_page_list(
-        self,
-        *,
-        seller_id: str,
-    ) -> Any:
-        """获取商家主页Page列表数据/Get shop home page list data
-
-        ``GET /api/v1/tiktok/app/v3/fetch_shop_home_page_list``
-        """
-        params = _drop_none({
-            "seller_id": seller_id,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_shop_home_page_list", params=params)
-
-    def fetch_shop_home(
-        self,
-        *,
-        page_id: str,
-        seller_id: str,
-    ) -> Any:
-        """获取商家主页数据/Get shop home page data
-
-        ``GET /api/v1/tiktok/app/v3/fetch_shop_home``
-        """
-        params = _drop_none({
-            "page_id": page_id,
-            "seller_id": seller_id,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_shop_home", params=params)
-
-    def fetch_shop_product_recommend(
-        self,
-        *,
-        seller_id: str,
-        scroll_param: str | None = None,
-        page_size: int | None = None,
-    ) -> Any:
-        """获取商家商品推荐数据/Get shop product recommend data
-
-        ``GET /api/v1/tiktok/app/v3/fetch_shop_product_recommend``
-        """
-        params = _drop_none({
-            "seller_id": seller_id,
-            "scroll_param": scroll_param,
-            "page_size": page_size,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_shop_product_recommend", params=params)
-
-    def fetch_shop_product_list(
-        self,
-        *,
-        seller_id: str,
-        scroll_params: str | None = None,
-        page_size: int | None = None,
-        sort_field: int | None = None,
-        sort_order: int | None = None,
-    ) -> Any:
-        """获取商家商品列表数据/Get shop product list data
-
-        ``GET /api/v1/tiktok/app/v3/fetch_shop_product_list``
-        """
-        params = _drop_none({
-            "seller_id": seller_id,
-            "scroll_params": scroll_params,
-            "page_size": page_size,
-            "sort_field": sort_field,
-            "sort_order": sort_order,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_shop_product_list", params=params)
-
-    def fetch_shop_product_list_v2(
-        self,
-        *,
-        seller_id: str,
-        scroll_params: str | None = None,
-        page_size: int | None = None,
-        sort_field: int | None = None,
-        sort_order: int | None = None,
-    ) -> Any:
-        """获取商家商品列表数据 V2/Get shop product list data V2
-
-        ``GET /api/v1/tiktok/app/v3/fetch_shop_product_list_v2``
-        """
-        params = _drop_none({
-            "seller_id": seller_id,
-            "scroll_params": scroll_params,
-            "page_size": page_size,
-            "sort_field": sort_field,
-            "sort_order": sort_order,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_shop_product_list_v2", params=params)
-
-    def fetch_shop_info(
-        self,
-        *,
-        shop_id: str,
-    ) -> Any:
-        """获取商家信息数据/Get shop information data
-
-        ``GET /api/v1/tiktok/app/v3/fetch_shop_info``
-        """
-        params = _drop_none({
-            "shop_id": shop_id,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_shop_info", params=params)
-
-    def fetch_shop_product_category(
-        self,
-        *,
-        seller_id: str,
-    ) -> Any:
-        """获取商家产品分类数据/Get shop product category data
-
-        ``GET /api/v1/tiktok/app/v3/fetch_shop_product_category``
-        """
-        params = _drop_none({
-            "seller_id": seller_id,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_shop_product_category", params=params)
 
     def fetch_live_daily_rank(
         self,
@@ -1248,22 +978,6 @@ class TiktokAppV3(SyncResource):
         })
         return self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_live_room_product_list_v2", params=params)
 
-    def add_video_play_count(
-        self,
-        *,
-        aweme_type: int,
-        item_id: str,
-    ) -> Any:
-        """根据视频ID来增加作品的播放数/Increase the number of plays of the work according to the video ID
-
-        ``GET /api/v1/tiktok/app/v3/add_video_play_count``
-        """
-        params = _drop_none({
-            "aweme_type": aweme_type,
-            "item_id": item_id,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/app/v3/add_video_play_count", params=params)
-
     def encrypt_decrypt_login_request(
         self,
         *,
@@ -1340,7 +1054,7 @@ class TiktokAppV3(SyncResource):
 
 
 class AsyncTiktokAppV3(AsyncResource):
-    """Async ``TikTok-App-V3-API`` resource (75 endpoints)."""
+    """Async ``TikTok-App-V3-API`` resource (58 endpoints)."""
 
     async def fetch_one_video(
         self,
@@ -1542,6 +1256,7 @@ class AsyncTiktokAppV3(AsyncResource):
         max_cursor: int | None = None,
         count: int | None = None,
         sort_type: int | None = None,
+        region: str | None = None,
     ) -> Any:
         """获取用户主页作品数据 V1/Get user homepage video data V1
 
@@ -1553,6 +1268,7 @@ class AsyncTiktokAppV3(AsyncResource):
             "max_cursor": max_cursor,
             "count": count,
             "sort_type": sort_type,
+            "region": region,
         })
         return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_user_post_videos", params=params)
 
@@ -1842,6 +1558,7 @@ class AsyncTiktokAppV3(AsyncResource):
         self,
         *,
         ch_id: str,
+        region: str | None = None,
     ) -> Any:
         """获取指定话题的详情数据/Get details of specified hashtag
 
@@ -1849,6 +1566,7 @@ class AsyncTiktokAppV3(AsyncResource):
         """
         params = _drop_none({
             "ch_id": ch_id,
+            "region": region,
         })
         return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_hashtag_detail", params=params)
 
@@ -1858,6 +1576,7 @@ class AsyncTiktokAppV3(AsyncResource):
         ch_id: str,
         cursor: int | None = None,
         count: int | None = None,
+        region: str | None = None,
     ) -> Any:
         """获取指定话题的作品数据/Get video list of specified hashtag
 
@@ -1867,6 +1586,7 @@ class AsyncTiktokAppV3(AsyncResource):
             "ch_id": ch_id,
             "cursor": cursor,
             "count": count,
+            "region": region,
         })
         return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_hashtag_video_list", params=params)
 
@@ -2136,34 +1856,6 @@ class AsyncTiktokAppV3(AsyncResource):
         })
         return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_share_qr_code", params=params)
 
-    async def fetch_product_search(
-        self,
-        *,
-        keyword: str,
-        cursor: int | None = None,
-        count: int | None = None,
-        sort_type: int | None = None,
-        customer_review_four_star: bool | None = None,
-        have_discount: bool | None = None,
-        min_price: str | None = None,
-        max_price: str | None = None,
-    ) -> Any:
-        """获取商品搜索结果/Get product search results
-
-        ``GET /api/v1/tiktok/app/v3/fetch_product_search``
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "cursor": cursor,
-            "count": count,
-            "sort_type": sort_type,
-            "customer_review_four_star": customer_review_four_star,
-            "have_discount": have_discount,
-            "min_price": min_price,
-            "max_price": max_price,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_product_search", params=params)
-
     async def fetch_creator_info(
         self,
         *,
@@ -2177,254 +1869,6 @@ class AsyncTiktokAppV3(AsyncResource):
             "creator_uid": creator_uid,
         })
         return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_creator_info", params=params)
-
-    async def fetch_creator_showcase_product_list(
-        self,
-        *,
-        kol_id: str,
-        count: int | None = None,
-        next_scroll_param: str | None = None,
-    ) -> Any:
-        """获取创作者橱窗商品列表/Get creator showcase product list
-
-        ``GET /api/v1/tiktok/app/v3/fetch_creator_showcase_product_list``
-        """
-        params = _drop_none({
-            "kol_id": kol_id,
-            "count": count,
-            "next_scroll_param": next_scroll_param,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_creator_showcase_product_list", params=params)
-
-    async def fetch_shop_id_by_share_link(
-        self,
-        *,
-        share_link: str,
-    ) -> Any:
-        """通过分享链接获取店铺ID/Get Shop ID by Share Link
-
-        ``GET /api/v1/tiktok/app/v3/fetch_shop_id_by_share_link``
-        """
-        params = _drop_none({
-            "share_link": share_link,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_shop_id_by_share_link", params=params)
-
-    async def fetch_product_id_by_share_link(
-        self,
-        *,
-        share_link: str,
-    ) -> Any:
-        """通过分享链接获取商品ID/Get Product ID by Share Link
-
-        ``GET /api/v1/tiktok/app/v3/fetch_product_id_by_share_link``
-        """
-        params = _drop_none({
-            "share_link": share_link,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_product_id_by_share_link", params=params)
-
-    async def fetch_product_detail(
-        self,
-        *,
-        product_id: str,
-    ) -> Any:
-        """获取商品详情数据（即将弃用，使用 fetch_product_detail_v2 代替）/Get product detail data (will be deprecated, use fetch_product_detail_v2 instead)
-
-        ``GET /api/v1/tiktok/app/v3/fetch_product_detail``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_product_detail", params=params)
-
-    async def fetch_product_detail_v2(
-        self,
-        *,
-        product_id: str,
-    ) -> Any:
-        """获取商品详情数据V2/Get product detail data V2
-
-        ``GET /api/v1/tiktok/app/v3/fetch_product_detail_v2``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_product_detail_v2", params=params)
-
-    async def fetch_product_detail_v3(
-        self,
-        *,
-        product_id: str,
-        region: str | None = None,
-    ) -> Any:
-        """获取商品详情数据V3 / Get product detail data V3
-
-        ``GET /api/v1/tiktok/app/v3/fetch_product_detail_v3``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-            "region": region,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_product_detail_v3", params=params)
-
-    async def fetch_product_detail_v4(
-        self,
-        *,
-        product_id: str,
-        region: str | None = None,
-    ) -> Any:
-        """获取商品详情数据V4 / Get product detail data V4
-
-        ``GET /api/v1/tiktok/app/v3/fetch_product_detail_v4``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-            "region": region,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_product_detail_v4", params=params)
-
-    async def fetch_product_review(
-        self,
-        *,
-        product_id: str,
-        cursor: int | None = None,
-        size: int | None = None,
-        filter_id: int | None = None,
-        sort_type: int | None = None,
-    ) -> Any:
-        """获取商品评价数据/Get product review data
-
-        ``GET /api/v1/tiktok/app/v3/fetch_product_review``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-            "cursor": cursor,
-            "size": size,
-            "filter_id": filter_id,
-            "sort_type": sort_type,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_product_review", params=params)
-
-    async def fetch_shop_home_page_list(
-        self,
-        *,
-        seller_id: str,
-    ) -> Any:
-        """获取商家主页Page列表数据/Get shop home page list data
-
-        ``GET /api/v1/tiktok/app/v3/fetch_shop_home_page_list``
-        """
-        params = _drop_none({
-            "seller_id": seller_id,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_shop_home_page_list", params=params)
-
-    async def fetch_shop_home(
-        self,
-        *,
-        page_id: str,
-        seller_id: str,
-    ) -> Any:
-        """获取商家主页数据/Get shop home page data
-
-        ``GET /api/v1/tiktok/app/v3/fetch_shop_home``
-        """
-        params = _drop_none({
-            "page_id": page_id,
-            "seller_id": seller_id,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_shop_home", params=params)
-
-    async def fetch_shop_product_recommend(
-        self,
-        *,
-        seller_id: str,
-        scroll_param: str | None = None,
-        page_size: int | None = None,
-    ) -> Any:
-        """获取商家商品推荐数据/Get shop product recommend data
-
-        ``GET /api/v1/tiktok/app/v3/fetch_shop_product_recommend``
-        """
-        params = _drop_none({
-            "seller_id": seller_id,
-            "scroll_param": scroll_param,
-            "page_size": page_size,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_shop_product_recommend", params=params)
-
-    async def fetch_shop_product_list(
-        self,
-        *,
-        seller_id: str,
-        scroll_params: str | None = None,
-        page_size: int | None = None,
-        sort_field: int | None = None,
-        sort_order: int | None = None,
-    ) -> Any:
-        """获取商家商品列表数据/Get shop product list data
-
-        ``GET /api/v1/tiktok/app/v3/fetch_shop_product_list``
-        """
-        params = _drop_none({
-            "seller_id": seller_id,
-            "scroll_params": scroll_params,
-            "page_size": page_size,
-            "sort_field": sort_field,
-            "sort_order": sort_order,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_shop_product_list", params=params)
-
-    async def fetch_shop_product_list_v2(
-        self,
-        *,
-        seller_id: str,
-        scroll_params: str | None = None,
-        page_size: int | None = None,
-        sort_field: int | None = None,
-        sort_order: int | None = None,
-    ) -> Any:
-        """获取商家商品列表数据 V2/Get shop product list data V2
-
-        ``GET /api/v1/tiktok/app/v3/fetch_shop_product_list_v2``
-        """
-        params = _drop_none({
-            "seller_id": seller_id,
-            "scroll_params": scroll_params,
-            "page_size": page_size,
-            "sort_field": sort_field,
-            "sort_order": sort_order,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_shop_product_list_v2", params=params)
-
-    async def fetch_shop_info(
-        self,
-        *,
-        shop_id: str,
-    ) -> Any:
-        """获取商家信息数据/Get shop information data
-
-        ``GET /api/v1/tiktok/app/v3/fetch_shop_info``
-        """
-        params = _drop_none({
-            "shop_id": shop_id,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_shop_info", params=params)
-
-    async def fetch_shop_product_category(
-        self,
-        *,
-        seller_id: str,
-    ) -> Any:
-        """获取商家产品分类数据/Get shop product category data
-
-        ``GET /api/v1/tiktok/app/v3/fetch_shop_product_category``
-        """
-        params = _drop_none({
-            "seller_id": seller_id,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_shop_product_category", params=params)
 
     async def fetch_live_daily_rank(
         self,
@@ -2563,22 +2007,6 @@ class AsyncTiktokAppV3(AsyncResource):
             "cookie": cookie,
         })
         return await self._client._request("GET", "/api/v1/tiktok/app/v3/fetch_live_room_product_list_v2", params=params)
-
-    async def add_video_play_count(
-        self,
-        *,
-        aweme_type: int,
-        item_id: str,
-    ) -> Any:
-        """根据视频ID来增加作品的播放数/Increase the number of plays of the work according to the video ID
-
-        ``GET /api/v1/tiktok/app/v3/add_video_play_count``
-        """
-        params = _drop_none({
-            "aweme_type": aweme_type,
-            "item_id": item_id,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/app/v3/add_video_play_count", params=params)
 
     async def encrypt_decrypt_login_request(
         self,

@@ -5,7 +5,7 @@
 OpenAPI tag: ``Douyin-Xingtu-API``
 SDK attribute: ``client.douyin_xingtu`` / ``async_client.douyin_xingtu``
 
-Endpoints: 22
+Endpoints: 23
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncDouyinXingtu", "DouyinXingtu"]
 
 
 class DouyinXingtu(SyncResource):
-    """Sync ``Douyin-Xingtu-API`` resource (22 endpoints)."""
+    """Sync ``Douyin-Xingtu-API`` resource (23 endpoints)."""
 
     def get_sign_image(
         self,
@@ -372,9 +372,29 @@ class DouyinXingtu(SyncResource):
         })
         return self._client._request("GET", "/api/v1/douyin/xingtu/author_content_hot_comment_keywords_v1", params=params)
 
+    def author_homepage_videos_v1(
+        self,
+        *,
+        oAuthorId: str,
+        page: int | None = None,
+        videoType: str | None = None,
+        onlyAssign: bool | None = None,
+    ) -> Any:
+        """获取达人主页视频列表V1/Get Author Homepage Videos V1
+
+        ``GET /api/v1/douyin/xingtu/author_homepage_videos_v1``
+        """
+        params = _drop_none({
+            "oAuthorId": oAuthorId,
+            "page": page,
+            "videoType": videoType,
+            "onlyAssign": onlyAssign,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu/author_homepage_videos_v1", params=params)
+
 
 class AsyncDouyinXingtu(AsyncResource):
-    """Async ``Douyin-Xingtu-API`` resource (22 endpoints)."""
+    """Async ``Douyin-Xingtu-API`` resource (23 endpoints)."""
 
     async def get_sign_image(
         self,
@@ -721,3 +741,23 @@ class AsyncDouyinXingtu(AsyncResource):
             "kolId": kolId,
         })
         return await self._client._request("GET", "/api/v1/douyin/xingtu/author_content_hot_comment_keywords_v1", params=params)
+
+    async def author_homepage_videos_v1(
+        self,
+        *,
+        oAuthorId: str,
+        page: int | None = None,
+        videoType: str | None = None,
+        onlyAssign: bool | None = None,
+    ) -> Any:
+        """获取达人主页视频列表V1/Get Author Homepage Videos V1
+
+        ``GET /api/v1/douyin/xingtu/author_homepage_videos_v1``
+        """
+        params = _drop_none({
+            "oAuthorId": oAuthorId,
+            "page": page,
+            "videoType": videoType,
+            "onlyAssign": onlyAssign,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu/author_homepage_videos_v1", params=params)

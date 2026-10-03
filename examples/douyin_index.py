@@ -1,7 +1,7 @@
 """Example: Douyin-Index-API
 
 SDK attribute: ``client.douyin_index``
-Endpoints: 44
+Endpoints: 51
 
 Usage::
 
@@ -41,9 +41,19 @@ async def main():
         result = await client.douyin_index.fetch_current_hot_topic()
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
+        # GET /api/v1/douyin/index/fetch_hot_detail
+        # 获取热点详情分析/Get hot topic detail
+        result = await client.douyin_index.fetch_hot_detail(topic_name='test')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
         # GET /api/v1/douyin/index/fetch_hot_words
         # 获取热门关键词/Get hot words
         result = await client.douyin_index.fetch_hot_words(app_name='aweme')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/index/fetch_hot_trend_word
+        # 获取热门推荐词/Get hot trend words
+        result = await client.douyin_index.fetch_hot_trend_word(app_name='aweme', type=0)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # POST /api/v1/douyin/index/fetch_keyword_valid_date
@@ -124,6 +134,31 @@ async def main():
         # POST /api/v1/douyin/index/fetch_item_query
         # 视频搜索结果/Video search results
         result = await client.douyin_index.fetch_item_query(query='test', category_id='0', date_type=0, label_type=0, duration_type=0)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # POST /api/v1/douyin/index/fetch_item_base
+        # 获取视频详情/Get video detail
+        result = await client.douyin_index.fetch_item_base(item_id='test')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # POST /api/v1/douyin/index/fetch_item_index
+        # 获取视频指数趋势/Get video index trend
+        result = await client.douyin_index.fetch_item_index(item_id='test', start_date='test', end_date='test')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # POST /api/v1/douyin/index/fetch_item_index_interpret
+        # 获取视频指数解读/Get video index interpretation
+        result = await client.douyin_index.fetch_item_index_interpret(item_id='test', start_date='test', end_date='test')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # POST /api/v1/douyin/index/fetch_item_analysis
+        # 获取视频对比分析/Get video comparison analysis
+        result = await client.douyin_index.fetch_item_analysis(item_id='test', start_date='test', end_date='test')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # POST /api/v1/douyin/index/fetch_item_user_profile
+        # 获取视频观众分析/Get video audience profile
+        result = await client.douyin_index.fetch_item_user_profile(item_id='test', start_date='test', end_date='test')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # POST /api/v1/douyin/index/fetch_brand_suggest

@@ -5,7 +5,7 @@
 OpenAPI tag: ``Zhihu-Web-API``
 SDK attribute: ``client.zhihu_web`` / ``async_client.zhihu_web``
 
-Endpoints: 34
+Endpoints: 41
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncZhihuWeb", "ZhihuWeb"]
 
 
 class ZhihuWeb(SyncResource):
-    """Sync ``Zhihu-Web-API`` resource (34 endpoints)."""
+    """Sync ``Zhihu-Web-API`` resource (41 endpoints)."""
 
     def fetch_column_articles(
         self,
@@ -241,34 +241,6 @@ class ZhihuWeb(SyncResource):
         })
         json_body = body
         return self._client._request("POST", "/api/v1/zhihu/web/fetch_scholar_search_v3", params=params, json=json_body)
-
-    def fetch_ai_search(
-        self,
-        *,
-        message_content: str,
-    ) -> Any:
-        """获取知乎AI搜索/Get Zhihu AI Search
-
-        ``GET /api/v1/zhihu/web/fetch_ai_search``
-        """
-        params = _drop_none({
-            "message_content": message_content,
-        })
-        return self._client._request("GET", "/api/v1/zhihu/web/fetch_ai_search", params=params)
-
-    def fetch_ai_search_result(
-        self,
-        *,
-        message_id: str,
-    ) -> Any:
-        """获取知乎AI搜索结果/Get Zhihu AI Search Result
-
-        ``GET /api/v1/zhihu/web/fetch_ai_search_result``
-        """
-        params = _drop_none({
-            "message_id": message_id,
-        })
-        return self._client._request("GET", "/api/v1/zhihu/web/fetch_ai_search_result", params=params)
 
     def fetch_video_search_v3(
         self,
@@ -615,9 +587,165 @@ class ZhihuWeb(SyncResource):
         })
         return self._client._request("GET", "/api/v1/zhihu/web/fetch_question_answers", params=params)
 
+    def fetch_question_detail(
+        self,
+        *,
+        question_id: str,
+    ) -> Any:
+        """获取知乎问题详情/Get Zhihu Question Detail
+
+        ``GET /api/v1/zhihu/web/fetch_question_detail``
+        """
+        params = _drop_none({
+            "question_id": question_id,
+        })
+        return self._client._request("GET", "/api/v1/zhihu/web/fetch_question_detail", params=params)
+
+    def fetch_answer_detail(
+        self,
+        *,
+        answer_id: str,
+    ) -> Any:
+        """获取知乎回答详情/Get Zhihu Answer Detail
+
+        ``GET /api/v1/zhihu/web/fetch_answer_detail``
+        """
+        params = _drop_none({
+            "answer_id": answer_id,
+        })
+        return self._client._request("GET", "/api/v1/zhihu/web/fetch_answer_detail", params=params)
+
+    def fetch_user_answers(
+        self,
+        *,
+        user_url_token: str,
+        offset: str | None = None,
+        limit: str | None = None,
+        sort_type: str | None = None,
+    ) -> Any:
+        """获取知乎用户的回答列表/Get Zhihu User Answers
+
+        ``GET /api/v1/zhihu/web/fetch_user_answers``
+        """
+        params = _drop_none({
+            "user_url_token": user_url_token,
+            "offset": offset,
+            "limit": limit,
+            "sort_type": sort_type,
+        })
+        return self._client._request("GET", "/api/v1/zhihu/web/fetch_user_answers", params=params)
+
+    def fetch_user_collections(
+        self,
+        *,
+        user_url_token: str,
+        offset: str | None = None,
+        limit: str | None = None,
+    ) -> Any:
+        """获取知乎用户创建的收藏夹列表/Get Zhihu User Created Collections
+
+        ``GET /api/v1/zhihu/web/fetch_user_collections``
+        """
+        params = _drop_none({
+            "user_url_token": user_url_token,
+            "offset": offset,
+            "limit": limit,
+        })
+        return self._client._request("GET", "/api/v1/zhihu/web/fetch_user_collections", params=params)
+
+    def fetch_user_segments(
+        self,
+        *,
+        user_url_token: str,
+        content_type: str | None = None,
+        offset: str | None = None,
+        limit: str | None = None,
+    ) -> Any:
+        """获取知乎用户的划线列表/Get Zhihu User Segments
+
+        ``GET /api/v1/zhihu/web/fetch_user_segments``
+        """
+        params = _drop_none({
+            "user_url_token": user_url_token,
+            "content_type": content_type,
+            "offset": offset,
+            "limit": limit,
+        })
+        return self._client._request("GET", "/api/v1/zhihu/web/fetch_user_segments", params=params)
+
+    def fetch_user_pins(
+        self,
+        *,
+        user_url_token: str,
+        offset: str | None = None,
+        limit: str | None = None,
+    ) -> Any:
+        """获取知乎用户的想法列表/Get Zhihu User Pins
+
+        ``GET /api/v1/zhihu/web/fetch_user_pins``
+        """
+        params = _drop_none({
+            "user_url_token": user_url_token,
+            "offset": offset,
+            "limit": limit,
+        })
+        return self._client._request("GET", "/api/v1/zhihu/web/fetch_user_pins", params=params)
+
+    def fetch_pin_detail(
+        self,
+        *,
+        pin_id: str,
+    ) -> Any:
+        """获取知乎想法详情/Get Zhihu Pin Detail
+
+        ``GET /api/v1/zhihu/web/fetch_pin_detail``
+        """
+        params = _drop_none({
+            "pin_id": pin_id,
+        })
+        return self._client._request("GET", "/api/v1/zhihu/web/fetch_pin_detail", params=params)
+
+    def fetch_pin_comments(
+        self,
+        *,
+        pin_id: str,
+        order_by: str | None = None,
+        limit: str | None = None,
+        offset: str | None = None,
+    ) -> Any:
+        """获取知乎想法评论区/Get Zhihu Pin Comments
+
+        ``GET /api/v1/zhihu/web/fetch_pin_comments``
+        """
+        params = _drop_none({
+            "pin_id": pin_id,
+            "order_by": order_by,
+            "limit": limit,
+            "offset": offset,
+        })
+        return self._client._request("GET", "/api/v1/zhihu/web/fetch_pin_comments", params=params)
+
+    def fetch_ai_search_stream(
+        self,
+        *,
+        message_content: str,
+        chat_mode: str | None = None,
+        session_id: str | None = None,
+    ) -> Any:
+        """获取知乎AI搜索(新版)/Get Zhihu AI Search (v2)
+
+        ``GET /api/v1/zhihu/web/fetch_ai_search_stream``
+        """
+        params = _drop_none({
+            "message_content": message_content,
+            "chat_mode": chat_mode,
+            "session_id": session_id,
+        })
+        return self._client._request("GET", "/api/v1/zhihu/web/fetch_ai_search_stream", params=params)
+
 
 class AsyncZhihuWeb(AsyncResource):
-    """Async ``Zhihu-Web-API`` resource (34 endpoints)."""
+    """Async ``Zhihu-Web-API`` resource (41 endpoints)."""
 
     async def fetch_column_articles(
         self,
@@ -834,34 +962,6 @@ class AsyncZhihuWeb(AsyncResource):
         })
         json_body = body
         return await self._client._request("POST", "/api/v1/zhihu/web/fetch_scholar_search_v3", params=params, json=json_body)
-
-    async def fetch_ai_search(
-        self,
-        *,
-        message_content: str,
-    ) -> Any:
-        """获取知乎AI搜索/Get Zhihu AI Search
-
-        ``GET /api/v1/zhihu/web/fetch_ai_search``
-        """
-        params = _drop_none({
-            "message_content": message_content,
-        })
-        return await self._client._request("GET", "/api/v1/zhihu/web/fetch_ai_search", params=params)
-
-    async def fetch_ai_search_result(
-        self,
-        *,
-        message_id: str,
-    ) -> Any:
-        """获取知乎AI搜索结果/Get Zhihu AI Search Result
-
-        ``GET /api/v1/zhihu/web/fetch_ai_search_result``
-        """
-        params = _drop_none({
-            "message_id": message_id,
-        })
-        return await self._client._request("GET", "/api/v1/zhihu/web/fetch_ai_search_result", params=params)
 
     async def fetch_video_search_v3(
         self,
@@ -1207,3 +1307,159 @@ class AsyncZhihuWeb(AsyncResource):
             "session_id": session_id,
         })
         return await self._client._request("GET", "/api/v1/zhihu/web/fetch_question_answers", params=params)
+
+    async def fetch_question_detail(
+        self,
+        *,
+        question_id: str,
+    ) -> Any:
+        """获取知乎问题详情/Get Zhihu Question Detail
+
+        ``GET /api/v1/zhihu/web/fetch_question_detail``
+        """
+        params = _drop_none({
+            "question_id": question_id,
+        })
+        return await self._client._request("GET", "/api/v1/zhihu/web/fetch_question_detail", params=params)
+
+    async def fetch_answer_detail(
+        self,
+        *,
+        answer_id: str,
+    ) -> Any:
+        """获取知乎回答详情/Get Zhihu Answer Detail
+
+        ``GET /api/v1/zhihu/web/fetch_answer_detail``
+        """
+        params = _drop_none({
+            "answer_id": answer_id,
+        })
+        return await self._client._request("GET", "/api/v1/zhihu/web/fetch_answer_detail", params=params)
+
+    async def fetch_user_answers(
+        self,
+        *,
+        user_url_token: str,
+        offset: str | None = None,
+        limit: str | None = None,
+        sort_type: str | None = None,
+    ) -> Any:
+        """获取知乎用户的回答列表/Get Zhihu User Answers
+
+        ``GET /api/v1/zhihu/web/fetch_user_answers``
+        """
+        params = _drop_none({
+            "user_url_token": user_url_token,
+            "offset": offset,
+            "limit": limit,
+            "sort_type": sort_type,
+        })
+        return await self._client._request("GET", "/api/v1/zhihu/web/fetch_user_answers", params=params)
+
+    async def fetch_user_collections(
+        self,
+        *,
+        user_url_token: str,
+        offset: str | None = None,
+        limit: str | None = None,
+    ) -> Any:
+        """获取知乎用户创建的收藏夹列表/Get Zhihu User Created Collections
+
+        ``GET /api/v1/zhihu/web/fetch_user_collections``
+        """
+        params = _drop_none({
+            "user_url_token": user_url_token,
+            "offset": offset,
+            "limit": limit,
+        })
+        return await self._client._request("GET", "/api/v1/zhihu/web/fetch_user_collections", params=params)
+
+    async def fetch_user_segments(
+        self,
+        *,
+        user_url_token: str,
+        content_type: str | None = None,
+        offset: str | None = None,
+        limit: str | None = None,
+    ) -> Any:
+        """获取知乎用户的划线列表/Get Zhihu User Segments
+
+        ``GET /api/v1/zhihu/web/fetch_user_segments``
+        """
+        params = _drop_none({
+            "user_url_token": user_url_token,
+            "content_type": content_type,
+            "offset": offset,
+            "limit": limit,
+        })
+        return await self._client._request("GET", "/api/v1/zhihu/web/fetch_user_segments", params=params)
+
+    async def fetch_user_pins(
+        self,
+        *,
+        user_url_token: str,
+        offset: str | None = None,
+        limit: str | None = None,
+    ) -> Any:
+        """获取知乎用户的想法列表/Get Zhihu User Pins
+
+        ``GET /api/v1/zhihu/web/fetch_user_pins``
+        """
+        params = _drop_none({
+            "user_url_token": user_url_token,
+            "offset": offset,
+            "limit": limit,
+        })
+        return await self._client._request("GET", "/api/v1/zhihu/web/fetch_user_pins", params=params)
+
+    async def fetch_pin_detail(
+        self,
+        *,
+        pin_id: str,
+    ) -> Any:
+        """获取知乎想法详情/Get Zhihu Pin Detail
+
+        ``GET /api/v1/zhihu/web/fetch_pin_detail``
+        """
+        params = _drop_none({
+            "pin_id": pin_id,
+        })
+        return await self._client._request("GET", "/api/v1/zhihu/web/fetch_pin_detail", params=params)
+
+    async def fetch_pin_comments(
+        self,
+        *,
+        pin_id: str,
+        order_by: str | None = None,
+        limit: str | None = None,
+        offset: str | None = None,
+    ) -> Any:
+        """获取知乎想法评论区/Get Zhihu Pin Comments
+
+        ``GET /api/v1/zhihu/web/fetch_pin_comments``
+        """
+        params = _drop_none({
+            "pin_id": pin_id,
+            "order_by": order_by,
+            "limit": limit,
+            "offset": offset,
+        })
+        return await self._client._request("GET", "/api/v1/zhihu/web/fetch_pin_comments", params=params)
+
+    async def fetch_ai_search_stream(
+        self,
+        *,
+        message_content: str,
+        chat_mode: str | None = None,
+        session_id: str | None = None,
+    ) -> Any:
+        """获取知乎AI搜索(新版)/Get Zhihu AI Search (v2)
+
+        ``GET /api/v1/zhihu/web/fetch_ai_search_stream``
+        """
+        params = _drop_none({
+            "message_content": message_content,
+            "chat_mode": chat_mode,
+            "session_id": session_id,
+        })
+        return await self._client._request("GET", "/api/v1/zhihu/web/fetch_ai_search_stream", params=params)

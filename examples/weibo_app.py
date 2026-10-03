@@ -1,7 +1,7 @@
 """Example: Weibo-App-API
 
 SDK attribute: ``client.weibo_app``
-Endpoints: 20
+Endpoints: 23
 
 Usage::
 
@@ -66,6 +66,16 @@ async def main():
         result = await client.weibo_app.fetch_user_profile_feed(uid='6580994757')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
+        # GET /api/v1/weibo/app/fetch_user_followers
+        # 获取用户粉丝列表/Get user followers
+        result = await client.weibo_app.fetch_user_followers(uid='1856404484', page=1)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/weibo/app/fetch_user_following
+        # 获取用户关注列表/Get user following
+        result = await client.weibo_app.fetch_user_following(uid='1856404484', sort_type=2)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
         # GET /api/v1/weibo/app/fetch_status_detail
         # 获取微博详情/Get post detail
         result = await client.weibo_app.fetch_status_detail(status_id='5016922058656962')
@@ -119,6 +129,11 @@ async def main():
         # GET /api/v1/weibo/app/fetch_hot_search_categories
         # 获取热搜分类列表/Get hot search categories
         result = await client.weibo_app.fetch_hot_search_categories()
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/weibo/app/fetch_hot_search_brief
+        # 获取热搜简报/Get hot search brief
+        result = await client.weibo_app.fetch_hot_search_brief()
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

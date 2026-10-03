@@ -29,6 +29,7 @@ class RedditApp(SyncResource):
     def fetch_home_feed(
         self,
         *,
+        language: str | None = None,
         sort: str | None = None,
         filter_posts: list[Any] | None = None,
         after: str | None = None,
@@ -39,6 +40,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_home_feed``
         """
         params = _drop_none({
+            "language": language,
             "sort": sort,
             "filter_posts": filter_posts,
             "after": after,
@@ -49,6 +51,7 @@ class RedditApp(SyncResource):
     def fetch_popular_feed(
         self,
         *,
+        language: str | None = None,
         sort: str | None = None,
         time: str | None = None,
         filter_posts: list[Any] | None = None,
@@ -60,6 +63,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_popular_feed``
         """
         params = _drop_none({
+            "language": language,
             "sort": sort,
             "time": time,
             "filter_posts": filter_posts,
@@ -71,6 +75,7 @@ class RedditApp(SyncResource):
     def fetch_games_feed(
         self,
         *,
+        language: str | None = None,
         sort: str | None = None,
         time: str | None = None,
         after: str | None = None,
@@ -81,6 +86,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_games_feed``
         """
         params = _drop_none({
+            "language": language,
             "sort": sort,
             "time": time,
             "after": after,
@@ -91,6 +97,7 @@ class RedditApp(SyncResource):
     def fetch_news_feed(
         self,
         *,
+        language: str | None = None,
         subtopic_ids: list[Any] | None = None,
         after: str | None = None,
         need_format: bool | None = None,
@@ -100,6 +107,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_news_feed``
         """
         params = _drop_none({
+            "language": language,
             "subtopic_ids": subtopic_ids,
             "after": after,
             "need_format": need_format,
@@ -109,6 +117,7 @@ class RedditApp(SyncResource):
     def fetch_explore_feed(
         self,
         *,
+        language: str | None = None,
         sort: str | None = None,
         time: str | None = None,
         need_format: bool | None = None,
@@ -118,6 +127,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_explore_feed``
         """
         params = _drop_none({
+            "language": language,
             "sort": sort,
             "time": time,
             "need_format": need_format,
@@ -128,6 +138,7 @@ class RedditApp(SyncResource):
         self,
         *,
         topic_id: str,
+        language: str | None = None,
         scheme_name: str | None = None,
         sort: str | None = None,
         time: str | None = None,
@@ -138,6 +149,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_topic_feed``
         """
         params = _drop_none({
+            "language": language,
             "topic_id": topic_id,
             "scheme_name": scheme_name,
             "sort": sort,
@@ -150,6 +162,7 @@ class RedditApp(SyncResource):
         self,
         *,
         post_id: str,
+        language: str | None = None,
         include_comment_id: bool | None = None,
         comment_id: str | None = None,
         need_format: bool | None = None,
@@ -159,6 +172,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_post_details``
         """
         params = _drop_none({
+            "language": language,
             "post_id": post_id,
             "include_comment_id": include_comment_id,
             "comment_id": comment_id,
@@ -170,6 +184,7 @@ class RedditApp(SyncResource):
         self,
         *,
         post_ids: str,
+        language: str | None = None,
         include_comment_id: bool | None = None,
         comment_id: str | None = None,
         need_format: bool | None = None,
@@ -179,6 +194,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_post_details_batch``
         """
         params = _drop_none({
+            "language": language,
             "post_ids": post_ids,
             "include_comment_id": include_comment_id,
             "comment_id": comment_id,
@@ -190,6 +206,7 @@ class RedditApp(SyncResource):
         self,
         *,
         post_ids: str,
+        language: str | None = None,
         include_comment_id: bool | None = None,
         comment_id: str | None = None,
         need_format: bool | None = None,
@@ -199,6 +216,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_post_details_batch_large``
         """
         params = _drop_none({
+            "language": language,
             "post_ids": post_ids,
             "include_comment_id": include_comment_id,
             "comment_id": comment_id,
@@ -210,6 +228,7 @@ class RedditApp(SyncResource):
         self,
         *,
         post_id: str,
+        language: str | None = None,
         sort_type: str | None = None,
         after: str | None = None,
         need_format: bool | None = None,
@@ -219,6 +238,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_post_comments``
         """
         params = _drop_none({
+            "language": language,
             "post_id": post_id,
             "sort_type": sort_type,
             "after": after,
@@ -231,6 +251,7 @@ class RedditApp(SyncResource):
         *,
         post_id: str,
         cursor: str,
+        language: str | None = None,
         sort_type: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
@@ -239,6 +260,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_comment_replies``
         """
         params = _drop_none({
+            "language": language,
             "post_id": post_id,
             "cursor": cursor,
             "sort_type": sort_type,
@@ -249,6 +271,7 @@ class RedditApp(SyncResource):
     def fetch_subreddit_style(
         self,
         *,
+        language: str | None = None,
         subreddit_name: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
@@ -257,6 +280,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_subreddit_style``
         """
         params = _drop_none({
+            "language": language,
             "subreddit_name": subreddit_name,
             "need_format": need_format,
         })
@@ -265,6 +289,7 @@ class RedditApp(SyncResource):
     def fetch_subreddit_post_channels(
         self,
         *,
+        language: str | None = None,
         subreddit_name: str | None = None,
         sort: str | None = None,
         range: str | None = None,
@@ -275,6 +300,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_subreddit_post_channels``
         """
         params = _drop_none({
+            "language": language,
             "subreddit_name": subreddit_name,
             "sort": sort,
             "range": range,
@@ -285,6 +311,7 @@ class RedditApp(SyncResource):
     def fetch_subreddit_info(
         self,
         *,
+        language: str | None = None,
         subreddit_name: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
@@ -293,6 +320,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_subreddit_info``
         """
         params = _drop_none({
+            "language": language,
             "subreddit_name": subreddit_name,
             "need_format": need_format,
         })
@@ -302,6 +330,7 @@ class RedditApp(SyncResource):
         self,
         *,
         subreddit_id: str,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """获取Reddit APP版块设置/Fetch Reddit APP Subreddit Settings
@@ -309,6 +338,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_subreddit_settings``
         """
         params = _drop_none({
+            "language": language,
             "subreddit_id": subreddit_id,
             "need_format": need_format,
         })
@@ -318,6 +348,7 @@ class RedditApp(SyncResource):
         self,
         *,
         query: str,
+        language: str | None = None,
         safe_search: str | None = None,
         allow_nsfw: str | None = None,
         need_format: bool | None = None,
@@ -327,6 +358,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_search_typeahead``
         """
         params = _drop_none({
+            "language": language,
             "query": query,
             "safe_search": safe_search,
             "allow_nsfw": allow_nsfw,
@@ -338,9 +370,10 @@ class RedditApp(SyncResource):
         self,
         *,
         query: str,
+        language: str | None = None,
         search_type: str | None = None,
-        sort: str | None = None,
-        time_range: str | None = None,
+        sort: Any | None = None,
+        time_range: Any | None = None,
         safe_search: str | None = None,
         allow_nsfw: str | None = None,
         after: str | None = None,
@@ -351,6 +384,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_dynamic_search``
         """
         params = _drop_none({
+            "language": language,
             "query": query,
             "search_type": search_type,
             "sort": sort,
@@ -366,6 +400,7 @@ class RedditApp(SyncResource):
         self,
         *,
         subreddit_id: str,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """获取Reddit APP社区亮点/Fetch Reddit APP Community Highlights
@@ -373,6 +408,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_community_highlights``
         """
         params = _drop_none({
+            "language": language,
             "subreddit_id": subreddit_id,
             "need_format": need_format,
         })
@@ -381,6 +417,7 @@ class RedditApp(SyncResource):
     def fetch_trending_searches(
         self,
         *,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """获取Reddit APP今日热门搜索/Fetch Reddit APP Trending Searches
@@ -388,6 +425,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_trending_searches``
         """
         params = _drop_none({
+            "language": language,
             "need_format": need_format,
         })
         return self._client._request("GET", "/api/v1/reddit/app/fetch_trending_searches", params=params)
@@ -396,6 +434,7 @@ class RedditApp(SyncResource):
         self,
         *,
         post_ids: str,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """批量获取Reddit Answers卡片精简帖子信息/Fetch Reddit Answers Generated Posts
@@ -403,6 +442,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_generated_posts``
         """
         params = _drop_none({
+            "language": language,
             "post_ids": post_ids,
             "need_format": need_format,
         })
@@ -412,6 +452,7 @@ class RedditApp(SyncResource):
         self,
         *,
         comment_ids: str,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """批量获取Reddit Answers卡片精简评论信息/Fetch Reddit Answers Generated Comments
@@ -419,6 +460,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_generated_comments``
         """
         params = _drop_none({
+            "language": language,
             "comment_ids": comment_ids,
             "need_format": need_format,
         })
@@ -428,6 +470,7 @@ class RedditApp(SyncResource):
         self,
         *,
         username: str,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """获取Reddit APP用户资料信息/Fetch Reddit APP User Profile
@@ -435,6 +478,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_user_profile``
         """
         params = _drop_none({
+            "language": language,
             "username": username,
             "need_format": need_format,
         })
@@ -444,6 +488,7 @@ class RedditApp(SyncResource):
         self,
         *,
         username: str,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """获取用户活跃的社区列表/Fetch User's Active Subreddits
@@ -451,6 +496,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_user_active_subreddits``
         """
         params = _drop_none({
+            "language": language,
             "username": username,
             "need_format": need_format,
         })
@@ -460,6 +506,7 @@ class RedditApp(SyncResource):
         self,
         *,
         username: str,
+        language: str | None = None,
         sort: str | None = None,
         page_size: int | None = None,
         after: str | None = None,
@@ -470,6 +517,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_user_comments``
         """
         params = _drop_none({
+            "language": language,
             "username": username,
             "sort": sort,
             "page_size": page_size,
@@ -482,6 +530,7 @@ class RedditApp(SyncResource):
         self,
         *,
         username: str,
+        language: str | None = None,
         sort: str | None = None,
         after: str | None = None,
         need_format: bool | None = None,
@@ -491,6 +540,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_user_posts``
         """
         params = _drop_none({
+            "language": language,
             "username": username,
             "sort": sort,
             "after": after,
@@ -502,6 +552,7 @@ class RedditApp(SyncResource):
         self,
         *,
         subreddit_name: str,
+        language: str | None = None,
         sort: str | None = None,
         filter_posts: list[Any] | None = None,
         after: str | None = None,
@@ -512,6 +563,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_subreddit_feed``
         """
         params = _drop_none({
+            "language": language,
             "subreddit_name": subreddit_name,
             "sort": sort,
             "filter_posts": filter_posts,
@@ -524,6 +576,7 @@ class RedditApp(SyncResource):
         self,
         *,
         subreddit_id: str,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """检查版块是否静音/Check if Subreddit is Muted
@@ -531,6 +584,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/check_subreddit_muted``
         """
         params = _drop_none({
+            "language": language,
             "subreddit_id": subreddit_id,
             "need_format": need_format,
         })
@@ -540,6 +594,7 @@ class RedditApp(SyncResource):
         self,
         *,
         username: str,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """获取用户公开奖杯/Fetch User Public Trophies
@@ -547,6 +602,7 @@ class RedditApp(SyncResource):
         ``GET /api/v1/reddit/app/fetch_user_trophies``
         """
         params = _drop_none({
+            "language": language,
             "username": username,
             "need_format": need_format,
         })
@@ -559,6 +615,7 @@ class AsyncRedditApp(AsyncResource):
     async def fetch_home_feed(
         self,
         *,
+        language: str | None = None,
         sort: str | None = None,
         filter_posts: list[Any] | None = None,
         after: str | None = None,
@@ -569,6 +626,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_home_feed``
         """
         params = _drop_none({
+            "language": language,
             "sort": sort,
             "filter_posts": filter_posts,
             "after": after,
@@ -579,6 +637,7 @@ class AsyncRedditApp(AsyncResource):
     async def fetch_popular_feed(
         self,
         *,
+        language: str | None = None,
         sort: str | None = None,
         time: str | None = None,
         filter_posts: list[Any] | None = None,
@@ -590,6 +649,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_popular_feed``
         """
         params = _drop_none({
+            "language": language,
             "sort": sort,
             "time": time,
             "filter_posts": filter_posts,
@@ -601,6 +661,7 @@ class AsyncRedditApp(AsyncResource):
     async def fetch_games_feed(
         self,
         *,
+        language: str | None = None,
         sort: str | None = None,
         time: str | None = None,
         after: str | None = None,
@@ -611,6 +672,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_games_feed``
         """
         params = _drop_none({
+            "language": language,
             "sort": sort,
             "time": time,
             "after": after,
@@ -621,6 +683,7 @@ class AsyncRedditApp(AsyncResource):
     async def fetch_news_feed(
         self,
         *,
+        language: str | None = None,
         subtopic_ids: list[Any] | None = None,
         after: str | None = None,
         need_format: bool | None = None,
@@ -630,6 +693,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_news_feed``
         """
         params = _drop_none({
+            "language": language,
             "subtopic_ids": subtopic_ids,
             "after": after,
             "need_format": need_format,
@@ -639,6 +703,7 @@ class AsyncRedditApp(AsyncResource):
     async def fetch_explore_feed(
         self,
         *,
+        language: str | None = None,
         sort: str | None = None,
         time: str | None = None,
         need_format: bool | None = None,
@@ -648,6 +713,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_explore_feed``
         """
         params = _drop_none({
+            "language": language,
             "sort": sort,
             "time": time,
             "need_format": need_format,
@@ -658,6 +724,7 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         topic_id: str,
+        language: str | None = None,
         scheme_name: str | None = None,
         sort: str | None = None,
         time: str | None = None,
@@ -668,6 +735,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_topic_feed``
         """
         params = _drop_none({
+            "language": language,
             "topic_id": topic_id,
             "scheme_name": scheme_name,
             "sort": sort,
@@ -680,6 +748,7 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         post_id: str,
+        language: str | None = None,
         include_comment_id: bool | None = None,
         comment_id: str | None = None,
         need_format: bool | None = None,
@@ -689,6 +758,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_post_details``
         """
         params = _drop_none({
+            "language": language,
             "post_id": post_id,
             "include_comment_id": include_comment_id,
             "comment_id": comment_id,
@@ -700,6 +770,7 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         post_ids: str,
+        language: str | None = None,
         include_comment_id: bool | None = None,
         comment_id: str | None = None,
         need_format: bool | None = None,
@@ -709,6 +780,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_post_details_batch``
         """
         params = _drop_none({
+            "language": language,
             "post_ids": post_ids,
             "include_comment_id": include_comment_id,
             "comment_id": comment_id,
@@ -720,6 +792,7 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         post_ids: str,
+        language: str | None = None,
         include_comment_id: bool | None = None,
         comment_id: str | None = None,
         need_format: bool | None = None,
@@ -729,6 +802,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_post_details_batch_large``
         """
         params = _drop_none({
+            "language": language,
             "post_ids": post_ids,
             "include_comment_id": include_comment_id,
             "comment_id": comment_id,
@@ -740,6 +814,7 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         post_id: str,
+        language: str | None = None,
         sort_type: str | None = None,
         after: str | None = None,
         need_format: bool | None = None,
@@ -749,6 +824,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_post_comments``
         """
         params = _drop_none({
+            "language": language,
             "post_id": post_id,
             "sort_type": sort_type,
             "after": after,
@@ -761,6 +837,7 @@ class AsyncRedditApp(AsyncResource):
         *,
         post_id: str,
         cursor: str,
+        language: str | None = None,
         sort_type: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
@@ -769,6 +846,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_comment_replies``
         """
         params = _drop_none({
+            "language": language,
             "post_id": post_id,
             "cursor": cursor,
             "sort_type": sort_type,
@@ -779,6 +857,7 @@ class AsyncRedditApp(AsyncResource):
     async def fetch_subreddit_style(
         self,
         *,
+        language: str | None = None,
         subreddit_name: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
@@ -787,6 +866,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_subreddit_style``
         """
         params = _drop_none({
+            "language": language,
             "subreddit_name": subreddit_name,
             "need_format": need_format,
         })
@@ -795,6 +875,7 @@ class AsyncRedditApp(AsyncResource):
     async def fetch_subreddit_post_channels(
         self,
         *,
+        language: str | None = None,
         subreddit_name: str | None = None,
         sort: str | None = None,
         range: str | None = None,
@@ -805,6 +886,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_subreddit_post_channels``
         """
         params = _drop_none({
+            "language": language,
             "subreddit_name": subreddit_name,
             "sort": sort,
             "range": range,
@@ -815,6 +897,7 @@ class AsyncRedditApp(AsyncResource):
     async def fetch_subreddit_info(
         self,
         *,
+        language: str | None = None,
         subreddit_name: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
@@ -823,6 +906,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_subreddit_info``
         """
         params = _drop_none({
+            "language": language,
             "subreddit_name": subreddit_name,
             "need_format": need_format,
         })
@@ -832,6 +916,7 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         subreddit_id: str,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """获取Reddit APP版块设置/Fetch Reddit APP Subreddit Settings
@@ -839,6 +924,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_subreddit_settings``
         """
         params = _drop_none({
+            "language": language,
             "subreddit_id": subreddit_id,
             "need_format": need_format,
         })
@@ -848,6 +934,7 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         query: str,
+        language: str | None = None,
         safe_search: str | None = None,
         allow_nsfw: str | None = None,
         need_format: bool | None = None,
@@ -857,6 +944,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_search_typeahead``
         """
         params = _drop_none({
+            "language": language,
             "query": query,
             "safe_search": safe_search,
             "allow_nsfw": allow_nsfw,
@@ -868,9 +956,10 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         query: str,
+        language: str | None = None,
         search_type: str | None = None,
-        sort: str | None = None,
-        time_range: str | None = None,
+        sort: Any | None = None,
+        time_range: Any | None = None,
         safe_search: str | None = None,
         allow_nsfw: str | None = None,
         after: str | None = None,
@@ -881,6 +970,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_dynamic_search``
         """
         params = _drop_none({
+            "language": language,
             "query": query,
             "search_type": search_type,
             "sort": sort,
@@ -896,6 +986,7 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         subreddit_id: str,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """获取Reddit APP社区亮点/Fetch Reddit APP Community Highlights
@@ -903,6 +994,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_community_highlights``
         """
         params = _drop_none({
+            "language": language,
             "subreddit_id": subreddit_id,
             "need_format": need_format,
         })
@@ -911,6 +1003,7 @@ class AsyncRedditApp(AsyncResource):
     async def fetch_trending_searches(
         self,
         *,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """获取Reddit APP今日热门搜索/Fetch Reddit APP Trending Searches
@@ -918,6 +1011,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_trending_searches``
         """
         params = _drop_none({
+            "language": language,
             "need_format": need_format,
         })
         return await self._client._request("GET", "/api/v1/reddit/app/fetch_trending_searches", params=params)
@@ -926,6 +1020,7 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         post_ids: str,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """批量获取Reddit Answers卡片精简帖子信息/Fetch Reddit Answers Generated Posts
@@ -933,6 +1028,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_generated_posts``
         """
         params = _drop_none({
+            "language": language,
             "post_ids": post_ids,
             "need_format": need_format,
         })
@@ -942,6 +1038,7 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         comment_ids: str,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """批量获取Reddit Answers卡片精简评论信息/Fetch Reddit Answers Generated Comments
@@ -949,6 +1046,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_generated_comments``
         """
         params = _drop_none({
+            "language": language,
             "comment_ids": comment_ids,
             "need_format": need_format,
         })
@@ -958,6 +1056,7 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         username: str,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """获取Reddit APP用户资料信息/Fetch Reddit APP User Profile
@@ -965,6 +1064,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_user_profile``
         """
         params = _drop_none({
+            "language": language,
             "username": username,
             "need_format": need_format,
         })
@@ -974,6 +1074,7 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         username: str,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """获取用户活跃的社区列表/Fetch User's Active Subreddits
@@ -981,6 +1082,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_user_active_subreddits``
         """
         params = _drop_none({
+            "language": language,
             "username": username,
             "need_format": need_format,
         })
@@ -990,6 +1092,7 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         username: str,
+        language: str | None = None,
         sort: str | None = None,
         page_size: int | None = None,
         after: str | None = None,
@@ -1000,6 +1103,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_user_comments``
         """
         params = _drop_none({
+            "language": language,
             "username": username,
             "sort": sort,
             "page_size": page_size,
@@ -1012,6 +1116,7 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         username: str,
+        language: str | None = None,
         sort: str | None = None,
         after: str | None = None,
         need_format: bool | None = None,
@@ -1021,6 +1126,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_user_posts``
         """
         params = _drop_none({
+            "language": language,
             "username": username,
             "sort": sort,
             "after": after,
@@ -1032,6 +1138,7 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         subreddit_name: str,
+        language: str | None = None,
         sort: str | None = None,
         filter_posts: list[Any] | None = None,
         after: str | None = None,
@@ -1042,6 +1149,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_subreddit_feed``
         """
         params = _drop_none({
+            "language": language,
             "subreddit_name": subreddit_name,
             "sort": sort,
             "filter_posts": filter_posts,
@@ -1054,6 +1162,7 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         subreddit_id: str,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """检查版块是否静音/Check if Subreddit is Muted
@@ -1061,6 +1170,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/check_subreddit_muted``
         """
         params = _drop_none({
+            "language": language,
             "subreddit_id": subreddit_id,
             "need_format": need_format,
         })
@@ -1070,6 +1180,7 @@ class AsyncRedditApp(AsyncResource):
         self,
         *,
         username: str,
+        language: str | None = None,
         need_format: bool | None = None,
     ) -> Any:
         """获取用户公开奖杯/Fetch User Public Trophies
@@ -1077,6 +1188,7 @@ class AsyncRedditApp(AsyncResource):
         ``GET /api/v1/reddit/app/fetch_user_trophies``
         """
         params = _drop_none({
+            "language": language,
             "username": username,
             "need_format": need_format,
         })

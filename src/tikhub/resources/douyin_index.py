@@ -5,7 +5,7 @@
 OpenAPI tag: ``Douyin-Index-API``
 SDK attribute: ``client.douyin_index`` / ``async_client.douyin_index``
 
-Endpoints: 44
+Endpoints: 51
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncDouyinIndex", "DouyinIndex"]
 
 
 class DouyinIndex(SyncResource):
-    """Sync ``Douyin-Index-API`` resource (44 endpoints)."""
+    """Sync ``Douyin-Index-API`` resource (51 endpoints)."""
 
     def fetch_all_valid_date(
         self,
@@ -62,6 +62,20 @@ class DouyinIndex(SyncResource):
         """
         return self._client._request("GET", "/api/v1/douyin/index/fetch_current_hot_topic")
 
+    def fetch_hot_detail(
+        self,
+        *,
+        topic_name: str,
+    ) -> Any:
+        """获取热点详情分析/Get hot topic detail
+
+        ``GET /api/v1/douyin/index/fetch_hot_detail``
+        """
+        params = _drop_none({
+            "topic_name": topic_name,
+        })
+        return self._client._request("GET", "/api/v1/douyin/index/fetch_hot_detail", params=params)
+
     def fetch_hot_words(
         self,
         *,
@@ -75,6 +89,22 @@ class DouyinIndex(SyncResource):
             "app_name": app_name,
         })
         return self._client._request("GET", "/api/v1/douyin/index/fetch_hot_words", params=params)
+
+    def fetch_hot_trend_word(
+        self,
+        *,
+        app_name: str | None = None,
+        type: int | None = None,
+    ) -> Any:
+        """获取热门推荐词/Get hot trend words
+
+        ``GET /api/v1/douyin/index/fetch_hot_trend_word``
+        """
+        params = _drop_none({
+            "app_name": app_name,
+            "type": type,
+        })
+        return self._client._request("GET", "/api/v1/douyin/index/fetch_hot_trend_word", params=params)
 
     def fetch_keyword_valid_date(
         self,
@@ -333,6 +363,92 @@ class DouyinIndex(SyncResource):
             "duration_type": duration_type,
         })
         return self._client._request("POST", "/api/v1/douyin/index/fetch_item_query", params=params)
+
+    def fetch_item_base(
+        self,
+        *,
+        item_id: str,
+    ) -> Any:
+        """获取视频详情/Get video detail
+
+        ``POST /api/v1/douyin/index/fetch_item_base``
+        """
+        params = _drop_none({
+            "item_id": item_id,
+        })
+        return self._client._request("POST", "/api/v1/douyin/index/fetch_item_base", params=params)
+
+    def fetch_item_index(
+        self,
+        *,
+        item_id: str,
+        start_date: str,
+        end_date: str,
+    ) -> Any:
+        """获取视频指数趋势/Get video index trend
+
+        ``POST /api/v1/douyin/index/fetch_item_index``
+        """
+        params = _drop_none({
+            "item_id": item_id,
+            "start_date": start_date,
+            "end_date": end_date,
+        })
+        return self._client._request("POST", "/api/v1/douyin/index/fetch_item_index", params=params)
+
+    def fetch_item_index_interpret(
+        self,
+        *,
+        item_id: str,
+        start_date: str,
+        end_date: str,
+    ) -> Any:
+        """获取视频指数解读/Get video index interpretation
+
+        ``POST /api/v1/douyin/index/fetch_item_index_interpret``
+        """
+        params = _drop_none({
+            "item_id": item_id,
+            "start_date": start_date,
+            "end_date": end_date,
+        })
+        return self._client._request("POST", "/api/v1/douyin/index/fetch_item_index_interpret", params=params)
+
+    def fetch_item_analysis(
+        self,
+        *,
+        item_id: str,
+        start_date: str,
+        end_date: str,
+    ) -> Any:
+        """获取视频对比分析/Get video comparison analysis
+
+        ``POST /api/v1/douyin/index/fetch_item_analysis``
+        """
+        params = _drop_none({
+            "item_id": item_id,
+            "start_date": start_date,
+            "end_date": end_date,
+        })
+        return self._client._request("POST", "/api/v1/douyin/index/fetch_item_analysis", params=params)
+
+    def fetch_item_user_profile(
+        self,
+        *,
+        item_id: str,
+        start_date: str,
+        end_date: str,
+    ) -> Any:
+        """获取视频观众分析/Get video audience profile
+
+        ``POST /api/v1/douyin/index/fetch_item_user_profile``
+        """
+        params = _drop_none({
+            "item_id": item_id,
+            "start_date": start_date,
+            "end_date": end_date,
+        })
+        return self._client._request("POST", "/api/v1/douyin/index/fetch_item_user_profile", params=params)
 
     def fetch_brand_suggest(
         self,
@@ -727,7 +843,7 @@ class DouyinIndex(SyncResource):
 
 
 class AsyncDouyinIndex(AsyncResource):
-    """Async ``Douyin-Index-API`` resource (44 endpoints)."""
+    """Async ``Douyin-Index-API`` resource (51 endpoints)."""
 
     async def fetch_all_valid_date(
         self,
@@ -765,6 +881,20 @@ class AsyncDouyinIndex(AsyncResource):
         """
         return await self._client._request("GET", "/api/v1/douyin/index/fetch_current_hot_topic")
 
+    async def fetch_hot_detail(
+        self,
+        *,
+        topic_name: str,
+    ) -> Any:
+        """获取热点详情分析/Get hot topic detail
+
+        ``GET /api/v1/douyin/index/fetch_hot_detail``
+        """
+        params = _drop_none({
+            "topic_name": topic_name,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/index/fetch_hot_detail", params=params)
+
     async def fetch_hot_words(
         self,
         *,
@@ -778,6 +908,22 @@ class AsyncDouyinIndex(AsyncResource):
             "app_name": app_name,
         })
         return await self._client._request("GET", "/api/v1/douyin/index/fetch_hot_words", params=params)
+
+    async def fetch_hot_trend_word(
+        self,
+        *,
+        app_name: str | None = None,
+        type: int | None = None,
+    ) -> Any:
+        """获取热门推荐词/Get hot trend words
+
+        ``GET /api/v1/douyin/index/fetch_hot_trend_word``
+        """
+        params = _drop_none({
+            "app_name": app_name,
+            "type": type,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/index/fetch_hot_trend_word", params=params)
 
     async def fetch_keyword_valid_date(
         self,
@@ -1036,6 +1182,92 @@ class AsyncDouyinIndex(AsyncResource):
             "duration_type": duration_type,
         })
         return await self._client._request("POST", "/api/v1/douyin/index/fetch_item_query", params=params)
+
+    async def fetch_item_base(
+        self,
+        *,
+        item_id: str,
+    ) -> Any:
+        """获取视频详情/Get video detail
+
+        ``POST /api/v1/douyin/index/fetch_item_base``
+        """
+        params = _drop_none({
+            "item_id": item_id,
+        })
+        return await self._client._request("POST", "/api/v1/douyin/index/fetch_item_base", params=params)
+
+    async def fetch_item_index(
+        self,
+        *,
+        item_id: str,
+        start_date: str,
+        end_date: str,
+    ) -> Any:
+        """获取视频指数趋势/Get video index trend
+
+        ``POST /api/v1/douyin/index/fetch_item_index``
+        """
+        params = _drop_none({
+            "item_id": item_id,
+            "start_date": start_date,
+            "end_date": end_date,
+        })
+        return await self._client._request("POST", "/api/v1/douyin/index/fetch_item_index", params=params)
+
+    async def fetch_item_index_interpret(
+        self,
+        *,
+        item_id: str,
+        start_date: str,
+        end_date: str,
+    ) -> Any:
+        """获取视频指数解读/Get video index interpretation
+
+        ``POST /api/v1/douyin/index/fetch_item_index_interpret``
+        """
+        params = _drop_none({
+            "item_id": item_id,
+            "start_date": start_date,
+            "end_date": end_date,
+        })
+        return await self._client._request("POST", "/api/v1/douyin/index/fetch_item_index_interpret", params=params)
+
+    async def fetch_item_analysis(
+        self,
+        *,
+        item_id: str,
+        start_date: str,
+        end_date: str,
+    ) -> Any:
+        """获取视频对比分析/Get video comparison analysis
+
+        ``POST /api/v1/douyin/index/fetch_item_analysis``
+        """
+        params = _drop_none({
+            "item_id": item_id,
+            "start_date": start_date,
+            "end_date": end_date,
+        })
+        return await self._client._request("POST", "/api/v1/douyin/index/fetch_item_analysis", params=params)
+
+    async def fetch_item_user_profile(
+        self,
+        *,
+        item_id: str,
+        start_date: str,
+        end_date: str,
+    ) -> Any:
+        """获取视频观众分析/Get video audience profile
+
+        ``POST /api/v1/douyin/index/fetch_item_user_profile``
+        """
+        params = _drop_none({
+            "item_id": item_id,
+            "start_date": start_date,
+            "end_date": end_date,
+        })
+        return await self._client._request("POST", "/api/v1/douyin/index/fetch_item_user_profile", params=params)
 
     async def fetch_brand_suggest(
         self,

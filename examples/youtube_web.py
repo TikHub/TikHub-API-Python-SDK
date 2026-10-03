@@ -1,7 +1,7 @@
 """Example: YouTube-Web-API
 
 SDK attribute: ``client.youtube_web``
-Endpoints: 21
+Endpoints: 8
 
 Usage::
 
@@ -21,41 +21,6 @@ API_KEY = "YOUR_API_KEY"
 async def main():
     async with AsyncTikHub(api_key=API_KEY) as client:
 
-        # GET /api/v1/youtube/web/get_video_info
-        # 获取视频信息 V1/Get video information V1
-        result = await client.youtube_web.get_video_info(video_id='LuIL5JATZsc', url_access='normal', lang='zh-CN', videos='auto', audios='auto', subtitles=True, related=True)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/youtube/web/get_video_info_v2
-        # 获取视频信息 V2/Get video information V2
-        result = await client.youtube_web.get_video_info_v2(video_id='LuIL5JATZsc')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/youtube/web/get_video_info_v3
-        # 获取视频详情 V3/Get video information V3
-        result = await client.youtube_web.get_video_info_v3(video_id='oaSNBz4qMQY', language_code='zh-CN')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/youtube/web/get_video_subtitles
-        # 获取视频字幕/Get video subtitles
-        result = await client.youtube_web.get_video_subtitles(subtitle_url='https://www.youtube.com/api/timedtext?v=...', format='srt', fix_overlap=True, target_lang='zh-CN')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/youtube/web/get_video_comments
-        # 获取视频评论/Get video comments
-        result = await client.youtube_web.get_video_comments(video_id='LuIL5JATZsc', language_code='zh-CN', country_code='US', sort_by='top', need_format=False)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/youtube/web/get_video_comment_replies
-        # 获取视频二级评论/Get video sub comments
-        result = await client.youtube_web.get_video_comment_replies(continuation_token='test', language_code='zh-CN', country_code='US', need_format=False)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/youtube/web/get_channel_description
-        # 获取频道描述信息/Get channel description
-        result = await client.youtube_web.get_channel_description(channel_id='UCeu6U67OzJhV1KwBansH3Dg', language_code='zh-CN', country_code='US', need_format=False)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
         # GET /api/v1/youtube/web/get_relate_video
         # 获取推荐视频/Get related videos
         result = await client.youtube_web.get_relate_video(video_id='LuIL5JATZsc')
@@ -64,16 +29,6 @@ async def main():
         # GET /api/v1/youtube/web/search_video
         # 搜索视频/Search video
         result = await client.youtube_web.search_video(search_query='Minecraft', language_code='en', order_by='this_month', country_code='us')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/youtube/web/get_general_search
-        # 综合搜索（支持过滤条件）/General search with filters
-        result = await client.youtube_web.get_general_search(search_query='Python编程', language_code='zh-CN', country_code='US', time_zone='America/Los_Angeles')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/youtube/web/get_shorts_search
-        # YouTube Shorts短视频搜索/YouTube Shorts search
-        result = await client.youtube_web.get_shorts_search(search_query='Python编程', language_code='en-US', country_code='US', time_zone='America/Los_Angeles', continuation_token='', filter_mixed_content=True)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/youtube/web/get_channel_id
@@ -96,21 +51,6 @@ async def main():
         result = await client.youtube_web.get_channel_info(channel_id='UCXuqSBlHAE6Xw-yeJA0Tunw')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
-        # GET /api/v1/youtube/web/get_channel_videos
-        # 获取频道视频 V1（即将过时，优先使用 V2）/Get channel videos V1 (deprecated soon, use V2 first)
-        result = await client.youtube_web.get_channel_videos(channel_id='UCXuqSBlHAE6Xw-yeJA0Tunw')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/youtube/web/get_channel_videos_v2
-        # 获取频道视频 V2/Get channel videos V2
-        result = await client.youtube_web.get_channel_videos_v2(channel_id='UCXuqSBlHAE6Xw-yeJA0Tunw', lang='en-US', sortBy='newest', contentType='videos', nextToken='')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/youtube/web/get_channel_videos_v3
-        # 获取频道视频 V3/Get channel videos V3
-        result = await client.youtube_web.get_channel_videos_v3(channel_id='UCJHBJ7F-nAIlMGolm0Hu4vg', language_code='zh-CN', country_code='US', need_format=False)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
         # GET /api/v1/youtube/web/get_channel_short_videos
         # 获取频道短视频/Get channel short videos
         result = await client.youtube_web.get_channel_short_videos(channel_id='UCXuqSBlHAE6Xw-yeJA0Tunw')
@@ -119,11 +59,6 @@ async def main():
         # GET /api/v1/youtube/web/search_channel
         # 搜索频道/Search channel
         result = await client.youtube_web.search_channel(channel_id='UCXuqSBlHAE6Xw-yeJA0Tunw', search_query='AMD', language_code='en', country_code='us')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/youtube/web/get_trending_videos
-        # 获取趋势视频/Get trending videos
-        result = await client.youtube_web.get_trending_videos(language_code='en', country_code='us', section='Now')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

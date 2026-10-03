@@ -11,7 +11,7 @@ pip install tikhub_sdk_v2 tikhub      # both at once
 | | V1.x (`tikhub_sdk_v2`) | V2.1 (`tikhub`) |
 |---|---|---|
 | Package | `tikhub_sdk_v2` | `tikhub` |
-| Spec version targeted | V1.0.0 (~28 tags) | **V5.3.2 (54 tags, 1106 endpoints)** |
+| Spec version targeted | V1.0.0 (~28 tags) | **V5.3.2 (51 tags, 1048 endpoints)** |
 | Naming | `BodyFetchHotTotalHighFanListApiV1DouyinBillboardFetchHotTotalHighFanListPost` | `client.douyin_billboard.fetch_hot_total_high_fan_list(...)` |
 | Async | "library: asyncio" was set in the generator config but the emitted code is sync | Native `httpx.AsyncClient` |
 | Python | 2 / 3 (with `six`) | **3.9+** |
@@ -64,23 +64,19 @@ The V2.1 method name is **the last segment of the path, verbatim**. The paramete
 | `DouyinXingtuAPIApi` | `client.douyin_xingtu` |
 | `TikTokWebAPIApi` | `client.tiktok_web` |
 | `TikTokAppV3APIApi` | `client.tiktok_app_v3` |
-| `TikTokInteractionAPIApi` | `client.tiktok_interaction` |
-| `XiaohongshuWebAPIApi` | `client.xiaohongshu_web` |
-| `XiaohongshuWebV2APIApi` | `client.xiaohongshu_web_v2` |
 | `BilibiliWebAPIApi` | `client.bilibili_web` |
 | `KuaishouWebAPIApi` | `client.kuaishou_web` |
 | `KuaishouAppAPIApi` | `client.kuaishou_app` |
-| `WeiboWebAPIApi` | `client.weibo_web` |
 | `TwitterWebAPIApi` | `client.twitter_web` |
 | `YouTubeWebAPIApi` | `client.youtube_web` |
-| `WeChatMediaPlatformWebAPIApi` | `client.wechat_media_platform_web` |
 | `ZhihuWebAPIApi` | `client.zhihu_web` |
 | `ToutiaoWebAPIApi` / `ToutiaoAppAPIApi` | `client.toutiao_web` / `client.toutiao_app` |
-| `TempMailAPIApi` | `client.temp_mail` |
 | `TikHubUserAPIApi` | `client.tikhub_user` |
 | `HealthCheckApi` | `client.health_check` |
 | `HybridParsingApi` | `client.hybrid_parsing` |
 | `IOSShortcutApi` | `client.ios_shortcut` |
+
+V1.x classes not listed here (TikTok Interaction, Xiaohongshu Web / Web V2, Weibo Web, WeChat Media Platform Web, Temp Mail) map to APIs that TikHub has since removed; the closest current equivalents are `xiaohongshu_web_v3`, `weibo_web_v2` and `wechat_media_platform_v2`.
 
 For the method on each class, drop the `_api_v1_..._get` / `_post` suffix that V2 added. The V2.1 method is the path basename.
 

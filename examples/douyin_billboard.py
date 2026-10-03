@@ -83,7 +83,7 @@ async def main():
 
         # POST /api/v1/douyin/billboard/fetch_hot_account_list
         # 获取热门账号/Fetch hot account list
-        result = await client.douyin_billboard.fetch_hot_account_list(date_window=24, page_num=1, page_size=10, query_tag={})
+        result = await client.douyin_billboard.fetch_hot_account_list(date_window=24, page_num=1, page_size=10)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/douyin/billboard/fetch_hot_account_search_list
@@ -123,37 +123,37 @@ async def main():
 
         # POST /api/v1/douyin/billboard/fetch_hot_total_video_list
         # 获取视频热榜/Fetch video hot list
-        result = await client.douyin_billboard.fetch_hot_total_video_list(page=1, page_size=10, date_window=24, sub_type=1001)
+        result = await client.douyin_billboard.fetch_hot_total_video_list(page=1, page_size=10, date_window=24, sub_type=1001, keyword='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # POST /api/v1/douyin/billboard/fetch_hot_total_low_fan_list
         # 获取低粉爆款榜/Fetch low fan explosion list
-        result = await client.douyin_billboard.fetch_hot_total_low_fan_list(page=1, page_size=10, date_window=24)
+        result = await client.douyin_billboard.fetch_hot_total_low_fan_list(page=1, page_size=10, date_window=24, keyword='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # POST /api/v1/douyin/billboard/fetch_hot_total_high_play_list
         # 获取高完播率榜/Fetch high completion rate list
-        result = await client.douyin_billboard.fetch_hot_total_high_play_list(page=1, page_size=10, date_window=24)
+        result = await client.douyin_billboard.fetch_hot_total_high_play_list(page=1, page_size=10, date_window=24, keyword='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # POST /api/v1/douyin/billboard/fetch_hot_total_high_like_list
         # 获取高点赞率榜/Fetch high like rate list
-        result = await client.douyin_billboard.fetch_hot_total_high_like_list(page=1, page_size=10, date_window=24)
+        result = await client.douyin_billboard.fetch_hot_total_high_like_list(page=1, page_size=10, date_window=24, keyword='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # POST /api/v1/douyin/billboard/fetch_hot_total_high_fan_list
         # 获取高涨粉率榜/Fetch high fan rate list
-        result = await client.douyin_billboard.fetch_hot_total_high_fan_list(page=1, page_size=10, date_window=24)
+        result = await client.douyin_billboard.fetch_hot_total_high_fan_list(page=1, page_size=10, date_window=24, keyword='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # POST /api/v1/douyin/billboard/fetch_hot_total_topic_list
         # 获取话题热榜/Fetch topic hot list
-        result = await client.douyin_billboard.fetch_hot_total_topic_list(page=1, page_size=10, date_window=24)
+        result = await client.douyin_billboard.fetch_hot_total_topic_list(page=1, page_size=10, date_window=24, keyword='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # POST /api/v1/douyin/billboard/fetch_hot_total_high_topic_list
         # 获取热度飙升的话题榜/Fetch topic list with rising popularity
-        result = await client.douyin_billboard.fetch_hot_total_high_topic_list(page=1, page_size=10, date_window=24)
+        result = await client.douyin_billboard.fetch_hot_total_high_topic_list(page=1, page_size=10, date_window=24, keyword='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # POST /api/v1/douyin/billboard/fetch_hot_total_search_list

@@ -246,7 +246,7 @@ class DouyinBillboard(SyncResource):
         date_window: int | None = None,
         page_num: int | None = None,
         page_size: int | None = None,
-        query_tag: dict[str, Any] | None = None,
+        query_tag: Any | None = None,
     ) -> Any:
         """获取热门账号/Fetch hot account list
 
@@ -373,6 +373,7 @@ class DouyinBillboard(SyncResource):
         page_size: int | None = None,
         date_window: int | None = None,
         sub_type: int | None = None,
+        keyword: str | None = None,
         tags: list[Any] | None = None,
     ) -> Any:
         """获取视频热榜/Fetch video hot list
@@ -384,6 +385,7 @@ class DouyinBillboard(SyncResource):
             "page_size": page_size,
             "date_window": date_window,
             "sub_type": sub_type,
+            "keyword": keyword,
             "tags": tags,
         })
         return self._client._request("POST", "/api/v1/douyin/billboard/fetch_hot_total_video_list", json=json_body)
@@ -394,6 +396,7 @@ class DouyinBillboard(SyncResource):
         page: int | None = None,
         page_size: int | None = None,
         date_window: int | None = None,
+        keyword: str | None = None,
         tags: list[Any] | None = None,
     ) -> Any:
         """获取低粉爆款榜/Fetch low fan explosion list
@@ -404,6 +407,7 @@ class DouyinBillboard(SyncResource):
             "page": page,
             "page_size": page_size,
             "date_window": date_window,
+            "keyword": keyword,
             "tags": tags,
         })
         return self._client._request("POST", "/api/v1/douyin/billboard/fetch_hot_total_low_fan_list", json=json_body)
@@ -414,6 +418,7 @@ class DouyinBillboard(SyncResource):
         page: int | None = None,
         page_size: int | None = None,
         date_window: int | None = None,
+        keyword: str | None = None,
         tags: list[Any] | None = None,
     ) -> Any:
         """获取高完播率榜/Fetch high completion rate list
@@ -424,6 +429,7 @@ class DouyinBillboard(SyncResource):
             "page": page,
             "page_size": page_size,
             "date_window": date_window,
+            "keyword": keyword,
             "tags": tags,
         })
         return self._client._request("POST", "/api/v1/douyin/billboard/fetch_hot_total_high_play_list", json=json_body)
@@ -434,6 +440,7 @@ class DouyinBillboard(SyncResource):
         page: int | None = None,
         page_size: int | None = None,
         date_window: int | None = None,
+        keyword: str | None = None,
         tags: list[Any] | None = None,
     ) -> Any:
         """获取高点赞率榜/Fetch high like rate list
@@ -444,6 +451,7 @@ class DouyinBillboard(SyncResource):
             "page": page,
             "page_size": page_size,
             "date_window": date_window,
+            "keyword": keyword,
             "tags": tags,
         })
         return self._client._request("POST", "/api/v1/douyin/billboard/fetch_hot_total_high_like_list", json=json_body)
@@ -454,6 +462,7 @@ class DouyinBillboard(SyncResource):
         page: int | None = None,
         page_size: int | None = None,
         date_window: int | None = None,
+        keyword: str | None = None,
         tags: list[Any] | None = None,
     ) -> Any:
         """获取高涨粉率榜/Fetch high fan rate list
@@ -464,6 +473,7 @@ class DouyinBillboard(SyncResource):
             "page": page,
             "page_size": page_size,
             "date_window": date_window,
+            "keyword": keyword,
             "tags": tags,
         })
         return self._client._request("POST", "/api/v1/douyin/billboard/fetch_hot_total_high_fan_list", json=json_body)
@@ -474,6 +484,7 @@ class DouyinBillboard(SyncResource):
         page: int | None = None,
         page_size: int | None = None,
         date_window: int | None = None,
+        keyword: str | None = None,
         tags: list[Any] | None = None,
     ) -> Any:
         """获取话题热榜/Fetch topic hot list
@@ -484,6 +495,7 @@ class DouyinBillboard(SyncResource):
             "page": page,
             "page_size": page_size,
             "date_window": date_window,
+            "keyword": keyword,
             "tags": tags,
         })
         return self._client._request("POST", "/api/v1/douyin/billboard/fetch_hot_total_topic_list", json=json_body)
@@ -494,6 +506,7 @@ class DouyinBillboard(SyncResource):
         page: int | None = None,
         page_size: int | None = None,
         date_window: int | None = None,
+        keyword: str | None = None,
         tags: list[Any] | None = None,
     ) -> Any:
         """获取热度飙升的话题榜/Fetch topic list with rising popularity
@@ -504,6 +517,7 @@ class DouyinBillboard(SyncResource):
             "page": page,
             "page_size": page_size,
             "date_window": date_window,
+            "keyword": keyword,
             "tags": tags,
         })
         return self._client._request("POST", "/api/v1/douyin/billboard/fetch_hot_total_high_topic_list", json=json_body)
@@ -810,7 +824,7 @@ class AsyncDouyinBillboard(AsyncResource):
         date_window: int | None = None,
         page_num: int | None = None,
         page_size: int | None = None,
-        query_tag: dict[str, Any] | None = None,
+        query_tag: Any | None = None,
     ) -> Any:
         """获取热门账号/Fetch hot account list
 
@@ -937,6 +951,7 @@ class AsyncDouyinBillboard(AsyncResource):
         page_size: int | None = None,
         date_window: int | None = None,
         sub_type: int | None = None,
+        keyword: str | None = None,
         tags: list[Any] | None = None,
     ) -> Any:
         """获取视频热榜/Fetch video hot list
@@ -948,6 +963,7 @@ class AsyncDouyinBillboard(AsyncResource):
             "page_size": page_size,
             "date_window": date_window,
             "sub_type": sub_type,
+            "keyword": keyword,
             "tags": tags,
         })
         return await self._client._request("POST", "/api/v1/douyin/billboard/fetch_hot_total_video_list", json=json_body)
@@ -958,6 +974,7 @@ class AsyncDouyinBillboard(AsyncResource):
         page: int | None = None,
         page_size: int | None = None,
         date_window: int | None = None,
+        keyword: str | None = None,
         tags: list[Any] | None = None,
     ) -> Any:
         """获取低粉爆款榜/Fetch low fan explosion list
@@ -968,6 +985,7 @@ class AsyncDouyinBillboard(AsyncResource):
             "page": page,
             "page_size": page_size,
             "date_window": date_window,
+            "keyword": keyword,
             "tags": tags,
         })
         return await self._client._request("POST", "/api/v1/douyin/billboard/fetch_hot_total_low_fan_list", json=json_body)
@@ -978,6 +996,7 @@ class AsyncDouyinBillboard(AsyncResource):
         page: int | None = None,
         page_size: int | None = None,
         date_window: int | None = None,
+        keyword: str | None = None,
         tags: list[Any] | None = None,
     ) -> Any:
         """获取高完播率榜/Fetch high completion rate list
@@ -988,6 +1007,7 @@ class AsyncDouyinBillboard(AsyncResource):
             "page": page,
             "page_size": page_size,
             "date_window": date_window,
+            "keyword": keyword,
             "tags": tags,
         })
         return await self._client._request("POST", "/api/v1/douyin/billboard/fetch_hot_total_high_play_list", json=json_body)
@@ -998,6 +1018,7 @@ class AsyncDouyinBillboard(AsyncResource):
         page: int | None = None,
         page_size: int | None = None,
         date_window: int | None = None,
+        keyword: str | None = None,
         tags: list[Any] | None = None,
     ) -> Any:
         """获取高点赞率榜/Fetch high like rate list
@@ -1008,6 +1029,7 @@ class AsyncDouyinBillboard(AsyncResource):
             "page": page,
             "page_size": page_size,
             "date_window": date_window,
+            "keyword": keyword,
             "tags": tags,
         })
         return await self._client._request("POST", "/api/v1/douyin/billboard/fetch_hot_total_high_like_list", json=json_body)
@@ -1018,6 +1040,7 @@ class AsyncDouyinBillboard(AsyncResource):
         page: int | None = None,
         page_size: int | None = None,
         date_window: int | None = None,
+        keyword: str | None = None,
         tags: list[Any] | None = None,
     ) -> Any:
         """获取高涨粉率榜/Fetch high fan rate list
@@ -1028,6 +1051,7 @@ class AsyncDouyinBillboard(AsyncResource):
             "page": page,
             "page_size": page_size,
             "date_window": date_window,
+            "keyword": keyword,
             "tags": tags,
         })
         return await self._client._request("POST", "/api/v1/douyin/billboard/fetch_hot_total_high_fan_list", json=json_body)
@@ -1038,6 +1062,7 @@ class AsyncDouyinBillboard(AsyncResource):
         page: int | None = None,
         page_size: int | None = None,
         date_window: int | None = None,
+        keyword: str | None = None,
         tags: list[Any] | None = None,
     ) -> Any:
         """获取话题热榜/Fetch topic hot list
@@ -1048,6 +1073,7 @@ class AsyncDouyinBillboard(AsyncResource):
             "page": page,
             "page_size": page_size,
             "date_window": date_window,
+            "keyword": keyword,
             "tags": tags,
         })
         return await self._client._request("POST", "/api/v1/douyin/billboard/fetch_hot_total_topic_list", json=json_body)
@@ -1058,6 +1084,7 @@ class AsyncDouyinBillboard(AsyncResource):
         page: int | None = None,
         page_size: int | None = None,
         date_window: int | None = None,
+        keyword: str | None = None,
         tags: list[Any] | None = None,
     ) -> Any:
         """获取热度飙升的话题榜/Fetch topic list with rising popularity
@@ -1068,6 +1095,7 @@ class AsyncDouyinBillboard(AsyncResource):
             "page": page,
             "page_size": page_size,
             "date_window": date_window,
+            "keyword": keyword,
             "tags": tags,
         })
         return await self._client._request("POST", "/api/v1/douyin/billboard/fetch_hot_total_high_topic_list", json=json_body)

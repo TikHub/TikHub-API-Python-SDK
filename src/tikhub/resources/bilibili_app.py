@@ -156,7 +156,7 @@ class BilibiliApp(SyncResource):
         self,
         *,
         keyword: str,
-        page: int | None = None,
+        cursor: str | None = None,
         page_size: int | None = None,
         order: int | None = None,
     ) -> Any:
@@ -166,7 +166,7 @@ class BilibiliApp(SyncResource):
         """
         params = _drop_none({
             "keyword": keyword,
-            "page": page,
+            "cursor": cursor,
             "page_size": page_size,
             "order": order,
         })
@@ -177,7 +177,7 @@ class BilibiliApp(SyncResource):
         *,
         keyword: str,
         search_type: str | None = None,
-        page: int | None = None,
+        cursor: str | None = None,
         page_size: int | None = None,
         order: int | None = None,
     ) -> Any:
@@ -188,7 +188,7 @@ class BilibiliApp(SyncResource):
         params = _drop_none({
             "keyword": keyword,
             "search_type": search_type,
-            "page": page,
+            "cursor": cursor,
             "page_size": page_size,
             "order": order,
         })
@@ -346,7 +346,7 @@ class AsyncBilibiliApp(AsyncResource):
         self,
         *,
         keyword: str,
-        page: int | None = None,
+        cursor: str | None = None,
         page_size: int | None = None,
         order: int | None = None,
     ) -> Any:
@@ -356,7 +356,7 @@ class AsyncBilibiliApp(AsyncResource):
         """
         params = _drop_none({
             "keyword": keyword,
-            "page": page,
+            "cursor": cursor,
             "page_size": page_size,
             "order": order,
         })
@@ -367,7 +367,7 @@ class AsyncBilibiliApp(AsyncResource):
         *,
         keyword: str,
         search_type: str | None = None,
-        page: int | None = None,
+        cursor: str | None = None,
         page_size: int | None = None,
         order: int | None = None,
     ) -> Any:
@@ -378,7 +378,7 @@ class AsyncBilibiliApp(AsyncResource):
         params = _drop_none({
             "keyword": keyword,
             "search_type": search_type,
-            "page": page,
+            "cursor": cursor,
             "page_size": page_size,
             "order": order,
         })

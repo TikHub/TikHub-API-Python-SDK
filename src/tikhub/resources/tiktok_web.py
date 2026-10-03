@@ -5,7 +5,7 @@
 OpenAPI tag: ``TikTok-Web-API``
 SDK attribute: ``client.tiktok_web`` / ``async_client.tiktok_web``
 
-Endpoints: 60
+Endpoints: 58
 """
 
 from __future__ import annotations
@@ -24,12 +24,13 @@ __all__ = ["AsyncTiktokWeb", "TiktokWeb"]
 
 
 class TiktokWeb(SyncResource):
-    """Sync ``TikTok-Web-API`` resource (60 endpoints)."""
+    """Sync ``TikTok-Web-API`` resource (58 endpoints)."""
 
     def fetch_post_detail(
         self,
         *,
         itemId: str,
+        region: str | None = None,
     ) -> Any:
         """获取单个作品数据/Get single video data
 
@@ -37,6 +38,7 @@ class TiktokWeb(SyncResource):
         """
         params = _drop_none({
             "itemId": itemId,
+            "region": region,
         })
         return self._client._request("GET", "/api/v1/tiktok/web/fetch_post_detail", params=params)
 
@@ -44,6 +46,7 @@ class TiktokWeb(SyncResource):
         self,
         *,
         itemId: str,
+        region: str | None = None,
     ) -> Any:
         """获取单个作品数据 V2/Get single video data V2
 
@@ -51,8 +54,23 @@ class TiktokWeb(SyncResource):
         """
         params = _drop_none({
             "itemId": itemId,
+            "region": region,
         })
         return self._client._request("GET", "/api/v1/tiktok/web/fetch_post_detail_v2", params=params)
+
+    def fetch_post_ai_article(
+        self,
+        *,
+        itemId: str,
+    ) -> Any:
+        """获取单个作品的AI长文内容/Get AI-generated article of a single video
+
+        ``GET /api/v1/tiktok/web/fetch_post_ai_article``
+        """
+        params = _drop_none({
+            "itemId": itemId,
+        })
+        return self._client._request("GET", "/api/v1/tiktok/web/fetch_post_ai_article", params=params)
 
     def fetch_explore_post(
         self,
@@ -69,17 +87,6 @@ class TiktokWeb(SyncResource):
             "count": count,
         })
         return self._client._request("GET", "/api/v1/tiktok/web/fetch_explore_post", params=params)
-
-    def fetch_trending_post(
-        self,
-    ) -> Any:
-        """获取每日热门内容作品数据/Get daily trending video data
-
-        ``GET /api/v1/tiktok/web/fetch_trending_post``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        return self._client._request("GET", "/api/v1/tiktok/web/fetch_trending_post")
 
     def fetch_trending_searchwords(
         self,
@@ -481,6 +488,7 @@ class TiktokWeb(SyncResource):
         *,
         count: int | None = None,
         cookie: str | None = None,
+        region: str | None = None,
     ) -> Any:
         """首页推荐作品/Home Feed
 
@@ -489,6 +497,7 @@ class TiktokWeb(SyncResource):
         json_body = _drop_none({
             "count": count,
             "cookie": cookie,
+            "region": region,
         })
         return self._client._request("POST", "/api/v1/tiktok/web/fetch_home_feed", json=json_body)
 
@@ -860,6 +869,20 @@ class TiktokWeb(SyncResource):
         })
         return self._client._request("GET", "/api/v1/tiktok/web/fetch_live_recommend", params=params)
 
+    def fetch_live_recommend_tabs(
+        self,
+        *,
+        logid: str | None = None,
+    ) -> Any:
+        """获取直播间首页推荐可用标签/Get available tags for live room homepage recommendation
+
+        ``GET /api/v1/tiktok/web/fetch_live_recommend_tabs``
+        """
+        params = _drop_none({
+            "logid": logid,
+        })
+        return self._client._request("GET", "/api/v1/tiktok/web/fetch_live_recommend_tabs", params=params)
+
     def fetch_live_gift_list(
         self,
         *,
@@ -873,72 +896,6 @@ class TiktokWeb(SyncResource):
             "room_id": room_id,
         })
         return self._client._request("GET", "/api/v1/tiktok/web/fetch_live_gift_list", params=params)
-
-    def fetch_sso_login_qrcode(
-        self,
-        *,
-        device_id: str,
-        region: str,
-        proxy: str,
-    ) -> Any:
-        """获取SSO登录二维码/Get SSO login QR code
-
-        ``GET /api/v1/tiktok/web/fetch_sso_login_qrcode``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "device_id": device_id,
-            "region": region,
-            "proxy": proxy,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/web/fetch_sso_login_qrcode", params=params)
-
-    def fetch_sso_login_status(
-        self,
-        *,
-        token: str,
-        device_id: str,
-        verifyFp: str,
-        region: str,
-        proxy: str,
-    ) -> Any:
-        """获取SSO登录状态/Get SSO login status
-
-        ``GET /api/v1/tiktok/web/fetch_sso_login_status``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "token": token,
-            "device_id": device_id,
-            "verifyFp": verifyFp,
-            "region": region,
-            "proxy": proxy,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/web/fetch_sso_login_status", params=params)
-
-    def fetch_sso_login_auth(
-        self,
-        *,
-        device_id: str,
-        verifyFp: str,
-        region: str,
-        proxy: str,
-    ) -> Any:
-        """认证SSO登录/Authenticate SSO login
-
-        ``GET /api/v1/tiktok/web/fetch_sso_login_auth``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "device_id": device_id,
-            "verifyFp": verifyFp,
-            "region": region,
-            "proxy": proxy,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/web/fetch_sso_login_auth", params=params)
 
     def generate_hashed_id(
         self,
@@ -1007,12 +964,13 @@ class TiktokWeb(SyncResource):
 
 
 class AsyncTiktokWeb(AsyncResource):
-    """Async ``TikTok-Web-API`` resource (60 endpoints)."""
+    """Async ``TikTok-Web-API`` resource (58 endpoints)."""
 
     async def fetch_post_detail(
         self,
         *,
         itemId: str,
+        region: str | None = None,
     ) -> Any:
         """获取单个作品数据/Get single video data
 
@@ -1020,6 +978,7 @@ class AsyncTiktokWeb(AsyncResource):
         """
         params = _drop_none({
             "itemId": itemId,
+            "region": region,
         })
         return await self._client._request("GET", "/api/v1/tiktok/web/fetch_post_detail", params=params)
 
@@ -1027,6 +986,7 @@ class AsyncTiktokWeb(AsyncResource):
         self,
         *,
         itemId: str,
+        region: str | None = None,
     ) -> Any:
         """获取单个作品数据 V2/Get single video data V2
 
@@ -1034,8 +994,23 @@ class AsyncTiktokWeb(AsyncResource):
         """
         params = _drop_none({
             "itemId": itemId,
+            "region": region,
         })
         return await self._client._request("GET", "/api/v1/tiktok/web/fetch_post_detail_v2", params=params)
+
+    async def fetch_post_ai_article(
+        self,
+        *,
+        itemId: str,
+    ) -> Any:
+        """获取单个作品的AI长文内容/Get AI-generated article of a single video
+
+        ``GET /api/v1/tiktok/web/fetch_post_ai_article``
+        """
+        params = _drop_none({
+            "itemId": itemId,
+        })
+        return await self._client._request("GET", "/api/v1/tiktok/web/fetch_post_ai_article", params=params)
 
     async def fetch_explore_post(
         self,
@@ -1052,17 +1027,6 @@ class AsyncTiktokWeb(AsyncResource):
             "count": count,
         })
         return await self._client._request("GET", "/api/v1/tiktok/web/fetch_explore_post", params=params)
-
-    async def fetch_trending_post(
-        self,
-    ) -> Any:
-        """获取每日热门内容作品数据/Get daily trending video data
-
-        ``GET /api/v1/tiktok/web/fetch_trending_post``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        return await self._client._request("GET", "/api/v1/tiktok/web/fetch_trending_post")
 
     async def fetch_trending_searchwords(
         self,
@@ -1464,6 +1428,7 @@ class AsyncTiktokWeb(AsyncResource):
         *,
         count: int | None = None,
         cookie: str | None = None,
+        region: str | None = None,
     ) -> Any:
         """首页推荐作品/Home Feed
 
@@ -1472,6 +1437,7 @@ class AsyncTiktokWeb(AsyncResource):
         json_body = _drop_none({
             "count": count,
             "cookie": cookie,
+            "region": region,
         })
         return await self._client._request("POST", "/api/v1/tiktok/web/fetch_home_feed", json=json_body)
 
@@ -1843,6 +1809,20 @@ class AsyncTiktokWeb(AsyncResource):
         })
         return await self._client._request("GET", "/api/v1/tiktok/web/fetch_live_recommend", params=params)
 
+    async def fetch_live_recommend_tabs(
+        self,
+        *,
+        logid: str | None = None,
+    ) -> Any:
+        """获取直播间首页推荐可用标签/Get available tags for live room homepage recommendation
+
+        ``GET /api/v1/tiktok/web/fetch_live_recommend_tabs``
+        """
+        params = _drop_none({
+            "logid": logid,
+        })
+        return await self._client._request("GET", "/api/v1/tiktok/web/fetch_live_recommend_tabs", params=params)
+
     async def fetch_live_gift_list(
         self,
         *,
@@ -1856,72 +1836,6 @@ class AsyncTiktokWeb(AsyncResource):
             "room_id": room_id,
         })
         return await self._client._request("GET", "/api/v1/tiktok/web/fetch_live_gift_list", params=params)
-
-    async def fetch_sso_login_qrcode(
-        self,
-        *,
-        device_id: str,
-        region: str,
-        proxy: str,
-    ) -> Any:
-        """获取SSO登录二维码/Get SSO login QR code
-
-        ``GET /api/v1/tiktok/web/fetch_sso_login_qrcode``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "device_id": device_id,
-            "region": region,
-            "proxy": proxy,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/web/fetch_sso_login_qrcode", params=params)
-
-    async def fetch_sso_login_status(
-        self,
-        *,
-        token: str,
-        device_id: str,
-        verifyFp: str,
-        region: str,
-        proxy: str,
-    ) -> Any:
-        """获取SSO登录状态/Get SSO login status
-
-        ``GET /api/v1/tiktok/web/fetch_sso_login_status``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "token": token,
-            "device_id": device_id,
-            "verifyFp": verifyFp,
-            "region": region,
-            "proxy": proxy,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/web/fetch_sso_login_status", params=params)
-
-    async def fetch_sso_login_auth(
-        self,
-        *,
-        device_id: str,
-        verifyFp: str,
-        region: str,
-        proxy: str,
-    ) -> Any:
-        """认证SSO登录/Authenticate SSO login
-
-        ``GET /api/v1/tiktok/web/fetch_sso_login_auth``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "device_id": device_id,
-            "verifyFp": verifyFp,
-            "region": region,
-            "proxy": proxy,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/web/fetch_sso_login_auth", params=params)
 
     async def generate_hashed_id(
         self,

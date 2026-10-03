@@ -1,65 +1,62 @@
 # API reference
 
-All **1106** endpoints across **54** resources, generated from `spec/openapi.json` (V5.3.2).
+All **1048** endpoints across **51** resources, generated from `spec/openapi.json` (V5.3.2).
 
 Method names match the OpenAPI path basename verbatim. Parameter names match the OpenAPI parameter names verbatim. See [naming rules](index.md#naming-rules).
 
 ## Resources
 
 - [`client.bilibili_app`](#clientbilibiliapp) — `BilibiliApp`, 11 endpoints
-- [`client.bilibili_web`](#clientbilibiliweb) — `BilibiliWeb`, 30 endpoints
+- [`client.bilibili_huahuo`](#clientbilibilihuahuo) — `BilibiliHuahuo`, 45 endpoints
+- [`client.bilibili_web`](#clientbilibiliweb) — `BilibiliWeb`, 31 endpoints
 - [`client.demo`](#clientdemo) — `Demo`, 9 endpoints
-- [`client.douyin_app_v3`](#clientdouyinappv3) — `DouyinAppV3`, 46 endpoints
+- [`client.douyin_app_v3`](#clientdouyinappv3) — `DouyinAppV3`, 38 endpoints
 - [`client.douyin_billboard`](#clientdouyinbillboard) — `DouyinBillboard`, 31 endpoints
 - [`client.douyin_creator`](#clientdouyincreator) — `DouyinCreator`, 17 endpoints
 - [`client.douyin_creator_v2`](#clientdouyincreatorv2) — `DouyinCreatorV2`, 14 endpoints
-- [`client.douyin_index`](#clientdouyinindex) — `DouyinIndex`, 44 endpoints
-- [`client.douyin_search`](#clientdouyinsearch) — `DouyinSearch`, 19 endpoints
-- [`client.douyin_web`](#clientdouyinweb) — `DouyinWeb`, 68 endpoints
-- [`client.douyin_xingtu`](#clientdouyinxingtu) — `DouyinXingtu`, 22 endpoints
-- [`client.douyin_xingtu_v2`](#clientdouyinxingtuv2) — `DouyinXingtuV2`, 21 endpoints
-- [`client.health_check`](#clienthealthcheck) — `HealthCheck`, 1 endpoints
+- [`client.douyin_douplus`](#clientdouyindouplus) — `DouyinDouplus`, 17 endpoints
+- [`client.douyin_index`](#clientdouyinindex) — `DouyinIndex`, 51 endpoints
+- [`client.douyin_search`](#clientdouyinsearch) — `DouyinSearch`, 23 endpoints
+- [`client.douyin_web`](#clientdouyinweb) — `DouyinWeb`, 55 endpoints
+- [`client.douyin_xingtu`](#clientdouyinxingtu) — `DouyinXingtu`, 23 endpoints
+- [`client.douyin_xingtu_v2`](#clientdouyinxingtuv2) — `DouyinXingtuV2`, 50 endpoints
+- [`client.health_check`](#clienthealthcheck) — `HealthCheck`, 2 endpoints
 - [`client.hybrid_parsing`](#clienthybridparsing) — `HybridParsing`, 1 endpoints
 - [`client.instagram_v1`](#clientinstagramv1) — `InstagramV1`, 29 endpoints
 - [`client.instagram_v2`](#clientinstagramv2) — `InstagramV2`, 27 endpoints
-- [`client.instagram_v3`](#clientinstagramv3) — `InstagramV3`, 32 endpoints
+- [`client.instagram_v3`](#clientinstagramv3) — `InstagramV3`, 37 endpoints
 - [`client.ios_shortcut`](#clientiosshortcut) — `IosShortcut`, 1 endpoints
-- [`client.kuaishou_app`](#clientkuaishouapp) — `KuaishouApp`, 20 endpoints
-- [`client.kuaishou_web`](#clientkuaishouweb) — `KuaishouWeb`, 13 endpoints
+- [`client.kuaishou_app`](#clientkuaishouapp) — `KuaishouApp`, 26 endpoints
+- [`client.kuaishou_web`](#clientkuaishouweb) — `KuaishouWeb`, 12 endpoints
 - [`client.lemon8_app`](#clientlemon8app) — `Lemon8App`, 16 endpoints
-- [`client.linkedin_web`](#clientlinkedinweb) — `LinkedinWeb`, 42 endpoints
-- [`client.linkedin_web_v2`](#clientlinkedinwebv2) — `LinkedinWebV2`, 43 endpoints
+- [`client.linkedin_web_v2`](#clientlinkedinwebv2) — `LinkedinWebV2`, 8 endpoints
 - [`client.pipixia_app`](#clientpipixiaapp) — `PipixiaApp`, 17 endpoints
 - [`client.reddit_app`](#clientredditapp) — `RedditApp`, 28 endpoints
-- [`client.sora2`](#clientsora2) — `Sora2`, 17 endpoints
-- [`client.temp_mail`](#clienttempmail) — `TempMail`, 3 endpoints
-- [`client.threads_web`](#clientthreadsweb) — `ThreadsWeb`, 11 endpoints
+- [`client.telegram_web`](#clienttelegramweb) — `TelegramWeb`, 7 endpoints
+- [`client.threads_web`](#clientthreadsweb) — `ThreadsWeb`, 12 endpoints
 - [`client.tikhub_downloader`](#clienttikhubdownloader) — `TikhubDownloader`, 2 endpoints
 - [`client.tikhub_user`](#clienttikhubuser) — `TikhubUser`, 6 endpoints
-- [`client.tiktok_ads`](#clienttiktokads) — `TiktokAds`, 31 endpoints
+- [`client.tiktok_ads`](#clienttiktokads) — `TiktokAds`, 16 endpoints
 - [`client.tiktok_analytics`](#clienttiktokanalytics) — `TiktokAnalytics`, 4 endpoints
-- [`client.tiktok_app_v3`](#clienttiktokappv3) — `TiktokAppV3`, 75 endpoints
+- [`client.tiktok_app_v3`](#clienttiktokappv3) — `TiktokAppV3`, 58 endpoints
 - [`client.tiktok_creator`](#clienttiktokcreator) — `TiktokCreator`, 14 endpoints
-- [`client.tiktok_interaction`](#clienttiktokinteraction) — `TiktokInteraction`, 7 endpoints
-- [`client.tiktok_shop_web`](#clienttiktokshopweb) — `TiktokShopWeb`, 13 endpoints
-- [`client.tiktok_web`](#clienttiktokweb) — `TiktokWeb`, 60 endpoints
+- [`client.tiktok_shop_web`](#clienttiktokshopweb) — `TiktokShopWeb`, 12 endpoints
+- [`client.tiktok_web`](#clienttiktokweb) — `TiktokWeb`, 58 endpoints
 - [`client.toutiao_app`](#clienttoutiaoapp) — `ToutiaoApp`, 5 endpoints
 - [`client.toutiao_web`](#clienttoutiaoweb) — `ToutiaoWeb`, 2 endpoints
-- [`client.twitter_web`](#clienttwitterweb) — `TwitterWeb`, 13 endpoints
-- [`client.wechat_channels`](#clientwechatchannels) — `WechatChannels`, 12 endpoints
-- [`client.wechat_media_platform_web`](#clientwechatmediaplatformweb) — `WechatMediaPlatformWeb`, 12 endpoints
-- [`client.weibo_app`](#clientweiboapp) — `WeiboApp`, 20 endpoints
-- [`client.weibo_web`](#clientweiboweb) — `WeiboWeb`, 11 endpoints
+- [`client.twitter_web`](#clienttwitterweb) — `TwitterWeb`, 25 endpoints
+- [`client.wechat_channels_v2`](#clientwechatchannelsv2) — `WechatChannelsV2`, 12 endpoints
+- [`client.wechat_media_platform_v2`](#clientwechatmediaplatformv2) — `WechatMediaPlatformV2`, 11 endpoints
+- [`client.wechat_search_v2`](#clientwechatsearchv2) — `WechatSearchV2`, 2 endpoints
+- [`client.weibo_app`](#clientweiboapp) — `WeiboApp`, 23 endpoints
 - [`client.weibo_web_v2`](#clientweibowebv2) — `WeiboWebV2`, 33 endpoints
-- [`client.xiaohongshu_app`](#clientxiaohongshuapp) — `XiaohongshuApp`, 13 endpoints
 - [`client.xiaohongshu_app_v2`](#clientxiaohongshuappv2) — `XiaohongshuAppV2`, 20 endpoints
-- [`client.xiaohongshu_web`](#clientxiaohongshuweb) — `XiaohongshuWeb`, 15 endpoints
-- [`client.xiaohongshu_web_v2`](#clientxiaohongshuwebv2) — `XiaohongshuWebV2`, 7 endpoints
-- [`client.xiaohongshu_web_v3`](#clientxiaohongshuwebv3) — `XiaohongshuWebV3`, 11 endpoints
+- [`client.xiaohongshu_pgy`](#clientxiaohongshupgy) — `XiaohongshuPgy`, 20 endpoints
+- [`client.xiaohongshu_web_v3`](#clientxiaohongshuwebv3) — `XiaohongshuWebV3`, 5 endpoints
 - [`client.xigua_app_v2`](#clientxiguaappv2) — `XiguaAppV2`, 7 endpoints
-- [`client.youtube_web`](#clientyoutubeweb) — `YoutubeWeb`, 21 endpoints
-- [`client.youtube_web_v2`](#clientyoutubewebv2) — `YoutubeWebV2`, 25 endpoints
-- [`client.zhihu_web`](#clientzhihuweb) — `ZhihuWeb`, 34 endpoints
+- [`client.youtube_web`](#clientyoutubeweb) — `YoutubeWeb`, 8 endpoints
+- [`client.youtube_web_v2`](#clientyoutubewebv2) — `YoutubeWebV2`, 26 endpoints
+- [`client.zhihu_web`](#clientzhihuweb) — `ZhihuWeb`, 41 endpoints
 
 ---
 
@@ -77,17 +74,71 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_one_video(av_id=..., bv_id=...)` | `GET /api/v1/bilibili/app/fetch_one_video` | 获取单个视频详情信息/Get single video data |
 | `fetch_popular_feed(idx=..., last_param=...)` | `GET /api/v1/bilibili/app/fetch_popular_feed` | 获取热门推荐/Get popular feed |
 | `fetch_reply_detail(root, av_id=..., bv_id=..., next_offset=..., ps=...)` | `GET /api/v1/bilibili/app/fetch_reply_detail` | 获取二级评论回复/Get reply detail |
-| `fetch_search_all(keyword, page=..., page_size=..., order=...)` | `GET /api/v1/bilibili/app/fetch_search_all` | 综合搜索/search all |
-| `fetch_search_by_type(keyword, search_type=..., page=..., page_size=..., order=...)` | `GET /api/v1/bilibili/app/fetch_search_by_type` | 分类搜索/ search by type |
+| `fetch_search_all(keyword, cursor=..., page_size=..., order=...)` | `GET /api/v1/bilibili/app/fetch_search_all` | 综合搜索/search all |
+| `fetch_search_by_type(keyword, search_type=..., cursor=..., page_size=..., order=...)` | `GET /api/v1/bilibili/app/fetch_search_by_type` | 分类搜索/ search by type |
 | `fetch_user_info(user_id)` | `GET /api/v1/bilibili/app/fetch_user_info` | 获取用户信息/Get user info |
 | `fetch_user_videos(user_id, post_filter=..., page=..., ps=...)` | `GET /api/v1/bilibili/app/fetch_user_videos` | 获取用户投稿视频/Get user videos |
 | `fetch_video_comments(av_id=..., bv_id=..., mode=..., next_offset=...)` | `GET /api/v1/bilibili/app/fetch_video_comments` | 获取视频评论列表/Get video comments |
+
+## `client.bilibili_huahuo`
+
+**Class:** `tikhub.resources.bilibili_huahuo.BilibiliHuahuo` (sync) / `AsyncBilibiliHuahuo` (async)
+
+**Endpoints:** 45
+
+| Method | Endpoint | Summary |
+|---|---|---|
+| `account_session_info()` | `GET /api/v1/bilibili/huahuo/account_session_info` | 当前广告主账号信息/Get current advertiser account information |
+| `cooperate_experience_industry(industry_type)` | `GET /api/v1/bilibili/huahuo/cooperate_experience_industry` | 合作经验行业列表/Get collaboration-experience industries |
+| `dmp_pkg_list()` | `GET /api/v1/bilibili/huahuo/dmp_pkg_list` | 人群包列表/Get audience packages |
+| `effect_goods_drop()` | `GET /api/v1/bilibili/huahuo/effect_goods_drop` | 带货类目下拉/Get commerce category options |
+| `industry_tags()` | `GET /api/v1/bilibili/huahuo/industry_tags` | 行业标签字典/Get industry tags |
+| `label_char_style()` | `GET /api/v1/bilibili/huahuo/label_char_style` | 内容风格字典/Get content-style tags |
+| `live_area_list()` | `GET /api/v1/bilibili/huahuo/live_area_list` | 直播分区下拉/Get live-streaming areas |
+| `live_commerce_info(upper_mid)` | `GET /api/v1/bilibili/huahuo/live_commerce_info` | 直播带货能力/Get live-commerce performance |
+| `live_good_category()` | `GET /api/v1/bilibili/huahuo/live_good_category` | 直播带货类目/Get live-commerce categories |
+| `live_guild_drop(name=...)` | `GET /api/v1/bilibili/huahuo/live_guild_drop` | 直播公会下拉/Get live-streaming guilds |
+| `live_parent_tag()` | `GET /api/v1/bilibili/huahuo/live_parent_tag` | 直播人设标签/Get live creator persona tags |
+| `live_upper_portrait(mcn_id, upper_mid=...)` | `GET /api/v1/bilibili/huahuo/live_upper_portrait` | 直播UP主详情/Get live creator profile |
+| `mcn_drop(name=...)` | `GET /api/v1/bilibili/huahuo/mcn_drop` | MCN机构下拉/Get MCN organizations |
+| `partition_drop()` | `GET /api/v1/bilibili/huahuo/partition_drop` | 稿件分区下拉/Get video partition options |
+| `popular_avid_category_drop()` | `GET /api/v1/bilibili/huahuo/popular_avid_category_drop` | 视频榜单行业下拉/Get video ranking industries |
+| `popular_avid_list(category=..., page=...)` | `GET /api/v1/bilibili/huahuo/popular_avid_list` | 视频榜单/Get Huahuo video rankings |
+| `popular_goods_industry_up_list(x_huo_industry_id, page=...)` | `GET /api/v1/bilibili/huahuo/popular_goods_industry_up_list` | 行业带货UP主榜/Get commerce creators by industry |
+| `popular_goods_list(x_huo_industry_id, page=..., rank_type=..., data_cycle=..., min_goods_price=..., max_goods_price=...)` | `GET /api/v1/bilibili/huahuo/popular_goods_list` | X火商品榜/Get X-Huo product rankings |
+| `popular_goods_up_list(goods_id, page=...)` | `GET /api/v1/bilibili/huahuo/popular_goods_up_list` | 商品带货UP主榜/Get creators ranked for a product |
+| `popular_up_list(rank_cate=..., tid_name=..., page=...)` | `GET /api/v1/bilibili/huahuo/popular_up_list` | UP主榜单/Get creator rankings |
+| `popular_up_tid_drop()` | `GET /api/v1/bilibili/huahuo/popular_up_tid_drop` | UP主榜单分区下拉/Get creator ranking categories |
+| `popular_up_x_huo(x_huo_industry_id, rank_date_type=..., rank_date=..., page=...)` | `GET /api/v1/bilibili/huahuo/popular_up_x_huo` | X火种草榜/Get X-Huo creator rankings |
+| `region_drop()` | `GET /api/v1/bilibili/huahuo/region_drop` | 地域下拉/Get region options |
+| `search_live_upper(nickname_or_mids=..., mids=..., is_brand_live=..., gender=..., region_id=..., second_region_id=..., min_fans_num=..., max_fans_num=..., fans_gender_tag=..., fans_age_tag=..., fans_region_tag=..., live_subarea_id=..., partition_id=..., second_partition_id=..., min_popularity=..., max_popularity=..., live_audience_h_avg_30d_min=..., live_audience_h_avg_30d_max=..., live_danmu_h_avg_30d_min=..., live_danmu_h_avg_30d_max=..., live_guild_id=..., high_potential_type=..., live_good_category=..., live_good_gmv=..., order_by=..., sort=..., page=...)` | `POST /api/v1/bilibili/huahuo/search_live_upper` | 直播广场搜索/Search live creators |
+| `search_upper(nickname_or_mids=..., main_search=..., mids=..., upper_mid=..., folder_id=..., marketing_target=..., panel_type=..., order_by=..., sort=..., page=..., request_id=..., gender=..., min_fans_num=..., max_fans_num=..., region_id=..., second_region_id=..., partition_id=..., second_partition_id=..., mcn_ids=..., provider_id=..., upper_types=..., only_contract=..., is_painter_order=..., fans_age_tag=..., fans_gender_tag=..., fans_region_tag=..., fans_stick=..., av_active=..., av_active_tag=..., dmp_group_id=..., category_dmp_group_id=..., category_dmp_label=..., dmp_pkg_name=..., dmp_pkg_vertical_rate_gte=..., dmp_pkg_vertical_rate_lte=..., dmp_pkg_effect_rate_gte=..., dmp_pkg_effect_rate_lte=..., dmp_pkg_fan_rate_gte=..., dmp_pkg_fan_rate_lte=..., min_task_price=..., max_task_price=..., price_info=..., last_7_days_set_price=..., last_14_days_set_price=..., last_30_days_set_price=..., min_interact_rate=..., max_interact_rate=..., blue_url_ctr_gte=..., blue_url_ctr_lt=..., blue_url_click_cost_gte=..., blue_url_click_cost_lt=..., min_play_median=..., max_play_median=..., play_median_traffic_type=..., play_median_cycle=..., min_cpm=..., max_cpm=..., cpm_type=..., cpm_cycle=..., min_cpc=..., max_cpc=..., cpc_traffic_type=..., cpc_cycle=..., cpe_gte=..., cpe_lt=..., cpe_traffic_type=..., cpe_cycle=..., draft_duration=..., min_avid_cnt=..., max_avid_cnt=..., min_hot_avid_rate=..., max_hot_avid_rate=..., half_min_hot_avid_cnt=..., half_max_hot_avid_cnt=..., entry_cost_min=..., entry_cost_max=..., av_honor=..., cooperate_experience_industry_ids=..., cooperate_experience_type=..., special_tags=..., spark_tag=..., square_tag_in=..., label_array=..., bdata_tag_lv5=..., huahuo_first_industry_ids=..., huahuo_second_industry_ids=..., huahuo_third_industry_ids=..., goods_permission=..., goods_up_levels=..., goods_category_first_ids=..., goods_category_second_ids=..., goods_gpm_min=..., goods_gpm_max=..., goods_ctr_min=..., goods_ctr_max=..., goods_ctr_type=..., goods_avg_price_min=..., goods_avg_price_max=..., goods_is_high_video_play_permeate=..., goods_is_high_fans_play_permeate=..., is_boosting=..., is_treasure_up=..., is_timely_response=..., is_new_enter=..., custom_video_pricing_set=..., is_x_plan_better_up=..., high_potential_type=...)` | `POST /api/v1/bilibili/huahuo/search_upper` | UP主广场搜索（搜UP主 / 搜内容）/Search Huahuo creators or content |
+| `search_upper_suggest(nickname_or_mids, page=..., panel_type=..., marketing_target=..., cpm_type=..., cpm_cycle=..., play_median_traffic_type=..., play_median_cycle=...)` | `GET /api/v1/bilibili/huahuo/search_upper_suggest` | UP主搜索联想/Search creator suggestions |
+| `square_static_info()` | `GET /api/v1/bilibili/huahuo/square_static_info` | 广场筛选字典/Get creator marketplace filter dictionaries |
+| `tag_character()` | `GET /api/v1/bilibili/huahuo/tag_character` | 人设标签字典/Get persona tags |
+| `tag_commercial()` | `GET /api/v1/bilibili/huahuo/tag_commercial` | 商业标签字典/Get commercial tags |
+| `tag_occupation()` | `GET /api/v1/bilibili/huahuo/tag_occupation` | 职业标签字典/Get occupation tags |
+| `upper_archive_highlights(upper_mid, day_range=...)` | `GET /api/v1/bilibili/huahuo/upper_archive_highlights` | UP主稿件高光/Get creator video highlights |
+| `upper_base_info(mid)` | `GET /api/v1/bilibili/huahuo/upper_base_info` | UP主基础信息/Get creator basic information |
+| `upper_busy_time(mid)` | `GET /api/v1/bilibili/huahuo/upper_busy_time` | UP主档期占用/Get creator unavailable dates |
+| `upper_by_nickname(nickname)` | `GET /api/v1/bilibili/huahuo/upper_by_nickname` | 按昵称查UP主/Find creators by nickname |
+| `upper_detail(upper_mid)` | `GET /api/v1/bilibili/huahuo/upper_detail` | UP主详情/Get creator profile |
+| `upper_draft_performance(upper_mid, day_range=...)` | `GET /api/v1/bilibili/huahuo/upper_draft_performance` | UP主稿件表现/Get creator video performance |
+| `upper_draft_trend(upper_mid, trend_type=...)` | `GET /api/v1/bilibili/huahuo/upper_draft_trend` | UP主稿件数据趋势/Get creator video metric trends |
+| `upper_fans_trend(upper_mid, query_type=...)` | `GET /api/v1/bilibili/huahuo/upper_fans_trend` | UP主粉丝增长趋势/Get creator follower trends |
+| `upper_label_tree(panel_type=...)` | `GET /api/v1/bilibili/huahuo/upper_label_tree` | 搜UP主筛选面板配置/Get creator filter panel configuration |
+| `upper_overlap_uppers(upper_mid, fans_range=..., page=...)` | `GET /api/v1/bilibili/huahuo/upper_overlap_uppers` | 粉丝重合UP主/Get creators with overlapping audiences |
+| `upper_representative(upper_mid, type=...)` | `GET /api/v1/bilibili/huahuo/upper_representative` | UP主代表作/Get creator representative videos |
+| `upper_seek_info(mid)` | `GET /api/v1/bilibili/huahuo/upper_seek_info` | UP主询单配置/Get creator inquiry settings |
+| `upper_similar(upper_mid)` | `GET /api/v1/bilibili/huahuo/upper_similar` | 内容相似UP主/Get creators with similar content |
+| `x_huo_date_options(rank_date_type=...)` | `GET /api/v1/bilibili/huahuo/x_huo_date_options` | X火榜可选期数/Get X-Huo ranking periods |
+| `x_huo_industry_drop(scene=...)` | `GET /api/v1/bilibili/huahuo/x_huo_industry_drop` | X火榜行业下拉/Get X-Huo ranking industries |
 
 ## `client.bilibili_web`
 
 **Class:** `tikhub.resources.bilibili_web.BilibiliWeb` (sync) / `AsyncBilibiliWeb` (async)
 
-**Endpoints:** 30
+**Endpoints:** 31
 
 | Method | Endpoint | Summary |
 |---|---|---|
@@ -109,10 +160,11 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_one_video_v3(url)` | `GET /api/v1/bilibili/web/fetch_one_video_v3` | 获取单个视频详情信息V3/Get single video data V3 |
 | `fetch_user_collection_videos(folder_id, pn=...)` | `GET /api/v1/bilibili/web/fetch_user_collection_videos` | 获取指定收藏夹内视频数据/Gets video data from a collection folder |
 | `fetch_user_dynamic(uid, offset=...)` | `GET /api/v1/bilibili/web/fetch_user_dynamic` | 获取指定用户动态/Get dynamic information of specified user |
-| `fetch_user_post_videos(uid, pn=..., order=...)` | `GET /api/v1/bilibili/web/fetch_user_post_videos` | 获取用户主页作品数据/Get user homepage video data |
+| `fetch_user_post_videos(uid, pn=..., ps=..., order=...)` | `GET /api/v1/bilibili/web/fetch_user_post_videos` | 获取用户主页作品数据/Get user homepage video data |
+| `fetch_user_post_videos_v2(uid, pn=..., ps=..., keyword=...)` | `GET /api/v1/bilibili/web/fetch_user_post_videos_v2` | 获取用户主页作品数据V2/Get user homepage video data V2 |
 | `fetch_user_profile(uid)` | `GET /api/v1/bilibili/web/fetch_user_profile` | 获取指定用户的信息/Get information of specified user |
 | `fetch_user_relation_stat(uid)` | `GET /api/v1/bilibili/web/fetch_user_relation_stat` | 获取用户关系状态统计/Get user relation stat (following and followers) |
-| `fetch_user_up_stat(uid)` | `GET /api/v1/bilibili/web/fetch_user_up_stat` | 获取UP主状态统计/Get UP stat (total likes and views) |
+| `fetch_user_up_stat(uid)` | `GET /api/v1/bilibili/web/fetch_user_up_stat` | 获取UP主状态统计/Get UP stat (total views and likes) |
 | `fetch_video_comments(bv_id, pn=...)` | `GET /api/v1/bilibili/web/fetch_video_comments` | 获取指定视频的评论/Get comments on the specified video |
 | `fetch_video_danmaku(cid)` | `GET /api/v1/bilibili/web/fetch_video_danmaku` | 获取视频实时弹幕/Get Video Danmaku |
 | `fetch_video_detail(aid)` | `GET /api/v1/bilibili/web/fetch_video_detail` | 获取单个视频详情/Get single video detail |
@@ -144,27 +196,22 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 
 **Class:** `tikhub.resources.douyin_app_v3.DouyinAppV3` (sync) / `AsyncDouyinAppV3` (async)
 
-**Endpoints:** 46
+**Endpoints:** 38
 
 | Method | Endpoint | Summary |
 |---|---|---|
-| `add_video_play_count(aweme_type, item_id, cookie=...)` | `GET /api/v1/douyin/app/v3/add_video_play_count` | 根据视频ID来增加作品的播放数/Increase the number of plays of the work according to the video ID |
 | `fetch_brand_hot_search_list()` | `GET /api/v1/douyin/app/v3/fetch_brand_hot_search_list` | 获取抖音品牌热榜分类数据/Get Douyin brand hot search list data |
 | `fetch_brand_hot_search_list_detail(category_id)` | `GET /api/v1/douyin/app/v3/fetch_brand_hot_search_list_detail` | 获取抖音品牌热榜具体分类数据/Get Douyin brand hot search list detail data |
-| `fetch_general_search_result(keyword, offset=..., count=..., sort_type=..., publish_time=..., filter_duration=..., content_type=...)` | `GET /api/v1/douyin/app/v3/fetch_general_search_result` | 获取指定关键词的综合搜索结果（弃用，替代接口见下方文档说明）/Get comprehensive search results of specified keywords (deprecated, see the documentation |
 | `fetch_hashtag_detail(ch_id)` | `GET /api/v1/douyin/app/v3/fetch_hashtag_detail` | 获取指定话题的详情数据/Get details of specified hashtag |
-| `fetch_hashtag_search_result(keyword, offset=..., count=...)` | `GET /api/v1/douyin/app/v3/fetch_hashtag_search_result` | 获取指定关键词的话题搜索结果（弃用，替代接口见下方文档说明）/Get hashtag search results of specified keywords (deprecated, see the documentation below |
 | `fetch_hashtag_video_list(ch_id, cursor=..., sort_type=..., count=...)` | `GET /api/v1/douyin/app/v3/fetch_hashtag_video_list` | 获取指定话题的作品数据/Get video list of specified hashtag |
 | `fetch_hot_search_list(board_type=..., board_sub_type=...)` | `GET /api/v1/douyin/app/v3/fetch_hot_search_list` | 获取抖音热搜榜数据/Get Douyin hot search list data |
 | `fetch_live_hot_search_list()` | `GET /api/v1/douyin/app/v3/fetch_live_hot_search_list` | 获取抖音直播热搜榜数据/Get Douyin live hot search list data |
-| `fetch_live_search_result(keyword, cursor=..., count=...)` | `GET /api/v1/douyin/app/v3/fetch_live_search_result` | 获取指定关键词的直播搜索结果（弃用，替代接口见下方文档说明）/Get live search results of specified keywords (deprecated, see the documentation below fo |
 | `fetch_multi_video(body)` | `POST /api/v1/douyin/app/v3/fetch_multi_video` | 批量获取视频信息 V1/Batch Get Video Information V1 |
 | `fetch_multi_video_high_quality_play_url(aweme_ids=..., region=...)` | `POST /api/v1/douyin/app/v3/fetch_multi_video_high_quality_play_url` | 批量获取视频的最高画质播放链接/Batch get the highest quality play URL of videos |
 | `fetch_multi_video_statistics(aweme_ids)` | `GET /api/v1/douyin/app/v3/fetch_multi_video_statistics` | 根据视频ID批量获取作品的统计数据（点赞数、下载数、播放数、分享数）/Get the statistical data of the Post according to the video ID (like count, download  |
 | `fetch_multi_video_v2(body)` | `POST /api/v1/douyin/app/v3/fetch_multi_video_v2` | 批量获取视频信息 V2/Batch Get Video Information V2 |
 | `fetch_music_detail(music_id)` | `GET /api/v1/douyin/app/v3/fetch_music_detail` | 获取指定音乐的详情数据/Get details of specified music |
 | `fetch_music_hot_search_list(chart_type=..., cursor=...)` | `GET /api/v1/douyin/app/v3/fetch_music_hot_search_list` | 获取抖音音乐榜数据/Get Douyin music hot search list data |
-| `fetch_music_search_result(keyword, offset=..., count=...)` | `GET /api/v1/douyin/app/v3/fetch_music_search_result` | 获取指定关键词的音乐搜索结果（弃用，替代接口见下方文档说明）/Get music search results of specified keywords (deprecated, see the documentation below f |
 | `fetch_music_video_list(music_id, cursor=..., count=...)` | `GET /api/v1/douyin/app/v3/fetch_music_video_list` | 获取指定音乐的视频列表数据/Get video list of specified music |
 | `fetch_one_video(aweme_id)` | `GET /api/v1/douyin/app/v3/fetch_one_video` | 获取单个作品数据/Get single video data |
 | `fetch_one_video_by_share_url(share_url)` | `GET /api/v1/douyin/app/v3/fetch_one_video_by_share_url` | 根据分享链接获取单个作品数据/Get single video data by sharing link |
@@ -174,17 +221,14 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_series_video_list(series_id, cursor=...)` | `GET /api/v1/douyin/app/v3/fetch_series_video_list` | 获取短剧视频列表/Get series video list |
 | `fetch_share_info_by_share_code(share_code)` | `GET /api/v1/douyin/app/v3/fetch_share_info_by_share_code` | 根据分享口令获取分享信息/Get share info by share code |
 | `fetch_user_fans_list(sec_user_id=..., max_time=..., count=...)` | `GET /api/v1/douyin/app/v3/fetch_user_fans_list` | 获取用户粉丝列表/Get user fans list |
-| `fetch_user_following_list(sec_user_id=..., max_time=..., count=...)` | `GET /api/v1/douyin/app/v3/fetch_user_following_list` | 获取用户关注列表 (弃用，使用 /api/v1/douyin/web/fetch_user_following_list 替代)/Get user following list (Deprecated, use /api/v1/douyin |
 | `fetch_user_like_videos(sec_user_id, max_cursor=..., counts=...)` | `GET /api/v1/douyin/app/v3/fetch_user_like_videos` | 获取用户喜欢作品数据/Get user like video data |
-| `fetch_user_post_videos(sec_user_id, max_cursor=..., count=..., sort_type=...)` | `GET /api/v1/douyin/app/v3/fetch_user_post_videos` | 获取用户主页作品数据/Get user homepage video data |
-| `fetch_user_search_result(keyword, offset=..., count=..., douyin_user_fans=..., douyin_user_type=...)` | `GET /api/v1/douyin/app/v3/fetch_user_search_result` | 获取指定关键词的用户搜索结果（弃用，替代接口见下方文档说明）/Get user search results of specified keywords (deprecated, see the documentation below fo |
+| `fetch_user_post_videos(sec_user_id, max_cursor=..., count=..., sort_type=..., channel=...)` | `GET /api/v1/douyin/app/v3/fetch_user_post_videos` | 获取用户主页作品数据/Get user homepage video data |
 | `fetch_user_series_list(user_id=..., sec_user_id=..., cursor=...)` | `GET /api/v1/douyin/app/v3/fetch_user_series_list` | 获取用户短剧合集列表/Get user series list |
 | `fetch_video_comment_replies(item_id, comment_id, cursor=..., count=...)` | `GET /api/v1/douyin/app/v3/fetch_video_comment_replies` | 获取指定视频的评论回复数据/Get comment replies data of specified video |
 | `fetch_video_comments(aweme_id, cursor=..., count=...)` | `GET /api/v1/douyin/app/v3/fetch_video_comments` | 获取单个视频评论数据/Get single video comments data |
 | `fetch_video_high_quality_play_url(aweme_id=..., share_url=..., region=...)` | `GET /api/v1/douyin/app/v3/fetch_video_high_quality_play_url` | 获取视频的最高画质播放链接/Get the highest quality play URL of the video |
 | `fetch_video_mix_detail(mix_id)` | `GET /api/v1/douyin/app/v3/fetch_video_mix_detail` | 获取抖音视频合集详情数据/Get Douyin video mix detail data |
 | `fetch_video_mix_post_list(mix_id, cursor=..., count=...)` | `GET /api/v1/douyin/app/v3/fetch_video_mix_post_list` | 获取抖音视频合集作品列表数据/Get Douyin video mix post list data |
-| `fetch_video_search_result(keyword, offset=..., count=..., sort_type=..., publish_time=..., filter_duration=...)` | `GET /api/v1/douyin/app/v3/fetch_video_search_result` | 获取指定关键词的视频搜索结果（弃用，替代接口见下方文档说明）/Get video search results of specified keywords (deprecated, see the documentation below f |
 | `fetch_video_statistics(aweme_ids)` | `GET /api/v1/douyin/app/v3/fetch_video_statistics` | 根据视频ID获取作品的统计数据（点赞数、下载数、播放数、分享数）/Get the statistical data of the Post according to the video ID (like count, download co |
 | `generate_douyin_short_url(url)` | `GET /api/v1/douyin/app/v3/generate_douyin_short_url` | 生成抖音短链接/Generate Douyin short link |
 | `generate_douyin_video_share_qrcode(object_id)` | `GET /api/v1/douyin/app/v3/generate_douyin_video_share_qrcode` | 生成抖音视频分享二维码/Generate Douyin video share QR code |
@@ -221,18 +265,18 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_hot_comment_word_list(aweme_id)` | `GET /api/v1/douyin/billboard/fetch_hot_comment_word_list` | 获取作品评论分析-词云权重/Fetch work comment analysis word cloud weight |
 | `fetch_hot_item_trends_list(aweme_id=..., option=..., date_window=...)` | `GET /api/v1/douyin/billboard/fetch_hot_item_trends_list` | 获取作品数据趋势/Fetch post data trend |
 | `fetch_hot_rise_list(page, page_size, order, sentence_tag=..., keyword=...)` | `GET /api/v1/douyin/billboard/fetch_hot_rise_list` | 获取上升热点榜/Fetch rising hot list |
-| `fetch_hot_total_high_fan_list(page=..., page_size=..., date_window=..., tags=...)` | `POST /api/v1/douyin/billboard/fetch_hot_total_high_fan_list` | 获取高涨粉率榜/Fetch high fan rate list |
-| `fetch_hot_total_high_like_list(page=..., page_size=..., date_window=..., tags=...)` | `POST /api/v1/douyin/billboard/fetch_hot_total_high_like_list` | 获取高点赞率榜/Fetch high like rate list |
-| `fetch_hot_total_high_play_list(page=..., page_size=..., date_window=..., tags=...)` | `POST /api/v1/douyin/billboard/fetch_hot_total_high_play_list` | 获取高完播率榜/Fetch high completion rate list |
+| `fetch_hot_total_high_fan_list(page=..., page_size=..., date_window=..., keyword=..., tags=...)` | `POST /api/v1/douyin/billboard/fetch_hot_total_high_fan_list` | 获取高涨粉率榜/Fetch high fan rate list |
+| `fetch_hot_total_high_like_list(page=..., page_size=..., date_window=..., keyword=..., tags=...)` | `POST /api/v1/douyin/billboard/fetch_hot_total_high_like_list` | 获取高点赞率榜/Fetch high like rate list |
+| `fetch_hot_total_high_play_list(page=..., page_size=..., date_window=..., keyword=..., tags=...)` | `POST /api/v1/douyin/billboard/fetch_hot_total_high_play_list` | 获取高完播率榜/Fetch high completion rate list |
 | `fetch_hot_total_high_search_list(page_num=..., page_size=..., date_window=..., keyword=...)` | `POST /api/v1/douyin/billboard/fetch_hot_total_high_search_list` | 获取热度飙升的搜索榜/Fetch search list with rising popularity |
-| `fetch_hot_total_high_topic_list(page=..., page_size=..., date_window=..., tags=...)` | `POST /api/v1/douyin/billboard/fetch_hot_total_high_topic_list` | 获取热度飙升的话题榜/Fetch topic list with rising popularity |
+| `fetch_hot_total_high_topic_list(page=..., page_size=..., date_window=..., keyword=..., tags=...)` | `POST /api/v1/douyin/billboard/fetch_hot_total_high_topic_list` | 获取热度飙升的话题榜/Fetch topic list with rising popularity |
 | `fetch_hot_total_hot_word_detail_list(keyword, word_id, query_day)` | `GET /api/v1/douyin/billboard/fetch_hot_total_hot_word_detail_list` | 获取内容词详情/Fetch content word details |
 | `fetch_hot_total_hot_word_list(page_num=..., page_size=..., date_window=..., keyword=...)` | `POST /api/v1/douyin/billboard/fetch_hot_total_hot_word_list` | 获取全部热门内容词/Fetch all hot content words |
 | `fetch_hot_total_list(page, page_size, type, snapshot_time=..., start_date=..., end_date=..., sentence_tag=..., keyword=...)` | `GET /api/v1/douyin/billboard/fetch_hot_total_list` | 获取热点总榜/Fetch total hot list |
-| `fetch_hot_total_low_fan_list(page=..., page_size=..., date_window=..., tags=...)` | `POST /api/v1/douyin/billboard/fetch_hot_total_low_fan_list` | 获取低粉爆款榜/Fetch low fan explosion list |
+| `fetch_hot_total_low_fan_list(page=..., page_size=..., date_window=..., keyword=..., tags=...)` | `POST /api/v1/douyin/billboard/fetch_hot_total_low_fan_list` | 获取低粉爆款榜/Fetch low fan explosion list |
 | `fetch_hot_total_search_list(page_num=..., page_size=..., date_window=..., keyword=...)` | `POST /api/v1/douyin/billboard/fetch_hot_total_search_list` | 获取搜索热榜/Fetch search hot list |
-| `fetch_hot_total_topic_list(page=..., page_size=..., date_window=..., tags=...)` | `POST /api/v1/douyin/billboard/fetch_hot_total_topic_list` | 获取话题热榜/Fetch topic hot list |
-| `fetch_hot_total_video_list(page=..., page_size=..., date_window=..., sub_type=..., tags=...)` | `POST /api/v1/douyin/billboard/fetch_hot_total_video_list` | 获取视频热榜/Fetch video hot list |
+| `fetch_hot_total_topic_list(page=..., page_size=..., date_window=..., keyword=..., tags=...)` | `POST /api/v1/douyin/billboard/fetch_hot_total_topic_list` | 获取话题热榜/Fetch topic hot list |
+| `fetch_hot_total_video_list(page=..., page_size=..., date_window=..., sub_type=..., keyword=..., tags=...)` | `POST /api/v1/douyin/billboard/fetch_hot_total_video_list` | 获取视频热榜/Fetch video hot list |
 | `fetch_hot_user_portrait_list(aweme_id, option=...)` | `GET /api/v1/douyin/billboard/fetch_hot_user_portrait_list` | 获取作品点赞观众画像-仅限热门榜/Fetch work like audience portrait - hot list only |
 
 ## `client.douyin_creator`
@@ -284,11 +328,37 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_item_watch_trend(cookie, item_id, analysis_type=...)` | `POST /api/v1/douyin/creator_v2/fetch_item_watch_trend` | 获取作品观看趋势分析/Fetch item watch trend analysis |
 | `fetch_live_room_history_list(cookie, start_date, end_date, limit=..., need_living=..., download=...)` | `POST /api/v1/douyin/creator_v2/fetch_live_room_history_list` | 获取直播场次历史记录/Fetch live room history list |
 
+## `client.douyin_douplus`
+
+**Class:** `tikhub.resources.douyin_douplus.DouyinDouplus` (sync) / `AsyncDouyinDouplus` (async)
+
+**Endpoints:** 17
+
+| Method | Endpoint | Summary |
+|---|---|---|
+| `calculate_cost(cookie, sec_uid, item_ids, target_id=...)` | `POST /api/v1/douyin/douplus/calculate_cost` | DOU+成本计算/DOU+ cost estimation |
+| `fetch_analyse_detail(cookie, query)` | `POST /api/v1/douyin/douplus/fetch_analyse_detail` | 投放数据明细/Delivery analysis detail |
+| `fetch_analyse_graph(cookie, query)` | `POST /api/v1/douyin/douplus/fetch_analyse_graph` | 投放数据趋势图/Delivery analysis trend graph |
+| `fetch_analyse_overview(cookie, query)` | `POST /api/v1/douyin/douplus/fetch_analyse_overview` | 投放数据概览(账号/视频/直播)/Delivery analysis overview |
+| `fetch_delivery_effect_estimate(item_ids, external_action=..., target_id=..., schema=..., is_max_cv=..., pay_type=..., cost_int=..., duration_seconds=...)` | `POST /api/v1/douyin/douplus/fetch_delivery_effect_estimate` | 获取DOU+预计投放效果/Get DOU+ estimated delivery results |
+| `fetch_promotable_item_list(sec_uid, count=..., target_id=..., aim_ids=...)` | `POST /api/v1/douyin/douplus/fetch_promotable_item_list` | 获取可推广作品列表(含点赞评论量)/Get promotable item list (with like & comment counts) |
+| `fetch_promoted_accounts(cookie, limit=..., cursor=...)` | `POST /api/v1/douyin/douplus/fetch_promoted_accounts` | 获取投放过的账号/Get promoted accounts |
+| `fetch_sec_token(cookie)` | `POST /api/v1/douyin/douplus/fetch_sec_token` | 获取DOU+ POST请求所需的sec_token/Get DOU+ sec_token for POST requests |
+| `fetch_talent_categories(cookie=...)` | `POST /api/v1/douyin/douplus/fetch_talent_categories` | 获取达人分类/Get talent categories |
+| `fetch_talents_by_category(cookie=..., name=..., page=..., limit=...)` | `POST /api/v1/douyin/douplus/fetch_talents_by_category` | 按分类搜索达人/Search talents by category |
+| `fetch_user_posts(sec_uid, cookie=..., cursor=..., count=...)` | `POST /api/v1/douyin/douplus/fetch_user_posts` | 获取用户主页作品/Get user homepage posts |
+| `fetch_video_detail(video, cookie=...)` | `POST /api/v1/douyin/douplus/fetch_video_detail` | 获取视频详情(按ID或链接)/Get video detail (by id or link) |
+| `fetch_video_ranking(time_range=..., tag_id=..., dim_type=..., adv_id=...)` | `POST /api/v1/douyin/douplus/fetch_video_ranking` | 获取 DOU+ 视频排行榜/Get DOU+ video ranking |
+| `search_live_room(keyword, cookie=..., cursor=..., count=...)` | `POST /api/v1/douyin/douplus/search_live_room` | 搜索直播间(抖音号/昵称)/Search live rooms (by Douyin ID or nickname) |
+| `search_user(keyword, count=..., cursor=...)` | `POST /api/v1/douyin/douplus/search_user` | 搜索 DOU+ 用户/Search DOU+ user |
+| `search_user_v2(keyword, cookie=..., cursor=..., count=..., scope=...)` | `POST /api/v1/douyin/douplus/search_user_v2` | 搜索用户 V2/Search user V2 |
+| `search_video(keyword, cookie=..., cursor=..., count=...)` | `POST /api/v1/douyin/douplus/search_video` | 搜索视频(按标题)/Search videos (by title) |
+
 ## `client.douyin_index`
 
 **Class:** `tikhub.resources.douyin_index.DouyinIndex` (sync) / `AsyncDouyinIndex` (async)
 
-**Endpoints:** 44
+**Endpoints:** 51
 
 | Method | Endpoint | Summary |
 |---|---|---|
@@ -320,12 +390,19 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_daren_sug_great_user_list(keyword, total=...)` | `POST /api/v1/douyin/index/fetch_daren_sug_great_user_list` | 达人搜索建议/Daren search suggest |
 | `fetch_encrypt_user_id(uid)` | `GET /api/v1/douyin/index/fetch_encrypt_user_id` | 抖音 uid 转加密 user_id/Encrypt Douyin uid to user_id |
 | `fetch_get_user_sub_word()` | `POST /api/v1/douyin/index/fetch_get_user_sub_word` | 获取用户订阅关键词/Get user subscribed keywords |
+| `fetch_hot_detail(topic_name)` | `GET /api/v1/douyin/index/fetch_hot_detail` | 获取热点详情分析/Get hot topic detail |
+| `fetch_hot_trend_word(app_name=..., type=...)` | `GET /api/v1/douyin/index/fetch_hot_trend_word` | 获取热门推荐词/Get hot trend words |
 | `fetch_hot_words(app_name=...)` | `GET /api/v1/douyin/index/fetch_hot_words` | 获取热门关键词/Get hot words |
 | `fetch_insight_get_rec(report_id)` | `GET /api/v1/douyin/index/fetch_insight_get_rec` | 获取报告相关推荐/Get related insight recommendations |
 | `fetch_insight_recommend()` | `GET /api/v1/douyin/index/fetch_insight_recommend` | 获取推荐报告/Get recommended insight reports |
+| `fetch_item_analysis(item_id, start_date, end_date)` | `POST /api/v1/douyin/index/fetch_item_analysis` | 获取视频对比分析/Get video comparison analysis |
+| `fetch_item_base(item_id)` | `POST /api/v1/douyin/index/fetch_item_base` | 获取视频详情/Get video detail |
 | `fetch_item_filter_options()` | `GET /api/v1/douyin/index/fetch_item_filter_options` | 获取视频搜索筛选选项/Get video search filter options |
+| `fetch_item_index(item_id, start_date, end_date)` | `POST /api/v1/douyin/index/fetch_item_index` | 获取视频指数趋势/Get video index trend |
+| `fetch_item_index_interpret(item_id, start_date, end_date)` | `POST /api/v1/douyin/index/fetch_item_index_interpret` | 获取视频指数解读/Get video index interpretation |
 | `fetch_item_query(query, category_id=..., date_type=..., label_type=..., duration_type=...)` | `POST /api/v1/douyin/index/fetch_item_query` | 视频搜索结果/Video search results |
 | `fetch_item_sug(query)` | `POST /api/v1/douyin/index/fetch_item_sug` | 视频搜索建议/Video search suggest |
+| `fetch_item_user_profile(item_id, start_date, end_date)` | `POST /api/v1/douyin/index/fetch_item_user_profile` | 获取视频观众分析/Get video audience profile |
 | `fetch_keyword_valid_date(keyword_list)` | `POST /api/v1/douyin/index/fetch_keyword_valid_date` | 获取关键词有效日期/Get keyword valid date |
 | `fetch_multi_keyword_hot_trend(keyword_list, start_date, end_date, app_name=..., region=...)` | `POST /api/v1/douyin/index/fetch_multi_keyword_hot_trend` | 获取多关键词热度趋势/Get multi-keyword hot trend |
 | `fetch_multi_keyword_interpretation(keyword_list, start_date, end_date, app_name=..., region=...)` | `POST /api/v1/douyin/index/fetch_multi_keyword_interpretation` | 获取多关键词解读/Get multi-keyword interpretation |
@@ -341,7 +418,7 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 
 **Class:** `tikhub.resources.douyin_search.DouyinSearch` (sync) / `AsyncDouyinSearch` (async)
 
-**Endpoints:** 19
+**Endpoints:** 23
 
 | Method | Endpoint | Summary |
 |---|---|---|
@@ -352,28 +429,31 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_experience_search(keyword=..., cursor=..., sort_type=..., publish_time=..., filter_duration=..., content_type=..., search_id=..., backtrace=...)` | `POST /api/v1/douyin/search/fetch_experience_search` | 获取经验搜索/Fetch experience search |
 | `fetch_general_search_v1(keyword=..., cursor=..., sort_type=..., publish_time=..., filter_duration=..., content_type=..., search_id=..., backtrace=...)` | `POST /api/v1/douyin/search/fetch_general_search_v1` | 获取综合搜索 V1/Fetch general search V1 |
 | `fetch_general_search_v2(keyword=..., cursor=..., sort_type=..., publish_time=..., filter_duration=..., content_type=..., search_id=..., backtrace=...)` | `POST /api/v1/douyin/search/fetch_general_search_v2` | 获取综合搜索 V2/Fetch general search V2 |
+| `fetch_general_search_v3(keyword=..., offset=..., page=..., search_id=..., backtrace=...)` | `POST /api/v1/douyin/search/fetch_general_search_v3` | 获取综合搜索 V3/Fetch general search V3 |
 | `fetch_image_search(keyword=..., cursor=..., sort_type=..., publish_time=..., filter_duration=..., content_type=..., search_id=..., backtrace=...)` | `POST /api/v1/douyin/search/fetch_image_search` | 获取图片搜索/Fetch image search |
 | `fetch_image_search_v3(keyword, cursor=..., search_id=...)` | `POST /api/v1/douyin/search/fetch_image_search_v3` | 获取图文搜索 V3/Fetch image-text search V3 |
-| `fetch_live_search_v1(keyword=..., cursor=..., sort_type=..., publish_time=..., filter_duration=..., content_type=..., search_id=..., backtrace=...)` | `POST /api/v1/douyin/search/fetch_live_search_v1` | 获取直播搜索 V1/Fetch live search V1 |
+| `fetch_live_search_v2(keyword=..., cursor=...)` | `POST /api/v1/douyin/search/fetch_live_search_v2` | 获取直播搜索 V2/Fetch live search V2 |
 | `fetch_multi_search(keyword=..., cursor=..., sort_type=..., publish_time=..., filter_duration=..., content_type=..., search_id=..., backtrace=...)` | `POST /api/v1/douyin/search/fetch_multi_search` | 获取多重搜索/Fetch multi-type search |
 | `fetch_music_search(keyword=..., cursor=..., sort_type=..., publish_time=..., filter_duration=..., content_type=..., search_id=..., backtrace=...)` | `POST /api/v1/douyin/search/fetch_music_search` | 获取音乐搜索/Fetch music search |
 | `fetch_school_search(keyword=...)` | `POST /api/v1/douyin/search/fetch_school_search` | 获取学校搜索/Fetch school search |
 | `fetch_search_suggest(keyword=...)` | `POST /api/v1/douyin/search/fetch_search_suggest` | 获取搜索关键词推荐/Fetch search keyword suggestions |
+| `fetch_search_suggest_v2(keyword=..., history_words=...)` | `POST /api/v1/douyin/search/fetch_search_suggest_v2` | 获取搜索关键词推荐 V2/Fetch search keyword suggestions V2 |
 | `fetch_user_search(keyword=..., cursor=..., douyin_user_fans=..., douyin_user_type=..., search_id=...)` | `POST /api/v1/douyin/search/fetch_user_search` | 获取用户搜索/Fetch user search |
 | `fetch_user_search_v2(keyword=..., cursor=...)` | `POST /api/v1/douyin/search/fetch_user_search_v2` | 获取用户搜索 V2/Fetch user search V2 |
 | `fetch_video_search_v1(keyword=..., cursor=..., sort_type=..., publish_time=..., filter_duration=..., content_type=..., search_id=..., backtrace=...)` | `POST /api/v1/douyin/search/fetch_video_search_v1` | 获取视频搜索 V1/Fetch video search V1 |
 | `fetch_video_search_v2(keyword=..., cursor=..., sort_type=..., publish_time=..., filter_duration=..., content_type=..., search_id=..., backtrace=...)` | `POST /api/v1/douyin/search/fetch_video_search_v2` | 获取视频搜索 V2/Fetch video search V2 |
-| `fetch_vision_search(image_uri, cursor=..., search_id=..., search_source=..., detection=..., detection_index=..., user_query=..., aweme_id=...)` | `POST /api/v1/douyin/search/fetch_vision_search` | 获取图像识别搜索/Fetch vision search (image-based search) |
+| `fetch_video_search_v3(query=..., date_type=..., label_type=..., duration_type=...)` | `POST /api/v1/douyin/search/fetch_video_search_v3` | 获取视频搜索 V3/Fetch video search V3 |
+| `fetch_video_search_v4(keyword=..., cursor=...)` | `POST /api/v1/douyin/search/fetch_video_search_v4` | 获取视频搜索 V4/Fetch video search V4 |
+| `fetch_video_search_v5(keyword=..., offset=..., page=..., search_id=..., backtrace=...)` | `POST /api/v1/douyin/search/fetch_video_search_v5` | 获取视频搜索 V5/Fetch video search V5 |
 
 ## `client.douyin_web`
 
 **Class:** `tikhub.resources.douyin_web.DouyinWeb` (sync) / `AsyncDouyinWeb` (async)
 
-**Endpoints:** 68
+**Endpoints:** 55
 
 | Method | Endpoint | Summary |
 |---|---|---|
-| `douyin_live_room(live_room_url, danmaku_type)` | `GET /api/v1/douyin/web/douyin_live_room` | 提取直播间弹幕/Extract live room danmaku |
 | `encrypt_uid_to_sec_user_id(uid)` | `GET /api/v1/douyin/web/encrypt_uid_to_sec_user_id` | 加密用户uid到sec_user_id/Encrypt user uid to sec_user_id |
 | `fetch_batch_user_profile_v1(sec_user_ids)` | `GET /api/v1/douyin/web/fetch_batch_user_profile_v1` | 获取批量用户信息(最多10个)/Get batch user profile (up to 10) |
 | `fetch_batch_user_profile_v2(sec_user_ids)` | `GET /api/v1/douyin/web/fetch_batch_user_profile_v2` | 获取批量用户信息(最多50个)/Get batch user profile (up to 50) |
@@ -382,12 +462,11 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_douyin_web_guest_cookie(user_agent)` | `GET /api/v1/douyin/web/fetch_douyin_web_guest_cookie` | 获取抖音Web的游客Cookie/Get the guest Cookie of Douyin Web |
 | `fetch_food_aweme(count, refresh_index=..., cookie=...)` | `GET /api/v1/douyin/web/fetch_food_aweme` | 美食作品推荐/Food Video |
 | `fetch_game_aweme(count, refresh_index=..., cookie=...)` | `GET /api/v1/douyin/web/fetch_game_aweme` | 游戏作品推荐/Game Video |
-| `fetch_home_feed(count=..., refresh_index=...)` | `GET /api/v1/douyin/web/fetch_home_feed` | 获取首页推荐数据/Get home feed data |
+| `fetch_home_feed(count=..., refresh_index=..., cookie=...)` | `POST /api/v1/douyin/web/fetch_home_feed` | 获取首页推荐数据/Get home feed data |
 | `fetch_hot_search_result()` | `GET /api/v1/douyin/web/fetch_hot_search_result` | 获取抖音热榜数据/Get Douyin hot search results |
 | `fetch_knowledge_aweme(count, refresh_index=..., cookie=...)` | `GET /api/v1/douyin/web/fetch_knowledge_aweme` | 知识作品推荐/Knowledge Video |
 | `fetch_live_gift_ranking(room_id, rank_type=...)` | `GET /api/v1/douyin/web/fetch_live_gift_ranking` | 获取直播间送礼用户排行榜/Get live room gift user ranking |
 | `fetch_live_im_fetch(room_id, user_unique_id)` | `GET /api/v1/douyin/web/fetch_live_im_fetch` | 抖音直播间弹幕参数获取/Douyin live room danmaku parameters |
-| `fetch_live_room_product_result(room_id, author_id, offset=..., limit=...)` | `GET /api/v1/douyin/web/fetch_live_room_product_result` | 抖音直播间商品信息/Douyin live room product information |
 | `fetch_multi_video(body)` | `POST /api/v1/douyin/web/fetch_multi_video` | 批量获取视频信息/Batch Get Video Information |
 | `fetch_multi_video_high_quality_play_url(aweme_ids=..., region=...)` | `POST /api/v1/douyin/web/fetch_multi_video_high_quality_play_url` | 批量获取视频的最高画质播放链接/Batch get the highest quality play URL of videos |
 | `fetch_music_aweme(count, refresh_index=..., cookie=...)` | `GET /api/v1/douyin/web/fetch_music_aweme` | 音乐作品推荐/Music Video |
@@ -395,10 +474,6 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_one_video_by_share_url(share_url)` | `GET /api/v1/douyin/web/fetch_one_video_by_share_url` | 根据分享链接获取单个作品数据/Get single video data by sharing link |
 | `fetch_one_video_danmaku(item_id, duration, end_time, start_time)` | `GET /api/v1/douyin/web/fetch_one_video_danmaku` | 获取单个作品视频弹幕数据/Get single video danmaku data |
 | `fetch_one_video_v2(aweme_id)` | `GET /api/v1/douyin/web/fetch_one_video_v2` | 获取单个作品数据 V2/Get single video data V2 |
-| `fetch_product_coupon(product_id, shop_id, price, author_id, sec_user_id)` | `GET /api/v1/douyin/web/fetch_product_coupon` | 获取商品优惠券信息/Get product coupon information |
-| `fetch_product_review_list(product_id, shop_id, cursor=..., count=..., sort_type=...)` | `GET /api/v1/douyin/web/fetch_product_review_list` | 获取商品评价列表/Get product review list |
-| `fetch_product_review_score(product_id, shop_id)` | `GET /api/v1/douyin/web/fetch_product_review_score` | 获取商品评价评分/Get product review score |
-| `fetch_product_sku_list(product_id, author_id)` | `GET /api/v1/douyin/web/fetch_product_sku_list` | 获取商品SKU列表/Get product SKU list |
 | `fetch_query_user(body=...)` | `POST /api/v1/douyin/web/fetch_query_user` | 查询抖音用户基本信息/Query Douyin user basic information |
 | `fetch_related_posts(aweme_id, refresh_index=..., count=...)` | `GET /api/v1/douyin/web/fetch_related_posts` | 获取相关作品推荐数据/Get related posts recommendation data |
 | `fetch_series_aweme(offset, count, content_type, cookie=...)` | `GET /api/v1/douyin/web/fetch_series_aweme` | 短剧作品/Series Video |
@@ -410,25 +485,18 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_user_like_videos(sec_user_id, max_cursor=..., counts=..., cookie=...)` | `POST /api/v1/douyin/web/fetch_user_like_videos` | 获取用户喜欢作品数据/Get user like video data |
 | `fetch_user_live_info_by_uid(uid)` | `GET /api/v1/douyin/web/fetch_user_live_info_by_uid` | 使用UID获取用户开播信息/Get user live information by UID |
 | `fetch_user_live_videos(webcast_id)` | `GET /api/v1/douyin/web/fetch_user_live_videos` | 获取用户直播流数据/Get user live video data |
-| `fetch_user_live_videos_by_room_id(room_id)` | `GET /api/v1/douyin/web/fetch_user_live_videos_by_room_id` | 通过room_id获取指定用户的直播流数据 V1/Get live video data of specified user by room_id V1 |
 | `fetch_user_live_videos_by_room_id_v2(room_id)` | `GET /api/v1/douyin/web/fetch_user_live_videos_by_room_id_v2` | 通过room_id获取指定用户的直播流数据 V2/Gets the live stream data of the specified user by room_id V2 |
 | `fetch_user_live_videos_by_sec_uid(sec_uid)` | `GET /api/v1/douyin/web/fetch_user_live_videos_by_sec_uid` | 通过sec_uid获取指定用户的直播流数据/Get live video data of specified user by sec_uid |
 | `fetch_user_mix_videos(mix_id, max_cursor=..., counts=...)` | `GET /api/v1/douyin/web/fetch_user_mix_videos` | 获取用户合辑作品数据/Get user mix video data |
 | `fetch_user_post_videos(sec_user_id, max_cursor=..., count=..., filter_type=..., cookie=...)` | `GET /api/v1/douyin/web/fetch_user_post_videos` | 获取用户主页作品数据/Get user homepage video data |
 | `fetch_user_profile_by_short_id(short_id)` | `GET /api/v1/douyin/web/fetch_user_profile_by_short_id` | 使用Short ID获取用户信息/Get user information by Short ID |
 | `fetch_user_profile_by_uid(uid)` | `GET /api/v1/douyin/web/fetch_user_profile_by_uid` | 使用UID获取用户信息/Get user information by UID |
-| `fetch_user_search_result_v3(keyword, cursor=..., douyin_user_type=..., douyin_user_fans=...)` | `GET /api/v1/douyin/web/fetch_user_search_result_v3` | 获取指定关键词的用户搜索结果 V3 (已弃用，替代接口请参考下方文档)/Get user search results of specified keywords V3 (deprecated, please refer to the fo |
 | `fetch_video_channel_result(tag_id, count=..., refresh_index=...)` | `GET /api/v1/douyin/web/fetch_video_channel_result` | 抖音视频频道数据/Douyin video channel data |
 | `fetch_video_comment_replies(item_id, comment_id, cursor=..., count=...)` | `GET /api/v1/douyin/web/fetch_video_comment_replies` | 获取指定视频的评论回复数据/Get comment replies data of specified video |
 | `fetch_video_comments(aweme_id, cursor=..., count=...)` | `GET /api/v1/douyin/web/fetch_video_comments` | 获取单个视频评论数据/Get single video comments data |
 | `fetch_video_high_quality_play_url(aweme_id=..., share_url=..., region=...)` | `GET /api/v1/douyin/web/fetch_video_high_quality_play_url` | 获取视频的最高画质播放链接/Get the highest quality play URL of the video |
-| `generate_a_bogus(url, data, user_agent, index_0=..., index_1=..., index_2=...)` | `POST /api/v1/douyin/web/generate_a_bogus` | 使用接口网址生成A-Bogus参数/Generate A-Bogus parameter using API URL |
-| `generate_real_msToken()` | `GET /api/v1/douyin/web/generate_real_msToken` | 生成真实msToken/Generate real msToken |
-| `generate_s_v_web_id()` | `GET /api/v1/douyin/web/generate_s_v_web_id` | 生成s_v_web_id/Generate s_v_web_id |
 | `generate_ttwid(user_agent=...)` | `GET /api/v1/douyin/web/generate_ttwid` | 生成ttwid/Generate ttwid |
-| `generate_verify_fp()` | `GET /api/v1/douyin/web/generate_verify_fp` | 生成verify_fp/Generate verify_fp |
 | `generate_wss_xb_signature(user_agent, room_id, user_unique_id)` | `GET /api/v1/douyin/web/generate_wss_xb_signature` | 生成弹幕xb签名/Generate barrage xb signature |
-| `generate_x_bogus(url, user_agent)` | `POST /api/v1/douyin/web/generate_x_bogus` | 使用接口网址生成X-Bogus参数/Generate X-Bogus parameter using API URL |
 | `get_all_aweme_id(body)` | `POST /api/v1/douyin/web/get_all_aweme_id` | 提取列表作品id/Extract list video id |
 | `get_all_sec_user_id(body)` | `POST /api/v1/douyin/web/get_all_sec_user_id` | 提取列表用户id/Extract list user id |
 | `get_all_webcast_id(body)` | `POST /api/v1/douyin/web/get_all_webcast_id` | 提取列表直播间号/Extract list webcast id |
@@ -446,11 +514,12 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 
 **Class:** `tikhub.resources.douyin_xingtu.DouyinXingtu` (sync) / `AsyncDouyinXingtu` (async)
 
-**Endpoints:** 22
+**Endpoints:** 23
 
 | Method | Endpoint | Summary |
 |---|---|---|
 | `author_content_hot_comment_keywords_v1(kolId)` | `GET /api/v1/douyin/xingtu/author_content_hot_comment_keywords_v1` | 获取kol热词分析内容V1/Get Author Content Hot Comment Keywords V1 |
+| `author_homepage_videos_v1(oAuthorId, page=..., videoType=..., onlyAssign=...)` | `GET /api/v1/douyin/xingtu/author_homepage_videos_v1` | 获取达人主页视频列表V1/Get Author Homepage Videos V1 |
 | `author_hot_comment_tokens_v1(kolId)` | `GET /api/v1/douyin/xingtu/author_hot_comment_tokens_v1` | 获取kol热词分析评论V1/Get Author Hot Comment Tokens V1 |
 | `get_sign_image(uri, durationTS=..., format=...)` | `GET /api/v1/douyin/xingtu/get_sign_image` | 获取加密图片解析/Get Sign Image |
 | `get_xingtu_kolid_by_sec_user_id(sec_user_id)` | `GET /api/v1/douyin/xingtu/get_xingtu_kolid_by_sec_user_id` | 根据抖音sec_user_id获取游客星图kolid/Get XingTu kolid by Douyin sec_user_id |
@@ -477,41 +546,71 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 
 **Class:** `tikhub.resources.douyin_xingtu_v2.DouyinXingtuV2` (sync) / `AsyncDouyinXingtuV2` (async)
 
-**Endpoints:** 21
+**Endpoints:** 50
 
 | Method | Endpoint | Summary |
 |---|---|---|
+| `get_author_audience_distribution(o_author_id, link_type, platform_source=..., platform_channel=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_audience_distribution` | 获取创作者受众画像分布/Get Author Audience Distribution |
 | `get_author_base_info(o_author_id, platform_source=..., platform_channel=..., recommend=..., need_sec_uid=..., need_linkage_info=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_base_info` | 获取创作者基本信息/Get Author Base Info |
 | `get_author_business_card_info(o_author_id)` | `GET /api/v1/douyin/xingtu_v2/get_author_business_card_info` | 获取创作者商业卡片信息/Get Author Business Card Info |
+| `get_author_commerce_spread_info(o_author_id)` | `GET /api/v1/douyin/xingtu_v2/get_author_commerce_spread_info` | 获取创作者性价比与效果预估/Get Author Commerce Spread Info |
 | `get_author_content_hot_keywords(author_id, keyword_type=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_content_hot_keywords` | 获取创作者内容热词/Get Author Content Hot Keywords |
+| `get_author_convert_ability(o_author_id, platform_source=..., platform_channel=..., industry_id=..., time_range=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_convert_ability` | 获取创作者转化能力/Get Author Convert Ability |
+| `get_author_convert_videos_or_products(o_author_id, platform_source=..., platform_channel=..., detail_type=..., industry_id=..., time_range=..., page=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_convert_videos_or_products` | 获取创作者转化视频/商品明细/Get Author Convert Videos or Products |
+| `get_author_cp_info(o_author_id, platform_source=..., platform_channel=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_cp_info` | 获取创作者CP合作信息/Get Author CP Info |
+| `get_author_daily_fans(author_id, platform_source=..., start_date=..., end_date=..., author_type=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_daily_fans` | 获取创作者每日粉丝趋势/Get Author Daily Fans |
+| `get_author_daily_link(o_author_id, link_type, start_date, end_date, platform_source=..., platform_channel=..., industry_id=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_daily_link` | 获取创作者连接指标日趋势/Get Author Daily Link |
+| `get_author_daily_link_score(o_author_id, link_score_type, start_date, end_date, platform_source=..., platform_channel=..., industry_id=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_daily_link_score` | 获取创作者连接指数日趋势/Get Author Daily Link Score |
+| `get_author_fans_distribution(o_author_id, platform_source=..., platform_channel=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_fans_distribution` | 获取创作者粉丝画像分布/Get Author Fans Distribution |
+| `get_author_homepage_videos(o_author_id, page=..., is_star_item=..., start_time=..., end_time=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_homepage_videos` | 获取创作者主页作品列表/Get Author Homepage Videos |
 | `get_author_hot_comment_tokens(author_id, num=..., without_emoji=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_hot_comment_tokens` | 获取创作者评论热词/Get Author Hot Comment Tokens |
+| `get_author_link_info(o_author_id, platform_source=..., platform_channel=..., industy_tag=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_link_info` | 获取创作者星图连接指数/Get Author Link Info |
 | `get_author_local_info(o_author_id, platform_source=..., platform_channel=..., time_range=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_local_info` | 获取创作者位置信息/Get Author Local Info |
 | `get_author_market_fields(market_scene=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_market_fields` | 获取达人广场筛选字段/Get Author Market Fields |
-| `get_author_show_items(o_author_id, platform_source=..., platform_channel=..., limit=..., only_assign=..., flow_type=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_show_items` | 获取创作者视频列表/Get Author Show Items |
+| `get_author_rec_videos_v2(o_author_id, platform_source=..., platform_channel=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_rec_videos_v2` | 获取创作者推荐视频/Get Author Recommended Videos V2 |
+| `get_author_show_items(o_author_id, platform_source=..., platform_channel=..., only_assign=..., flow_type=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_show_items` | 获取创作者视频列表/Get Author Show Items |
 | `get_author_spread_info(o_author_id, platform_source=..., platform_channel=..., type=..., flow_type=..., only_assign=..., range=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_spread_info` | 获取创作者传播价值/Get Author Spread Info |
+| `get_author_spread_videos(o_author_id, platform_source=..., platform_channel=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_spread_videos` | 获取创作者传播表现视频/Get Author Spread Videos |
+| `get_author_touch_distribution(o_author_id, platform_source=..., platform_channel=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_touch_distribution` | 获取创作者视频触达分布/Get Author Touch Distribution |
+| `get_author_video_distribution(o_author_id, platform_source=..., platform_channel=...)` | `GET /api/v1/douyin/xingtu_v2/get_author_video_distribution` | 获取创作者视频内容分布/Get Author Video Distribution |
 | `get_content_trend_guide()` | `GET /api/v1/douyin/xingtu_v2/get_content_trend_guide` | 获取内容趋势指南/Get Content Trend Guide |
-| `get_demander_mcn_list(mcn_name=..., page=..., limit=..., order_by=...)` | `GET /api/v1/douyin/xingtu_v2/get_demander_mcn_list` | 搜索MCN机构列表/Get Demander MCN List |
+| `get_demander_mcn_list(mcn_name=..., page=..., order_by=...)` | `GET /api/v1/douyin/xingtu_v2/get_demander_mcn_list` | 搜索MCN机构列表/Get Demander MCN List |
 | `get_excellent_case_category_list(platform_source=...)` | `GET /api/v1/douyin/xingtu_v2/get_excellent_case_category_list` | 获取优秀行业分类列表/Get Excellent Case Category List |
 | `get_ip_activity_detail(id)` | `GET /api/v1/douyin/xingtu_v2/get_ip_activity_detail` | 获取星图IP活动详情/Get IP Activity Detail |
 | `get_ip_activity_industry_list()` | `GET /api/v1/douyin/xingtu_v2/get_ip_activity_industry_list` | 获取星图IP日历行业列表/Get IP Activity Industry List |
 | `get_ip_activity_list(query_start_time, query_end_time, industry_id_list=..., category_list=..., status_list=...)` | `POST /api/v1/douyin/xingtu_v2/get_ip_activity_list` | 获取星图IP日历活动列表/Get IP Activity List |
+| `get_item_play_count(item_id, platform_source=..., need_cover_url=...)` | `GET /api/v1/douyin/xingtu_v2/get_item_play_count` | 获取单个视频播放量(含详情)/Get Item Play Count |
+| `get_item_report_comments(item_id)` | `POST /api/v1/douyin/xingtu_v2/get_item_report_comments` | 获取视频评论分析/Get Item Report Comments |
+| `get_item_report_detail(item_id)` | `POST /api/v1/douyin/xingtu_v2/get_item_report_detail` | 获取视频详情报告/Get Item Report Detail |
+| `get_item_report_th_analysis(item_id)` | `POST /api/v1/douyin/xingtu_v2/get_item_report_th_analysis` | 获取视频互动分析/Get Item Report Interaction Analysis |
+| `get_item_report_trend(item_id)` | `POST /api/v1/douyin/xingtu_v2/get_item_report_trend` | 获取视频整体表现趋势/Get Item Report Trend |
 | `get_playlet_actor_rank_catalog()` | `POST /api/v1/douyin/xingtu_v2/get_playlet_actor_rank_catalog` | 获取短剧演员热榜分类/Get Playlet Actor Rank Catalog |
-| `get_playlet_actor_rank_list(category=..., name=..., qualifier=..., period=..., date=..., limit=...)` | `GET /api/v1/douyin/xingtu_v2/get_playlet_actor_rank_list` | 获取短剧演员热榜/Get Playlet Actor Rank List |
+| `get_playlet_actor_rank_list(category=..., name=..., qualifier=..., period=..., date=...)` | `GET /api/v1/douyin/xingtu_v2/get_playlet_actor_rank_list` | 获取短剧演员热榜/Get Playlet Actor Rank List |
 | `get_ranking_list_catalog(codes=..., biz_scene=...)` | `GET /api/v1/douyin/xingtu_v2/get_ranking_list_catalog` | 获取星图热榜分类/Get Ranking List Catalog |
-| `get_ranking_list_data(code=..., qualifier=..., version=..., period=..., date=..., limit=...)` | `GET /api/v1/douyin/xingtu_v2/get_ranking_list_data` | 获取星图达人商业榜数据/Get Ranking List Data |
-| `get_recommend_for_star_authors(author_ids, similar_type=..., page=..., limit=...)` | `POST /api/v1/douyin/xingtu_v2/get_recommend_for_star_authors` | 获取相似创作者推荐/Get Recommend Similar Star Authors |
+| `get_ranking_list_data(code=..., qualifier=..., version=..., period=..., date=...)` | `GET /api/v1/douyin/xingtu_v2/get_ranking_list_data` | 获取星图达人商业榜数据/Get Ranking List Data |
+| `get_recommend_for_star_authors(author_ids, similar_type=..., page=...)` | `POST /api/v1/douyin/xingtu_v2/get_recommend_for_star_authors` | 获取相似创作者推荐/Get Recommend Similar Star Authors |
 | `get_resource_list(resource_id)` | `GET /api/v1/douyin/xingtu_v2/get_resource_list` | 获取营销活动案例/Get Resource List |
+| `get_search_field_options(platform_source=..., task_category=...)` | `GET /api/v1/douyin/xingtu_v2/get_search_field_options` | 获取达人广场筛选项取值/Get Search Field Options |
 | `get_user_profile_qrcode(core_user_id=..., sec_uid=...)` | `GET /api/v1/douyin/xingtu_v2/get_user_profile_qrcode` | 获取用户主页二维码/Get User Profile QRCode |
+| `get_xingtu_kolid_by_sec_user_id(sec_user_id)` | `GET /api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_sec_user_id` | 抖音sec_user_id转星图达人ID/Get Xingtu Author ID by Douyin sec_user_id |
+| `get_xingtu_kolid_by_uid(uid)` | `GET /api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_uid` | 抖音UID转星图达人ID/Get Xingtu Author ID by Douyin UID |
+| `get_xingtu_kolid_by_unique_id(unique_id)` | `GET /api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_unique_id` | 抖音号转星图达人ID/Get Xingtu Author ID by Douyin unique_id |
+| `multi_get_author_info(author_ids, platform_source=..., platform_channel=...)` | `POST /api/v1/douyin/xingtu_v2/multi_get_author_info` | 批量获取创作者信息/Multi Get Author Info |
+| `multi_get_item_stats(item_ids, platform_source=..., need_cover_url=...)` | `POST /api/v1/douyin/xingtu_v2/multi_get_item_stats` | 批量获取视频数据(播放量/点赞等)/Multi Get Item Stats |
+| `search_anchor(keyword, page=..., sort_field=..., sort_type=..., task_category=..., marketing_target=..., first_industry_id=..., author_list_id=..., price_type=..., price_min=..., price_max=..., tag=..., persona_tags=..., gender=..., fans_min=..., fans_max=..., expected_play_min=..., expected_play_max=..., cpm_min=..., cpm_max=..., cpe_min=..., cpe_max=..., interact_rate_min=..., interact_rate_max=..., play_over_rate_min=..., play_over_rate_max=..., burst_text_rate_min=..., burst_text_rate_max=..., extra_filter=...)` | `GET /api/v1/douyin/xingtu_v2/search_anchor` | 主播搜索/Search Anchor |
+| `search_creator(keyword=..., seach_type=..., time_range_days=..., page=..., sort_field=..., sort_type=..., task_category=..., marketing_target=..., first_industry_id=..., author_list_id=..., price_type=..., price_min=..., price_max=..., tag=..., persona_tags=..., gender=..., fans_min=..., fans_max=..., expected_play_min=..., expected_play_max=..., cpm_min=..., cpm_max=..., cpe_min=..., cpe_max=..., interact_rate_min=..., interact_rate_max=..., play_over_rate_min=..., play_over_rate_max=..., burst_text_rate_min=..., burst_text_rate_max=..., extra_filter=...)` | `GET /api/v1/douyin/xingtu_v2/search_creator` | 达人搜索/Search Creator |
+| `search_toutiao_creator(keyword, page=..., sort_field=..., sort_type=..., task_category=..., marketing_target=..., first_industry_id=..., author_list_id=..., price_type=..., price_min=..., price_max=..., tag=..., persona_tags=..., gender=..., fans_min=..., fans_max=..., expected_play_min=..., expected_play_max=..., cpm_min=..., cpm_max=..., cpe_min=..., cpe_max=..., interact_rate_min=..., interact_rate_max=..., play_over_rate_min=..., play_over_rate_max=..., burst_text_rate_min=..., burst_text_rate_max=..., extra_filter=...)` | `GET /api/v1/douyin/xingtu_v2/search_toutiao_creator` | 头条创作者搜索/Search Toutiao Creator |
 
 ## `client.health_check`
 
 **Class:** `tikhub.resources.health_check.HealthCheck` (sync) / `AsyncHealthCheck` (async)
 
-**Endpoints:** 1
+**Endpoints:** 2
 
 | Method | Endpoint | Summary |
 |---|---|---|
 | `check()` | `GET /api/v1/health/check` | 检查服务器是否正确响应请求 / Check if the server responds to requests correctly |
+| `deep()` | `GET /api/v1/health/deep` | 深度健康检查（实测依赖与资源）/ Deep health check (probes dependencies and resources) |
 
 ## `client.hybrid_parsing`
 
@@ -601,7 +700,7 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 
 **Class:** `tikhub.resources.instagram_v3.InstagramV3` (sync) / `AsyncInstagramV3` (async)
 
-**Endpoints:** 32
+**Endpoints:** 37
 
 | Method | Endpoint | Summary |
 |---|---|---|
@@ -610,33 +709,38 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `general_search(query, next_max_id=..., rank_token=..., enable_metadata=...)` | `GET /api/v1/instagram/v3/general_search` | 综合搜索（支持分页）/General search (with pagination) |
 | `get_comment_replies(media_id, comment_id, min_id=...)` | `GET /api/v1/instagram/v3/get_comment_replies` | 获取评论的子评论/回复/Get comment replies |
 | `get_explore(max_id=...)` | `GET /api/v1/instagram/v3/get_explore` | 获取探索页推荐帖子/Get explore feed |
+| `get_hashtag_posts(tag, max_id=...)` | `GET /api/v1/instagram/v3/get_hashtag_posts` | 获取话题标签帖子列表/Get hashtag posts |
 | `get_highlight_stories(highlight_id, reel_ids=..., first=..., last=...)` | `GET /api/v1/instagram/v3/get_highlight_stories` | 获取Highlight精选详情/Get highlight stories |
 | `get_location_info(location_id, show_nearby=...)` | `GET /api/v1/instagram/v3/get_location_info` | 获取地点详情/Get location info |
 | `get_location_nearby(location_id)` | `GET /api/v1/instagram/v3/get_location_nearby` | 获取地点附近内容/Get nearby location content |
 | `get_location_posts(location_id, tab=..., first=..., after=..., page_size_override=...)` | `GET /api/v1/instagram/v3/get_location_posts` | 获取地点相关帖子/Get location posts |
+| `get_music_posts(audio_cluster_id, max_id=...)` | `GET /api/v1/instagram/v3/get_music_posts` | 获取音频下的Reels列表/Get music (audio) posts |
 | `get_post_comments(code, min_id=..., sort_order=...)` | `GET /api/v1/instagram/v3/get_post_comments` | 获取帖子评论/Get post comments |
 | `get_post_info(media_id=..., url=...)` | `GET /api/v1/instagram/v3/get_post_info` | 获取帖子详情/Get post info (media_id or URL) |
 | `get_post_info_by_code(code)` | `GET /api/v1/instagram/v3/get_post_info_by_code` | 获取帖子详情(code)/Get post info by shortcode |
+| `get_post_likes(code)` | `GET /api/v1/instagram/v3/get_post_likes` | 获取帖子点赞用户列表/Get post likes |
 | `get_post_oembed(url, hidecaption=..., maxwidth=...)` | `GET /api/v1/instagram/v3/get_post_oembed` | 获取帖子oEmbed内嵌信息/Get post oEmbed info |
 | `get_recommended_reels(first=..., after=...)` | `GET /api/v1/instagram/v3/get_recommended_reels` | 获取Reels推荐列表/Get recommended Reels feed |
-| `get_user_about(user_id=..., username=...)` | `GET /api/v1/instagram/v3/get_user_about` | 获取用户账户简介/Get user about info |
+| `get_similar_users(user_id)` | `GET /api/v1/instagram/v3/get_similar_users` | 获取相似账号推荐/Get similar users |
+| `get_user_about(username)` | `GET /api/v1/instagram/v3/get_user_about` | 获取用户账户简介/Get user about info |
 | `get_user_brief(user_id, username)` | `GET /api/v1/instagram/v3/get_user_brief` | 获取用户短详情/Get user brief info |
-| `get_user_followers(user_id=..., username=..., count=..., max_id=...)` | `GET /api/v1/instagram/v3/get_user_followers` | 获取用户粉丝列表/Get user followers list |
-| `get_user_following(user_id=..., username=..., count=..., max_id=...)` | `GET /api/v1/instagram/v3/get_user_following` | 获取用户关注列表/Get user following list |
-| `get_user_former_usernames(user_id=..., username=...)` | `GET /api/v1/instagram/v3/get_user_former_usernames` | 获取用户曾用用户名/Get user former usernames |
-| `get_user_highlights(user_id=..., username=..., first=..., after=..., before=..., last=...)` | `GET /api/v1/instagram/v3/get_user_highlights` | 获取用户精选Highlights列表/Get user highlights |
+| `get_user_followers(username, count=..., max_id=...)` | `GET /api/v1/instagram/v3/get_user_followers` | 获取用户粉丝列表/Get user followers list |
+| `get_user_following(username, count=..., max_id=...)` | `GET /api/v1/instagram/v3/get_user_following` | 获取用户关注列表/Get user following list |
+| `get_user_former_usernames(username)` | `GET /api/v1/instagram/v3/get_user_former_usernames` | 获取用户账号名更改次数/Get username change count |
+| `get_user_highlights(username, first=..., after=..., before=..., last=...)` | `GET /api/v1/instagram/v3/get_user_highlights` | 获取用户精选Highlights列表/Get user highlights |
 | `get_user_id_by_username(username)` | `GET /api/v1/instagram/v3/get_user_id_by_username` | 通过用户名获取用户ID/Get user ID by username |
 | `get_user_posts(username, first=..., after=..., before=..., last=..., count=...)` | `GET /api/v1/instagram/v3/get_user_posts` | 获取用户帖子列表/Get user posts |
-| `get_user_profile(user_id=..., username=...)` | `GET /api/v1/instagram/v3/get_user_profile` | 获取用户信息/Get user profile |
-| `get_user_reels(user_id=..., username=..., first=..., after=..., before=..., last=..., page_size=...)` | `GET /api/v1/instagram/v3/get_user_reels` | 获取用户Reels列表/Get user reels |
-| `get_user_stories(user_id=..., username=...)` | `GET /api/v1/instagram/v3/get_user_stories` | 获取用户Stories（快拍）/Get user stories |
-| `get_user_tagged_posts(user_id=..., username=..., first=..., after=..., before=..., last=..., count=...)` | `GET /api/v1/instagram/v3/get_user_tagged_posts` | 获取用户被标记的帖子/Get user tagged posts |
+| `get_user_profile(username)` | `GET /api/v1/instagram/v3/get_user_profile` | 获取用户信息/Get user profile |
+| `get_user_reels(username, first=..., after=..., before=..., last=..., page_size=...)` | `GET /api/v1/instagram/v3/get_user_reels` | 获取用户Reels列表/Get user reels |
+| `get_user_stories(username)` | `GET /api/v1/instagram/v3/get_user_stories` | 获取用户Stories（快拍）/Get user stories |
+| `get_user_tagged_posts(username, first=..., after=..., before=..., last=..., count=...)` | `GET /api/v1/instagram/v3/get_user_tagged_posts` | 获取用户被标记的帖子/Get user tagged posts |
 | `media_id_to_shortcode(media_id)` | `GET /api/v1/instagram/v3/media_id_to_shortcode` | 媒体ID转短码/Convert media ID to shortcode |
+| `search_by_coordinates(latitude, longitude)` | `GET /api/v1/instagram/v3/search_by_coordinates` | 按坐标搜索附近地点/Search locations by coordinates |
 | `search_hashtags(query, rank_token=...)` | `GET /api/v1/instagram/v3/search_hashtags` | 搜索话题标签/Search hashtags |
-| `search_places(query, rank_token=...)` | `GET /api/v1/instagram/v3/search_places` | 搜索地点/Search places |
 | `search_users(query, rank_token=...)` | `GET /api/v1/instagram/v3/search_users` | 搜索用户/Search users |
 | `shortcode_to_media_id(shortcode)` | `GET /api/v1/instagram/v3/shortcode_to_media_id` | 短码转媒体ID/Convert shortcode to media ID |
 | `translate_comment(comment_id)` | `GET /api/v1/instagram/v3/translate_comment` | 翻译评论/帖子文本/Translate comment or caption |
+| `user_id_to_username(user_id)` | `GET /api/v1/instagram/v3/user_id_to_username` | 通过用户ID获取用户信息/Get user info by user ID |
 
 ## `client.ios_shortcut`
 
@@ -652,7 +756,7 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 
 **Class:** `tikhub.resources.kuaishou_app.KuaishouApp` (sync) / `AsyncKuaishouApp` (async)
 
-**Endpoints:** 20
+**Endpoints:** 26
 
 | Method | Endpoint | Summary |
 |---|---|---|
@@ -661,27 +765,33 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_hot_board_detail(boardType=..., boardId=...)` | `GET /api/v1/kuaishou/app/fetch_hot_board_detail` | 快手热榜详情/Kuaishou hot board detail |
 | `fetch_hot_search_person()` | `GET /api/v1/kuaishou/app/fetch_hot_search_person` | 快手热搜人物榜单/Kuaishou hot search person board |
 | `fetch_live_top_list(subTabId=..., subTabName=...)` | `GET /api/v1/kuaishou/app/fetch_live_top_list` | 快手直播榜单/Kuaishou live top list |
-| `fetch_magic_face_hot(magic_face_id, pcursor=..., count=...)` | `GET /api/v1/kuaishou/app/fetch_magic_face_hot` | 获取魔法表情热门视频/Fetch magic face hot videos |
-| `fetch_magic_face_usage(magic_face_id)` | `GET /api/v1/kuaishou/app/fetch_magic_face_usage` | 获取魔法表情使用人数/Fetch magic face usage count |
+| `fetch_music_ranking(tab_id=..., count=..., pcursor=...)` | `GET /api/v1/kuaishou/app/fetch_music_ranking` | 音乐榜单/Music ranking |
 | `fetch_one_user_v2(user_id)` | `GET /api/v1/kuaishou/app/fetch_one_user_v2` | 获取单个用户数据V2/Get single user data V2 |
 | `fetch_one_video(photo_id)` | `GET /api/v1/kuaishou/app/fetch_one_video` | 视频详情V1/Video detailsV1 |
 | `fetch_one_video_by_url(share_text)` | `GET /api/v1/kuaishou/app/fetch_one_video_by_url` | 根据链接获取单个作品数据/Fetch single video by URL |
-| `fetch_one_video_comment(photo_id, pcursor=...)` | `GET /api/v1/kuaishou/app/fetch_one_video_comment` | 获取单个作品评论数据/Get single video comment data |
+| `fetch_selection_feed()` | `GET /api/v1/kuaishou/app/fetch_selection_feed` | 精选/推荐Feed流/Selection feed |
 | `fetch_shopping_top_list(subTabId=..., subTabName=...)` | `GET /api/v1/kuaishou/app/fetch_shopping_top_list` | 快手购物榜单/Kuaishou shopping top list |
+| `fetch_tag_feed(general_tag_id, tab=..., tag_name=..., tag_type=..., tag_source=..., from_photo_id=..., pcursor=...)` | `GET /api/v1/kuaishou/app/fetch_tag_feed` | 话题标签聚合页/Tag feed |
 | `fetch_user_hot_post(user_id, pcursor=...)` | `GET /api/v1/kuaishou/app/fetch_user_hot_post` | 获取用户热门作品数据/Get user hot post data |
 | `fetch_user_live_info(user_id)` | `GET /api/v1/kuaishou/app/fetch_user_live_info` | 获取用户直播信息/Get user live info |
-| `fetch_user_post_v2(user_id, pcursor=...)` | `GET /api/v1/kuaishou/app/fetch_user_post_v2` | 用户视频列表V2/User video list V2 |
+| `fetch_user_post_v2(user_id, pcursor=..., sort=...)` | `GET /api/v1/kuaishou/app/fetch_user_post_v2` | 用户视频列表V2/User video list V2 |
+| `fetch_video_comment(photo_id, pcursor=...)` | `GET /api/v1/kuaishou/app/fetch_video_comment` | 获取单个作品评论数据/Get single video comment data |
+| `fetch_video_sub_comments(photo_id, root_comment_id, pcursor=..., count=...)` | `GET /api/v1/kuaishou/app/fetch_video_sub_comments` | 评论二级回复/Video sub comments |
 | `fetch_videos_batch(photo_ids)` | `GET /api/v1/kuaishou/app/fetch_videos_batch` | 快手批量视频查询接口/Kuaishou batch video query API |
 | `generate_kuaishou_share_link(shareObjectId)` | `GET /api/v1/kuaishou/app/generate_kuaishou_share_link` | 生成快手分享链接/Generate Kuaishou share link |
-| `search_comprehensive(keyword, pcursor=..., sort_type=..., publish_time=..., duration=..., search_scope=...)` | `GET /api/v1/kuaishou/app/search_comprehensive` | 综合搜索/Comprehensive search |
-| `search_user_v2(keyword, page=...)` | `GET /api/v1/kuaishou/app/search_user_v2` | 搜索用户V2/Search user V2 |
-| `search_video_v2(keyword, page=...)` | `GET /api/v1/kuaishou/app/search_video_v2` | 搜索视频V2/Search video V2 |
+| `search_comprehensive(keyword, pcursor=..., sort_type=..., publish_time=..., duration=...)` | `GET /api/v1/kuaishou/app/search_comprehensive` | 综合搜索/Comprehensive search |
+| `search_image(keyword, pcursor=...)` | `GET /api/v1/kuaishou/app/search_image` | 搜索图片作品/Search image |
+| `search_live(keyword, pcursor=...)` | `GET /api/v1/kuaishou/app/search_live` | 搜索直播间/Search live |
+| `search_music(keyword, pcursor=...)` | `GET /api/v1/kuaishou/app/search_music` | 搜索音乐/Search music |
+| `search_tag(keyword, pcursor=...)` | `GET /api/v1/kuaishou/app/search_tag` | 搜索话题标签/Search tag |
+| `search_user_v2(keyword, pcursor=..., user_relation=..., user_gender=..., fans_sort=...)` | `GET /api/v1/kuaishou/app/search_user_v2` | 搜索用户V2/Search user V2 |
+| `search_video_v2(keyword, pcursor=...)` | `GET /api/v1/kuaishou/app/search_video_v2` | 搜索视频V2/Search video V2 |
 
 ## `client.kuaishou_web`
 
 **Class:** `tikhub.resources.kuaishou_web.KuaishouWeb` (sync) / `AsyncKuaishouWeb` (async)
 
-**Endpoints:** 13
+**Endpoints:** 12
 
 | Method | Endpoint | Summary |
 |---|---|---|
@@ -696,7 +806,6 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_user_collect(user_id, pcursor=...)` | `GET /api/v1/kuaishou/web/fetch_user_collect` | 获取用户收藏作品/Fetch user collect |
 | `fetch_user_info(user_id)` | `GET /api/v1/kuaishou/web/fetch_user_info` | 获取用户信息/Fetch user info |
 | `fetch_user_live_replay(user_id, pcursor=...)` | `GET /api/v1/kuaishou/web/fetch_user_live_replay` | 获取用户直播回放/Fetch user live replay |
-| `fetch_user_post(user_id, pcursor=...)` | `GET /api/v1/kuaishou/web/fetch_user_post` | 获取用户发布作品/Fetch user posts |
 | `generate_share_short_url(photo_id)` | `GET /api/v1/kuaishou/web/generate_share_short_url` | 生成分享短连接/Generate share short URL |
 
 ## `client.lemon8_app`
@@ -724,108 +833,22 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `get_user_id(share_text)` | `GET /api/v1/lemon8/app/get_user_id` | 通过分享链接获取用户ID/Get user ID through sharing link |
 | `get_user_ids(body)` | `POST /api/v1/lemon8/app/get_user_ids` | 通过分享链接批量获取用户ID/Get user IDs in batch through sharing links |
 
-## `client.linkedin_web`
-
-**Class:** `tikhub.resources.linkedin_web.LinkedinWeb` (sync) / `AsyncLinkedinWeb` (async)
-
-**Endpoints:** 42
-
-| Method | Endpoint | Summary |
-|---|---|---|
-| `get_ad_detail(ad_id)` | `GET /api/v1/linkedin/web/get_ad_detail` | 获取广告详情/Get ad detail |
-| `get_comments_replies(post_id, comment_id, previous_replies_token)` | `GET /api/v1/linkedin/web/get_comments_replies` | 获取评论回复/Get comment replies |
-| `get_company_affiliated_pages(company_id)` | `GET /api/v1/linkedin/web/get_company_affiliated_pages` | 获取公司关联页面/Get company affiliated pages |
-| `get_company_associated_member_insights(company_id)` | `GET /api/v1/linkedin/web/get_company_associated_member_insights` | 获取公司关联成员洞察/Get company associated member insights |
-| `get_company_job_count(company_id)` | `GET /api/v1/linkedin/web/get_company_job_count` | 获取公司职位数量/Get company job count |
-| `get_company_jobs(company_id, page=..., sort_by=..., date_posted=..., experience_level=..., remote=..., job_type=..., easy_apply=..., under_10_applicants=..., fair_chance_employer=...)` | `GET /api/v1/linkedin/web/get_company_jobs` | 获取公司职位/Get company jobs |
-| `get_company_people(company_id, page=...)` | `GET /api/v1/linkedin/web/get_company_people` | 获取公司员工/Get company people |
-| `get_company_posts(company_id, page=..., sort_by=...)` | `GET /api/v1/linkedin/web/get_company_posts` | 获取公司帖子/Get company posts |
-| `get_company_profile(company=..., company_id=...)` | `GET /api/v1/linkedin/web/get_company_profile` | 获取公司资料/Get company profile |
-| `get_group_info(group_id)` | `GET /api/v1/linkedin/web/get_group_info` | 获取群组信息/Get group info |
-| `get_group_posts(group_id, page=...)` | `GET /api/v1/linkedin/web/get_group_posts` | 获取群组帖子/Get group posts |
-| `get_job_detail(job_id, include_skills=...)` | `GET /api/v1/linkedin/web/get_job_detail` | 获取职位详情/Get job detail |
-| `get_post_comments(post_id, page=..., sort_order=..., post_type=...)` | `GET /api/v1/linkedin/web/get_post_comments` | 获取帖子评论/Get post comments |
-| `get_post_detail(post_id)` | `GET /api/v1/linkedin/web/get_post_detail` | 获取帖子详情/Get post detail |
-| `get_post_reactions(post_id, page=..., type=...)` | `GET /api/v1/linkedin/web/get_post_reactions` | 获取帖子点赞反应/Get post reactions |
-| `get_post_reposts(post_id, page=..., pagination_token=...)` | `GET /api/v1/linkedin/web/get_post_reposts` | 获取帖子转发/Get post reposts |
-| `get_user_about(urn)` | `GET /api/v1/linkedin/web/get_user_about` | 获取用户简介/Get user about |
-| `get_user_certifications(urn, page=...)` | `GET /api/v1/linkedin/web/get_user_certifications` | 获取用户认证/Get user certifications |
-| `get_user_comments(urn, page=..., pagination_token=...)` | `GET /api/v1/linkedin/web/get_user_comments` | 获取用户评论/Get user comments |
-| `get_user_contact(username)` | `GET /api/v1/linkedin/web/get_user_contact` | 获取用户联系信息/Get user contact information |
-| `get_user_educations(urn, page=...)` | `GET /api/v1/linkedin/web/get_user_educations` | 获取用户教育背景/Get user educations |
-| `get_user_experience(urn, page=...)` | `GET /api/v1/linkedin/web/get_user_experience` | 获取用户工作经历/Get user experience |
-| `get_user_follower_and_connection(username)` | `GET /api/v1/linkedin/web/get_user_follower_and_connection` | 获取用户粉丝和连接数/Get user follower and connection |
-| `get_user_honors(urn, page=...)` | `GET /api/v1/linkedin/web/get_user_honors` | 获取用户荣誉奖项/Get user honors |
-| `get_user_images(urn, page=..., pagination_token=...)` | `GET /api/v1/linkedin/web/get_user_images` | 获取用户图片/Get user images |
-| `get_user_interests_companies(urn, page=...)` | `GET /api/v1/linkedin/web/get_user_interests_companies` | 获取用户感兴趣的公司/Get user interests companies |
-| `get_user_interests_groups(urn, page=...)` | `GET /api/v1/linkedin/web/get_user_interests_groups` | 获取用户感兴趣的群组/Get user interests groups |
-| `get_user_posts(urn, page=..., pagination_token=...)` | `GET /api/v1/linkedin/web/get_user_posts` | 获取用户帖子/Get user posts |
-| `get_user_profile(username, include_follower_and_connection=..., include_experiences=..., include_skills=..., include_certifications=..., include_publications=..., include_educations=..., include_volunteers=..., include_honors=..., include_interests=..., include_bio=...)` | `GET /api/v1/linkedin/web/get_user_profile` | 获取用户资料/Get user profile |
-| `get_user_publications(urn, page=...)` | `GET /api/v1/linkedin/web/get_user_publications` | 获取用户出版物/Get user publications |
-| `get_user_reactions(urn, page=..., pagination_token=...)` | `GET /api/v1/linkedin/web/get_user_reactions` | 获取用户点赞反应/Get user reactions |
-| `get_user_recommendations(urn, page=..., type=..., pagination_token=...)` | `GET /api/v1/linkedin/web/get_user_recommendations` | 获取用户推荐信/Get user recommendations |
-| `get_user_skills(urn, page=...)` | `GET /api/v1/linkedin/web/get_user_skills` | 获取用户技能/Get user skills |
-| `get_user_videos(urn, page=..., pagination_token=...)` | `GET /api/v1/linkedin/web/get_user_videos` | 获取用户视频/Get user videos |
-| `get_user_volunteers(urn, page=...)` | `GET /api/v1/linkedin/web/get_user_volunteers` | 获取用户志愿者经历/Get user volunteers |
-| `search_ads(keyword=..., advertiser_name=..., country=..., date=..., pagination_token=...)` | `GET /api/v1/linkedin/web/search_ads` | 搜索广告/Search ads (Ad Library) |
-| `search_jobs(keyword, page=..., sort_by=..., date_posted=..., geocode=..., company=..., experience_level=..., remote=..., job_type=..., easy_apply=..., has_verifications=..., under_10_applicants=..., fair_chance_employer=...)` | `GET /api/v1/linkedin/web/search_jobs` | 搜索职位/Search jobs |
-| `search_location(keyword)` | `GET /api/v1/linkedin/web/search_location` | 搜索地理位置/Search location |
-| `search_people(name=..., first_name=..., last_name=..., title=..., company=..., school=..., page=..., geocode_location=..., current_company=..., profile_language=..., industry=..., service_category=...)` | `GET /api/v1/linkedin/web/search_people` | 搜索用户/Search people |
-| `search_posts(keyword, page=..., date_posted=..., sort_by=..., from_member=..., from_company=..., content_type=...)` | `GET /api/v1/linkedin/web/search_posts` | 搜索帖子/Search posts |
-| `search_schools(keyword, page=...)` | `GET /api/v1/linkedin/web/search_schools` | 搜索学校/Search schools |
-| `search_suggestion_industry(keyword)` | `GET /api/v1/linkedin/web/search_suggestion_industry` | 搜索行业建议/Search industry suggestions |
-
 ## `client.linkedin_web_v2`
 
 **Class:** `tikhub.resources.linkedin_web_v2.LinkedinWebV2` (sync) / `AsyncLinkedinWebV2` (async)
 
-**Endpoints:** 43
+**Endpoints:** 8
 
 | Method | Endpoint | Summary |
 |---|---|---|
-| `get_comment_replies(comment_urn, post_urn=..., count=..., pagination_token=...)` | `GET /api/v1/linkedin/web_v2/get_comment_replies` | 获取评论的回复/Get comment replies |
-| `get_company_call_to_actions(universal_name)` | `GET /api/v1/linkedin/web_v2/get_company_call_to_actions` | 获取公司主页 CTA 按钮配置/Get CTA buttons |
-| `get_company_competitors(universal_name)` | `GET /api/v1/linkedin/web_v2/get_company_competitors` | 获取公司竞争对手/Get competitors |
-| `get_company_employee_count_ranges(universal_name)` | `GET /api/v1/linkedin/web_v2/get_company_employee_count_ranges` | 获取公司员工数量范围（各 segment）/Get employee count by segment |
-| `get_company_employees(universal_name, start=..., count=...)` | `GET /api/v1/linkedin/web_v2/get_company_employees` | 获取公司员工列表/Get employees |
-| `get_company_grouped_locations(universal_name)` | `GET /api/v1/linkedin/web_v2/get_company_grouped_locations` | 获取公司全部办公地点（按地理分组）/Get grouped locations |
-| `get_company_job_count(universal_name)` | `GET /api/v1/linkedin/web_v2/get_company_job_count` | 获取公司在招职位总数/Get job count |
-| `get_company_jobs(universal_name, start=..., count=...)` | `GET /api/v1/linkedin/web_v2/get_company_jobs` | 获取公司在招职位列表/Get company jobs |
-| `get_company_posts(universal_name, start=..., count=...)` | `GET /api/v1/linkedin/web_v2/get_company_posts` | 获取公司主页帖子流/Get company posts |
-| `get_company_profile(universal_name)` | `GET /api/v1/linkedin/web_v2/get_company_profile` | 获取公司主页资料/Get company profile |
-| `get_company_similar_companies(universal_name)` | `GET /api/v1/linkedin/web_v2/get_company_similar_companies` | 获取相似公司（People also viewed）/Get similar companies |
-| `get_company_stock_quote(universal_name)` | `GET /api/v1/linkedin/web_v2/get_company_stock_quote` | 获取上市公司股价/Get stock quote |
-| `get_discovery_relevant_to_company(universal_name, count=..., start=..., pagination_token=...)` | `GET /api/v1/linkedin/web_v2/get_discovery_relevant_to_company` | 发现："基于公司 X"的相关推荐/Discovery relevant to company |
-| `get_discovery_relevant_to_user(username, count=..., start=..., pagination_token=...)` | `GET /api/v1/linkedin/web_v2/get_discovery_relevant_to_user` | 发现："基于用户 X"的相关推荐/Discovery relevant to user |
-| `get_hashtag_feed(hashtag, start=..., count=...)` | `GET /api/v1/linkedin/web_v2/get_hashtag_feed` | 按 hashtag 获取话题动态流/Get hashtag feed |
-| `get_job_detail(job_id)` | `GET /api/v1/linkedin/web_v2/get_job_detail` | 获取职位详情/Get job detail |
-| `get_post_comments(post_urn, start=..., count=..., sort_order=...)` | `GET /api/v1/linkedin/web_v2/get_post_comments` | 获取帖子顶层评论/Get post top-level comments |
-| `get_post_detail(post_urn)` | `GET /api/v1/linkedin/web_v2/get_post_detail` | 获取单条帖子详情（按 post URN）/Get post detail by URN |
-| `get_post_detail_by_slug(slug)` | `GET /api/v1/linkedin/web_v2/get_post_detail_by_slug` | 按 URL slug 获取帖子/Get post by URL slug |
-| `get_post_reactions(post_urn, reaction_type=..., start=..., count=...)` | `GET /api/v1/linkedin/web_v2/get_post_reactions` | 获取帖子点赞/反应人列表/Get post reactions |
-| `get_user_bio(username)` | `GET /api/v1/linkedin/web_v2/get_user_bio` | 获取用户简介摘要/Get user bio |
-| `get_user_certifications(username)` | `GET /api/v1/linkedin/web_v2/get_user_certifications` | 获取用户认证/Get certifications |
-| `get_user_comments(username, start=..., count=...)` | `GET /api/v1/linkedin/web_v2/get_user_comments` | 获取用户评论（在他人帖子下的评论）/Get user comments |
-| `get_user_contact_info(username)` | `GET /api/v1/linkedin/web_v2/get_user_contact_info` | 获取用户公开联系信息/Get contact info |
-| `get_user_educations(username)` | `GET /api/v1/linkedin/web_v2/get_user_educations` | 获取用户教育背景/Get educations |
-| `get_user_experiences(username)` | `GET /api/v1/linkedin/web_v2/get_user_experiences` | 获取用户工作经历/Get experiences |
-| `get_user_follower_and_connection_count(username)` | `GET /api/v1/linkedin/web_v2/get_user_follower_and_connection_count` | 获取用户粉丝/连接数/Get follower & connection count |
-| `get_user_honors(username)` | `GET /api/v1/linkedin/web_v2/get_user_honors` | 获取用户荣誉奖项/Get honors |
-| `get_user_images(username, start=..., count=...)` | `GET /api/v1/linkedin/web_v2/get_user_images` | 获取用户图片帖子/Get user images |
-| `get_user_interested_companies(username, start=..., count=...)` | `GET /api/v1/linkedin/web_v2/get_user_interested_companies` | 获取用户关注的公司/Get followed companies |
-| `get_user_interested_groups(username, start=..., count=...)` | `GET /api/v1/linkedin/web_v2/get_user_interested_groups` | 获取用户关注的群组/Get followed groups |
-| `get_user_posts(username, start=..., count=...)` | `GET /api/v1/linkedin/web_v2/get_user_posts` | 获取用户帖子（动态标签）/Get user posts |
-| `get_user_profile(username, include_follower_and_connection=..., include_experiences=..., include_skills=..., include_certifications=..., include_publications=..., include_educations=..., include_volunteers=..., include_honors=..., include_interests=..., include_bio=...)` | `GET /api/v1/linkedin/web_v2/get_user_profile` | 获取用户主页基础信息（可选附带子节）/Get user profile (optional sub-sections) |
-| `get_user_profile_cards(username)` | `GET /api/v1/linkedin/web_v2/get_user_profile_cards` | 获取用户主页全部卡片原始结构/Get full profile cards |
-| `get_user_publications(username)` | `GET /api/v1/linkedin/web_v2/get_user_publications` | 获取用户出版物/Get publications |
-| `get_user_recent_activity(username)` | `GET /api/v1/linkedin/web_v2/get_user_recent_activity` | 获取用户近期动态聚合/Get recent activity summary |
-| `get_user_recommendations(username, direction=...)` | `GET /api/v1/linkedin/web_v2/get_user_recommendations` | 获取用户推荐信/Get recommendations |
-| `get_user_skills(username)` | `GET /api/v1/linkedin/web_v2/get_user_skills` | 获取用户技能/Get skills |
-| `get_user_top_card(username)` | `GET /api/v1/linkedin/web_v2/get_user_top_card` | 获取用户主页顶部卡片/Get profile top card |
-| `get_user_top_card_supplementary(username)` | `GET /api/v1/linkedin/web_v2/get_user_top_card_supplementary` | 获取用户主页顶部卡片补充信息/Get top card supplementary |
-| `get_user_videos(username, start=..., count=...)` | `GET /api/v1/linkedin/web_v2/get_user_videos` | 获取用户视频帖子/Get user videos |
-| `search_jobs(keywords, location=..., start=..., count=...)` | `GET /api/v1/linkedin/web_v2/search_jobs` | 搜索职位/Search jobs |
-| `search_users(keywords, start=..., count=..., geo_urn=..., industry_urn=..., current_company_urn=...)` | `GET /api/v1/linkedin/web_v2/search_users` | 搜索用户/Search users |
+| `get_company_posts(url, start=..., pagination_token=..., sort_by=...)` | `GET /api/v1/linkedin/web_v2/get_company_posts` | 获取公司帖子/Get company's posts |
+| `get_company_profile(url)` | `GET /api/v1/linkedin/web_v2/get_company_profile` | 获取公司主页资料/Get company profile |
+| `get_job_detail(url, include_skills=..., include_hiring_team=...)` | `GET /api/v1/linkedin/web_v2/get_job_detail` | 获取职位详情/Get job detail |
+| `get_post_comments(urn, sort_by=..., page=..., pagination_token=..., share_urn=...)` | `GET /api/v1/linkedin/web_v2/get_post_comments` | 获取帖子评论/Get post comments |
+| `get_post_detail(url)` | `GET /api/v1/linkedin/web_v2/get_post_detail` | 获取帖子或文章详情/Get post or article detail |
+| `get_user_posts(url, type=..., start=..., pagination_token=...)` | `GET /api/v1/linkedin/web_v2/get_user_posts` | 获取用户帖子/Get user's posts |
+| `get_user_profile(url)` | `GET /api/v1/linkedin/web_v2/get_user_profile` | 获取用户主页信息/Get user profile |
+| `search_jobs(keywords=..., geo_code=..., date_posted=..., experience_levels=..., company_ids=..., title_ids=..., onsite_remotes=..., functions=..., industries=..., job_types=..., sort_by=..., easy_apply=..., under_10_applicants=..., start=...)` | `GET /api/v1/linkedin/web_v2/search_jobs` | 搜索职位/Search jobs |
 
 ## `client.pipixia_app`
 
@@ -861,92 +884,71 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 
 | Method | Endpoint | Summary |
 |---|---|---|
-| `check_subreddit_muted(subreddit_id, need_format=...)` | `GET /api/v1/reddit/app/check_subreddit_muted` | 检查版块是否静音/Check if Subreddit is Muted |
-| `fetch_comment_replies(post_id, cursor, sort_type=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_comment_replies` | 获取Reddit APP评论回复（二级评论）/Fetch Reddit APP Comment Replies (Sub-comments) |
-| `fetch_community_highlights(subreddit_id, need_format=...)` | `GET /api/v1/reddit/app/fetch_community_highlights` | 获取Reddit APP社区亮点/Fetch Reddit APP Community Highlights |
-| `fetch_dynamic_search(query, search_type=..., sort=..., time_range=..., safe_search=..., allow_nsfw=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_dynamic_search` | 获取Reddit APP动态搜索结果/Fetch Reddit APP Dynamic Search Results |
-| `fetch_explore_feed(sort=..., time=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_explore_feed` | 获取Reddit APP发现页(社区分类+推荐社区)/Fetch Reddit APP Explore Feed |
-| `fetch_games_feed(sort=..., time=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_games_feed` | 获取Reddit APP游戏推荐内容/Fetch Reddit APP Games Feed |
-| `fetch_generated_comments(comment_ids, need_format=...)` | `GET /api/v1/reddit/app/fetch_generated_comments` | 批量获取Reddit Answers卡片精简评论信息/Fetch Reddit Answers Generated Comments |
-| `fetch_generated_posts(post_ids, need_format=...)` | `GET /api/v1/reddit/app/fetch_generated_posts` | 批量获取Reddit Answers卡片精简帖子信息/Fetch Reddit Answers Generated Posts |
-| `fetch_home_feed(sort=..., filter_posts=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_home_feed` | 获取Reddit APP首页推荐内容/Fetch Reddit APP Home Feed |
-| `fetch_news_feed(subtopic_ids=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_news_feed` | 获取Reddit APP资讯推荐内容/Fetch Reddit APP News Feed |
-| `fetch_popular_feed(sort=..., time=..., filter_posts=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_popular_feed` | 获取Reddit APP流行推荐内容/Fetch Reddit APP Popular Feed |
-| `fetch_post_comments(post_id, sort_type=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_post_comments` | 获取Reddit APP帖子评论/Fetch Reddit APP Post Comments |
-| `fetch_post_details(post_id, include_comment_id=..., comment_id=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_post_details` | 获取单个Reddit帖子详情/Fetch Single Reddit Post Details |
-| `fetch_post_details_batch(post_ids, include_comment_id=..., comment_id=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_post_details_batch` | 批量获取Reddit帖子详情(最多5条)/Fetch Reddit Post Details in Batch (Max 5) |
-| `fetch_post_details_batch_large(post_ids, include_comment_id=..., comment_id=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_post_details_batch_large` | 大批量获取Reddit帖子详情(最多30条)/Fetch Reddit Post Details in Large Batch (Max 30) |
-| `fetch_search_typeahead(query, safe_search=..., allow_nsfw=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_search_typeahead` | 获取Reddit APP搜索自动补全建议/Fetch Reddit APP Search Typeahead Suggestions |
-| `fetch_subreddit_feed(subreddit_name, sort=..., filter_posts=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_subreddit_feed` | 获取Reddit APP版块Feed内容/Fetch Reddit APP Subreddit Feed |
-| `fetch_subreddit_info(subreddit_name=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_subreddit_info` | 获取Reddit APP版块信息/Fetch Reddit APP Subreddit Info |
-| `fetch_subreddit_post_channels(subreddit_name=..., sort=..., range=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_subreddit_post_channels` | 获取Reddit APP版块帖子频道信息/Fetch Reddit APP Subreddit Post Channels |
-| `fetch_subreddit_settings(subreddit_id, need_format=...)` | `GET /api/v1/reddit/app/fetch_subreddit_settings` | 获取Reddit APP版块设置/Fetch Reddit APP Subreddit Settings |
-| `fetch_subreddit_style(subreddit_name=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_subreddit_style` | 获取Reddit APP版块规则样式信息/Fetch Reddit APP Subreddit Rules and Style Info |
-| `fetch_topic_feed(topic_id, scheme_name=..., sort=..., time=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_topic_feed` | 按分类获取Reddit APP feed/Fetch Reddit APP Topic Feed |
-| `fetch_trending_searches(need_format=...)` | `GET /api/v1/reddit/app/fetch_trending_searches` | 获取Reddit APP今日热门搜索/Fetch Reddit APP Trending Searches |
-| `fetch_user_active_subreddits(username, need_format=...)` | `GET /api/v1/reddit/app/fetch_user_active_subreddits` | 获取用户活跃的社区列表/Fetch User's Active Subreddits |
-| `fetch_user_comments(username, sort=..., page_size=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_user_comments` | 获取用户评论列表/Fetch User Comments |
-| `fetch_user_posts(username, sort=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_user_posts` | 获取用户发布的帖子列表/Fetch User Posts |
-| `fetch_user_profile(username, need_format=...)` | `GET /api/v1/reddit/app/fetch_user_profile` | 获取Reddit APP用户资料信息/Fetch Reddit APP User Profile |
-| `fetch_user_trophies(username, need_format=...)` | `GET /api/v1/reddit/app/fetch_user_trophies` | 获取用户公开奖杯/Fetch User Public Trophies |
+| `check_subreddit_muted(subreddit_id, language=..., need_format=...)` | `GET /api/v1/reddit/app/check_subreddit_muted` | 检查版块是否静音/Check if Subreddit is Muted |
+| `fetch_comment_replies(post_id, cursor, language=..., sort_type=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_comment_replies` | 获取Reddit APP评论回复（二级评论）/Fetch Reddit APP Comment Replies (Sub-comments) |
+| `fetch_community_highlights(subreddit_id, language=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_community_highlights` | 获取Reddit APP社区亮点/Fetch Reddit APP Community Highlights |
+| `fetch_dynamic_search(query, language=..., search_type=..., sort=..., time_range=..., safe_search=..., allow_nsfw=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_dynamic_search` | 获取Reddit APP动态搜索结果/Fetch Reddit APP Dynamic Search Results |
+| `fetch_explore_feed(language=..., sort=..., time=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_explore_feed` | 获取Reddit APP发现页(社区分类+推荐社区)/Fetch Reddit APP Explore Feed |
+| `fetch_games_feed(language=..., sort=..., time=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_games_feed` | 获取Reddit APP游戏推荐内容/Fetch Reddit APP Games Feed |
+| `fetch_generated_comments(comment_ids, language=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_generated_comments` | 批量获取Reddit Answers卡片精简评论信息/Fetch Reddit Answers Generated Comments |
+| `fetch_generated_posts(post_ids, language=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_generated_posts` | 批量获取Reddit Answers卡片精简帖子信息/Fetch Reddit Answers Generated Posts |
+| `fetch_home_feed(language=..., sort=..., filter_posts=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_home_feed` | 获取Reddit APP首页推荐内容/Fetch Reddit APP Home Feed |
+| `fetch_news_feed(language=..., subtopic_ids=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_news_feed` | 获取Reddit APP资讯推荐内容/Fetch Reddit APP News Feed |
+| `fetch_popular_feed(language=..., sort=..., time=..., filter_posts=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_popular_feed` | 获取Reddit APP流行推荐内容/Fetch Reddit APP Popular Feed |
+| `fetch_post_comments(post_id, language=..., sort_type=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_post_comments` | 获取Reddit APP帖子评论/Fetch Reddit APP Post Comments |
+| `fetch_post_details(post_id, language=..., include_comment_id=..., comment_id=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_post_details` | 获取单个Reddit帖子详情/Fetch Single Reddit Post Details |
+| `fetch_post_details_batch(post_ids, language=..., include_comment_id=..., comment_id=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_post_details_batch` | 批量获取Reddit帖子详情(最多5条)/Fetch Reddit Post Details in Batch (Max 5) |
+| `fetch_post_details_batch_large(post_ids, language=..., include_comment_id=..., comment_id=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_post_details_batch_large` | 大批量获取Reddit帖子详情(最多30条)/Fetch Reddit Post Details in Large Batch (Max 30) |
+| `fetch_search_typeahead(query, language=..., safe_search=..., allow_nsfw=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_search_typeahead` | 获取Reddit APP搜索自动补全建议/Fetch Reddit APP Search Typeahead Suggestions |
+| `fetch_subreddit_feed(subreddit_name, language=..., sort=..., filter_posts=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_subreddit_feed` | 获取Reddit APP版块Feed内容/Fetch Reddit APP Subreddit Feed |
+| `fetch_subreddit_info(language=..., subreddit_name=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_subreddit_info` | 获取Reddit APP版块信息/Fetch Reddit APP Subreddit Info |
+| `fetch_subreddit_post_channels(language=..., subreddit_name=..., sort=..., range=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_subreddit_post_channels` | 获取Reddit APP版块帖子频道信息/Fetch Reddit APP Subreddit Post Channels |
+| `fetch_subreddit_settings(subreddit_id, language=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_subreddit_settings` | 获取Reddit APP版块设置/Fetch Reddit APP Subreddit Settings |
+| `fetch_subreddit_style(language=..., subreddit_name=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_subreddit_style` | 获取Reddit APP版块规则样式信息/Fetch Reddit APP Subreddit Rules and Style Info |
+| `fetch_topic_feed(topic_id, language=..., scheme_name=..., sort=..., time=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_topic_feed` | 按分类获取Reddit APP feed/Fetch Reddit APP Topic Feed |
+| `fetch_trending_searches(language=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_trending_searches` | 获取Reddit APP今日热门搜索/Fetch Reddit APP Trending Searches |
+| `fetch_user_active_subreddits(username, language=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_user_active_subreddits` | 获取用户活跃的社区列表/Fetch User's Active Subreddits |
+| `fetch_user_comments(username, language=..., sort=..., page_size=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_user_comments` | 获取用户评论列表/Fetch User Comments |
+| `fetch_user_posts(username, language=..., sort=..., after=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_user_posts` | 获取用户发布的帖子列表/Fetch User Posts |
+| `fetch_user_profile(username, language=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_user_profile` | 获取Reddit APP用户资料信息/Fetch Reddit APP User Profile |
+| `fetch_user_trophies(username, language=..., need_format=...)` | `GET /api/v1/reddit/app/fetch_user_trophies` | 获取用户公开奖杯/Fetch User Public Trophies |
 
-## `client.sora2`
+## `client.telegram_web`
 
-**Class:** `tikhub.resources.sora2.Sora2` (sync) / `AsyncSora2` (async)
+**Class:** `tikhub.resources.telegram_web.TelegramWeb` (sync) / `AsyncTelegramWeb` (async)
 
-**Endpoints:** 17
-
-| Method | Endpoint | Summary |
-|---|---|---|
-| `create_video(prompt, orientation=..., media_id=...)` | `POST /api/v1/sora2/create_video` | [已弃用/Deprecated] 文本/图片生成视频/Create video from text or image |
-| `get_cameo_leaderboard(cursor=...)` | `GET /api/v1/sora2/get_cameo_leaderboard` | 获取 Cameo 出镜秀达人排行榜/Fetch Cameo leaderboard |
-| `get_comment_replies(comment_id, cursor=...)` | `GET /api/v1/sora2/get_comment_replies` | 获取评论的回复/Fetch comment replies |
-| `get_feed(cursor=..., eager_views=...)` | `GET /api/v1/sora2/get_feed` | 获取Feed流（热门/推荐视频）/Fetch feed |
-| `get_post_comments(post_id, cursor=...)` | `GET /api/v1/sora2/get_post_comments` | 获取作品一级评论/Fetch post comments |
-| `get_post_detail(post_id=..., post_url=...)` | `GET /api/v1/sora2/get_post_detail` | 获取单一作品详情/Fetch single post detail |
-| `get_post_remix_list(post_id=..., post_url=..., cursor=...)` | `GET /api/v1/sora2/get_post_remix_list` | 获取作品的 Remix 列表/Fetch post remix list |
-| `get_task_detail(task_id=..., generation_id=...)` | `GET /api/v1/sora2/get_task_detail` | [已弃用/Deprecated] 获取任务生成的作品详情（无水印版本）/Get task-generated post detail (watermark-free) |
-| `get_task_status(task_id)` | `GET /api/v1/sora2/get_task_status` | [已弃用/Deprecated] 查询任务状态/Get task status |
-| `get_user_cameo_appearances(user_id, cursor=...)` | `GET /api/v1/sora2/get_user_cameo_appearances` | 获取用户Cameo出镜秀列表/Fetch user cameo appearances |
-| `get_user_followers(user_id, cursor=...)` | `GET /api/v1/sora2/get_user_followers` | 获取用户粉丝列表/Fetch user followers |
-| `get_user_following(user_id, cursor=...)` | `GET /api/v1/sora2/get_user_following` | 获取用户关注列表/Fetch user following |
-| `get_user_posts(user_id, cursor=...)` | `GET /api/v1/sora2/get_user_posts` | 获取用户发布的帖子列表/Fetch user posts |
-| `get_user_profile(user_id)` | `GET /api/v1/sora2/get_user_profile` | 获取用户信息档案/Fetch user profile |
-| `get_video_download_info(post_id=..., post_url=...)` | `GET /api/v1/sora2/get_video_download_info` | 获取无水印视频下载信息/Fetch none watermark video download info |
-| `search_users(username)` | `GET /api/v1/sora2/search_users` | 搜索用户/Search users |
-| `upload_image(file)` | `POST /api/v1/sora2/upload_image` | 上传图片获取media_id/Upload image to get media_id |
-
-## `client.temp_mail`
-
-**Class:** `tikhub.resources.temp_mail.TempMail` (sync) / `AsyncTempMail` (async)
-
-**Endpoints:** 3
+**Endpoints:** 7
 
 | Method | Endpoint | Summary |
 |---|---|---|
-| `get_email_by_id(token, message_id)` | `GET /api/v1/temp_mail/v1/get_email_by_id` | Get Email By Id |
-| `get_emails_inbox(token)` | `GET /api/v1/temp_mail/v1/get_emails_inbox` | Get Emails |
-| `get_temp_email_address()` | `GET /api/v1/temp_mail/v1/get_temp_email_address` | Get Temp Email |
+| `batch_channel_info(channels)` | `GET /api/v1/telegram/web/batch_channel_info` | 批量频道信息/Batch channel info |
+| `fetch_channel_info(channel)` | `GET /api/v1/telegram/web/fetch_channel_info` | 获取频道信息/Get channel info |
+| `fetch_channel_posts(channel, limit=..., before=..., after=...)` | `GET /api/v1/telegram/web/fetch_channel_posts` | 获取频道消息(分页)/Get channel posts (paginated) |
+| `fetch_channel_search(channel, query, limit=...)` | `GET /api/v1/telegram/web/fetch_channel_search` | 频道内关键词搜索/Search posts in a channel |
+| `fetch_post_comments(channel, post_id, limit=...)` | `GET /api/v1/telegram/web/fetch_post_comments` | 帖子评论/讨论/Post comments |
+| `fetch_post_detail(channel, post_id)` | `GET /api/v1/telegram/web/fetch_post_detail` | 获取单条消息/Get single post |
+| `fetch_similar_channels(channel)` | `GET /api/v1/telegram/web/fetch_similar_channels` | 相似频道推荐/Similar channels |
 
 ## `client.threads_web`
 
 **Class:** `tikhub.resources.threads_web.ThreadsWeb` (sync) / `AsyncThreadsWeb` (async)
 
-**Endpoints:** 11
+**Endpoints:** 12
 
 | Method | Endpoint | Summary |
 |---|---|---|
-| `fetch_post_comments(post_id, end_cursor=...)` | `GET /api/v1/threads/web/fetch_post_comments` | 获取帖子评论/Get post comments |
+| `fetch_post_comments(post_id, end_cursor=...)` | `GET /api/v1/threads/web/fetch_post_comments` | 获取帖子评论（无分页）/Get post comments (no pagination) |
 | `fetch_post_detail(post_id)` | `GET /api/v1/threads/web/fetch_post_detail` | 获取帖子详情/Get post detail |
 | `fetch_post_detail_v2(post_id=..., url=...)` | `GET /api/v1/threads/web/fetch_post_detail_v2` | 获取帖子详情 V2(支持链接)/Get post detail V2(supports URL) |
 | `fetch_user_info(username)` | `GET /api/v1/threads/web/fetch_user_info` | 获取用户信息/Get user info |
 | `fetch_user_info_by_id(user_id)` | `GET /api/v1/threads/web/fetch_user_info_by_id` | 根据用户ID获取用户信息/Get user info by ID |
-| `fetch_user_posts(user_id, end_cursor=...)` | `GET /api/v1/threads/web/fetch_user_posts` | 获取用户帖子列表/Get user posts |
-| `fetch_user_replies(user_id, end_cursor=...)` | `GET /api/v1/threads/web/fetch_user_replies` | 获取用户回复列表/Get user replies |
-| `fetch_user_reposts(user_id, end_cursor=...)` | `GET /api/v1/threads/web/fetch_user_reposts` | 获取用户转发列表/Get user reposts |
+| `fetch_user_posts(user_id, end_cursor=...)` | `GET /api/v1/threads/web/fetch_user_posts` | 获取用户帖子列表（无分页）/Get user posts (no pagination) |
+| `fetch_user_replies(user_id, end_cursor=...)` | `GET /api/v1/threads/web/fetch_user_replies` | 获取用户回复列表（无分页）/Get user replies (no pagination) |
+| `fetch_user_reposts(user_id, end_cursor=...)` | `GET /api/v1/threads/web/fetch_user_reposts` | 获取用户转发列表（无分页）/Get user reposts (no pagination) |
+| `search_posts(query)` | `GET /api/v1/threads/web/search_posts` | 搜索帖子/Search posts |
 | `search_profiles(query)` | `GET /api/v1/threads/web/search_profiles` | 搜索用户档案/Search profiles |
-| `search_recent(query, end_cursor=...)` | `GET /api/v1/threads/web/search_recent` | 搜索最新内容/Search recent content |
-| `search_top(query, end_cursor=...)` | `GET /api/v1/threads/web/search_top` | 搜索热门内容/Search top content |
+| `search_recent(query, end_cursor=...)` | `GET /api/v1/threads/web/search_recent` | 搜索最新内容（无分页）/Search recent content (no pagination) |
+| `search_top(query, end_cursor=...)` | `GET /api/v1/threads/web/search_top` | 搜索热门内容（无分页）/Search top content (no pagination) |
 
 ## `client.tikhub_downloader`
 
@@ -978,41 +980,26 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 
 **Class:** `tikhub.resources.tiktok_ads.TiktokAds` (sync) / `AsyncTiktokAds` (async)
 
-**Endpoints:** 31
+**Endpoints:** 16
 
 | Method | Endpoint | Summary |
 |---|---|---|
-| `get_ad_interactive_analysis(material_id, metric_type=..., period_type=...)` | `GET /api/v1/tiktok/ads/get_ad_interactive_analysis` | 获取广告互动分析/Get ad interactive analysis |
-| `get_ad_keyframe_analysis(material_id, metric=...)` | `GET /api/v1/tiktok/ads/get_ad_keyframe_analysis` | 获取广告关键帧分析/Get ad keyframe analysis |
-| `get_ad_percentile(material_id, metric=..., period_type=...)` | `GET /api/v1/tiktok/ads/get_ad_percentile` | 获取广告百分位数据/Get ad percentile data |
-| `get_ads_detail(ads_id)` | `GET /api/v1/tiktok/ads/get_ads_detail` | 获取单个广告详情/Get single ad detail |
-| `get_creative_patterns(first_industry_id=..., period_type=..., order_field=..., order_type=..., week=..., page=..., limit=...)` | `GET /api/v1/tiktok/ads/get_creative_patterns` | 获取创意模式排行榜/Get creative pattern rankings |
-| `get_creator_filters()` | `GET /api/v1/tiktok/ads/get_creator_filters` | 获取创作者筛选器/Get creator filters |
-| `get_creator_list(page=..., limit=..., sort_by=..., creator_country=..., audience_country=..., audience_count=..., keyword=...)` | `GET /api/v1/tiktok/ads/get_creator_list` | 获取创作者列表/Get creator list |
-| `get_hashtag_creator(hashtag)` | `GET /api/v1/tiktok/ads/get_hashtag_creator` | 获取标签创作者信息/Get hashtag creator info |
-| `get_hashtag_filters()` | `GET /api/v1/tiktok/ads/get_hashtag_filters` | 获取标签筛选器/Get hashtag filters |
-| `get_hashtag_list(page=..., limit=..., period=..., country_code=..., sort_by=..., industry_id=..., filter_by=...)` | `GET /api/v1/tiktok/ads/get_hashtag_list` | 获取热门标签列表/Get popular hashtags list |
-| `get_keyword_details(keyword=..., page=..., limit=..., period=..., country_code=..., order_by=..., order_type=..., industry=..., objective=..., keyword_type=...)` | `GET /api/v1/tiktok/ads/get_keyword_details` | 获取关键词详细信息/Get keyword details |
-| `get_keyword_filters()` | `GET /api/v1/tiktok/ads/get_keyword_filters` | 获取关键词筛选器/Get keyword filters |
-| `get_keyword_insights(page=..., limit=..., period=..., country_code=..., order_by=..., order_type=..., industry=..., objective=..., keyword_type=..., keyword=...)` | `GET /api/v1/tiktok/ads/get_keyword_insights` | 获取关键词洞察数据/Get keyword insights data |
-| `get_keyword_list(keyword=..., period=..., page=..., limit=..., country_code=..., industry=...)` | `GET /api/v1/tiktok/ads/get_keyword_list` | 获取关键词列表/Get keyword list |
-| `get_popular_trends(period=..., page=..., limit=..., order_by=..., country_code=...)` | `GET /api/v1/tiktok/ads/get_popular_trends` | 获取流行趋势视频/Get popular trend videos |
-| `get_product_detail(id, last=..., ecom_type=..., period_type=..., country_code=...)` | `GET /api/v1/tiktok/ads/get_product_detail` | 获取产品详细信息/Get product detail |
-| `get_product_filters()` | `GET /api/v1/tiktok/ads/get_product_filters` | 获取产品筛选器/Get product filters |
-| `get_product_metrics(id, last=..., metrics=..., ecom_type=..., period_type=..., country_code=...)` | `GET /api/v1/tiktok/ads/get_product_metrics` | 获取产品指标数据/Get product metrics |
-| `get_query_suggestions(count=..., scenario=...)` | `GET /api/v1/tiktok/ads/get_query_suggestions` | 获取查询建议/Get query suggestions |
-| `get_recommended_ads(material_id, industry=..., country_code=...)` | `GET /api/v1/tiktok/ads/get_recommended_ads` | 获取推荐广告/Get recommended ads |
-| `get_related_keywords(keyword=..., period=..., country_code=..., rank_type=..., content_type=..., page=..., limit=...)` | `GET /api/v1/tiktok/ads/get_related_keywords` | 获取相关关键词/Get related keywords |
-| `get_sound_detail(clip_id, period=..., country_code=...)` | `GET /api/v1/tiktok/ads/get_sound_detail` | 获取音乐详情/Get sound detail |
-| `get_sound_filters(rank_type=...)` | `GET /api/v1/tiktok/ads/get_sound_filters` | 获取音乐筛选器/Get sound filters |
-| `get_sound_rank_list(period=..., page=..., limit=..., rank_type=..., new_on_board=..., commercial_music=..., country_code=...)` | `GET /api/v1/tiktok/ads/get_sound_rank_list` | 获取热门音乐排行榜/Get popular sound rankings |
-| `get_sound_recommendations(clip_id, limit=...)` | `GET /api/v1/tiktok/ads/get_sound_recommendations` | 获取音乐推荐/Get sound recommendations |
-| `get_top_ads_spotlight(industry=..., page=..., limit=...)` | `GET /api/v1/tiktok/ads/get_top_ads_spotlight` | 获取热门广告聚光灯/Get top ads spotlight |
-| `get_top_products(last=..., page=..., limit=..., country_code=..., first_ecom_category_id=..., ecom_type=..., period_type=..., order_by=..., order_type=...)` | `GET /api/v1/tiktok/ads/get_top_products` | 获取热门产品列表/Get top products list |
-| `search_ads(objective=..., like=..., period=..., industry=..., keyword=..., page=..., limit=..., order_by=..., country_code=..., ad_format=..., ad_language=..., search_id=...)` | `GET /api/v1/tiktok/ads/search_ads` | 搜索广告/Search ads |
-| `search_creators(keyword, page=..., limit=..., sort_by=..., creator_country=...)` | `GET /api/v1/tiktok/ads/search_creators` | 搜索创作者/Search creators |
-| `search_sound(keyword, period=..., page=..., limit=..., rank_type=..., new_on_board=..., commercial_music=..., country_code=...)` | `GET /api/v1/tiktok/ads/search_sound` | 搜索音乐/Search sounds |
-| `search_sound_hint(keyword, period=..., page=..., limit=..., rank_type=..., country_code=..., filter_by_checked=..., commercial_music=...)` | `GET /api/v1/tiktok/ads/search_sound_hint` | 搜索音乐提示/Search sound hints |
+| `get_ad_interactive_analysis(material_id, metric_type=..., period_type=..., cookie=...)` | `POST /api/v1/tiktok/ads/get_ad_interactive_analysis` | 获取广告互动分析/Get ad interactive analysis |
+| `get_ad_keyframe_analysis(material_id, metric=..., cookie=...)` | `POST /api/v1/tiktok/ads/get_ad_keyframe_analysis` | 获取广告关键帧分析/Get ad keyframe analysis |
+| `get_ad_percentile(material_id, metric=..., period_type=..., cookie=...)` | `POST /api/v1/tiktok/ads/get_ad_percentile` | 获取广告百分位数据/Get ad percentile data |
+| `get_ads_detail(ads_id, cookie=...)` | `POST /api/v1/tiktok/ads/get_ads_detail` | 获取单个广告详情/Get single ad detail |
+| `get_configure_safety(body=...)` | `POST /api/v1/tiktok/ads/get_configure_safety` | 获取搜索板块配置/Get search modules config |
+| `get_creators_card(tt_uids=..., need_loader_list=..., creator_type=..., cookie=...)` | `POST /api/v1/tiktok/ads/get_creators_card` | 批量获取创作者卡片/Get creators card |
+| `get_location_list(body=...)` | `POST /api/v1/tiktok/ads/get_location_list` | 获取支持的国家地区列表/Get supported location list |
+| `get_query_suggestions(query=..., count=..., scenario=..., country_code=..., cookie=...)` | `POST /api/v1/tiktok/ads/get_query_suggestions` | 获取查询建议/Get query suggestions |
+| `get_recommended_ads(material_id, industry=..., country_code=..., cookie=...)` | `POST /api/v1/tiktok/ads/get_recommended_ads` | 获取推荐广告/Get recommended ads |
+| `get_top_ads_filters(body=...)` | `POST /api/v1/tiktok/ads/get_top_ads_filters` | 获取热门广告筛选项/Get Top Ads filters |
+| `get_top_ads_spotlight(industry=..., page=..., limit=..., cookie=...)` | `POST /api/v1/tiktok/ads/get_top_ads_spotlight` | 获取热门广告聚光灯/Get top ads spotlight |
+| `get_top_contents_item_detail(item_id, period_end_timestamp, period_dimension=..., country_code=..., cookie=...)` | `POST /api/v1/tiktok/ads/get_top_contents_item_detail` | 获取热门视频详情/Get top contents item detail |
+| `get_top_contents_list(period_end_timestamp, period_dimension=..., country_code=..., content_label_ids=..., order_by_metric=..., organic_only=..., page=..., limit=..., cookie=...)` | `POST /api/v1/tiktok/ads/get_top_contents_list` | 获取热门视频榜单/Get top contents list |
+| `get_trends_hashtag_detail(hashtag_id, time_range=..., country_code=..., cookie=...)` | `POST /api/v1/tiktok/ads/get_trends_hashtag_detail` | 获取热门标签详情(趋势)/Get trending hashtag detail |
+| `get_trends_hashtag_list(time_range=..., country_code=..., page=..., limit=..., industry_id=..., cookie=...)` | `POST /api/v1/tiktok/ads/get_trends_hashtag_list` | 获取热门标签榜单(趋势)/Get trending hashtag list |
+| `search_ads(objective=..., like=..., period=..., industry=..., keyword=..., page=..., limit=..., order_by=..., country_code=..., ad_format=..., ad_language=..., duration=..., pattern_label=..., search_id=..., cookie=...)` | `POST /api/v1/tiktok/ads/search_ads` | 搜索广告/Search ads |
 
 ## `client.tiktok_analytics`
 
@@ -1031,12 +1018,11 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 
 **Class:** `tikhub.resources.tiktok_app_v3.TiktokAppV3` (sync) / `AsyncTiktokAppV3` (async)
 
-**Endpoints:** 75
+**Endpoints:** 58
 
 | Method | Endpoint | Summary |
 |---|---|---|
 | `TTencrypt_algorithm(url=..., data=..., device_info=...)` | `POST /api/v1/tiktok/app/v3/TTencrypt_algorithm` | TikTok APP加密算法/TikTok APP encryption algorithm |
-| `add_video_play_count(aweme_type, item_id)` | `GET /api/v1/tiktok/app/v3/add_video_play_count` | 根据视频ID来增加作品的播放数/Increase the number of plays of the work according to the video ID |
 | `check_live_room_online(room_id)` | `GET /api/v1/tiktok/app/v3/check_live_room_online` | 检测直播间是否在线/Check if live room is online |
 | `check_live_room_online_batch(room_ids=...)` | `POST /api/v1/tiktok/app/v3/check_live_room_online_batch` | 批量检测直播间是否在线/Batch check if live rooms are online |
 | `encrypt_decrypt_login_request(username=..., password=..., mode=...)` | `POST /api/v1/tiktok/app/v3/encrypt_decrypt_login_request` | 加密或解密 TikTok APP 登录请求体/Encrypt or Decrypt TikTok APP login request body |
@@ -1046,11 +1032,10 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_creator_search_insights_detail(query_id_str, time_range=..., start_date=..., end_date=..., dimension_list=...)` | `GET /api/v1/tiktok/app/v3/fetch_creator_search_insights_detail` | 创作者搜索洞察详情/Creator Search Insights Detail |
 | `fetch_creator_search_insights_trend(query_id_str, from_tab_path=..., query_analysis_required=...)` | `GET /api/v1/tiktok/app/v3/fetch_creator_search_insights_trend` | 创作者搜索洞察趋势/Creator Search Insights Trend |
 | `fetch_creator_search_insights_videos(keyword, offset=..., count=...)` | `GET /api/v1/tiktok/app/v3/fetch_creator_search_insights_videos` | 创作者搜索洞察相关视频/Creator Search Insights Videos |
-| `fetch_creator_showcase_product_list(kol_id, count=..., next_scroll_param=...)` | `GET /api/v1/tiktok/app/v3/fetch_creator_showcase_product_list` | 获取创作者橱窗商品列表/Get creator showcase product list |
 | `fetch_general_search_result(keyword, offset=..., count=..., sort_type=..., publish_time=...)` | `GET /api/v1/tiktok/app/v3/fetch_general_search_result` | 获取指定关键词的综合搜索结果/Get comprehensive search results of specified keywords |
-| `fetch_hashtag_detail(ch_id)` | `GET /api/v1/tiktok/app/v3/fetch_hashtag_detail` | 获取指定话题的详情数据/Get details of specified hashtag |
+| `fetch_hashtag_detail(ch_id, region=...)` | `GET /api/v1/tiktok/app/v3/fetch_hashtag_detail` | 获取指定话题的详情数据/Get details of specified hashtag |
 | `fetch_hashtag_search_result(keyword, offset=..., count=...)` | `GET /api/v1/tiktok/app/v3/fetch_hashtag_search_result` | 获取指定关键词的话题搜索结果/Get hashtag search results of specified keywords |
-| `fetch_hashtag_video_list(ch_id, cursor=..., count=...)` | `GET /api/v1/tiktok/app/v3/fetch_hashtag_video_list` | 获取指定话题的作品数据/Get video list of specified hashtag |
+| `fetch_hashtag_video_list(ch_id, cursor=..., count=..., region=...)` | `GET /api/v1/tiktok/app/v3/fetch_hashtag_video_list` | 获取指定话题的作品数据/Get video list of specified hashtag |
 | `fetch_home_feed(cookie=...)` | `POST /api/v1/tiktok/app/v3/fetch_home_feed` | 获取主页视频推荐数据/Get home feed(recommend) video data |
 | `fetch_live_daily_rank(anchor_id=..., room_id=..., rank_type=..., region_type=..., gap_interval=..., cookie=...)` | `GET /api/v1/tiktok/app/v3/fetch_live_daily_rank` | 获取直播每日榜单数据/Get live daily rank data |
 | `fetch_live_ranking_list(room_id, anchor_id)` | `GET /api/v1/tiktok/app/v3/fetch_live_ranking_list` | 获取直播间排行榜数据/Get live room ranking list |
@@ -1070,30 +1055,15 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_one_video_by_share_url_v2(share_url)` | `GET /api/v1/tiktok/app/v3/fetch_one_video_by_share_url_v2` | 根据分享链接获取单个作品数据/Get single video data by sharing link |
 | `fetch_one_video_v2(aweme_id)` | `GET /api/v1/tiktok/app/v3/fetch_one_video_v2` | 获取单个作品数据 V2/Get single video data V2 |
 | `fetch_one_video_v3(aweme_id, region=...)` | `GET /api/v1/tiktok/app/v3/fetch_one_video_v3` | 获取单个作品数据 V3(支持国家参数)/Get single video data V3 (support country parameter) |
-| `fetch_product_detail(product_id)` | `GET /api/v1/tiktok/app/v3/fetch_product_detail` | 获取商品详情数据（即将弃用，使用 fetch_product_detail_v2 代替）/Get product detail data (will be deprecated, use fetch_product_detail_v2 in |
-| `fetch_product_detail_v2(product_id)` | `GET /api/v1/tiktok/app/v3/fetch_product_detail_v2` | 获取商品详情数据V2/Get product detail data V2 |
-| `fetch_product_detail_v3(product_id, region=...)` | `GET /api/v1/tiktok/app/v3/fetch_product_detail_v3` | 获取商品详情数据V3 / Get product detail data V3 |
-| `fetch_product_detail_v4(product_id, region=...)` | `GET /api/v1/tiktok/app/v3/fetch_product_detail_v4` | 获取商品详情数据V4 / Get product detail data V4 |
-| `fetch_product_id_by_share_link(share_link)` | `GET /api/v1/tiktok/app/v3/fetch_product_id_by_share_link` | 通过分享链接获取商品ID/Get Product ID by Share Link |
-| `fetch_product_review(product_id, cursor=..., size=..., filter_id=..., sort_type=...)` | `GET /api/v1/tiktok/app/v3/fetch_product_review` | 获取商品评价数据/Get product review data |
-| `fetch_product_search(keyword, cursor=..., count=..., sort_type=..., customer_review_four_star=..., have_discount=..., min_price=..., max_price=...)` | `GET /api/v1/tiktok/app/v3/fetch_product_search` | 获取商品搜索结果/Get product search results |
 | `fetch_share_qr_code(object_id, schema_type=...)` | `GET /api/v1/tiktok/app/v3/fetch_share_qr_code` | 获取分享二维码/Get share QR code |
 | `fetch_share_short_link(url)` | `GET /api/v1/tiktok/app/v3/fetch_share_short_link` | 获取分享短链接/Get share short link |
-| `fetch_shop_home(page_id, seller_id)` | `GET /api/v1/tiktok/app/v3/fetch_shop_home` | 获取商家主页数据/Get shop home page data |
-| `fetch_shop_home_page_list(seller_id)` | `GET /api/v1/tiktok/app/v3/fetch_shop_home_page_list` | 获取商家主页Page列表数据/Get shop home page list data |
-| `fetch_shop_id_by_share_link(share_link)` | `GET /api/v1/tiktok/app/v3/fetch_shop_id_by_share_link` | 通过分享链接获取店铺ID/Get Shop ID by Share Link |
-| `fetch_shop_info(shop_id)` | `GET /api/v1/tiktok/app/v3/fetch_shop_info` | 获取商家信息数据/Get shop information data |
-| `fetch_shop_product_category(seller_id)` | `GET /api/v1/tiktok/app/v3/fetch_shop_product_category` | 获取商家产品分类数据/Get shop product category data |
-| `fetch_shop_product_list(seller_id, scroll_params=..., page_size=..., sort_field=..., sort_order=...)` | `GET /api/v1/tiktok/app/v3/fetch_shop_product_list` | 获取商家商品列表数据/Get shop product list data |
-| `fetch_shop_product_list_v2(seller_id, scroll_params=..., page_size=..., sort_field=..., sort_order=...)` | `GET /api/v1/tiktok/app/v3/fetch_shop_product_list_v2` | 获取商家商品列表数据 V2/Get shop product list data V2 |
-| `fetch_shop_product_recommend(seller_id, scroll_param=..., page_size=...)` | `GET /api/v1/tiktok/app/v3/fetch_shop_product_recommend` | 获取商家商品推荐数据/Get shop product recommend data |
 | `fetch_similar_user_recommendations(sec_uid, page_token=...)` | `GET /api/v1/tiktok/app/v3/fetch_similar_user_recommendations` | 获取类似用户推荐/Similar User Recommendations |
 | `fetch_user_country_by_username(username)` | `GET /api/v1/tiktok/app/v3/fetch_user_country_by_username` | 通过用户名获取用户账号国家地区/Get user account country by username |
 | `fetch_user_follower_list(user_id=..., sec_user_id=..., count=..., min_time=..., page_token=...)` | `GET /api/v1/tiktok/app/v3/fetch_user_follower_list` | 获取指定用户的粉丝列表数据/Get follower list of specified user |
 | `fetch_user_following_list(user_id=..., sec_user_id=..., count=..., min_time=..., page_token=...)` | `GET /api/v1/tiktok/app/v3/fetch_user_following_list` | 获取指定用户的关注列表数据/Get following list of specified user |
 | `fetch_user_like_videos(sec_user_id, max_cursor=..., counts=...)` | `GET /api/v1/tiktok/app/v3/fetch_user_like_videos` | 获取用户喜欢作品数据/Get user like video data |
 | `fetch_user_music_list(sec_uid, cursor=..., count=...)` | `GET /api/v1/tiktok/app/v3/fetch_user_music_list` | 获取用户音乐列表数据/Get user music list data |
-| `fetch_user_post_videos(sec_user_id=..., unique_id=..., max_cursor=..., count=..., sort_type=...)` | `GET /api/v1/tiktok/app/v3/fetch_user_post_videos` | 获取用户主页作品数据 V1/Get user homepage video data V1 |
+| `fetch_user_post_videos(sec_user_id=..., unique_id=..., max_cursor=..., count=..., sort_type=..., region=...)` | `GET /api/v1/tiktok/app/v3/fetch_user_post_videos` | 获取用户主页作品数据 V1/Get user homepage video data V1 |
 | `fetch_user_post_videos_v2(sec_user_id=..., unique_id=..., max_cursor=..., count=..., sort_type=...)` | `GET /api/v1/tiktok/app/v3/fetch_user_post_videos_v2` | 获取用户主页作品数据 V2/Get user homepage video data V2 |
 | `fetch_user_post_videos_v3(sec_user_id=..., unique_id=..., max_cursor=..., count=..., sort_type=...)` | `GET /api/v1/tiktok/app/v3/fetch_user_post_videos_v3` | 获取用户主页作品数据 V3（精简数据-更快速）/Get user homepage video data V3 (simplified data - faster) |
 | `fetch_user_repost_videos(user_id, offset=..., count=...)` | `GET /api/v1/tiktok/app/v3/fetch_user_repost_videos` | 获取用户转发的作品数据/Get user repost video data |
@@ -1134,49 +1104,32 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `get_video_list_analytics(cookie=..., proxy=..., start_date=..., page=..., rules=...)` | `POST /api/v1/tiktok/creator/get_video_list_analytics` | 获取创作者视频列表分析/Get Creator Video List Analytics |
 | `get_video_to_product_stats(item_id, product_id, cookie=..., proxy=..., start_date=...)` | `POST /api/v1/tiktok/creator/get_video_to_product_stats` | 获取视频与商品关联统计数据/Get Video-Product Association Statistics |
 
-## `client.tiktok_interaction`
-
-**Class:** `tikhub.resources.tiktok_interaction.TiktokInteraction` (sync) / `AsyncTiktokInteraction` (async)
-
-**Endpoints:** 7
-
-| Method | Endpoint | Summary |
-|---|---|---|
-| `apply(api_key, invite_code)` | `GET /api/v1/tiktok/interaction/apply` | 申请使用TikTok交互API权限（Scope）/Apply for TikTok Interaction API permission (Scope) |
-| `collect(aweme_id=..., cookie=..., device_id=..., iid=..., proxy=...)` | `POST /api/v1/tiktok/interaction/collect` | 收藏/Collect |
-| `follow(user_id=..., sec_user_id=..., cookie=..., device_id=..., iid=..., proxy=...)` | `POST /api/v1/tiktok/interaction/follow` | 关注/Follow |
-| `forward(aweme_id=..., cookie=..., device_id=..., iid=..., proxy=...)` | `POST /api/v1/tiktok/interaction/forward` | 转发/Forward |
-| `like(aweme_id=..., cookie=..., device_id=..., iid=..., proxy=...)` | `POST /api/v1/tiktok/interaction/like` | 点赞/Like |
-| `post_comment(aweme_id=..., text=..., cookie=..., device_id=..., iid=..., proxy=...)` | `POST /api/v1/tiktok/interaction/post_comment` | 发送评论/Post comment |
-| `reply_comment(aweme_id=..., reply_id=..., text=..., cookie=..., device_id=..., iid=..., proxy=...)` | `POST /api/v1/tiktok/interaction/reply_comment` | 回复评论/Reply to comment |
-
 ## `client.tiktok_shop_web`
 
 **Class:** `tikhub.resources.tiktok_shop_web.TiktokShopWeb` (sync) / `AsyncTiktokShopWeb` (async)
 
-**Endpoints:** 13
+**Endpoints:** 12
 
 | Method | Endpoint | Summary |
 |---|---|---|
-| `fetch_hot_selling_products_list(region=..., count=...)` | `GET /api/v1/tiktok/shop/web/fetch_hot_selling_products_list` | 获取热卖商品列表/Get hot selling products list |
 | `fetch_product_detail(product_id, seller_id=..., region=...)` | `GET /api/v1/tiktok/shop/web/fetch_product_detail` | 获取商品详情V1(桌面端-数据完整)/Get product detail V1(Full data) |
-| `fetch_product_detail_v2(product_id, seller_id=..., region=...)` | `GET /api/v1/tiktok/shop/web/fetch_product_detail_v2` | 获取商品详情V2(移动端-数据少)/Get product detail V2 (Less Data) |
 | `fetch_product_detail_v3(product_id, region=...)` | `GET /api/v1/tiktok/shop/web/fetch_product_detail_v3` | 获取商品详情V3(移动端-数据完整)/Get product detail V3 (Full Data) |
+| `fetch_product_id_by_share_link(share_link, region=...)` | `GET /api/v1/tiktok/shop/web/fetch_product_id_by_share_link` | 通过分享链接获取商品ID/Get Product ID by Share Link |
 | `fetch_product_reviews_v2(product_id, page_start=..., sort_rule=..., filter_type=..., filter_value=..., region=...)` | `GET /api/v1/tiktok/shop/web/fetch_product_reviews_v2` | 获取商品评论V2/Get product reviews V2 |
 | `fetch_products_by_category_id(category_id, offset=..., region=...)` | `GET /api/v1/tiktok/shop/web/fetch_products_by_category_id` | 根据分类ID获取商品列表/Get products by category ID |
 | `fetch_products_category_list(region=...)` | `GET /api/v1/tiktok/shop/web/fetch_products_category_list` | 获取商品分类列表/Get product category list |
 | `fetch_search_products_list(search_word, offset=..., page_token=..., region=...)` | `GET /api/v1/tiktok/shop/web/fetch_search_products_list` | 搜索商品列表V1/Search products list V1 |
-| `fetch_search_products_list_v2(search_word, offset=..., page_token=..., region=...)` | `GET /api/v1/tiktok/shop/web/fetch_search_products_list_v2` | 搜索商品列表V2(移动端)/Search products list V2 (Mobile) |
-| `fetch_search_word_suggestion(search_word, lang=..., region=...)` | `GET /api/v1/tiktok/shop/web/fetch_search_word_suggestion` | 获取搜索关键词建议V1/Get search keyword suggestions V1 |
+| `fetch_search_products_list_v2(search_word, offset=..., page_token=..., region=...)` | `GET /api/v1/tiktok/shop/web/fetch_search_products_list_v2` | 搜索商品列表V2(移动端，仅 US)/Search products list V2 (Mobile, US only) |
 | `fetch_search_word_suggestion_v2(search_word, lang=..., region=...)` | `GET /api/v1/tiktok/shop/web/fetch_search_word_suggestion_v2` | 获取搜索关键词建议V2(移动端)/Get search keyword suggestions V2 (Mobile) |
 | `fetch_seller_products_list(seller_id, search_params=..., region=...)` | `GET /api/v1/tiktok/shop/web/fetch_seller_products_list` | 获取商家商品列表V1/Get seller products list V1 |
-| `fetch_seller_products_list_v2(seller_id, searchParams=..., region=...)` | `GET /api/v1/tiktok/shop/web/fetch_seller_products_list_v2` | 获取商家商品列表V2(移动端)/Get seller products list V2 (Mobile) |
+| `fetch_seller_products_list_v2(seller_id, searchParams=..., region=...)` | `GET /api/v1/tiktok/shop/web/fetch_seller_products_list_v2` | 获取商家商品列表V2(移动端，仅 US)/Get seller products list V2 (Mobile, US only) |
+| `fetch_shop_id_by_share_link(share_link, region=...)` | `GET /api/v1/tiktok/shop/web/fetch_shop_id_by_share_link` | 通过分享链接获取店铺ID/Get Shop ID by Share Link |
 
 ## `client.tiktok_web`
 
 **Class:** `tikhub.resources.tiktok_web.TiktokWeb` (sync) / `AsyncTiktokWeb` (async)
 
-**Endpoints:** 60
+**Endpoints:** 58
 
 | Method | Endpoint | Summary |
 |---|---|---|
@@ -1189,27 +1142,25 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_general_search(keyword, offset=..., search_id=..., cookie=...)` | `GET /api/v1/tiktok/web/fetch_general_search` | 获取综合搜索列表/Get general search list |
 | `fetch_gift_name_by_id(gift_id)` | `POST /api/v1/tiktok/web/fetch_gift_name_by_id` | 根据Gift ID查询礼物名称/Get gift name by gift ID |
 | `fetch_gift_names_by_ids(gift_ids)` | `POST /api/v1/tiktok/web/fetch_gift_names_by_ids` | 批量查询Gift ID对应的礼物名称($0.025/次,建议50个)/Batch get gift names by gift IDs ($0.025/call, suggest 50) |
-| `fetch_home_feed(count=..., cookie=...)` | `POST /api/v1/tiktok/web/fetch_home_feed` | 首页推荐作品/Home Feed |
+| `fetch_home_feed(count=..., cookie=..., region=...)` | `POST /api/v1/tiktok/web/fetch_home_feed` | 首页推荐作品/Home Feed |
 | `fetch_live_gift_list(room_id=...)` | `GET /api/v1/tiktok/web/fetch_live_gift_list` | 获取直播间礼物列表/Get live room gift list |
 | `fetch_live_im_fetch(room_id, user_unique_id=..., resp_content_type=...)` | `GET /api/v1/tiktok/web/fetch_live_im_fetch` | TikTok直播间弹幕参数获取/tiktok live room danmaku parameters |
 | `fetch_live_recommend(related_live_tag)` | `GET /api/v1/tiktok/web/fetch_live_recommend` | 获取直播间首页推荐列表/Get live room homepage recommendation list |
+| `fetch_live_recommend_tabs(logid=...)` | `GET /api/v1/tiktok/web/fetch_live_recommend_tabs` | 获取直播间首页推荐可用标签/Get available tags for live room homepage recommendation |
+| `fetch_post_ai_article(itemId)` | `GET /api/v1/tiktok/web/fetch_post_ai_article` | 获取单个作品的AI长文内容/Get AI-generated article of a single video |
 | `fetch_post_comment(aweme_id, cursor=..., count=..., current_region=...)` | `GET /api/v1/tiktok/web/fetch_post_comment` | 获取作品的评论列表/Get video comments |
 | `fetch_post_comment_reply(item_id, comment_id, cursor=..., count=..., current_region=...)` | `GET /api/v1/tiktok/web/fetch_post_comment_reply` | 获取作品的评论回复列表/Get video comment replies |
-| `fetch_post_detail(itemId)` | `GET /api/v1/tiktok/web/fetch_post_detail` | 获取单个作品数据/Get single video data |
-| `fetch_post_detail_v2(itemId)` | `GET /api/v1/tiktok/web/fetch_post_detail_v2` | 获取单个作品数据 V2/Get single video data V2 |
+| `fetch_post_detail(itemId, region=...)` | `GET /api/v1/tiktok/web/fetch_post_detail` | 获取单个作品数据/Get single video data |
+| `fetch_post_detail_v2(itemId, region=...)` | `GET /api/v1/tiktok/web/fetch_post_detail_v2` | 获取单个作品数据 V2/Get single video data V2 |
 | `fetch_search_keyword_suggest(keyword)` | `GET /api/v1/tiktok/web/fetch_search_keyword_suggest` | 搜索关键字推荐/Search keyword suggest |
 | `fetch_search_live(keyword, count=..., offset=..., search_id=..., cookie=...)` | `GET /api/v1/tiktok/web/fetch_search_live` | 搜索直播/Search live |
 | `fetch_search_photo(keyword, count=..., offset=..., search_id=..., cookie=...)` | `GET /api/v1/tiktok/web/fetch_search_photo` | 搜索照片/Search photo |
 | `fetch_search_user(keyword, cursor=..., search_id=..., cookie=...)` | `GET /api/v1/tiktok/web/fetch_search_user` | 搜索用户/Search user |
 | `fetch_search_video(keyword, count=..., offset=..., search_id=..., cookie=...)` | `GET /api/v1/tiktok/web/fetch_search_video` | 搜索视频/Search video |
-| `fetch_sso_login_auth(device_id, verifyFp, region, proxy)` | `GET /api/v1/tiktok/web/fetch_sso_login_auth` | 认证SSO登录/Authenticate SSO login |
-| `fetch_sso_login_qrcode(device_id, region, proxy)` | `GET /api/v1/tiktok/web/fetch_sso_login_qrcode` | 获取SSO登录二维码/Get SSO login QR code |
-| `fetch_sso_login_status(token, device_id, verifyFp, region, proxy)` | `GET /api/v1/tiktok/web/fetch_sso_login_status` | 获取SSO登录状态/Get SSO login status |
 | `fetch_tag_detail(tag_name)` | `GET /api/v1/tiktok/web/fetch_tag_detail` | Tag详情/Tag Detail |
 | `fetch_tag_post(challengeID, count=..., cursor=...)` | `GET /api/v1/tiktok/web/fetch_tag_post` | Tag作品/Tag Post |
 | `fetch_tiktok_live_data(live_room_url)` | `GET /api/v1/tiktok/web/fetch_tiktok_live_data` | 通过直播链接获取直播间信息/Get live room information via live link |
 | `fetch_tiktok_web_guest_cookie(user_agent)` | `GET /api/v1/tiktok/web/fetch_tiktok_web_guest_cookie` | 获取游客 Cookie/Get the guest Cookie |
-| `fetch_trending_post()` | `GET /api/v1/tiktok/web/fetch_trending_post` | 获取每日热门内容作品数据/Get daily trending video data |
 | `fetch_trending_searchwords()` | `GET /api/v1/tiktok/web/fetch_trending_searchwords` | 获取每日趋势搜索关键词/Get daily trending search words |
 | `fetch_user_collect(cookie, secUid, cursor=..., count=..., coverFormat=...)` | `GET /api/v1/tiktok/web/fetch_user_collect` | 获取用户的收藏列表/Get user favorites |
 | `fetch_user_fans(secUid, count=..., maxCursor=..., minCursor=...)` | `GET /api/v1/tiktok/web/fetch_user_fans` | 获取用户的粉丝列表/Get user followers |
@@ -1270,77 +1221,100 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 
 **Class:** `tikhub.resources.twitter_web.TwitterWeb` (sync) / `AsyncTwitterWeb` (async)
 
-**Endpoints:** 13
+**Endpoints:** 25
 
 | Method | Endpoint | Summary |
 |---|---|---|
+| `fetch_check_follow(user_name, follows)` | `GET /api/v1/twitter/web/fetch_check_follow` | 检查用户是否关注了另一个用户/Check follow |
+| `fetch_check_retweet(screen_name, tweet_id)` | `GET /api/v1/twitter/web/fetch_check_retweet` | 检查用户是否转推了某条推文/Check retweet |
+| `fetch_community_info(community_id)` | `GET /api/v1/twitter/web/fetch_community_info` | 获取社区详情/Get community info |
+| `fetch_community_members(community_id, cursor=...)` | `GET /api/v1/twitter/web/fetch_community_members` | 获取社区成员（无分页）/Get community members (no pagination) |
+| `fetch_community_timeline(community_id, ranking=..., cursor=...)` | `GET /api/v1/twitter/web/fetch_community_timeline` | 获取社区帖子/Get community timeline |
 | `fetch_latest_post_comments(tweet_id, cursor=...)` | `GET /api/v1/twitter/web/fetch_latest_post_comments` | 获取最新的推文评论/Get the latest tweet comments |
+| `fetch_list_followers(list_id, cursor=...)` | `GET /api/v1/twitter/web/fetch_list_followers` | 获取列表关注者/Get list followers |
+| `fetch_list_members(list_id, cursor=...)` | `GET /api/v1/twitter/web/fetch_list_members` | 获取列表成员/Get list members |
+| `fetch_list_timeline(list_id, cursor=...)` | `GET /api/v1/twitter/web/fetch_list_timeline` | 获取列表帖子/Get list timeline |
 | `fetch_post_comments(tweet_id, cursor=...)` | `GET /api/v1/twitter/web/fetch_post_comments` | 获取评论/Get comments |
 | `fetch_retweet_user_list(tweet_id, cursor=...)` | `GET /api/v1/twitter/web/fetch_retweet_user_list` | 转推用户列表/ReTweet User list |
+| `fetch_search_communities(keyword, cursor=...)` | `GET /api/v1/twitter/web/fetch_search_communities` | 搜索社区/Search communities |
 | `fetch_search_timeline(keyword, search_type=..., cursor=...)` | `GET /api/v1/twitter/web/fetch_search_timeline` | 搜索/Search |
 | `fetch_trending(country=...)` | `GET /api/v1/twitter/web/fetch_trending` | 趋势/Trending |
 | `fetch_tweet_detail(tweet_id)` | `GET /api/v1/twitter/web/fetch_tweet_detail` | 获取单个推文数据/Get single tweet data |
+| `fetch_user_about(screen_name)` | `GET /api/v1/twitter/web/fetch_user_about` | 获取用户账号档案信息/Get user about profile |
+| `fetch_user_affiliates(screen_name, cursor=...)` | `GET /api/v1/twitter/web/fetch_user_affiliates` | 获取用户关联子账号/Get user affiliates |
 | `fetch_user_followers(screen_name, cursor=...)` | `GET /api/v1/twitter/web/fetch_user_followers` | 用户粉丝/User Followers |
 | `fetch_user_followings(screen_name, cursor=...)` | `GET /api/v1/twitter/web/fetch_user_followings` | 用户关注/User Followings |
-| `fetch_user_highlights_tweets(userId, count=..., cursor=...)` | `GET /api/v1/twitter/web/fetch_user_highlights_tweets` | 获取用户高光推文/Get user highlights tweets |
+| `fetch_user_live_status(rest_id)` | `GET /api/v1/twitter/web/fetch_user_live_status` | 检查用户是否正在直播/Check user live status |
 | `fetch_user_media(screen_name, rest_id=..., cursor=...)` | `GET /api/v1/twitter/web/fetch_user_media` | 获取用户媒体/Get user media |
 | `fetch_user_post_tweet(screen_name=..., rest_id=..., cursor=...)` | `GET /api/v1/twitter/web/fetch_user_post_tweet` | 获取用户发帖/Get user post |
 | `fetch_user_profile(screen_name=..., rest_id=...)` | `GET /api/v1/twitter/web/fetch_user_profile` | 获取用户资料/Get user profile |
+| `fetch_user_profiles_by_rest_ids(rest_ids)` | `GET /api/v1/twitter/web/fetch_user_profiles_by_rest_ids` | 批量根据用户ID获取用户资料/Get profiles by rest ids |
 | `fetch_user_tweet_replies(screen_name, cursor=...)` | `GET /api/v1/twitter/web/fetch_user_tweet_replies` | 获取用户推文回复/Get user tweet replies |
 
-## `client.wechat_channels`
+## `client.wechat_channels_v2`
 
-**Class:** `tikhub.resources.wechat_channels.WechatChannels` (sync) / `AsyncWechatChannels` (async)
-
-**Endpoints:** 12
-
-| Method | Endpoint | Summary |
-|---|---|---|
-| `fetch_comments(id, lastBuffer=..., comment_id=...)` | `POST /api/v1/wechat_channels/fetch_comments` | 微信视频号评论/WeChat Channels Comments |
-| `fetch_default_search(keywords, session_buffer=...)` | `POST /api/v1/wechat_channels/fetch_default_search` | 微信视频号默认搜索/WeChat Channels Default Search |
-| `fetch_home_page(username, last_buffer=...)` | `POST /api/v1/wechat_channels/fetch_home_page` | 微信视频号主页/WeChat Channels Home Page |
-| `fetch_hot_words()` | `GET /api/v1/wechat_channels/fetch_hot_words` | 微信视频号热门话题/WeChat Channels Hot Topics |
-| `fetch_live_history(username)` | `GET /api/v1/wechat_channels/fetch_live_history` | 微信视频号直播回放/WeChat Channels Live History |
-| `fetch_search_channels(keyword, offset=..., sort_type=...)` | `GET /api/v1/wechat_channels/fetch_search_channels` | 微信视频号搜索/Search WeChat Channels |
-| `fetch_search_latest(keywords)` | `GET /api/v1/wechat_channels/fetch_search_latest` | 微信视频号搜索最新视频/WeChat Channels Search Latest Videos |
-| `fetch_search_ordinary(keywords)` | `GET /api/v1/wechat_channels/fetch_search_ordinary` | 微信视频号综合搜索/WeChat Channels Comprehensive Search |
-| `fetch_user_search(keywords, page=...)` | `GET /api/v1/wechat_channels/fetch_user_search` | 微信视频号用户搜索/WeChat Channels User Search |
-| `fetch_user_search_v2(keywords=..., page=...)` | `GET /api/v1/wechat_channels/fetch_user_search_v2` | 微信视频号用户搜索V2/WeChat Channels User Search V2 |
-| `fetch_video_by_share_url(share_url)` | `GET /api/v1/wechat_channels/fetch_video_by_share_url` | 微信视频号分享详情/WeChat Channels Share Detail |
-| `fetch_video_detail(id=..., exportId=...)` | `GET /api/v1/wechat_channels/fetch_video_detail` | 微信视频号视频详情/WeChat Channels Video Detail |
-
-## `client.wechat_media_platform_web`
-
-**Class:** `tikhub.resources.wechat_media_platform_web.WechatMediaPlatformWeb` (sync) / `AsyncWechatMediaPlatformWeb` (async)
+**Class:** `tikhub.resources.wechat_channels_v2.WechatChannelsV2` (sync) / `AsyncWechatChannelsV2` (async)
 
 **Endpoints:** 12
 
 | Method | Endpoint | Summary |
 |---|---|---|
-| `fetch_mp_article_ad(url)` | `GET /api/v1/wechat_mp/web/fetch_mp_article_ad` | 获取微信公众号广告/Get Wechat MP Article Ad |
-| `fetch_mp_article_comment_list(url, comment_id=..., buffer=...)` | `GET /api/v1/wechat_mp/web/fetch_mp_article_comment_list` | 获取微信公众号文章评论列表/Get Wechat MP Article Comment List |
-| `fetch_mp_article_comment_reply_list(comment_id, content_id, url=..., offset=...)` | `GET /api/v1/wechat_mp/web/fetch_mp_article_comment_reply_list` | 获取微信公众号文章评论回复列表/Get Wechat MP Article Comment Reply List |
-| `fetch_mp_article_detail_html(url)` | `GET /api/v1/wechat_mp/web/fetch_mp_article_detail_html` | 获取微信公众号文章详情的HTML/Get Wechat MP Article Detail HTML |
-| `fetch_mp_article_detail_json(url)` | `GET /api/v1/wechat_mp/web/fetch_mp_article_detail_json` | 获取微信公众号文章详情的JSON/Get Wechat MP Article Detail JSON |
-| `fetch_mp_article_list(ghid, offset=...)` | `GET /api/v1/wechat_mp/web/fetch_mp_article_list` | 获取微信公众号文章列表/Get Wechat MP Article List |
-| `fetch_mp_article_read_count(url, comment_id)` | `GET /api/v1/wechat_mp/web/fetch_mp_article_read_count` | 获取微信公众号文章阅读量/Get Wechat MP Article Read Count |
-| `fetch_mp_article_url(sogou_url)` | `GET /api/v1/wechat_mp/web/fetch_mp_article_url` | 获取微信公众号文章永久链接/Get Wechat MP Article URL |
-| `fetch_mp_article_url_conversion(url)` | `GET /api/v1/wechat_mp/web/fetch_mp_article_url_conversion` | 获取微信公众号长链接转短链接/Get Wechat MP Long URL to Short URL |
-| `fetch_mp_related_articles(url)` | `GET /api/v1/wechat_mp/web/fetch_mp_related_articles` | 获取微信公众号关联文章/Get Wechat MP Related Articles |
-| `fetch_search_article(keyword, offset=..., sort_type=...)` | `GET /api/v1/wechat_mp/web/fetch_search_article` | 搜索微信公众号文章/Search Wechat MP Article |
-| `fetch_search_official_account(keyword, offset=..., sort_type=...)` | `GET /api/v1/wechat_mp/web/fetch_search_official_account` | 搜索微信公众号/Search Wechat Official Account |
+| `fetch_channel_id_to_username(channel_id, raw=...)` | `POST /api/v1/wechat_channels/v2/fetch_channel_id_to_username` | 视频号ID转finder username/Convert Channel ID to Finder Username |
+| `fetch_channel_info(username, raw=...)` | `POST /api/v1/wechat_channels/v2/fetch_channel_info` | 获取视频号账号信息/Get WeChat Channels Account Info |
+| `fetch_collection_videos(topic_id, topic=..., username=..., last_buffer=..., topic_type=..., raw=...)` | `POST /api/v1/wechat_channels/v2/fetch_collection_videos` | 获取视频号合集内视频/Get WeChat Channels Collection Videos |
+| `fetch_live_detail(live_id, scene=..., finder_username=..., raw=...)` | `POST /api/v1/wechat_channels/v2/fetch_live_detail` | 获取视频号直播间详情/Get WeChat Channels Live Detail |
+| `fetch_live_history(username, last_buffer=..., flag=..., raw=...)` | `POST /api/v1/wechat_channels/v2/fetch_live_history` | 获取视频号直播回放列表/Get WeChat Channels Live History |
+| `fetch_search_channel_videos(username, keyword, cursor=..., raw=...)` | `POST /api/v1/wechat_channels/v2/fetch_search_channel_videos` | 视频号号内搜索/Search Videos Within a WeChat Channel |
+| `fetch_user_collections(username, raw=...)` | `POST /api/v1/wechat_channels/v2/fetch_user_collections` | 获取视频号合集列表/Get WeChat Channels User Collections |
+| `fetch_user_profile(username, raw=...)` | `POST /api/v1/wechat_channels/v2/fetch_user_profile` | 获取视频号账号主页资料+统计/Get WeChat Channels User Profile & Stats |
+| `fetch_user_videos(username, last_buffer=..., raw=...)` | `POST /api/v1/wechat_channels/v2/fetch_user_videos` | 获取视频号用户作品列表/Get WeChat Channels User Videos |
+| `fetch_video_comments(object_id, last_buffer=..., comment_id=..., raw=...)` | `POST /api/v1/wechat_channels/v2/fetch_video_comments` | 获取视频号作品评论/Get WeChat Channels Video Comments |
+| `fetch_video_detail(object_id=..., export_id=..., object_nonce_id=..., share_url=..., raw=...)` | `POST /api/v1/wechat_channels/v2/fetch_video_detail` | 获取视频号作品详情/Get WeChat Channels Video Detail |
+| `fetch_video_share_url(object_id, raw=...)` | `POST /api/v1/wechat_channels/v2/fetch_video_share_url` | 生成视频号作品分享链接/Generate WeChat Channels Video Share URL |
+
+## `client.wechat_media_platform_v2`
+
+**Class:** `tikhub.resources.wechat_media_platform_v2.WechatMediaPlatformV2` (sync) / `AsyncWechatMediaPlatformV2` (async)
+
+**Endpoints:** 11
+
+| Method | Endpoint | Summary |
+|---|---|---|
+| `fetch_account_articles(username, page_size=..., offset=..., item_show_type=..., raw=...)` | `POST /api/v1/wechat_mp/v2/fetch_account_articles` | 获取公众号文章列表/Get WeChat MP Account Articles |
+| `fetch_account_profile(username, raw=...)` | `POST /api/v1/wechat_mp/v2/fetch_account_profile` | 获取公众号资料页/Get WeChat MP Account Profile |
+| `fetch_account_services(username, raw=...)` | `POST /api/v1/wechat_mp/v2/fetch_account_services` | 获取公众号服务/自定义菜单/Get WeChat MP Account Services & Custom Menu |
+| `fetch_article_ad(url, raw=...)` | `POST /api/v1/wechat_mp/v2/fetch_article_ad` | 获取公众号文章广告/Get WeChat MP Article Ads |
+| `fetch_article_comments(url, buffer=..., comment_id=..., raw=...)` | `POST /api/v1/wechat_mp/v2/fetch_article_comments` | 获取公众号文章评论/Get WeChat MP Article Comments |
+| `fetch_article_detail(url, raw=...)` | `POST /api/v1/wechat_mp/v2/fetch_article_detail` | 获取公众号文章详情/Get WeChat MP Article Detail |
+| `fetch_article_detail_h5(url, raw=...)` | `POST /api/v1/wechat_mp/v2/fetch_article_detail_h5` | 获取公众号文章详情（H5 版本，推荐）/Get WeChat MP Article Detail (H5, Recommended) |
+| `fetch_article_stats(url, raw=...)` | `POST /api/v1/wechat_mp/v2/fetch_article_stats` | 获取公众号文章互动数据/Get WeChat MP Article Stats |
+| `fetch_article_stats_h5(url, raw=..., comment_id=...)` | `POST /api/v1/wechat_mp/v2/fetch_article_stats_h5` | 获取公众号文章互动数据（H5 版本）/Get WeChat MP Article Stats (H5) |
+| `fetch_comment_replies(url, content_id=..., offset=..., comment_id=..., raw=...)` | `POST /api/v1/wechat_mp/v2/fetch_comment_replies` | 获取公众号评论的二级回复/Get WeChat MP Comment Replies |
+| `fetch_related_articles(url, raw=...)` | `POST /api/v1/wechat_mp/v2/fetch_related_articles` | 获取公众号关联文章/Get WeChat MP Related Articles |
+
+## `client.wechat_search_v2`
+
+**Class:** `tikhub.resources.wechat_search_v2.WechatSearchV2` (sync) / `AsyncWechatSearchV2` (async)
+
+**Endpoints:** 2
+
+| Method | Endpoint | Summary |
+|---|---|---|
+| `fetch_search(keyword, business_type=..., sort=..., publish_time=..., offset=..., cursor=..., raw=...)` | `POST /api/v1/wechat_search/v2/fetch_search` | 微信综合搜索（搜一搜）/WeChat Universal Search |
+| `fetch_search_videos(keyword, duration=..., sort=..., publish_time=..., offset=..., cursor=..., raw=...)` | `POST /api/v1/wechat_search/v2/fetch_search_videos` | 搜视频号视频（时长/排序/时间筛选）/WeChat Channels Video Search |
 
 ## `client.weibo_app`
 
 **Class:** `tikhub.resources.weibo_app.WeiboApp` (sync) / `AsyncWeiboApp` (async)
 
-**Endpoints:** 20
+**Endpoints:** 23
 
 | Method | Endpoint | Summary |
 |---|---|---|
 | `fetch_ai_smart_search(query, page=...)` | `GET /api/v1/weibo/app/fetch_ai_smart_search` | AI智搜/AI Smart Search |
 | `fetch_home_recommend_feed(page=..., count=...)` | `GET /api/v1/weibo/app/fetch_home_recommend_feed` | 获取首页推荐Feed流/Get home recommend feed |
 | `fetch_hot_search(category=..., page=..., count=..., region_name=...)` | `GET /api/v1/weibo/app/fetch_hot_search` | 获取热搜榜/Get hot search |
+| `fetch_hot_search_brief()` | `GET /api/v1/weibo/app/fetch_hot_search_brief` | 获取热搜简报/Get hot search brief |
 | `fetch_hot_search_categories()` | `GET /api/v1/weibo/app/fetch_hot_search_categories` | 获取热搜分类列表/Get hot search categories |
 | `fetch_search_all(query, page=..., search_type=...)` | `GET /api/v1/weibo/app/fetch_search_all` | 综合搜索/Comprehensive search |
 | `fetch_status_comments(status_id, max_id=..., sort_type=...)` | `GET /api/v1/weibo/app/fetch_status_comments` | 获取微博评论/Get post comments |
@@ -1350,6 +1324,8 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_user_album(uid, since_id=...)` | `GET /api/v1/weibo/app/fetch_user_album` | 获取用户相册/Get user album |
 | `fetch_user_articles(uid, since_id=...)` | `GET /api/v1/weibo/app/fetch_user_articles` | 获取用户文章列表/Get user articles |
 | `fetch_user_audios(uid, since_id=...)` | `GET /api/v1/weibo/app/fetch_user_audios` | 获取用户音频列表/Get user audios |
+| `fetch_user_followers(uid, page=...)` | `GET /api/v1/weibo/app/fetch_user_followers` | 获取用户粉丝列表/Get user followers |
+| `fetch_user_following(uid, since_id=..., sort_type=...)` | `GET /api/v1/weibo/app/fetch_user_following` | 获取用户关注列表/Get user following |
 | `fetch_user_info(uid)` | `GET /api/v1/weibo/app/fetch_user_info` | 获取用户信息/Get user information |
 | `fetch_user_info_detail(uid)` | `GET /api/v1/weibo/app/fetch_user_info_detail` | 获取用户详细信息/Get user detail information |
 | `fetch_user_profile_feed(uid, since_id=...)` | `GET /api/v1/weibo/app/fetch_user_profile_feed` | 获取用户主页动态/Get user profile feed |
@@ -1358,26 +1334,6 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_user_videos(uid, since_id=...)` | `GET /api/v1/weibo/app/fetch_user_videos` | 获取用户视频列表/Get user videos |
 | `fetch_video_detail(mid)` | `GET /api/v1/weibo/app/fetch_video_detail` | 获取视频详情/Get video detail |
 | `fetch_video_featured_feed(page=...)` | `GET /api/v1/weibo/app/fetch_video_featured_feed` | 获取短视频精选Feed流/Get video featured feed |
-
-## `client.weibo_web`
-
-**Class:** `tikhub.resources.weibo_web.WeiboWeb` (sync) / `AsyncWeiboWeb` (async)
-
-**Endpoints:** 11
-
-| Method | Endpoint | Summary |
-|---|---|---|
-| `fetch_channel_feed(channel_name=..., page=...)` | `GET /api/v1/weibo/web/fetch_channel_feed` | 根据频道名称获取热门内容/Get channel feed by name |
-| `fetch_comment_replies(cid, max_id=...)` | `GET /api/v1/weibo/web/fetch_comment_replies` | 获取评论子评论/Get comment replies |
-| `fetch_config_list()` | `GET /api/v1/weibo/web/fetch_config_list` | 获取频道配置列表/Get channel config list |
-| `fetch_hot_search()` | `GET /api/v1/weibo/web/fetch_hot_search` | 获取热搜榜/Get hot search ranking |
-| `fetch_post_comments(post_id, mid, max_id=..., max_id_type=...)` | `GET /api/v1/weibo/web/fetch_post_comments` | 获取微博评论/Get post comments |
-| `fetch_post_detail(post_id)` | `GET /api/v1/weibo/web/fetch_post_detail` | 获取微博详情/Get post detail |
-| `fetch_search(keyword, page=..., search_type=..., time_scope=...)` | `GET /api/v1/weibo/web/fetch_search` | 搜索微博/Search Weibo |
-| `fetch_search_topics()` | `GET /api/v1/weibo/web/fetch_search_topics` | 获取搜索页热搜词/Get search page hot topics |
-| `fetch_trend_top(containerid, page=...)` | `GET /api/v1/weibo/web/fetch_trend_top` | 获取频道热门趋势/Get channel trend top |
-| `fetch_user_info(uid)` | `GET /api/v1/weibo/web/fetch_user_info` | 获取用户信息/Get user information |
-| `fetch_user_posts(uid, page=..., since_id=...)` | `GET /api/v1/weibo/web/fetch_user_posts` | 获取用户微博列表/Get user posts |
 
 ## `client.weibo_web_v2`
 
@@ -1421,28 +1377,6 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_video_search(query, mode=..., page=...)` | `GET /api/v1/weibo/web_v2/fetch_video_search` | 视频搜索（热门/全部）/Weibo video search (hot/all) |
 | `search_user_posts(uid, q=..., page=..., starttime=..., endtime=..., hasori=..., hasret=..., hastext=..., haspic=..., hasvideo=..., hasmusic=...)` | `GET /api/v1/weibo/web_v2/search_user_posts` | 搜索用户微博/Search user posts |
 
-## `client.xiaohongshu_app`
-
-**Class:** `tikhub.resources.xiaohongshu_app.XiaohongshuApp` (sync) / `AsyncXiaohongshuApp` (async)
-
-**Endpoints:** 13
-
-| Method | Endpoint | Summary |
-|---|---|---|
-| `extract_share_info(share_link)` | `GET /api/v1/xiaohongshu/app/extract_share_info` | 提取分享链接信息/Extract share link info |
-| `get_note_comments(note_id, start=..., sort_strategy=...)` | `GET /api/v1/xiaohongshu/app/get_note_comments` | 获取笔记评论/Get note comments |
-| `get_note_info(note_id=..., share_text=...)` | `GET /api/v1/xiaohongshu/app/get_note_info` | 获取笔记信息 V1/Get note info V1 |
-| `get_note_info_v2(note_id=..., share_text=...)` | `GET /api/v1/xiaohongshu/app/get_note_info_v2` | 获取笔记信息 V2 (蒲公英商家后台)/Get note info V2 (Pugongying Business Backend) |
-| `get_notes_by_topic(page_id, first_load_time, sort=..., session_id=..., last_note_ct=..., last_note_id=..., cursor_score=...)` | `GET /api/v1/xiaohongshu/app/get_notes_by_topic` | [已弃用/Deprecated] 根据话题标签获取作品/Get notes by topic |
-| `get_product_detail(sku_id)` | `GET /api/v1/xiaohongshu/app/get_product_detail` | 获取商品详情/Get product detail |
-| `get_sub_comments(note_id, comment_id, start=...)` | `GET /api/v1/xiaohongshu/app/get_sub_comments` | 获取子评论/Get sub comments |
-| `get_topic_notes(page_id, first_load_time, sort=..., last_note_ct=..., last_note_id=..., cursor_score=..., session_id=...)` | `GET /api/v1/xiaohongshu/app/get_topic_notes` | 根据话题标签获取作品/Get notes by topic |
-| `get_user_id_and_xsec_token(share_link)` | `GET /api/v1/xiaohongshu/app/get_user_id_and_xsec_token` | 从分享链接中提取用户ID和xsec_token/Extract user ID and xsec_token from share link |
-| `get_user_info(user_id)` | `GET /api/v1/xiaohongshu/app/get_user_info` | 获取用户信息/Get user info |
-| `get_user_notes(user_id, cursor=...)` | `GET /api/v1/xiaohongshu/app/get_user_notes` | 获取用户作品列表/Get user notes |
-| `search_notes(keyword, page, search_id=..., session_id=..., sort_type=..., filter_note_type=..., filter_note_time=...)` | `GET /api/v1/xiaohongshu/app/search_notes` | 搜索笔记/Search notes |
-| `search_products(keyword, page, search_id=..., session_id=..., sort=..., scope=..., service_guarantee=..., min_price=..., max_price=..., super_promotion=...)` | `GET /api/v1/xiaohongshu/app/search_products` | 搜索商品/Search products |
-
 ## `client.xiaohongshu_app_v2`
 
 **Class:** `tikhub.resources.xiaohongshu_app_v2.XiaohongshuAppV2` (sync) / `AsyncXiaohongshuAppV2` (async)
@@ -1472,65 +1406,48 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `search_products(keyword, page=..., search_id=..., source=...)` | `GET /api/v1/xiaohongshu/app_v2/search_products` | 搜索商品/Search products |
 | `search_users(keyword, page=..., search_id=..., source=...)` | `GET /api/v1/xiaohongshu/app_v2/search_users` | 搜索用户/Search users |
 
-## `client.xiaohongshu_web`
+## `client.xiaohongshu_pgy`
 
-**Class:** `tikhub.resources.xiaohongshu_web.XiaohongshuWeb` (sync) / `AsyncXiaohongshuWeb` (async)
+**Class:** `tikhub.resources.xiaohongshu_pgy.XiaohongshuPgy` (sync) / `AsyncXiaohongshuPgy` (async)
 
-**Endpoints:** 15
-
-| Method | Endpoint | Summary |
-|---|---|---|
-| `get_home_recommend(feed_type=..., need_filter_image=..., cursor_score=..., cookie=..., proxy=...)` | `POST /api/v1/xiaohongshu/web/get_home_recommend` | 获取首页推荐/Get home recommend |
-| `get_note_comment_replies(note_id, comment_id, lastCursor=...)` | `GET /api/v1/xiaohongshu/web/get_note_comment_replies` | 获取笔记评论回复 V1/Get note comment replies V1 |
-| `get_note_comments(note_id, lastCursor=...)` | `GET /api/v1/xiaohongshu/web/get_note_comments` | 获取笔记评论 V1/Get note comments V1 |
-| `get_note_id_and_xsec_token(share_text)` | `GET /api/v1/xiaohongshu/web/get_note_id_and_xsec_token` | 通过分享链接获取小红书的Note ID 和 xsec_token/Get Xiaohongshu Note ID and xsec_token by share link |
-| `get_note_info_v4(note_id=..., share_text=...)` | `GET /api/v1/xiaohongshu/web/get_note_info_v4` | 获取笔记信息 V4/Get note info V4 |
-| `get_note_info_v5(note_id=..., xsec_token=..., cookie=..., proxy=...)` | `POST /api/v1/xiaohongshu/web/get_note_info_v5` | 获取笔记信息 V5 (自带Cookie)/Get note info V5 (Self-provided Cookie) |
-| `get_note_info_v7(note_id=..., share_text=...)` | `GET /api/v1/xiaohongshu/web/get_note_info_v7` | 获取笔记信息 V7/Get note info V7 |
-| `get_product_info(share_text=..., item_id=..., xsec_token=...)` | `GET /api/v1/xiaohongshu/web/get_product_info` | 获取小红书商品信息/Get Xiaohongshu product info |
-| `get_user_info(user_id)` | `GET /api/v1/xiaohongshu/web/get_user_info` | 获取用户信息 V1/Get user info V1 |
-| `get_user_notes_v2(user_id, lastCursor=...)` | `GET /api/v1/xiaohongshu/web/get_user_notes_v2` | 获取用户的笔记 V2/Get user notes V2 |
-| `get_visitor_cookie(proxy=...)` | `GET /api/v1/xiaohongshu/web/get_visitor_cookie` | 获取游客Cookie/Get visitor cookie |
-| `search_notes(keyword, page=..., sort=..., noteType=..., noteTime=...)` | `GET /api/v1/xiaohongshu/web/search_notes` | 搜索笔记/Search notes |
-| `search_notes_v3(keyword, page=..., sort=..., noteType=..., noteTime=...)` | `GET /api/v1/xiaohongshu/web/search_notes_v3` | 搜索笔记 V3/Search notes V3 |
-| `search_users(keyword, page=...)` | `GET /api/v1/xiaohongshu/web/search_users` | 搜索用户/Search users |
-| `sign(path=..., data=..., cookie=...)` | `POST /api/v1/xiaohongshu/web/sign` | 小红书Web签名/Xiaohongshu Web sign |
-
-## `client.xiaohongshu_web_v2`
-
-**Class:** `tikhub.resources.xiaohongshu_web_v2.XiaohongshuWebV2` (sync) / `AsyncXiaohongshuWebV2` (async)
-
-**Endpoints:** 7
+**Endpoints:** 20
 
 | Method | Endpoint | Summary |
 |---|---|---|
-| `fetch_feed_notes(note_id, share_text=...)` | `GET /api/v1/xiaohongshu/web_v2/fetch_feed_notes` | 获取图文笔记详情 V1/Get image note detail V1 |
-| `fetch_feed_notes_v2(note_id, share_text=...)` | `GET /api/v1/xiaohongshu/web_v2/fetch_feed_notes_v2` | 获取图文笔记详情 V2/Get image note detail V2 |
-| `fetch_home_notes_app(user_id, cursor=...)` | `GET /api/v1/xiaohongshu/web_v2/fetch_home_notes_app` | 获取用户笔记/Fetch user notes |
-| `fetch_hot_list()` | `GET /api/v1/xiaohongshu/web_v2/fetch_hot_list` | 获取小红书热榜/Fetch Xiaohongshu hot list |
-| `fetch_note_comments(note_id, cursor=...)` | `GET /api/v1/xiaohongshu/web_v2/fetch_note_comments` | 获取笔记评论/Fetch note comments |
-| `fetch_sub_comments(note_id, comment_id, cursor=...)` | `GET /api/v1/xiaohongshu/web_v2/fetch_sub_comments` | 获取子评论/Fetch sub comments |
-| `fetch_user_info_app(user_id)` | `GET /api/v1/xiaohongshu/web_v2/fetch_user_info_app` | 获取App用户信息/Fetch App user info |
+| `get_blogger_core_data(user_id, business=..., note_type=..., date_type=..., advertise_switch=...)` | `POST /api/v1/xiaohongshu/pgy/get_blogger_core_data` | 获取蒲公英博主核心数据/Get PGY blogger core data trend |
+| `get_blogger_data_summary(user_id, business=...)` | `POST /api/v1/xiaohongshu/pgy/get_blogger_data_summary` | 获取蒲公英博主数据概览/Get PGY blogger data summary |
+| `get_blogger_detail(user_id)` | `POST /api/v1/xiaohongshu/pgy/get_blogger_detail` | 获取蒲公英博主详情/Get PGY blogger detail |
+| `get_blogger_fans_history(user_id, increase_type=..., date_type=...)` | `POST /api/v1/xiaohongshu/pgy/get_blogger_fans_history` | 获取蒲公英博主粉丝增长历史/Get PGY blogger fans growth history |
+| `get_blogger_fans_profile(user_id)` | `POST /api/v1/xiaohongshu/pgy/get_blogger_fans_profile` | 获取蒲公英博主粉丝画像/Get PGY blogger fans profile |
+| `get_blogger_fans_summary(user_id)` | `POST /api/v1/xiaohongshu/pgy/get_blogger_fans_summary` | 获取蒲公英博主粉丝概览/Get PGY blogger fans summary |
+| `get_blogger_filter_options()` | `POST /api/v1/xiaohongshu/pgy/get_blogger_filter_options` | 获取蒲公英找博主筛选项字典/Get PGY blogger filter options |
+| `get_blogger_list(page_num=..., page_size=..., keyword=..., search_type=..., column=..., sort=..., brand_user_id=..., similar_user_id=..., similar_word=..., goal=..., blogger=..., fans=..., note=..., coop=..., live=..., flags=...)` | `POST /api/v1/xiaohongshu/pgy/get_blogger_list` | 蒲公英笔记博主广场（找博主/选号）/PGY note blogger square |
+| `get_blogger_notes(user_id, page_number=..., page_size=..., note_type=..., order_type=..., advertise_switch=..., feature_tag=..., content_tag=..., is_third_platform=...)` | `POST /api/v1/xiaohongshu/pgy/get_blogger_notes` | 获取蒲公英博主笔记案例/Get PGY blogger note cases |
+| `get_blogger_notes_rate(user_id, business=..., note_type=..., date_type=..., advertise_switch=...)` | `POST /api/v1/xiaohongshu/pgy/get_blogger_notes_rate` | 获取蒲公英博主数据表现/Get PGY blogger performance metrics |
+| `get_blogger_notes_v2(user_id, page_number=..., page_size=..., note_type=..., order_type=...)` | `POST /api/v1/xiaohongshu/pgy/get_blogger_notes_v2` | 获取蒲公英博主笔记案例 v2（覆盖跨域）/Get PGY blogger note cases v2 (cross-platform) |
+| `get_blogger_similar(user_id, page_num=..., page_size=...)` | `POST /api/v1/xiaohongshu/pgy/get_blogger_similar` | 获取蒲公英相似博主推荐/Get PGY similar bloggers |
+| `get_content_square(biz_type, page_num=..., page_size=..., search_word=..., order_by=..., date_range=..., sub_biz_type=..., category=..., industry=..., note_type=..., content_type=..., theme=..., author_type=..., placement=..., marketing_target=..., price=..., fans=...)` | `POST /api/v1/xiaohongshu/pgy/get_content_square` | 蒲公英内容广场（热门内容榜单）/PGY content square leaderboards |
+| `get_keyword_daily(search_word)` | `POST /api/v1/xiaohongshu/pgy/get_keyword_daily` | 蒲公英关键词逐日搜索指数/PGY keyword daily trend |
+| `get_keyword_related(search_word)` | `POST /api/v1/xiaohongshu/pgy/get_keyword_related` | 蒲公英关键词关联词（选题扩词）/PGY related keywords |
+| `get_keyword_stat(search_word)` | `POST /api/v1/xiaohongshu/pgy/get_keyword_stat` | 蒲公英关键词概览（搜索指数+博主画像）/PGY keyword overview |
+| `get_live_blogger_list(page_num=..., page_size=..., seed=..., nick_name=..., category=..., buyer=..., ecom=..., live=..., fans=..., flags=...)` | `POST /api/v1/xiaohongshu/pgy/get_live_blogger_list` | 蒲公英直播博主广场（直播带货选号）/PGY live blogger square |
+| `get_note_comments(note_id)` | `POST /api/v1/xiaohongshu/pgy/get_note_comments` | 获取蒲公英笔记精选评论/Get PGY note featured comments |
+| `get_note_components(note_id)` | `POST /api/v1/xiaohongshu/pgy/get_note_components` | 获取蒲公英笔记组件/Get PGY note components |
+| `get_note_detail(note_id)` | `POST /api/v1/xiaohongshu/pgy/get_note_detail` | 获取蒲公英笔记详情/Get PGY note detail |
 
 ## `client.xiaohongshu_web_v3`
 
 **Class:** `tikhub.resources.xiaohongshu_web_v3.XiaohongshuWebV3` (sync) / `AsyncXiaohongshuWebV3` (async)
 
-**Endpoints:** 11
+**Endpoints:** 5
 
 | Method | Endpoint | Summary |
 |---|---|---|
 | `fetch_homefeed(num=..., cursor_score=..., category=..., need_filter_image=...)` | `GET /api/v1/xiaohongshu/web_v3/fetch_homefeed` | 获取首页推荐/Fetch homepage feed |
 | `fetch_homefeed_categories()` | `GET /api/v1/xiaohongshu/web_v3/fetch_homefeed_categories` | 获取首页分类列表/Fetch homepage categories |
-| `fetch_note_comments(note_id, xsec_token, cursor=...)` | `GET /api/v1/xiaohongshu/web_v3/fetch_note_comments` | 获取笔记评论/Fetch note comments |
 | `fetch_note_detail(note_id, xsec_token)` | `GET /api/v1/xiaohongshu/web_v3/fetch_note_detail` | 获取笔记详情/Fetch note detail |
-| `fetch_search_notes(keyword, page=..., sort=..., note_type=...)` | `GET /api/v1/xiaohongshu/web_v3/fetch_search_notes` | 搜索笔记/Search notes |
 | `fetch_search_suggest(keyword=...)` | `GET /api/v1/xiaohongshu/web_v3/fetch_search_suggest` | 获取搜索联想词/Fetch search suggestions |
-| `fetch_search_users(keyword, page=...)` | `GET /api/v1/xiaohongshu/web_v3/fetch_search_users` | 搜索用户/Search users |
-| `fetch_sub_comments(note_id, root_comment_id, xsec_token, num=..., cursor=...)` | `GET /api/v1/xiaohongshu/web_v3/fetch_sub_comments` | 获取子评论/Fetch sub comments |
-| `fetch_trending()` | `GET /api/v1/xiaohongshu/web_v3/fetch_trending` | 获取热搜词/Fetch trending keywords |
 | `fetch_user_info(user_id)` | `GET /api/v1/xiaohongshu/web_v3/fetch_user_info` | 获取用户信息/Fetch user info |
-| `fetch_user_notes(user_id, cursor=..., num=...)` | `GET /api/v1/xiaohongshu/web_v3/fetch_user_notes` | 获取用户笔记列表/Fetch user notes |
 
 ## `client.xigua_app_v2`
 
@@ -1552,29 +1469,16 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 
 **Class:** `tikhub.resources.youtube_web.YoutubeWeb` (sync) / `AsyncYoutubeWeb` (async)
 
-**Endpoints:** 21
+**Endpoints:** 8
 
 | Method | Endpoint | Summary |
 |---|---|---|
-| `get_channel_description(channel_id=..., continuation_token=..., language_code=..., country_code=..., need_format=...)` | `GET /api/v1/youtube/web/get_channel_description` | 获取频道描述信息/Get channel description |
 | `get_channel_id(channel_name)` | `GET /api/v1/youtube/web/get_channel_id` | 获取频道ID/Get channel ID |
 | `get_channel_id_v2(channel_url)` | `GET /api/v1/youtube/web/get_channel_id_v2` | 从频道URL获取频道ID V2/Get channel ID from URL V2 |
 | `get_channel_info(channel_id)` | `GET /api/v1/youtube/web/get_channel_info` | 获取频道信息/Get channel information |
 | `get_channel_short_videos(channel_id, continuation_token=...)` | `GET /api/v1/youtube/web/get_channel_short_videos` | 获取频道短视频/Get channel short videos |
 | `get_channel_url(channel_id)` | `GET /api/v1/youtube/web/get_channel_url` | 从频道ID获取频道URL/Get channel URL from channel ID |
-| `get_channel_videos(channel_id, continuation_token=...)` | `GET /api/v1/youtube/web/get_channel_videos` | 获取频道视频 V1（即将过时，优先使用 V2）/Get channel videos V1 (deprecated soon, use V2 first) |
-| `get_channel_videos_v2(channel_id, lang=..., sortBy=..., contentType=..., nextToken=...)` | `GET /api/v1/youtube/web/get_channel_videos_v2` | 获取频道视频 V2/Get channel videos V2 |
-| `get_channel_videos_v3(channel_id, language_code=..., country_code=..., continuation_token=..., need_format=...)` | `GET /api/v1/youtube/web/get_channel_videos_v3` | 获取频道视频 V3/Get channel videos V3 |
-| `get_general_search(search_query, language_code=..., country_code=..., time_zone=..., upload_time=..., duration=..., content_type=..., feature=..., sort_by=..., continuation_token=...)` | `GET /api/v1/youtube/web/get_general_search` | 综合搜索（支持过滤条件）/General search with filters |
 | `get_relate_video(video_id, continuation_token=...)` | `GET /api/v1/youtube/web/get_relate_video` | 获取推荐视频/Get related videos |
-| `get_shorts_search(search_query, language_code=..., country_code=..., time_zone=..., upload_time=..., sort_by=..., continuation_token=..., filter_mixed_content=...)` | `GET /api/v1/youtube/web/get_shorts_search` | YouTube Shorts短视频搜索/YouTube Shorts search |
-| `get_trending_videos(language_code=..., country_code=..., section=...)` | `GET /api/v1/youtube/web/get_trending_videos` | 获取趋势视频/Get trending videos |
-| `get_video_comment_replies(continuation_token, language_code=..., country_code=..., need_format=...)` | `GET /api/v1/youtube/web/get_video_comment_replies` | 获取视频二级评论/Get video sub comments |
-| `get_video_comments(video_id, language_code=..., country_code=..., sort_by=..., continuation_token=..., need_format=...)` | `GET /api/v1/youtube/web/get_video_comments` | 获取视频评论/Get video comments |
-| `get_video_info(video_id, url_access=..., lang=..., videos=..., audios=..., subtitles=..., related=...)` | `GET /api/v1/youtube/web/get_video_info` | 获取视频信息 V1/Get video information V1 |
-| `get_video_info_v2(video_id)` | `GET /api/v1/youtube/web/get_video_info_v2` | 获取视频信息 V2/Get video information V2 |
-| `get_video_info_v3(video_id, language_code=...)` | `GET /api/v1/youtube/web/get_video_info_v3` | 获取视频详情 V3/Get video information V3 |
-| `get_video_subtitles(subtitle_url, format=..., fix_overlap=..., target_lang=...)` | `GET /api/v1/youtube/web/get_video_subtitles` | 获取视频字幕/Get video subtitles |
 | `search_channel(channel_id, search_query, language_code=..., country_code=..., continuation_token=...)` | `GET /api/v1/youtube/web/search_channel` | 搜索频道/Search channel |
 | `search_video(search_query, language_code=..., order_by=..., country_code=..., continuation_token=...)` | `GET /api/v1/youtube/web/search_video` | 搜索视频/Search video |
 
@@ -1582,7 +1486,7 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 
 **Class:** `tikhub.resources.youtube_web_v2.YoutubeWebV2` (sync) / `AsyncYoutubeWebV2` (async)
 
-**Endpoints:** 25
+**Endpoints:** 26
 
 | Method | Endpoint | Summary |
 |---|---|---|
@@ -1603,25 +1507,26 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `get_shorts_search_v2(keyword=..., continuation_token=..., upload_date=..., sort_by=...)` | `GET /api/v1/youtube/web_v2/get_shorts_search_v2` | Shorts搜索V2/Shorts search V2 |
 | `get_signed_stream_url(itag, video_id=..., video_url=...)` | `GET /api/v1/youtube/web_v2/get_signed_stream_url` | 获取已签名的视频流URL/Get signed video stream URL |
 | `get_video_captions(video_id=..., video_url=..., language_code=..., format=...)` | `GET /api/v1/youtube/web_v2/get_video_captions` | 获取视频字幕/Get video captions |
-| `get_video_captions_v2(video_id=..., video_url=..., language_code=..., format=...)` | `GET /api/v1/youtube/web_v2/get_video_captions_v2` | 获取视频字幕 V2/Get video captions V2 |
+| `get_video_captions_result(job_id, format=...)` | `GET /api/v1/youtube/web_v2/get_video_captions_result` | 获取视频字幕异步任务结果/Get video captions async job result |
 | `get_video_comment_replies(continuation_token, language_code=..., country_code=..., need_format=...)` | `GET /api/v1/youtube/web_v2/get_video_comment_replies` | 获取视频二级评论/Get video sub comments |
 | `get_video_comments(video_id, language_code=..., country_code=..., sort_by=..., continuation_token=..., need_format=...)` | `GET /api/v1/youtube/web_v2/get_video_comments` | 获取视频评论/Get video comments |
 | `get_video_info(video_id, language_code=..., need_format=...)` | `GET /api/v1/youtube/web_v2/get_video_info` | 获取视频详情 /Get video information |
 | `get_video_info_v2(video_id=..., video_url=..., need_format=...)` | `GET /api/v1/youtube/web_v2/get_video_info_v2` | 获取视频详情 V2/Get video information V2 |
 | `get_video_streams(video_id=..., video_url=...)` | `GET /api/v1/youtube/web_v2/get_video_streams` | 获取视频流信息/Get video streams info |
 | `get_video_streams_v2(video_id=..., video_url=...)` | `GET /api/v1/youtube/web_v2/get_video_streams_v2` | 获取视频流信息 V2/Get video streams info V2 |
+| `get_video_streams_v3(video_id, proxy_url, itags=..., verify_download=...)` | `POST /api/v1/youtube/web_v2/get_video_streams_v3` | 使用自带固定出口代理获取下载链接 / Get download URLs with your fixed-exit proxy |
 | `search_channels(keyword=..., continuation_token=..., need_format=...)` | `GET /api/v1/youtube/web_v2/search_channels` | 搜索频道/Search channels |
 
 ## `client.zhihu_web`
 
 **Class:** `tikhub.resources.zhihu_web.ZhihuWeb` (sync) / `AsyncZhihuWeb` (async)
 
-**Endpoints:** 34
+**Endpoints:** 41
 
 | Method | Endpoint | Summary |
 |---|---|---|
-| `fetch_ai_search(message_content)` | `GET /api/v1/zhihu/web/fetch_ai_search` | 获取知乎AI搜索/Get Zhihu AI Search |
-| `fetch_ai_search_result(message_id)` | `GET /api/v1/zhihu/web/fetch_ai_search_result` | 获取知乎AI搜索结果/Get Zhihu AI Search Result |
+| `fetch_ai_search_stream(message_content, chat_mode=..., session_id=...)` | `GET /api/v1/zhihu/web/fetch_ai_search_stream` | 获取知乎AI搜索(新版)/Get Zhihu AI Search (v2) |
+| `fetch_answer_detail(answer_id)` | `GET /api/v1/zhihu/web/fetch_answer_detail` | 获取知乎回答详情/Get Zhihu Answer Detail |
 | `fetch_article_search_v3(keyword, offset=..., limit=..., show_all_topics=..., search_source=..., search_hash_id=..., vertical=..., sort=..., time_interval=..., vertical_info=...)` | `GET /api/v1/zhihu/web/fetch_article_search_v3` | 获取知乎文章搜索V3/Get Zhihu Article Search V3 |
 | `fetch_column_article_detail(article_id)` | `GET /api/v1/zhihu/web/fetch_column_article_detail` | 获取知乎专栏文章详情/Get Zhihu Column Article Detail |
 | `fetch_column_articles(column_id, limit=..., offset=...)` | `GET /api/v1/zhihu/web/fetch_column_articles` | 获取知乎专栏文章列表/Get Zhihu Column Articles |
@@ -1633,8 +1538,11 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_ebook_search_v3(keyword, offset=..., limit=..., search_hash_id=...)` | `GET /api/v1/zhihu/web/fetch_ebook_search_v3` | 获取知乎电子书搜索V3/Get Zhihu Ebook Search V3 |
 | `fetch_hot_list(limit=..., desktop=...)` | `GET /api/v1/zhihu/web/fetch_hot_list` | 获取知乎首页热榜/Get Zhihu Hot List |
 | `fetch_hot_recommend(offset=..., page_number=..., session_token=...)` | `GET /api/v1/zhihu/web/fetch_hot_recommend` | 获取知乎首页推荐/Get Zhihu Hot Recommend |
+| `fetch_pin_comments(pin_id, order_by=..., limit=..., offset=...)` | `GET /api/v1/zhihu/web/fetch_pin_comments` | 获取知乎想法评论区/Get Zhihu Pin Comments |
+| `fetch_pin_detail(pin_id)` | `GET /api/v1/zhihu/web/fetch_pin_detail` | 获取知乎想法详情/Get Zhihu Pin Detail |
 | `fetch_preset_search()` | `GET /api/v1/zhihu/web/fetch_preset_search` | 获取知乎搜索预设词/Get Zhihu Preset Search |
 | `fetch_question_answers(question_id, cursor=..., limit=..., offset=..., order=..., session_id=...)` | `GET /api/v1/zhihu/web/fetch_question_answers` | 获取知乎问题回答列表/Get Zhihu Question Answers |
+| `fetch_question_detail(question_id)` | `GET /api/v1/zhihu/web/fetch_question_detail` | 获取知乎问题详情/Get Zhihu Question Detail |
 | `fetch_recommend_followees()` | `GET /api/v1/zhihu/web/fetch_recommend_followees` | 获取知乎推荐关注列表/Get Zhihu Recommend Followees |
 | `fetch_salt_search_v3(keyword, offset=..., limit=..., search_hash_id=...)` | `GET /api/v1/zhihu/web/fetch_salt_search_v3` | 获取知乎盐选内容搜索V3/Get Zhihu Salt Search V3 |
 | `fetch_scholar_search_v3(keyword, offset=..., limit=..., body=...)` | `POST /api/v1/zhihu/web/fetch_scholar_search_v3` | 获取知乎论文搜索V3/Get Zhihu Scholar Search V3 |
@@ -1642,7 +1550,9 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_search_suggest(keyword)` | `GET /api/v1/zhihu/web/fetch_search_suggest` | 知乎搜索预测词/Get Zhihu Search Suggest |
 | `fetch_sub_comment_v5(comment_id, order_by=..., limit=..., offset=...)` | `GET /api/v1/zhihu/web/fetch_sub_comment_v5` | 获取知乎子评论区V5/Get Zhihu Sub Comment V5 |
 | `fetch_topic_search_v3(keyword, offset=..., limit=...)` | `GET /api/v1/zhihu/web/fetch_topic_search_v3` | 获取知乎话题搜索V3/Get Zhihu Topic Search V3 |
+| `fetch_user_answers(user_url_token, offset=..., limit=..., sort_type=...)` | `GET /api/v1/zhihu/web/fetch_user_answers` | 获取知乎用户的回答列表/Get Zhihu User Answers |
 | `fetch_user_articles(user_url_token, offset=..., limit=..., sort_type=...)` | `GET /api/v1/zhihu/web/fetch_user_articles` | 获取知乎用户的文章列表/Get Zhihu User Articles |
+| `fetch_user_collections(user_url_token, offset=..., limit=...)` | `GET /api/v1/zhihu/web/fetch_user_collections` | 获取知乎用户创建的收藏夹列表/Get Zhihu User Created Collections |
 | `fetch_user_follow_collections(user_url_token, offset=..., limit=...)` | `GET /api/v1/zhihu/web/fetch_user_follow_collections` | 获取知乎用户关注的收藏/Get Zhihu User Follow Collections |
 | `fetch_user_follow_columns(user_url_token, offset=..., limit=...)` | `GET /api/v1/zhihu/web/fetch_user_follow_columns` | 获取知乎用户订阅的专栏/Get Zhihu User Columns |
 | `fetch_user_follow_questions(user_url_token, offset=..., limit=...)` | `GET /api/v1/zhihu/web/fetch_user_follow_questions` | 获取知乎用户关注的问题/Get Zhihu User Follow Questions |
@@ -1651,6 +1561,8 @@ Method names match the OpenAPI path basename verbatim. Parameter names match the
 | `fetch_user_followers(user_url_token, offset=..., limit=...)` | `GET /api/v1/zhihu/web/fetch_user_followers` | 获取知乎用户粉丝列表/Get Zhihu User Followers |
 | `fetch_user_included_articles(user_url_token, offset=..., limit=...)` | `GET /api/v1/zhihu/web/fetch_user_included_articles` | 获取知乎用户的被收录文章列表/Get Zhihu User Included Articles |
 | `fetch_user_info(user_url_token)` | `GET /api/v1/zhihu/web/fetch_user_info` | 获取知乎用户信息/Get Zhihu User Info |
+| `fetch_user_pins(user_url_token, offset=..., limit=...)` | `GET /api/v1/zhihu/web/fetch_user_pins` | 获取知乎用户的想法列表/Get Zhihu User Pins |
 | `fetch_user_search_v3(keyword, offset=..., limit=...)` | `GET /api/v1/zhihu/web/fetch_user_search_v3` | 获取知乎用户搜索V3/Get Zhihu User Search V3 |
+| `fetch_user_segments(user_url_token, content_type=..., offset=..., limit=...)` | `GET /api/v1/zhihu/web/fetch_user_segments` | 获取知乎用户的划线列表/Get Zhihu User Segments |
 | `fetch_video_list(offset=..., limit=...)` | `GET /api/v1/zhihu/web/fetch_video_list` | 获取知乎首页视频榜/Get Zhihu Video List |
 | `fetch_video_search_v3(keyword, limit=..., offset=..., search_hash_id=...)` | `GET /api/v1/zhihu/web/fetch_video_search_v3` | 获取知乎视频搜索V3/Get Zhihu Video Search V3 |

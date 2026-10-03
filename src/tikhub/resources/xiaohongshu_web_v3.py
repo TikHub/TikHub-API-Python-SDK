@@ -5,7 +5,7 @@
 OpenAPI tag: ``Xiaohongshu-Web-V3-API``
 SDK attribute: ``client.xiaohongshu_web_v3`` / ``async_client.xiaohongshu_web_v3``
 
-Endpoints: 11
+Endpoints: 5
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncXiaohongshuWebV3", "XiaohongshuWebV3"]
 
 
 class XiaohongshuWebV3(SyncResource):
-    """Sync ``Xiaohongshu-Web-V3-API`` resource (11 endpoints)."""
+    """Sync ``Xiaohongshu-Web-V3-API`` resource (5 endpoints)."""
 
     def fetch_note_detail(
         self,
@@ -41,91 +41,6 @@ class XiaohongshuWebV3(SyncResource):
             "xsec_token": xsec_token,
         })
         return self._client._request("GET", "/api/v1/xiaohongshu/web_v3/fetch_note_detail", params=params)
-
-    def fetch_note_comments(
-        self,
-        *,
-        note_id: str,
-        xsec_token: str,
-        cursor: str | None = None,
-    ) -> Any:
-        """获取笔记评论/Fetch note comments
-
-        ``GET /api/v1/xiaohongshu/web_v3/fetch_note_comments``
-        """
-        params = _drop_none({
-            "note_id": note_id,
-            "cursor": cursor,
-            "xsec_token": xsec_token,
-        })
-        return self._client._request("GET", "/api/v1/xiaohongshu/web_v3/fetch_note_comments", params=params)
-
-    def fetch_sub_comments(
-        self,
-        *,
-        note_id: str,
-        root_comment_id: str,
-        xsec_token: str,
-        num: int | None = None,
-        cursor: str | None = None,
-    ) -> Any:
-        """获取子评论/Fetch sub comments
-
-        ``GET /api/v1/xiaohongshu/web_v3/fetch_sub_comments``
-        """
-        params = _drop_none({
-            "note_id": note_id,
-            "root_comment_id": root_comment_id,
-            "num": num,
-            "cursor": cursor,
-            "xsec_token": xsec_token,
-        })
-        return self._client._request("GET", "/api/v1/xiaohongshu/web_v3/fetch_sub_comments", params=params)
-
-    def fetch_search_notes(
-        self,
-        *,
-        keyword: str,
-        page: int | None = None,
-        sort: str | None = None,
-        note_type: int | None = None,
-    ) -> Any:
-        """搜索笔记/Search notes
-
-        ``GET /api/v1/xiaohongshu/web_v3/fetch_search_notes``
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "page": page,
-            "sort": sort,
-            "note_type": note_type,
-        })
-        return self._client._request("GET", "/api/v1/xiaohongshu/web_v3/fetch_search_notes", params=params)
-
-    def fetch_search_users(
-        self,
-        *,
-        keyword: str,
-        page: int | None = None,
-    ) -> Any:
-        """搜索用户/Search users
-
-        ``GET /api/v1/xiaohongshu/web_v3/fetch_search_users``
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "page": page,
-        })
-        return self._client._request("GET", "/api/v1/xiaohongshu/web_v3/fetch_search_users", params=params)
-
-    def fetch_trending(
-        self,
-    ) -> Any:
-        """获取热搜词/Fetch trending keywords
-
-        ``GET /api/v1/xiaohongshu/web_v3/fetch_trending``
-        """
-        return self._client._request("GET", "/api/v1/xiaohongshu/web_v3/fetch_trending")
 
     def fetch_search_suggest(
         self,
@@ -184,27 +99,9 @@ class XiaohongshuWebV3(SyncResource):
         })
         return self._client._request("GET", "/api/v1/xiaohongshu/web_v3/fetch_user_info", params=params)
 
-    def fetch_user_notes(
-        self,
-        *,
-        user_id: str,
-        cursor: str | None = None,
-        num: int | None = None,
-    ) -> Any:
-        """获取用户笔记列表/Fetch user notes
-
-        ``GET /api/v1/xiaohongshu/web_v3/fetch_user_notes``
-        """
-        params = _drop_none({
-            "user_id": user_id,
-            "cursor": cursor,
-            "num": num,
-        })
-        return self._client._request("GET", "/api/v1/xiaohongshu/web_v3/fetch_user_notes", params=params)
-
 
 class AsyncXiaohongshuWebV3(AsyncResource):
-    """Async ``Xiaohongshu-Web-V3-API`` resource (11 endpoints)."""
+    """Async ``Xiaohongshu-Web-V3-API`` resource (5 endpoints)."""
 
     async def fetch_note_detail(
         self,
@@ -221,91 +118,6 @@ class AsyncXiaohongshuWebV3(AsyncResource):
             "xsec_token": xsec_token,
         })
         return await self._client._request("GET", "/api/v1/xiaohongshu/web_v3/fetch_note_detail", params=params)
-
-    async def fetch_note_comments(
-        self,
-        *,
-        note_id: str,
-        xsec_token: str,
-        cursor: str | None = None,
-    ) -> Any:
-        """获取笔记评论/Fetch note comments
-
-        ``GET /api/v1/xiaohongshu/web_v3/fetch_note_comments``
-        """
-        params = _drop_none({
-            "note_id": note_id,
-            "cursor": cursor,
-            "xsec_token": xsec_token,
-        })
-        return await self._client._request("GET", "/api/v1/xiaohongshu/web_v3/fetch_note_comments", params=params)
-
-    async def fetch_sub_comments(
-        self,
-        *,
-        note_id: str,
-        root_comment_id: str,
-        xsec_token: str,
-        num: int | None = None,
-        cursor: str | None = None,
-    ) -> Any:
-        """获取子评论/Fetch sub comments
-
-        ``GET /api/v1/xiaohongshu/web_v3/fetch_sub_comments``
-        """
-        params = _drop_none({
-            "note_id": note_id,
-            "root_comment_id": root_comment_id,
-            "num": num,
-            "cursor": cursor,
-            "xsec_token": xsec_token,
-        })
-        return await self._client._request("GET", "/api/v1/xiaohongshu/web_v3/fetch_sub_comments", params=params)
-
-    async def fetch_search_notes(
-        self,
-        *,
-        keyword: str,
-        page: int | None = None,
-        sort: str | None = None,
-        note_type: int | None = None,
-    ) -> Any:
-        """搜索笔记/Search notes
-
-        ``GET /api/v1/xiaohongshu/web_v3/fetch_search_notes``
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "page": page,
-            "sort": sort,
-            "note_type": note_type,
-        })
-        return await self._client._request("GET", "/api/v1/xiaohongshu/web_v3/fetch_search_notes", params=params)
-
-    async def fetch_search_users(
-        self,
-        *,
-        keyword: str,
-        page: int | None = None,
-    ) -> Any:
-        """搜索用户/Search users
-
-        ``GET /api/v1/xiaohongshu/web_v3/fetch_search_users``
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "page": page,
-        })
-        return await self._client._request("GET", "/api/v1/xiaohongshu/web_v3/fetch_search_users", params=params)
-
-    async def fetch_trending(
-        self,
-    ) -> Any:
-        """获取热搜词/Fetch trending keywords
-
-        ``GET /api/v1/xiaohongshu/web_v3/fetch_trending``
-        """
-        return await self._client._request("GET", "/api/v1/xiaohongshu/web_v3/fetch_trending")
 
     async def fetch_search_suggest(
         self,
@@ -363,21 +175,3 @@ class AsyncXiaohongshuWebV3(AsyncResource):
             "user_id": user_id,
         })
         return await self._client._request("GET", "/api/v1/xiaohongshu/web_v3/fetch_user_info", params=params)
-
-    async def fetch_user_notes(
-        self,
-        *,
-        user_id: str,
-        cursor: str | None = None,
-        num: int | None = None,
-    ) -> Any:
-        """获取用户笔记列表/Fetch user notes
-
-        ``GET /api/v1/xiaohongshu/web_v3/fetch_user_notes``
-        """
-        params = _drop_none({
-            "user_id": user_id,
-            "cursor": cursor,
-            "num": num,
-        })
-        return await self._client._request("GET", "/api/v1/xiaohongshu/web_v3/fetch_user_notes", params=params)

@@ -1,7 +1,7 @@
 """Example: Douyin-Xingtu-V2-API
 
 SDK attribute: ``client.douyin_xingtu_v2``
-Endpoints: 21
+Endpoints: 50
 
 Usage::
 
@@ -28,7 +28,7 @@ async def main():
 
         # GET /api/v1/douyin/xingtu_v2/get_ranking_list_data
         # 获取星图达人商业榜数据/Get Ranking List Data
-        result = await client.douyin_xingtu_v2.get_ranking_list_data(code=1, qualifier='1901', version='flow_split', period=30, date='20260131', limit=100)
+        result = await client.douyin_xingtu_v2.get_ranking_list_data(code=1, qualifier='1901', version='flow_split', period=30, date='20260131')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # POST /api/v1/douyin/xingtu_v2/get_playlet_actor_rank_catalog
@@ -38,12 +38,32 @@ async def main():
 
         # GET /api/v1/douyin/xingtu_v2/get_playlet_actor_rank_list
         # 获取短剧演员热榜/Get Playlet Actor Rank List
-        result = await client.douyin_xingtu_v2.get_playlet_actor_rank_list(category='playlet_actor_list', name='playlet_actor_composite_list', qualifier='', period=30, date='20251130', limit=100)
+        result = await client.douyin_xingtu_v2.get_playlet_actor_rank_list(category='playlet_actor_list', name='playlet_actor_composite_list', qualifier='', period=30, date='20251130')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/douyin/xingtu_v2/get_author_market_fields
         # 获取达人广场筛选字段/Get Author Market Fields
         result = await client.douyin_xingtu_v2.get_author_market_fields(market_scene=1)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_search_field_options
+        # 获取达人广场筛选项取值/Get Search Field Options
+        result = await client.douyin_xingtu_v2.get_search_field_options(platform_source=1, task_category=1)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/search_creator
+        # 达人搜索/Search Creator
+        result = await client.douyin_xingtu_v2.search_creator(keyword='健身', seach_type=2, time_range_days=180, page=1, sort_field='score', sort_type=2, task_category=1, marketing_target=1, first_industry_id=0, price_type=2, price_min=1000, price_max=100000, tag='1', persona_tags='1129,110401', gender=2, fans_min=10000, fans_max=1000000, expected_play_min=100000, expected_play_max=1000000, cpm_min=10, cpm_max=100, cpe_min=0.1, cpe_max=5, interact_rate_min=0.02, interact_rate_max=0.5, play_over_rate_min=0.05, play_over_rate_max=0.9, burst_text_rate_min=0.1, burst_text_rate_max=0.8, extra_filter='[{"field_name":"content_theme_labels_180d","field_value":"[\\"生活好物评测\\"]"},{"field_name":"watcher_gender_female_rate_v2__ge","field_value":"0.6"},{"field_name":"link_crowd_profile","field_value":"[60,55,53,57]"}]')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/search_anchor
+        # 主播搜索/Search Anchor
+        result = await client.douyin_xingtu_v2.search_anchor(keyword='游戏', page=1, sort_field='score', sort_type=2, task_category=6, marketing_target=3, price_type=9, price_min=1000, price_max=100000, tag='1', persona_tags='1129,110401', gender=2, fans_min=10000, fans_max=1000000, expected_play_min=100000, expected_play_max=1000000, cpm_min=10, cpm_max=100, cpe_min=0.1, cpe_max=5, interact_rate_min=0.02, interact_rate_max=0.5, play_over_rate_min=0.05, play_over_rate_max=0.9, burst_text_rate_min=0.1, burst_text_rate_max=0.8, extra_filter='[{"field_name":"content_theme_labels_180d","field_value":"[\\"生活好物评测\\"]"},{"field_name":"watcher_gender_female_rate_v2__ge","field_value":"0.6"},{"field_name":"link_crowd_profile","field_value":"[60,55,53,57]"}]')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/search_toutiao_creator
+        # 头条创作者搜索/Search Toutiao Creator
+        result = await client.douyin_xingtu_v2.search_toutiao_creator(keyword='数码', page=1, sort_field='score', sort_type=2, task_category=11, marketing_target=1, price_type=11, price_min=1000, price_max=100000, tag='1', persona_tags='1129,110401', gender=2, fans_min=10000, fans_max=1000000, expected_play_min=100000, expected_play_max=1000000, cpm_min=10, cpm_max=100, cpe_min=0.1, cpe_max=5, interact_rate_min=0.02, interact_rate_max=0.5, play_over_rate_min=0.05, play_over_rate_max=0.9, burst_text_rate_min=0.1, burst_text_rate_max=0.8, extra_filter='[{"field_name":"content_theme_labels_180d","field_value":"[\\"生活好物评测\\"]"},{"field_name":"watcher_gender_female_rate_v2__ge","field_value":"0.6"},{"field_name":"link_crowd_profile","field_value":"[60,55,53,57]"}]')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/douyin/xingtu_v2/get_author_base_info
@@ -63,7 +83,27 @@ async def main():
 
         # GET /api/v1/douyin/xingtu_v2/get_author_show_items
         # 获取创作者视频列表/Get Author Show Items
-        result = await client.douyin_xingtu_v2.get_author_show_items(o_author_id='7589271892177518598', platform_source=1, platform_channel=1, limit=10, only_assign=False, flow_type=0)
+        result = await client.douyin_xingtu_v2.get_author_show_items(o_author_id='7589271892177518598', platform_source=1, platform_channel=1, only_assign=False, flow_type=0)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_author_homepage_videos
+        # 获取创作者主页作品列表/Get Author Homepage Videos
+        result = await client.douyin_xingtu_v2.get_author_homepage_videos(o_author_id='7029342444797820939', page=1)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_author_fans_distribution
+        # 获取创作者粉丝画像分布/Get Author Fans Distribution
+        result = await client.douyin_xingtu_v2.get_author_fans_distribution(o_author_id='7029342444797820939', platform_source=1, platform_channel=1)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_author_touch_distribution
+        # 获取创作者视频触达分布/Get Author Touch Distribution
+        result = await client.douyin_xingtu_v2.get_author_touch_distribution(o_author_id='7029342444797820939', platform_source=1, platform_channel=1)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # POST /api/v1/douyin/xingtu_v2/multi_get_author_info
+        # 批量获取创作者信息/Multi Get Author Info
+        result = await client.douyin_xingtu_v2.multi_get_author_info(author_ids=[], platform_source=1, platform_channel=1)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/douyin/xingtu_v2/get_author_hot_comment_tokens
@@ -78,7 +118,7 @@ async def main():
 
         # POST /api/v1/douyin/xingtu_v2/get_recommend_for_star_authors
         # 获取相似创作者推荐/Get Recommend Similar Star Authors
-        result = await client.douyin_xingtu_v2.get_recommend_for_star_authors(author_ids=[], similar_type='content', page=1, limit=12)
+        result = await client.douyin_xingtu_v2.get_recommend_for_star_authors(author_ids=[], similar_type='content', page=1)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/douyin/xingtu_v2/get_excellent_case_category_list
@@ -89,6 +129,31 @@ async def main():
         # GET /api/v1/douyin/xingtu_v2/get_author_spread_info
         # 获取创作者传播价值/Get Author Spread Info
         result = await client.douyin_xingtu_v2.get_author_spread_info(o_author_id='7589271892177518598', platform_source=1, platform_channel=1, type=1, flow_type=0, only_assign=False, range=2)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_author_video_distribution
+        # 获取创作者视频内容分布/Get Author Video Distribution
+        result = await client.douyin_xingtu_v2.get_author_video_distribution(o_author_id='7112600044674482187', platform_source=1, platform_channel=1)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_author_spread_videos
+        # 获取创作者传播表现视频/Get Author Spread Videos
+        result = await client.douyin_xingtu_v2.get_author_spread_videos(o_author_id='7112600044674482187', platform_source=1, platform_channel=1)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_author_daily_link
+        # 获取创作者连接指标日趋势/Get Author Daily Link
+        result = await client.douyin_xingtu_v2.get_author_daily_link(o_author_id='7112600044674482187', link_type=5, start_date='20250801', end_date='20250822', platform_source=1, platform_channel=1, industry_id=0)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_author_daily_link_score
+        # 获取创作者连接指数日趋势/Get Author Daily Link Score
+        result = await client.douyin_xingtu_v2.get_author_daily_link_score(o_author_id='7112600044674482187', link_score_type=1, start_date='20250801', end_date='20250822', platform_source=1, platform_channel=1, industry_id=0)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_author_commerce_spread_info
+        # 获取创作者性价比与效果预估/Get Author Commerce Spread Info
+        result = await client.douyin_xingtu_v2.get_author_commerce_spread_info(o_author_id='7112600044674482187')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/douyin/xingtu_v2/get_user_profile_qrcode
@@ -123,7 +188,87 @@ async def main():
 
         # GET /api/v1/douyin/xingtu_v2/get_demander_mcn_list
         # 搜索MCN机构列表/Get Demander MCN List
-        result = await client.douyin_xingtu_v2.get_demander_mcn_list(mcn_name='', page=1, limit=20, order_by='platform_scores')
+        result = await client.douyin_xingtu_v2.get_demander_mcn_list(mcn_name='', page=1, order_by='platform_scores')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_uid
+        # 抖音UID转星图达人ID/Get Xingtu Author ID by Douyin UID
+        result = await client.douyin_xingtu_v2.get_xingtu_kolid_by_uid(uid='70452002324')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_sec_user_id
+        # 抖音sec_user_id转星图达人ID/Get Xingtu Author ID by Douyin sec_user_id
+        result = await client.douyin_xingtu_v2.get_xingtu_kolid_by_sec_user_id(sec_user_id='MS4wLjABAAAAoxwUZouIdKL6sZ8EB96KDjkrhfBMS1KbCgsMJR1kIUs')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_unique_id
+        # 抖音号转星图达人ID/Get Xingtu Author ID by Douyin unique_id
+        result = await client.douyin_xingtu_v2.get_xingtu_kolid_by_unique_id(unique_id='m6640150')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_author_audience_distribution
+        # 获取创作者受众画像分布/Get Author Audience Distribution
+        result = await client.douyin_xingtu_v2.get_author_audience_distribution(o_author_id='7029342444797820939', platform_source=1, platform_channel=1, link_type=5)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_author_rec_videos_v2
+        # 获取创作者推荐视频/Get Author Recommended Videos V2
+        result = await client.douyin_xingtu_v2.get_author_rec_videos_v2(o_author_id='7112600044674482187', platform_source=1, platform_channel=1)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_author_daily_fans
+        # 获取创作者每日粉丝趋势/Get Author Daily Fans
+        result = await client.douyin_xingtu_v2.get_author_daily_fans(author_id='7029342444797820939', platform_source=1)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_author_convert_ability
+        # 获取创作者转化能力/Get Author Convert Ability
+        result = await client.douyin_xingtu_v2.get_author_convert_ability(o_author_id='7029342444797820939', platform_source=1, platform_channel=1, industry_id=0, time_range=2)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_author_cp_info
+        # 获取创作者CP合作信息/Get Author CP Info
+        result = await client.douyin_xingtu_v2.get_author_cp_info(o_author_id='7029342444797820939', platform_source=1, platform_channel=1)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_author_convert_videos_or_products
+        # 获取创作者转化视频/商品明细/Get Author Convert Videos or Products
+        result = await client.douyin_xingtu_v2.get_author_convert_videos_or_products(o_author_id='7589271892177518598', platform_source=1, platform_channel=1, detail_type=1, industry_id=0, time_range=2, page=1)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_author_link_info
+        # 获取创作者星图连接指数/Get Author Link Info
+        result = await client.douyin_xingtu_v2.get_author_link_info(o_author_id='7589271892177518598', platform_source=1, platform_channel=1, industy_tag=0)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu_v2/get_item_play_count
+        # 获取单个视频播放量(含详情)/Get Item Play Count
+        result = await client.douyin_xingtu_v2.get_item_play_count(item_id='7630036460159111515', platform_source=1, need_cover_url=True)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # POST /api/v1/douyin/xingtu_v2/multi_get_item_stats
+        # 批量获取视频数据(播放量/点赞等)/Multi Get Item Stats
+        result = await client.douyin_xingtu_v2.multi_get_item_stats(item_ids=[], platform_source=1, need_cover_url=True)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # POST /api/v1/douyin/xingtu_v2/get_item_report_detail
+        # 获取视频详情报告/Get Item Report Detail
+        result = await client.douyin_xingtu_v2.get_item_report_detail(item_id='test')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # POST /api/v1/douyin/xingtu_v2/get_item_report_th_analysis
+        # 获取视频互动分析/Get Item Report Interaction Analysis
+        result = await client.douyin_xingtu_v2.get_item_report_th_analysis(item_id='test')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # POST /api/v1/douyin/xingtu_v2/get_item_report_trend
+        # 获取视频整体表现趋势/Get Item Report Trend
+        result = await client.douyin_xingtu_v2.get_item_report_trend(item_id='test')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # POST /api/v1/douyin/xingtu_v2/get_item_report_comments
+        # 获取视频评论分析/Get Item Report Comments
+        result = await client.douyin_xingtu_v2.get_item_report_comments(item_id='test')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

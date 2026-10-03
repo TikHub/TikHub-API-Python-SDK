@@ -1,7 +1,7 @@
 """Example: Instagram-V3-API
 
 SDK attribute: ``client.instagram_v3``
-Endpoints: 32
+Endpoints: 37
 
 Usage::
 
@@ -31,11 +31,6 @@ async def main():
         result = await client.instagram_v3.search_hashtags(query='fashion')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
-        # GET /api/v1/instagram/v3/search_places
-        # 搜索地点/Search places
-        result = await client.instagram_v3.search_places(query='tokyo')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
         # GET /api/v1/instagram/v3/general_search
         # 综合搜索（支持分页）/General search (with pagination)
         result = await client.instagram_v3.general_search(query='justin', enable_metadata=True)
@@ -46,9 +41,14 @@ async def main():
         result = await client.instagram_v3.get_user_id_by_username(username='liensue.talks')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
+        # GET /api/v1/instagram/v3/user_id_to_username
+        # 通过用户ID获取用户信息/Get user info by user ID
+        result = await client.instagram_v3.user_id_to_username(user_id='25025320')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
         # GET /api/v1/instagram/v3/get_user_profile
         # 获取用户信息/Get user profile
-        result = await client.instagram_v3.get_user_profile(user_id='58208242181', username='instagram')
+        result = await client.instagram_v3.get_user_profile(username='instagram')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/instagram/v3/get_user_brief
@@ -63,17 +63,17 @@ async def main():
 
         # GET /api/v1/instagram/v3/get_user_tagged_posts
         # 获取用户被标记的帖子/Get user tagged posts
-        result = await client.instagram_v3.get_user_tagged_posts(user_id='58208242181', username='instagram', first=12, count=12)
+        result = await client.instagram_v3.get_user_tagged_posts(username='instagram', first=12, count=12)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/instagram/v3/get_user_reels
         # 获取用户Reels列表/Get user reels
-        result = await client.instagram_v3.get_user_reels(user_id='58208242181', username='instagram', first=12, page_size=12)
+        result = await client.instagram_v3.get_user_reels(username='instagram', first=12, page_size=12)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/instagram/v3/get_user_highlights
         # 获取用户精选Highlights列表/Get user highlights
-        result = await client.instagram_v3.get_user_highlights(user_id='58208242181', username='instagram', first=10)
+        result = await client.instagram_v3.get_user_highlights(username='instagram', first=10)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/instagram/v3/get_highlight_stories
@@ -83,17 +83,17 @@ async def main():
 
         # GET /api/v1/instagram/v3/get_user_about
         # 获取用户账户简介/Get user about info
-        result = await client.instagram_v3.get_user_about(user_id='791258468', username='instagram')
+        result = await client.instagram_v3.get_user_about(username='instagram')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/instagram/v3/get_user_former_usernames
-        # 获取用户曾用用户名/Get user former usernames
-        result = await client.instagram_v3.get_user_former_usernames(user_id='17841403122371231', username='instagram')
+        # 获取用户账号名更改次数/Get username change count
+        result = await client.instagram_v3.get_user_former_usernames(username='instagram')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/instagram/v3/get_user_stories
         # 获取用户Stories（快拍）/Get user stories
-        result = await client.instagram_v3.get_user_stories(user_id='58208242181', username='instagram')
+        result = await client.instagram_v3.get_user_stories(username='instagram')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/instagram/v3/get_recommended_reels
@@ -143,12 +143,12 @@ async def main():
 
         # GET /api/v1/instagram/v3/get_user_following
         # 获取用户关注列表/Get user following list
-        result = await client.instagram_v3.get_user_following(user_id='58208242181', username='instagram', count=12)
+        result = await client.instagram_v3.get_user_following(username='instagram', count=12)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/instagram/v3/get_user_followers
         # 获取用户粉丝列表/Get user followers list
-        result = await client.instagram_v3.get_user_followers(user_id='58208242181', username='instagram', count=12)
+        result = await client.instagram_v3.get_user_followers(username='instagram', count=12)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/instagram/v3/get_location_info
@@ -179,6 +179,31 @@ async def main():
         # GET /api/v1/instagram/v3/extract_shortcode
         # 从URL提取短码/Extract shortcode from URL
         result = await client.instagram_v3.extract_shortcode(url='https://www.instagram.com/p/CrgVBtHrFHm/')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/instagram/v3/get_post_likes
+        # 获取帖子点赞用户列表/Get post likes
+        result = await client.instagram_v3.get_post_likes(code='DavSf9yS6wy')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/instagram/v3/get_similar_users
+        # 获取相似账号推荐/Get similar users
+        result = await client.instagram_v3.get_similar_users(user_id='25025320')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/instagram/v3/search_by_coordinates
+        # 按坐标搜索附近地点/Search locations by coordinates
+        result = await client.instagram_v3.search_by_coordinates(latitude=40.7, longitude=-74)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/instagram/v3/get_hashtag_posts
+        # 获取话题标签帖子列表/Get hashtag posts
+        result = await client.instagram_v3.get_hashtag_posts(tag='cat')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/instagram/v3/get_music_posts
+        # 获取音频下的Reels列表/Get music (audio) posts
+        result = await client.instagram_v3.get_music_posts(audio_cluster_id='18066165960103621')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

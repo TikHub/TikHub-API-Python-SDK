@@ -2,7 +2,7 @@
 """Generate ``docs/reference.md`` from the SDK source.
 
 Walks every resource exposed on ``TikHub`` and renders an alphabetical
-catalogue of all 1106 methods, grouped by resource. The output is a
+catalogue of every method, grouped by resource. The output is a
 single markdown file that mkdocs-material renders into the API reference
 section of the docs site.
 

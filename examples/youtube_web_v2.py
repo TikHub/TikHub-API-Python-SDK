@@ -1,7 +1,7 @@
 """Example: YouTube-Web-V2-API
 
 SDK attribute: ``client.youtube_web_v2``
-Endpoints: 25
+Endpoints: 26
 
 Usage::
 
@@ -101,9 +101,9 @@ async def main():
         result = await client.youtube_web_v2.get_video_captions(video_id='dQw4w9WgXcQ', video_url='https://www.youtube.com/watch?v=dQw4w9WgXcQ', language_code='en', format='srt')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
-        # GET /api/v1/youtube/web_v2/get_video_captions_v2
-        # 获取视频字幕 V2/Get video captions V2
-        result = await client.youtube_web_v2.get_video_captions_v2(video_id='MWvpXswLFxA', video_url='https://www.youtube.com/watch?v=MWvpXswLFxA', language_code='en', format='srt')
+        # GET /api/v1/youtube/web_v2/get_video_captions_result
+        # 获取视频字幕异步任务结果/Get video captions async job result
+        result = await client.youtube_web_v2.get_video_captions_result(job_id='123e4567-e89b-12d3-a456-426614174000', format='srt')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/youtube/web_v2/get_related_videos
@@ -144,6 +144,11 @@ async def main():
         # GET /api/v1/youtube/web_v2/get_post_comment_replies
         # 获取帖子评论回复/Get post comment replies
         result = await client.youtube_web_v2.get_post_comment_replies(continuation_token='test', language_code='zh-CN', country_code='US', need_format=True)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # POST /api/v1/youtube/web_v2/get_video_streams_v3
+        # 使用自带固定出口代理获取下载链接 / Get download URLs with your fixed-exit proxy
+        result = await client.youtube_web_v2.get_video_streams_v3(video_id='test', proxy_url='test', verify_download=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

@@ -30,7 +30,7 @@
 
 ## この SDK を選ぶ理由
 
-- **100% エンドポイントカバレッジ** — OpenAPI 仕様 V5.3.2 の 1106 / 1106 エンドポイント、機械的に生成・検証
+- **100% エンドポイントカバレッジ** — OpenAPI 仕様 V5.3.2 の 1048 / 1048 エンドポイント（非推奨エンドポイントを除く）、機械的に生成・検証
 - **同期 + 非同期** — `TikHub` と `AsyncTikHub` クライアント、API は完全に同一
 - **本番環境対応** — 指数バックオフによる自動リトライ、レート制限処理、構造化エラー階層
 - **型安全** — `mypy --strict` 対応、`httpx` + `pydantic v2` で構築
@@ -42,22 +42,23 @@
 
 | プラットフォーム | リソース | エンドポイント数 |
 |---|---|---|
-| TikTok | `tiktok_web`, `tiktok_app_v3`, `tiktok_creator`, `tiktok_analytics`, `tiktok_ads`, `tiktok_shop_web` | 200+ |
-| Douyin（抖音） | `douyin_web`, `douyin_app_v3`, `douyin_search`, `douyin_billboard`, `douyin_creator`, `douyin_xingtu` | 400+ |
-| Instagram | `instagram_v1`, `instagram_v2`, `instagram_v3` | 80+ |
-| YouTube | `youtube_web`, `youtube_web_v2` | 50+ |
-| Twitter / X | `twitter_web` | 13+ |
-| Xiaohongshu（小紅書） | `xiaohongshu_web`, `xiaohongshu_app`（+ v2/v3 バリアント） | 80+ |
-| Bilibili | `bilibili_web`, `bilibili_app` | 40+ |
-| Weibo（微博） | `weibo_web`, `weibo_web_v2`, `weibo_app` | 30+ |
-| Threads | `threads_web` | 10+ |
-| LinkedIn | `linkedin_web` | 10+ |
-| Reddit | `reddit_app` | 10+ |
-| Kuaishou（快手） | `kuaishou_web`, `kuaishou_app` | 20+ |
-| WeChat | `wechat_channels`, `wechat_media_platform_web` | 20+ |
-| Lemon8 | `lemon8_app` | 10+ |
-| Zhihu（知乎） | `zhihu_web` | 30+ |
-| その他 | `toutiao_web`, `toutiao_app`, `xigua_app_v2`, `pipixia_app`, `sora2` | 30+ |
+| TikTok | `tiktok_web`, `tiktok_app_v3`, `tiktok_creator`, `tiktok_analytics`, `tiktok_ads`, `tiktok_shop_web` | 162 |
+| Douyin（抖音） | `douyin_web`, `douyin_app_v3`, `douyin_search`, `douyin_billboard`, `douyin_creator`, `douyin_creator_v2`, `douyin_xingtu`, `douyin_xingtu_v2`, `douyin_index`, `douyin_douplus` | 319 |
+| Instagram | `instagram_v1`, `instagram_v2`, `instagram_v3` | 93 |
+| YouTube | `youtube_web`, `youtube_web_v2` | 34 |
+| Twitter / X | `twitter_web` | 25 |
+| Xiaohongshu（小紅書） | `xiaohongshu_app_v2`, `xiaohongshu_web_v3`, `xiaohongshu_pgy` | 45 |
+| Bilibili | `bilibili_web`, `bilibili_app`, `bilibili_huahuo` | 87 |
+| Weibo（微博） | `weibo_web_v2`, `weibo_app` | 56 |
+| Threads | `threads_web` | 12 |
+| LinkedIn | `linkedin_web_v2` | 8 |
+| Telegram | `telegram_web` | 7 |
+| Reddit | `reddit_app` | 28 |
+| Kuaishou（快手） | `kuaishou_web`, `kuaishou_app` | 38 |
+| WeChat | `wechat_channels_v2`, `wechat_media_platform_v2`, `wechat_search_v2` | 25 |
+| Lemon8 | `lemon8_app` | 16 |
+| Zhihu（知乎） | `zhihu_web` | 41 |
+| その他 | `toutiao_web`, `toutiao_app`, `xigua_app_v2`, `pipixia_app` | 31 |
 
 ## インストール
 

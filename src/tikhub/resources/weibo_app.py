@@ -5,7 +5,7 @@
 OpenAPI tag: ``Weibo-App-API``
 SDK attribute: ``client.weibo_app`` / ``async_client.weibo_app``
 
-Endpoints: 20
+Endpoints: 23
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncWeiboApp", "WeiboApp"]
 
 
 class WeiboApp(SyncResource):
-    """Sync ``Weibo-App-API`` resource (20 endpoints)."""
+    """Sync ``Weibo-App-API`` resource (23 endpoints)."""
 
     def fetch_user_info(
         self,
@@ -169,6 +169,40 @@ class WeiboApp(SyncResource):
             "since_id": since_id,
         })
         return self._client._request("GET", "/api/v1/weibo/app/fetch_user_profile_feed", params=params)
+
+    def fetch_user_followers(
+        self,
+        *,
+        uid: str,
+        page: int | None = None,
+    ) -> Any:
+        """获取用户粉丝列表/Get user followers
+
+        ``GET /api/v1/weibo/app/fetch_user_followers``
+        """
+        params = _drop_none({
+            "uid": uid,
+            "page": page,
+        })
+        return self._client._request("GET", "/api/v1/weibo/app/fetch_user_followers", params=params)
+
+    def fetch_user_following(
+        self,
+        *,
+        uid: str,
+        since_id: Any | None = None,
+        sort_type: int | None = None,
+    ) -> Any:
+        """获取用户关注列表/Get user following
+
+        ``GET /api/v1/weibo/app/fetch_user_following``
+        """
+        params = _drop_none({
+            "uid": uid,
+            "since_id": since_id,
+            "sort_type": sort_type,
+        })
+        return self._client._request("GET", "/api/v1/weibo/app/fetch_user_following", params=params)
 
     def fetch_status_detail(
         self,
@@ -341,9 +375,18 @@ class WeiboApp(SyncResource):
         """
         return self._client._request("GET", "/api/v1/weibo/app/fetch_hot_search_categories")
 
+    def fetch_hot_search_brief(
+        self,
+    ) -> Any:
+        """获取热搜简报/Get hot search brief
+
+        ``GET /api/v1/weibo/app/fetch_hot_search_brief``
+        """
+        return self._client._request("GET", "/api/v1/weibo/app/fetch_hot_search_brief")
+
 
 class AsyncWeiboApp(AsyncResource):
-    """Async ``Weibo-App-API`` resource (20 endpoints)."""
+    """Async ``Weibo-App-API`` resource (23 endpoints)."""
 
     async def fetch_user_info(
         self,
@@ -488,6 +531,40 @@ class AsyncWeiboApp(AsyncResource):
             "since_id": since_id,
         })
         return await self._client._request("GET", "/api/v1/weibo/app/fetch_user_profile_feed", params=params)
+
+    async def fetch_user_followers(
+        self,
+        *,
+        uid: str,
+        page: int | None = None,
+    ) -> Any:
+        """获取用户粉丝列表/Get user followers
+
+        ``GET /api/v1/weibo/app/fetch_user_followers``
+        """
+        params = _drop_none({
+            "uid": uid,
+            "page": page,
+        })
+        return await self._client._request("GET", "/api/v1/weibo/app/fetch_user_followers", params=params)
+
+    async def fetch_user_following(
+        self,
+        *,
+        uid: str,
+        since_id: Any | None = None,
+        sort_type: int | None = None,
+    ) -> Any:
+        """获取用户关注列表/Get user following
+
+        ``GET /api/v1/weibo/app/fetch_user_following``
+        """
+        params = _drop_none({
+            "uid": uid,
+            "since_id": since_id,
+            "sort_type": sort_type,
+        })
+        return await self._client._request("GET", "/api/v1/weibo/app/fetch_user_following", params=params)
 
     async def fetch_status_detail(
         self,
@@ -659,3 +736,12 @@ class AsyncWeiboApp(AsyncResource):
         ``GET /api/v1/weibo/app/fetch_hot_search_categories``
         """
         return await self._client._request("GET", "/api/v1/weibo/app/fetch_hot_search_categories")
+
+    async def fetch_hot_search_brief(
+        self,
+    ) -> Any:
+        """获取热搜简报/Get hot search brief
+
+        ``GET /api/v1/weibo/app/fetch_hot_search_brief``
+        """
+        return await self._client._request("GET", "/api/v1/weibo/app/fetch_hot_search_brief")

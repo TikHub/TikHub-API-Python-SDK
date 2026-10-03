@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the SDK covers every endpoint in spec/openapi.json.
+"""Verify the SDK covers every non-deprecated endpoint in spec/openapi.json.
 
 Run from the repo root::
 
@@ -28,8 +28,8 @@ def spec_endpoints() -> set[tuple[str, str]]:
         spec = json.load(f)
     out: set[tuple[str, str]] = set()
     for path, methods in spec["paths"].items():
-        for m in methods:
-            if m.lower() in {"get", "post", "put", "delete", "patch"}:
+        for m, op in methods.items():
+            if m.lower() in {"get", "post", "put", "delete", "patch"} and not op.get("deprecated"):
                 out.add((m.upper(), path))
     return out
 

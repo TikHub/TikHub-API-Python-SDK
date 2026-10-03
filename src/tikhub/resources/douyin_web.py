@@ -5,7 +5,7 @@
 OpenAPI tag: ``Douyin-Web-API``
 SDK attribute: ``client.douyin_web`` / ``async_client.douyin_web``
 
-Endpoints: 68
+Endpoints: 55
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncDouyinWeb", "DouyinWeb"]
 
 
 class DouyinWeb(SyncResource):
-    """Sync ``Douyin-Web-API`` resource (68 endpoints)."""
+    """Sync ``Douyin-Web-API`` resource (55 endpoints)."""
 
     def fetch_one_video(
         self,
@@ -141,16 +141,18 @@ class DouyinWeb(SyncResource):
         *,
         count: int | None = None,
         refresh_index: int | None = None,
+        cookie: str | None = None,
     ) -> Any:
         """获取首页推荐数据/Get home feed data
 
-        ``GET /api/v1/douyin/web/fetch_home_feed``
+        ``POST /api/v1/douyin/web/fetch_home_feed``
         """
-        params = _drop_none({
+        json_body = _drop_none({
             "count": count,
             "refresh_index": refresh_index,
+            "cookie": cookie,
         })
-        return self._client._request("GET", "/api/v1/douyin/web/fetch_home_feed", params=params)
+        return self._client._request("POST", "/api/v1/douyin/web/fetch_home_feed", json=json_body)
 
     def fetch_related_posts(
         self,
@@ -312,22 +314,6 @@ class DouyinWeb(SyncResource):
         })
         return self._client._request("GET", "/api/v1/douyin/web/fetch_user_live_videos_by_sec_uid", params=params)
 
-    def fetch_user_live_videos_by_room_id(
-        self,
-        *,
-        room_id: str,
-    ) -> Any:
-        """通过room_id获取指定用户的直播流数据 V1/Get live video data of specified user by room_id V1
-
-        ``GET /api/v1/douyin/web/fetch_user_live_videos_by_room_id``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "room_id": room_id,
-        })
-        return self._client._request("GET", "/api/v1/douyin/web/fetch_user_live_videos_by_room_id", params=params)
-
     def fetch_user_live_videos_by_room_id_v2(
         self,
         *,
@@ -357,102 +343,6 @@ class DouyinWeb(SyncResource):
             "rank_type": rank_type,
         })
         return self._client._request("GET", "/api/v1/douyin/web/fetch_live_gift_ranking", params=params)
-
-    def fetch_live_room_product_result(
-        self,
-        *,
-        room_id: str,
-        author_id: str,
-        offset: int | None = None,
-        limit: int | None = None,
-    ) -> Any:
-        """抖音直播间商品信息/Douyin live room product information
-
-        ``GET /api/v1/douyin/web/fetch_live_room_product_result``
-        """
-        params = _drop_none({
-            "room_id": room_id,
-            "author_id": author_id,
-            "offset": offset,
-            "limit": limit,
-        })
-        return self._client._request("GET", "/api/v1/douyin/web/fetch_live_room_product_result", params=params)
-
-    def fetch_product_sku_list(
-        self,
-        *,
-        product_id: str,
-        author_id: str,
-    ) -> Any:
-        """获取商品SKU列表/Get product SKU list
-
-        ``GET /api/v1/douyin/web/fetch_product_sku_list``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-            "author_id": author_id,
-        })
-        return self._client._request("GET", "/api/v1/douyin/web/fetch_product_sku_list", params=params)
-
-    def fetch_product_coupon(
-        self,
-        *,
-        product_id: str,
-        shop_id: str,
-        price: str,
-        author_id: str,
-        sec_user_id: str,
-    ) -> Any:
-        """获取商品优惠券信息/Get product coupon information
-
-        ``GET /api/v1/douyin/web/fetch_product_coupon``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-            "shop_id": shop_id,
-            "price": price,
-            "author_id": author_id,
-            "sec_user_id": sec_user_id,
-        })
-        return self._client._request("GET", "/api/v1/douyin/web/fetch_product_coupon", params=params)
-
-    def fetch_product_review_score(
-        self,
-        *,
-        product_id: str,
-        shop_id: str,
-    ) -> Any:
-        """获取商品评价评分/Get product review score
-
-        ``GET /api/v1/douyin/web/fetch_product_review_score``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-            "shop_id": shop_id,
-        })
-        return self._client._request("GET", "/api/v1/douyin/web/fetch_product_review_score", params=params)
-
-    def fetch_product_review_list(
-        self,
-        *,
-        product_id: str,
-        shop_id: str,
-        cursor: int | None = None,
-        count: int | None = None,
-        sort_type: int | None = None,
-    ) -> Any:
-        """获取商品评价列表/Get product review list
-
-        ``GET /api/v1/douyin/web/fetch_product_review_list``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-            "shop_id": shop_id,
-            "cursor": cursor,
-            "count": count,
-            "sort_type": sort_type,
-        })
-        return self._client._request("GET", "/api/v1/douyin/web/fetch_product_review_list", params=params)
 
     def fetch_user_profile_by_uid(
         self,
@@ -686,28 +576,6 @@ class DouyinWeb(SyncResource):
         })
         return self._client._request("GET", "/api/v1/douyin/web/fetch_video_comment_replies", params=params)
 
-    def fetch_user_search_result_v3(
-        self,
-        *,
-        keyword: str,
-        cursor: str | None = None,
-        douyin_user_type: str | None = None,
-        douyin_user_fans: str | None = None,
-    ) -> Any:
-        """获取指定关键词的用户搜索结果 V3 (已弃用，替代接口请参考下方文档)/Get user search results of specified keywords V3 (deprecated, please refer to the following document for replacement interface)
-
-        ``GET /api/v1/douyin/web/fetch_user_search_result_v3``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "cursor": cursor,
-            "douyin_user_type": douyin_user_type,
-            "douyin_user_fans": douyin_user_fans,
-        })
-        return self._client._request("GET", "/api/v1/douyin/web/fetch_user_search_result_v3", params=params)
-
     def fetch_challenge_posts(
         self,
         *,
@@ -771,15 +639,6 @@ class DouyinWeb(SyncResource):
         })
         return self._client._request("GET", "/api/v1/douyin/web/fetch_douyin_web_guest_cookie", params=params)
 
-    def generate_real_msToken(
-        self,
-    ) -> Any:
-        """生成真实msToken/Generate real msToken
-
-        ``GET /api/v1/douyin/web/generate_real_msToken``
-        """
-        return self._client._request("GET", "/api/v1/douyin/web/generate_real_msToken")
-
     def generate_ttwid(
         self,
         *,
@@ -806,24 +665,6 @@ class DouyinWeb(SyncResource):
         json_body = body
         return self._client._request("POST", "/api/v1/douyin/web/fetch_query_user", json=json_body)
 
-    def generate_verify_fp(
-        self,
-    ) -> Any:
-        """生成verify_fp/Generate verify_fp
-
-        ``GET /api/v1/douyin/web/generate_verify_fp``
-        """
-        return self._client._request("GET", "/api/v1/douyin/web/generate_verify_fp")
-
-    def generate_s_v_web_id(
-        self,
-    ) -> Any:
-        """生成s_v_web_id/Generate s_v_web_id
-
-        ``GET /api/v1/douyin/web/generate_s_v_web_id``
-        """
-        return self._client._request("GET", "/api/v1/douyin/web/generate_s_v_web_id")
-
     def generate_wss_xb_signature(
         self,
         *,
@@ -841,46 +682,6 @@ class DouyinWeb(SyncResource):
             "user_unique_id": user_unique_id,
         })
         return self._client._request("GET", "/api/v1/douyin/web/generate_wss_xb_signature", params=params)
-
-    def generate_x_bogus(
-        self,
-        *,
-        url: str,
-        user_agent: str,
-    ) -> Any:
-        """使用接口网址生成X-Bogus参数/Generate X-Bogus parameter using API URL
-
-        ``POST /api/v1/douyin/web/generate_x_bogus``
-        """
-        json_body = _drop_none({
-            "url": url,
-            "user_agent": user_agent,
-        })
-        return self._client._request("POST", "/api/v1/douyin/web/generate_x_bogus", json=json_body)
-
-    def generate_a_bogus(
-        self,
-        *,
-        url: str,
-        data: str,
-        user_agent: str,
-        index_0: int | None = None,
-        index_1: int | None = None,
-        index_2: int | None = None,
-    ) -> Any:
-        """使用接口网址生成A-Bogus参数/Generate A-Bogus parameter using API URL
-
-        ``POST /api/v1/douyin/web/generate_a_bogus``
-        """
-        json_body = _drop_none({
-            "url": url,
-            "data": data,
-            "user_agent": user_agent,
-            "index_0": index_0,
-            "index_1": index_1,
-            "index_2": index_2,
-        })
-        return self._client._request("POST", "/api/v1/douyin/web/generate_a_bogus", json=json_body)
 
     def get_sec_user_id(
         self,
@@ -973,22 +774,6 @@ class DouyinWeb(SyncResource):
             "webcast_id": webcast_id,
         })
         return self._client._request("GET", "/api/v1/douyin/web/webcast_id_2_room_id", params=params)
-
-    def douyin_live_room(
-        self,
-        *,
-        live_room_url: str,
-        danmaku_type: str,
-    ) -> Any:
-        """提取直播间弹幕/Extract live room danmaku
-
-        ``GET /api/v1/douyin/web/douyin_live_room``
-        """
-        params = _drop_none({
-            "live_room_url": live_room_url,
-            "danmaku_type": danmaku_type,
-        })
-        return self._client._request("GET", "/api/v1/douyin/web/douyin_live_room", params=params)
 
     def fetch_live_im_fetch(
         self,
@@ -1118,7 +903,7 @@ class DouyinWeb(SyncResource):
 
 
 class AsyncDouyinWeb(AsyncResource):
-    """Async ``Douyin-Web-API`` resource (68 endpoints)."""
+    """Async ``Douyin-Web-API`` resource (55 endpoints)."""
 
     async def fetch_one_video(
         self,
@@ -1235,16 +1020,18 @@ class AsyncDouyinWeb(AsyncResource):
         *,
         count: int | None = None,
         refresh_index: int | None = None,
+        cookie: str | None = None,
     ) -> Any:
         """获取首页推荐数据/Get home feed data
 
-        ``GET /api/v1/douyin/web/fetch_home_feed``
+        ``POST /api/v1/douyin/web/fetch_home_feed``
         """
-        params = _drop_none({
+        json_body = _drop_none({
             "count": count,
             "refresh_index": refresh_index,
+            "cookie": cookie,
         })
-        return await self._client._request("GET", "/api/v1/douyin/web/fetch_home_feed", params=params)
+        return await self._client._request("POST", "/api/v1/douyin/web/fetch_home_feed", json=json_body)
 
     async def fetch_related_posts(
         self,
@@ -1406,22 +1193,6 @@ class AsyncDouyinWeb(AsyncResource):
         })
         return await self._client._request("GET", "/api/v1/douyin/web/fetch_user_live_videos_by_sec_uid", params=params)
 
-    async def fetch_user_live_videos_by_room_id(
-        self,
-        *,
-        room_id: str,
-    ) -> Any:
-        """通过room_id获取指定用户的直播流数据 V1/Get live video data of specified user by room_id V1
-
-        ``GET /api/v1/douyin/web/fetch_user_live_videos_by_room_id``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "room_id": room_id,
-        })
-        return await self._client._request("GET", "/api/v1/douyin/web/fetch_user_live_videos_by_room_id", params=params)
-
     async def fetch_user_live_videos_by_room_id_v2(
         self,
         *,
@@ -1451,102 +1222,6 @@ class AsyncDouyinWeb(AsyncResource):
             "rank_type": rank_type,
         })
         return await self._client._request("GET", "/api/v1/douyin/web/fetch_live_gift_ranking", params=params)
-
-    async def fetch_live_room_product_result(
-        self,
-        *,
-        room_id: str,
-        author_id: str,
-        offset: int | None = None,
-        limit: int | None = None,
-    ) -> Any:
-        """抖音直播间商品信息/Douyin live room product information
-
-        ``GET /api/v1/douyin/web/fetch_live_room_product_result``
-        """
-        params = _drop_none({
-            "room_id": room_id,
-            "author_id": author_id,
-            "offset": offset,
-            "limit": limit,
-        })
-        return await self._client._request("GET", "/api/v1/douyin/web/fetch_live_room_product_result", params=params)
-
-    async def fetch_product_sku_list(
-        self,
-        *,
-        product_id: str,
-        author_id: str,
-    ) -> Any:
-        """获取商品SKU列表/Get product SKU list
-
-        ``GET /api/v1/douyin/web/fetch_product_sku_list``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-            "author_id": author_id,
-        })
-        return await self._client._request("GET", "/api/v1/douyin/web/fetch_product_sku_list", params=params)
-
-    async def fetch_product_coupon(
-        self,
-        *,
-        product_id: str,
-        shop_id: str,
-        price: str,
-        author_id: str,
-        sec_user_id: str,
-    ) -> Any:
-        """获取商品优惠券信息/Get product coupon information
-
-        ``GET /api/v1/douyin/web/fetch_product_coupon``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-            "shop_id": shop_id,
-            "price": price,
-            "author_id": author_id,
-            "sec_user_id": sec_user_id,
-        })
-        return await self._client._request("GET", "/api/v1/douyin/web/fetch_product_coupon", params=params)
-
-    async def fetch_product_review_score(
-        self,
-        *,
-        product_id: str,
-        shop_id: str,
-    ) -> Any:
-        """获取商品评价评分/Get product review score
-
-        ``GET /api/v1/douyin/web/fetch_product_review_score``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-            "shop_id": shop_id,
-        })
-        return await self._client._request("GET", "/api/v1/douyin/web/fetch_product_review_score", params=params)
-
-    async def fetch_product_review_list(
-        self,
-        *,
-        product_id: str,
-        shop_id: str,
-        cursor: int | None = None,
-        count: int | None = None,
-        sort_type: int | None = None,
-    ) -> Any:
-        """获取商品评价列表/Get product review list
-
-        ``GET /api/v1/douyin/web/fetch_product_review_list``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-            "shop_id": shop_id,
-            "cursor": cursor,
-            "count": count,
-            "sort_type": sort_type,
-        })
-        return await self._client._request("GET", "/api/v1/douyin/web/fetch_product_review_list", params=params)
 
     async def fetch_user_profile_by_uid(
         self,
@@ -1780,28 +1455,6 @@ class AsyncDouyinWeb(AsyncResource):
         })
         return await self._client._request("GET", "/api/v1/douyin/web/fetch_video_comment_replies", params=params)
 
-    async def fetch_user_search_result_v3(
-        self,
-        *,
-        keyword: str,
-        cursor: str | None = None,
-        douyin_user_type: str | None = None,
-        douyin_user_fans: str | None = None,
-    ) -> Any:
-        """获取指定关键词的用户搜索结果 V3 (已弃用，替代接口请参考下方文档)/Get user search results of specified keywords V3 (deprecated, please refer to the following document for replacement interface)
-
-        ``GET /api/v1/douyin/web/fetch_user_search_result_v3``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "cursor": cursor,
-            "douyin_user_type": douyin_user_type,
-            "douyin_user_fans": douyin_user_fans,
-        })
-        return await self._client._request("GET", "/api/v1/douyin/web/fetch_user_search_result_v3", params=params)
-
     async def fetch_challenge_posts(
         self,
         *,
@@ -1865,15 +1518,6 @@ class AsyncDouyinWeb(AsyncResource):
         })
         return await self._client._request("GET", "/api/v1/douyin/web/fetch_douyin_web_guest_cookie", params=params)
 
-    async def generate_real_msToken(
-        self,
-    ) -> Any:
-        """生成真实msToken/Generate real msToken
-
-        ``GET /api/v1/douyin/web/generate_real_msToken``
-        """
-        return await self._client._request("GET", "/api/v1/douyin/web/generate_real_msToken")
-
     async def generate_ttwid(
         self,
         *,
@@ -1900,24 +1544,6 @@ class AsyncDouyinWeb(AsyncResource):
         json_body = body
         return await self._client._request("POST", "/api/v1/douyin/web/fetch_query_user", json=json_body)
 
-    async def generate_verify_fp(
-        self,
-    ) -> Any:
-        """生成verify_fp/Generate verify_fp
-
-        ``GET /api/v1/douyin/web/generate_verify_fp``
-        """
-        return await self._client._request("GET", "/api/v1/douyin/web/generate_verify_fp")
-
-    async def generate_s_v_web_id(
-        self,
-    ) -> Any:
-        """生成s_v_web_id/Generate s_v_web_id
-
-        ``GET /api/v1/douyin/web/generate_s_v_web_id``
-        """
-        return await self._client._request("GET", "/api/v1/douyin/web/generate_s_v_web_id")
-
     async def generate_wss_xb_signature(
         self,
         *,
@@ -1935,46 +1561,6 @@ class AsyncDouyinWeb(AsyncResource):
             "user_unique_id": user_unique_id,
         })
         return await self._client._request("GET", "/api/v1/douyin/web/generate_wss_xb_signature", params=params)
-
-    async def generate_x_bogus(
-        self,
-        *,
-        url: str,
-        user_agent: str,
-    ) -> Any:
-        """使用接口网址生成X-Bogus参数/Generate X-Bogus parameter using API URL
-
-        ``POST /api/v1/douyin/web/generate_x_bogus``
-        """
-        json_body = _drop_none({
-            "url": url,
-            "user_agent": user_agent,
-        })
-        return await self._client._request("POST", "/api/v1/douyin/web/generate_x_bogus", json=json_body)
-
-    async def generate_a_bogus(
-        self,
-        *,
-        url: str,
-        data: str,
-        user_agent: str,
-        index_0: int | None = None,
-        index_1: int | None = None,
-        index_2: int | None = None,
-    ) -> Any:
-        """使用接口网址生成A-Bogus参数/Generate A-Bogus parameter using API URL
-
-        ``POST /api/v1/douyin/web/generate_a_bogus``
-        """
-        json_body = _drop_none({
-            "url": url,
-            "data": data,
-            "user_agent": user_agent,
-            "index_0": index_0,
-            "index_1": index_1,
-            "index_2": index_2,
-        })
-        return await self._client._request("POST", "/api/v1/douyin/web/generate_a_bogus", json=json_body)
 
     async def get_sec_user_id(
         self,
@@ -2067,22 +1653,6 @@ class AsyncDouyinWeb(AsyncResource):
             "webcast_id": webcast_id,
         })
         return await self._client._request("GET", "/api/v1/douyin/web/webcast_id_2_room_id", params=params)
-
-    async def douyin_live_room(
-        self,
-        *,
-        live_room_url: str,
-        danmaku_type: str,
-    ) -> Any:
-        """提取直播间弹幕/Extract live room danmaku
-
-        ``GET /api/v1/douyin/web/douyin_live_room``
-        """
-        params = _drop_none({
-            "live_room_url": live_room_url,
-            "danmaku_type": danmaku_type,
-        })
-        return await self._client._request("GET", "/api/v1/douyin/web/douyin_live_room", params=params)
 
     async def fetch_live_im_fetch(
         self,

@@ -4,6 +4,32 @@ All notable changes to `tikhub` will be documented in this file. The format is b
 
 ## [Unreleased]
 
+### Changed
+
+- **Spec sync to the live OpenAPI spec (1050 operations, 51 tags).** The SDK
+  now exposes **1048 methods across 51 resources**.
+- **Deprecated endpoints are no longer generated.** `scripts/generate_resources.py`
+  skips any operation marked `deprecated: true`. `scripts/verify_coverage.py`
+  and the endpoint-count test check against non-deprecated operations only.
+  This drops `tiktok_shop_web.fetch_product_detail_v2` and
+  `tiktok_shop_web.fetch_hot_selling_products_list`.
+
+### Added
+
+- New resources: `bilibili_huahuo` (45), `douyin_douplus` (17),
+  `telegram_web` (7), `wechat_channels_v2` (12), `wechat_media_platform_v2` (11),
+  `wechat_search_v2` (2), `xiaohongshu_pgy` (20).
+- New endpoints on existing resources, e.g. `bilibili_web.fetch_user_post_videos_v2`,
+  `douyin_index.fetch_hot_detail`, `douyin_xingtu_v2.get_author_audience_distribution`.
+
+### Removed
+
+- Resources that TikHub removed upstream: `linkedin_web`, `sora2`, `temp_mail`,
+  `tiktok_interaction`, `wechat_channels`, `wechat_media_platform_web`,
+  `weibo_web`, `xiaohongshu_app`, `xiaohongshu_web`, `xiaohongshu_web_v2`.
+- Endpoints that TikHub removed upstream from the remaining resources
+  (e.g. several `douyin_app_v3` search methods and `douyin_web` token generators).
+
 ## [2.1.2] — 2026-06-03
 
 ### Added — Phase 6 (docs, CLI, release tooling)

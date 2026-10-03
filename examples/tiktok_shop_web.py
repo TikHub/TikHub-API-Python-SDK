@@ -1,7 +1,7 @@
 """Example: TikTok-Shop-Web-API
 
 SDK attribute: ``client.tiktok_shop_web``
-Endpoints: 13
+Endpoints: 12
 
 Usage::
 
@@ -21,14 +21,19 @@ API_KEY = "YOUR_API_KEY"
 async def main():
     async with AsyncTikHub(api_key=API_KEY) as client:
 
+        # GET /api/v1/tiktok/shop/web/fetch_shop_id_by_share_link
+        # 通过分享链接获取店铺ID/Get Shop ID by Share Link
+        result = await client.tiktok_shop_web.fetch_shop_id_by_share_link(share_link='https://vt.tiktok.com/ZT2AHoGsE/', region='US')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/tiktok/shop/web/fetch_product_id_by_share_link
+        # 通过分享链接获取商品ID/Get Product ID by Share Link
+        result = await client.tiktok_shop_web.fetch_product_id_by_share_link(share_link='https://affiliate-us.tiktok.com/api/v1/share/AJ4hS3OdXmSg', region='US')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
         # GET /api/v1/tiktok/shop/web/fetch_product_detail
         # 获取商品详情V1(桌面端-数据完整)/Get product detail V1(Full data)
         result = await client.tiktok_shop_web.fetch_product_detail(product_id='1729556436942358002', seller_id='7494629757824764402', region='MY')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/shop/web/fetch_product_detail_v2
-        # 获取商品详情V2(移动端-数据少)/Get product detail V2 (Less Data)
-        result = await client.tiktok_shop_web.fetch_product_detail_v2(product_id='1729556436942358002', seller_id='7494629757824764402', region='MY')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/tiktok/shop/web/fetch_product_detail_v3
@@ -38,7 +43,7 @@ async def main():
 
         # GET /api/v1/tiktok/shop/web/fetch_product_reviews_v2
         # 获取商品评论V2/Get product reviews V2
-        result = await client.tiktok_shop_web.fetch_product_reviews_v2(product_id='1729556436942358002', page_start=1, sort_rule=2, filter_type=1, filter_value=6, region='MY')
+        result = await client.tiktok_shop_web.fetch_product_reviews_v2(product_id='1729408816995078528', page_start=1, sort_rule=2, filter_type=1, filter_value=6, region='US')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/tiktok/shop/web/fetch_seller_products_list
@@ -47,13 +52,8 @@ async def main():
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/tiktok/shop/web/fetch_seller_products_list_v2
-        # 获取商家商品列表V2(移动端)/Get seller products list V2 (Mobile)
+        # 获取商家商品列表V2(移动端，仅 US)/Get seller products list V2 (Mobile, US only)
         result = await client.tiktok_shop_web.fetch_seller_products_list_v2(seller_id='7495150558072178725', searchParams='', region='US')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/shop/web/fetch_search_word_suggestion
-        # 获取搜索关键词建议V1/Get search keyword suggestions V1
-        result = await client.tiktok_shop_web.fetch_search_word_suggestion(search_word='labubu', lang='en-US', region='US')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/tiktok/shop/web/fetch_search_word_suggestion_v2
@@ -67,7 +67,7 @@ async def main():
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/tiktok/shop/web/fetch_search_products_list_v2
-        # 搜索商品列表V2(移动端)/Search products list V2 (Mobile)
+        # 搜索商品列表V2(移动端，仅 US)/Search products list V2 (Mobile, US only)
         result = await client.tiktok_shop_web.fetch_search_products_list_v2(search_word='labubu', offset=0, page_token='', region='US')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
@@ -79,11 +79,6 @@ async def main():
         # GET /api/v1/tiktok/shop/web/fetch_products_by_category_id
         # 根据分类ID获取商品列表/Get products by category ID
         result = await client.tiktok_shop_web.fetch_products_by_category_id(category_id=963976, offset=0, region='US')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/shop/web/fetch_hot_selling_products_list
-        # 获取热卖商品列表/Get hot selling products list
-        result = await client.tiktok_shop_web.fetch_hot_selling_products_list(region='US', count=100)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

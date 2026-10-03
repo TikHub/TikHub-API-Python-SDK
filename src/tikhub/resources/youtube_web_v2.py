@@ -5,7 +5,7 @@
 OpenAPI tag: ``YouTube-Web-V2-API``
 SDK attribute: ``client.youtube_web_v2`` / ``async_client.youtube_web_v2``
 
-Endpoints: 25
+Endpoints: 26
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncYoutubeWebV2", "YoutubeWebV2"]
 
 
 class YoutubeWebV2(SyncResource):
-    """Sync ``YouTube-Web-V2-API`` resource (25 endpoints)."""
+    """Sync ``YouTube-Web-V2-API`` resource (26 endpoints)."""
 
     def get_video_info(
         self,
@@ -354,25 +354,21 @@ class YoutubeWebV2(SyncResource):
         })
         return self._client._request("GET", "/api/v1/youtube/web_v2/get_video_captions", params=params)
 
-    def get_video_captions_v2(
+    def get_video_captions_result(
         self,
         *,
-        video_id: str | None = None,
-        video_url: str | None = None,
-        language_code: str | None = None,
+        job_id: str,
         format: str | None = None,
     ) -> Any:
-        """获取视频字幕 V2/Get video captions V2
+        """获取视频字幕异步任务结果/Get video captions async job result
 
-        ``GET /api/v1/youtube/web_v2/get_video_captions_v2``
+        ``GET /api/v1/youtube/web_v2/get_video_captions_result``
         """
         params = _drop_none({
-            "video_id": video_id,
-            "video_url": video_url,
-            "language_code": language_code,
+            "job_id": job_id,
             "format": format,
         })
-        return self._client._request("GET", "/api/v1/youtube/web_v2/get_video_captions_v2", params=params)
+        return self._client._request("GET", "/api/v1/youtube/web_v2/get_video_captions_result", params=params)
 
     def get_related_videos(
         self,
@@ -532,9 +528,29 @@ class YoutubeWebV2(SyncResource):
         })
         return self._client._request("GET", "/api/v1/youtube/web_v2/get_post_comment_replies", params=params)
 
+    def get_video_streams_v3(
+        self,
+        *,
+        video_id: str,
+        proxy_url: str,
+        itags: list[Any] | None = None,
+        verify_download: bool | None = None,
+    ) -> Any:
+        """使用自带固定出口代理获取下载链接 / Get download URLs with your fixed-exit proxy
+
+        ``POST /api/v1/youtube/web_v2/get_video_streams_v3``
+        """
+        json_body = _drop_none({
+            "video_id": video_id,
+            "proxy_url": proxy_url,
+            "itags": itags,
+            "verify_download": verify_download,
+        })
+        return self._client._request("POST", "/api/v1/youtube/web_v2/get_video_streams_v3", json=json_body)
+
 
 class AsyncYoutubeWebV2(AsyncResource):
-    """Async ``YouTube-Web-V2-API`` resource (25 endpoints)."""
+    """Async ``YouTube-Web-V2-API`` resource (26 endpoints)."""
 
     async def get_video_info(
         self,
@@ -864,25 +880,21 @@ class AsyncYoutubeWebV2(AsyncResource):
         })
         return await self._client._request("GET", "/api/v1/youtube/web_v2/get_video_captions", params=params)
 
-    async def get_video_captions_v2(
+    async def get_video_captions_result(
         self,
         *,
-        video_id: str | None = None,
-        video_url: str | None = None,
-        language_code: str | None = None,
+        job_id: str,
         format: str | None = None,
     ) -> Any:
-        """获取视频字幕 V2/Get video captions V2
+        """获取视频字幕异步任务结果/Get video captions async job result
 
-        ``GET /api/v1/youtube/web_v2/get_video_captions_v2``
+        ``GET /api/v1/youtube/web_v2/get_video_captions_result``
         """
         params = _drop_none({
-            "video_id": video_id,
-            "video_url": video_url,
-            "language_code": language_code,
+            "job_id": job_id,
             "format": format,
         })
-        return await self._client._request("GET", "/api/v1/youtube/web_v2/get_video_captions_v2", params=params)
+        return await self._client._request("GET", "/api/v1/youtube/web_v2/get_video_captions_result", params=params)
 
     async def get_related_videos(
         self,
@@ -1041,3 +1053,23 @@ class AsyncYoutubeWebV2(AsyncResource):
             "need_format": need_format,
         })
         return await self._client._request("GET", "/api/v1/youtube/web_v2/get_post_comment_replies", params=params)
+
+    async def get_video_streams_v3(
+        self,
+        *,
+        video_id: str,
+        proxy_url: str,
+        itags: list[Any] | None = None,
+        verify_download: bool | None = None,
+    ) -> Any:
+        """使用自带固定出口代理获取下载链接 / Get download URLs with your fixed-exit proxy
+
+        ``POST /api/v1/youtube/web_v2/get_video_streams_v3``
+        """
+        json_body = _drop_none({
+            "video_id": video_id,
+            "proxy_url": proxy_url,
+            "itags": itags,
+            "verify_download": verify_download,
+        })
+        return await self._client._request("POST", "/api/v1/youtube/web_v2/get_video_streams_v3", json=json_body)

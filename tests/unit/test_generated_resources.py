@@ -56,30 +56,28 @@ def _async_capture_handler() -> tuple[list[httpx.Request], httpx.MockTransport]:
         "douyin_creator_v2",
         "douyin_xingtu",
         "douyin_xingtu_v2",
+        "douyin_douplus",
         "tiktok_web",
         "tiktok_app_v3",
         "tiktok_creator",
         "tiktok_analytics",
         "tiktok_ads",
         "tiktok_shop_web",
-        "tiktok_interaction",
-        "xiaohongshu_web",
-        "xiaohongshu_web_v2",
         "xiaohongshu_web_v3",
-        "xiaohongshu_app",
         "xiaohongshu_app_v2",
+        "xiaohongshu_pgy",
         "lemon8_app",
         "bilibili_web",
         "bilibili_app",
-        "sora2",
+        "bilibili_huahuo",
         "kuaishou_web",
         "kuaishou_app",
         "pipixia_app",
-        "weibo_web",
         "weibo_web_v2",
         "weibo_app",
-        "wechat_channels",
-        "wechat_media_platform_web",
+        "wechat_channels_v2",
+        "wechat_media_platform_v2",
+        "wechat_search_v2",
         "instagram_v1",
         "instagram_v2",
         "instagram_v3",
@@ -88,7 +86,8 @@ def _async_capture_handler() -> tuple[list[httpx.Request], httpx.MockTransport]:
         "twitter_web",
         "threads_web",
         "reddit_app",
-        "linkedin_web",
+        "linkedin_web_v2",
+        "telegram_web",
         "zhihu_web",
         "toutiao_web",
         "toutiao_app",
@@ -96,7 +95,6 @@ def _async_capture_handler() -> tuple[list[httpx.Request], httpx.MockTransport]:
         "hybrid_parsing",
         "tikhub_user",
         "tikhub_downloader",
-        "temp_mail",
         "ios_shortcut",
         "health_check",
         "demo",
@@ -109,7 +107,7 @@ def test_resource_attribute_present(attr: str):
 
 
 def _spec_endpoint_count() -> int:
-    """Count unique ``(method, path)`` endpoints in the committed spec."""
+    """Count unique non-deprecated ``(method, path)`` endpoints in the committed spec."""
     import json
     from pathlib import Path
 
@@ -117,8 +115,8 @@ def _spec_endpoint_count() -> int:
     spec = json.loads(spec_path.read_text())
     endpoints: set[tuple[str, str]] = set()
     for path, methods in spec["paths"].items():
-        for m in methods:
-            if m.lower() in {"get", "post", "put", "delete", "patch"}:
+        for m, op in methods.items():
+            if m.lower() in {"get", "post", "put", "delete", "patch"} and not op.get("deprecated"):
                 endpoints.add((m.upper(), path))
     return len(endpoints)
 

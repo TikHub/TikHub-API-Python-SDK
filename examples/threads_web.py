@@ -1,7 +1,7 @@
 """Example: Threads-Web-API
 
 SDK attribute: ``client.threads_web``
-Endpoints: 11
+Endpoints: 12
 
 Usage::
 
@@ -23,7 +23,7 @@ async def main():
 
         # GET /api/v1/threads/web/fetch_user_info
         # 获取用户信息/Get user info
-        result = await client.threads_web.fetch_user_info(username='lilbieber')
+        result = await client.threads_web.fetch_user_info(username='jlo')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/threads/web/fetch_user_info_by_id
@@ -32,17 +32,17 @@ async def main():
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/threads/web/fetch_user_posts
-        # 获取用户帖子列表/Get user posts
+        # 获取用户帖子列表（无分页）/Get user posts (no pagination)
         result = await client.threads_web.fetch_user_posts(user_id='63625256886')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/threads/web/fetch_user_reposts
-        # 获取用户转发列表/Get user reposts
+        # 获取用户转发列表（无分页）/Get user reposts (no pagination)
         result = await client.threads_web.fetch_user_reposts(user_id='63625256886')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/threads/web/fetch_user_replies
-        # 获取用户回复列表/Get user replies
+        # 获取用户回复列表（无分页）/Get user replies (no pagination)
         result = await client.threads_web.fetch_user_replies(user_id='63625256886')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
@@ -57,18 +57,23 @@ async def main():
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/threads/web/fetch_post_comments
-        # 获取帖子评论/Get post comments
+        # 获取帖子评论（无分页）/Get post comments (no pagination)
         result = await client.threads_web.fetch_post_comments(post_id='3390920896561588969')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/threads/web/search_top
-        # 搜索热门内容/Search top content
+        # 搜索热门内容（无分页）/Search top content (no pagination)
         result = await client.threads_web.search_top(query='bitcoin')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/threads/web/search_recent
-        # 搜索最新内容/Search recent content
+        # 搜索最新内容（无分页）/Search recent content (no pagination)
         result = await client.threads_web.search_recent(query='bitcoin')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/threads/web/search_posts
+        # 搜索帖子/Search posts
+        result = await client.threads_web.search_posts(query='bitcoin')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/threads/web/search_profiles

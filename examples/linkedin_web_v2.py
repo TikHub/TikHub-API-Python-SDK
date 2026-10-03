@@ -1,7 +1,7 @@
 """Example: LinkedIn-Web-V2-API
 
 SDK attribute: ``client.linkedin_web_v2``
-Endpoints: 43
+Endpoints: 8
 
 Usage::
 
@@ -22,218 +22,43 @@ async def main():
     async with AsyncTikHub(api_key=API_KEY) as client:
 
         # GET /api/v1/linkedin/web_v2/get_user_profile
-        # 获取用户主页基础信息（可选附带子节）/Get user profile (optional sub-sections)
-        result = await client.linkedin_web_v2.get_user_profile(username='williamhgates')
+        # 获取用户主页信息/Get user profile
+        result = await client.linkedin_web_v2.get_user_profile(url='https://www.linkedin.com/in/williamhgates/')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/linkedin/web_v2/get_user_posts
-        # 获取用户帖子（动态标签）/Get user posts
-        result = await client.linkedin_web_v2.get_user_posts(username='williamhgates', start=0, count=20)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_comments
-        # 获取用户评论（在他人帖子下的评论）/Get user comments
-        result = await client.linkedin_web_v2.get_user_comments(username='williamhgates', start=0, count=20)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_contact_info
-        # 获取用户公开联系信息/Get contact info
-        result = await client.linkedin_web_v2.get_user_contact_info(username='williamhgates')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_recommendations
-        # 获取用户推荐信/Get recommendations
-        result = await client.linkedin_web_v2.get_user_recommendations(username='williamhgates', direction='received')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_videos
-        # 获取用户视频帖子/Get user videos
-        result = await client.linkedin_web_v2.get_user_videos(username='williamhgates', start=0, count=20)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_images
-        # 获取用户图片帖子/Get user images
-        result = await client.linkedin_web_v2.get_user_images(username='williamhgates', start=0, count=20)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_bio
-        # 获取用户简介摘要/Get user bio
-        result = await client.linkedin_web_v2.get_user_bio(username='williamhgates')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_follower_and_connection_count
-        # 获取用户粉丝/连接数/Get follower & connection count
-        result = await client.linkedin_web_v2.get_user_follower_and_connection_count(username='williamhgates')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_profile_cards
-        # 获取用户主页全部卡片原始结构/Get full profile cards
-        result = await client.linkedin_web_v2.get_user_profile_cards(username='williamhgates')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_experiences
-        # 获取用户工作经历/Get experiences
-        result = await client.linkedin_web_v2.get_user_experiences(username='williamhgates')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_skills
-        # 获取用户技能/Get skills
-        result = await client.linkedin_web_v2.get_user_skills(username='williamhgates')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_educations
-        # 获取用户教育背景/Get educations
-        result = await client.linkedin_web_v2.get_user_educations(username='williamhgates')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_publications
-        # 获取用户出版物/Get publications
-        result = await client.linkedin_web_v2.get_user_publications(username='williamhgates')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_certifications
-        # 获取用户认证/Get certifications
-        result = await client.linkedin_web_v2.get_user_certifications(username='williamhgates')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_honors
-        # 获取用户荣誉奖项/Get honors
-        result = await client.linkedin_web_v2.get_user_honors(username='williamhgates')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_interested_groups
-        # 获取用户关注的群组/Get followed groups
-        result = await client.linkedin_web_v2.get_user_interested_groups(username='williamhgates', start=0, count=20)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_interested_companies
-        # 获取用户关注的公司/Get followed companies
-        result = await client.linkedin_web_v2.get_user_interested_companies(username='williamhgates', start=0, count=20)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_top_card
-        # 获取用户主页顶部卡片/Get profile top card
-        result = await client.linkedin_web_v2.get_user_top_card(username='williamhgates')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_top_card_supplementary
-        # 获取用户主页顶部卡片补充信息/Get top card supplementary
-        result = await client.linkedin_web_v2.get_user_top_card_supplementary(username='williamhgates')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_user_recent_activity
-        # 获取用户近期动态聚合/Get recent activity summary
-        result = await client.linkedin_web_v2.get_user_recent_activity(username='williamhgates')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_discovery_relevant_to_company
-        # 发现："基于公司 X"的相关推荐/Discovery relevant to company
-        result = await client.linkedin_web_v2.get_discovery_relevant_to_company(universal_name='microsoft', count=12, start=0)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_discovery_relevant_to_user
-        # 发现："基于用户 X"的相关推荐/Discovery relevant to user
-        result = await client.linkedin_web_v2.get_discovery_relevant_to_user(username='williamhgates', count=12, start=0)
+        # 获取用户帖子/Get user's posts
+        result = await client.linkedin_web_v2.get_user_posts(url='https://www.linkedin.com/in/williamhgates/', type='posts')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/linkedin/web_v2/get_company_profile
         # 获取公司主页资料/Get company profile
-        result = await client.linkedin_web_v2.get_company_profile(universal_name='microsoft')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_company_employees
-        # 获取公司员工列表/Get employees
-        result = await client.linkedin_web_v2.get_company_employees(universal_name='microsoft', start=0, count=10)
+        result = await client.linkedin_web_v2.get_company_profile(url='https://www.linkedin.com/company/microsoft/')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/linkedin/web_v2/get_company_posts
-        # 获取公司主页帖子流/Get company posts
-        result = await client.linkedin_web_v2.get_company_posts(universal_name='microsoft', start=0, count=20)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_company_jobs
-        # 获取公司在招职位列表/Get company jobs
-        result = await client.linkedin_web_v2.get_company_jobs(universal_name='microsoft', start=0, count=20)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_company_job_count
-        # 获取公司在招职位总数/Get job count
-        result = await client.linkedin_web_v2.get_company_job_count(universal_name='microsoft')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_company_similar_companies
-        # 获取相似公司（People also viewed）/Get similar companies
-        result = await client.linkedin_web_v2.get_company_similar_companies(universal_name='microsoft')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_company_competitors
-        # 获取公司竞争对手/Get competitors
-        result = await client.linkedin_web_v2.get_company_competitors(universal_name='microsoft')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_company_stock_quote
-        # 获取上市公司股价/Get stock quote
-        result = await client.linkedin_web_v2.get_company_stock_quote(universal_name='microsoft')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_company_call_to_actions
-        # 获取公司主页 CTA 按钮配置/Get CTA buttons
-        result = await client.linkedin_web_v2.get_company_call_to_actions(universal_name='microsoft')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_company_employee_count_ranges
-        # 获取公司员工数量范围（各 segment）/Get employee count by segment
-        result = await client.linkedin_web_v2.get_company_employee_count_ranges(universal_name='microsoft')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_company_grouped_locations
-        # 获取公司全部办公地点（按地理分组）/Get grouped locations
-        result = await client.linkedin_web_v2.get_company_grouped_locations(universal_name='microsoft')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_post_detail
-        # 获取单条帖子详情（按 post URN）/Get post detail by URN
-        result = await client.linkedin_web_v2.get_post_detail(post_urn='urn:li:activity:7193456789012345678')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_post_detail_by_slug
-        # 按 URL slug 获取帖子/Get post by URL slug
-        result = await client.linkedin_web_v2.get_post_detail_by_slug(slug='satya-nadella_ai-activity-7193456789012345678-AbCd')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_post_comments
-        # 获取帖子顶层评论/Get post top-level comments
-        result = await client.linkedin_web_v2.get_post_comments(post_urn='urn:li:activity:7193456789012345678', start=0, count=10, sort_order='RELEVANCE')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_comment_replies
-        # 获取评论的回复/Get comment replies
-        result = await client.linkedin_web_v2.get_comment_replies(comment_urn='urn:li:fsd_comment:(7194000000000000000,urn:li:activity:7193456789012345678)', post_urn='urn:li:activity:7193456789012345678', count=10)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_post_reactions
-        # 获取帖子点赞/反应人列表/Get post reactions
-        result = await client.linkedin_web_v2.get_post_reactions(post_urn='urn:li:activity:7193456789012345678', reaction_type='LIKE', start=0, count=10)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/get_hashtag_feed
-        # 按 hashtag 获取话题动态流/Get hashtag feed
-        result = await client.linkedin_web_v2.get_hashtag_feed(hashtag='ai', start=0, count=10)
+        # 获取公司帖子/Get company's posts
+        result = await client.linkedin_web_v2.get_company_posts(url='https://www.linkedin.com/company/microsoft/')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/linkedin/web_v2/get_job_detail
         # 获取职位详情/Get job detail
-        result = await client.linkedin_web_v2.get_job_detail(job_id='3902341234')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/linkedin/web_v2/search_users
-        # 搜索用户/Search users
-        result = await client.linkedin_web_v2.search_users(keywords='python developer', start=0, count=10, geo_urn='urn:li:geo:103644278', industry_urn='urn:li:industry:4', current_company_urn='urn:li:fsd_company:1035')
+        result = await client.linkedin_web_v2.get_job_detail(url='https://www.linkedin.com/jobs/view/software-engineer-at-pave-4310512612/', include_skills=False, include_hiring_team=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/linkedin/web_v2/search_jobs
         # 搜索职位/Search jobs
-        result = await client.linkedin_web_v2.search_jobs(keywords='machine learning engineer', location='San Francisco Bay Area', start=0, count=20)
+        result = await client.linkedin_web_v2.search_jobs(keywords='data analyst', geo_code=92000000, easy_apply=False, under_10_applicants=False)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/linkedin/web_v2/get_post_detail
+        # 获取帖子或文章详情/Get post or article detail
+        result = await client.linkedin_web_v2.get_post_detail(url='https://www.linkedin.com/posts/orlenchner_scrapecon-activity-7180537307521769472-oSYN')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/linkedin/web_v2/get_post_comments
+        # 获取帖子评论/Get post comments
+        result = await client.linkedin_web_v2.get_post_comments(urn='7267273010393358336')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

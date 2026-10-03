@@ -5,7 +5,7 @@
 OpenAPI tag: ``Threads-Web-API``
 SDK attribute: ``client.threads_web`` / ``async_client.threads_web``
 
-Endpoints: 11
+Endpoints: 12
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncThreadsWeb", "ThreadsWeb"]
 
 
 class ThreadsWeb(SyncResource):
-    """Sync ``Threads-Web-API`` resource (11 endpoints)."""
+    """Sync ``Threads-Web-API`` resource (12 endpoints)."""
 
     def fetch_user_info(
         self,
@@ -60,7 +60,7 @@ class ThreadsWeb(SyncResource):
         user_id: str,
         end_cursor: str | None = None,
     ) -> Any:
-        """获取用户帖子列表/Get user posts
+        """获取用户帖子列表（无分页）/Get user posts (no pagination)
 
         ``GET /api/v1/threads/web/fetch_user_posts``
         """
@@ -76,7 +76,7 @@ class ThreadsWeb(SyncResource):
         user_id: str,
         end_cursor: str | None = None,
     ) -> Any:
-        """获取用户转发列表/Get user reposts
+        """获取用户转发列表（无分页）/Get user reposts (no pagination)
 
         ``GET /api/v1/threads/web/fetch_user_reposts``
         """
@@ -92,7 +92,7 @@ class ThreadsWeb(SyncResource):
         user_id: str,
         end_cursor: str | None = None,
     ) -> Any:
-        """获取用户回复列表/Get user replies
+        """获取用户回复列表（无分页）/Get user replies (no pagination)
 
         ``GET /api/v1/threads/web/fetch_user_replies``
         """
@@ -138,7 +138,7 @@ class ThreadsWeb(SyncResource):
         post_id: str,
         end_cursor: str | None = None,
     ) -> Any:
-        """获取帖子评论/Get post comments
+        """获取帖子评论（无分页）/Get post comments (no pagination)
 
         ``GET /api/v1/threads/web/fetch_post_comments``
         """
@@ -154,7 +154,7 @@ class ThreadsWeb(SyncResource):
         query: str,
         end_cursor: str | None = None,
     ) -> Any:
-        """搜索热门内容/Search top content
+        """搜索热门内容（无分页）/Search top content (no pagination)
 
         ``GET /api/v1/threads/web/search_top``
         """
@@ -170,7 +170,7 @@ class ThreadsWeb(SyncResource):
         query: str,
         end_cursor: str | None = None,
     ) -> Any:
-        """搜索最新内容/Search recent content
+        """搜索最新内容（无分页）/Search recent content (no pagination)
 
         ``GET /api/v1/threads/web/search_recent``
         """
@@ -179,6 +179,20 @@ class ThreadsWeb(SyncResource):
             "end_cursor": end_cursor,
         })
         return self._client._request("GET", "/api/v1/threads/web/search_recent", params=params)
+
+    def search_posts(
+        self,
+        *,
+        query: str,
+    ) -> Any:
+        """搜索帖子/Search posts
+
+        ``GET /api/v1/threads/web/search_posts``
+        """
+        params = _drop_none({
+            "query": query,
+        })
+        return self._client._request("GET", "/api/v1/threads/web/search_posts", params=params)
 
     def search_profiles(
         self,
@@ -196,7 +210,7 @@ class ThreadsWeb(SyncResource):
 
 
 class AsyncThreadsWeb(AsyncResource):
-    """Async ``Threads-Web-API`` resource (11 endpoints)."""
+    """Async ``Threads-Web-API`` resource (12 endpoints)."""
 
     async def fetch_user_info(
         self,
@@ -232,7 +246,7 @@ class AsyncThreadsWeb(AsyncResource):
         user_id: str,
         end_cursor: str | None = None,
     ) -> Any:
-        """获取用户帖子列表/Get user posts
+        """获取用户帖子列表（无分页）/Get user posts (no pagination)
 
         ``GET /api/v1/threads/web/fetch_user_posts``
         """
@@ -248,7 +262,7 @@ class AsyncThreadsWeb(AsyncResource):
         user_id: str,
         end_cursor: str | None = None,
     ) -> Any:
-        """获取用户转发列表/Get user reposts
+        """获取用户转发列表（无分页）/Get user reposts (no pagination)
 
         ``GET /api/v1/threads/web/fetch_user_reposts``
         """
@@ -264,7 +278,7 @@ class AsyncThreadsWeb(AsyncResource):
         user_id: str,
         end_cursor: str | None = None,
     ) -> Any:
-        """获取用户回复列表/Get user replies
+        """获取用户回复列表（无分页）/Get user replies (no pagination)
 
         ``GET /api/v1/threads/web/fetch_user_replies``
         """
@@ -310,7 +324,7 @@ class AsyncThreadsWeb(AsyncResource):
         post_id: str,
         end_cursor: str | None = None,
     ) -> Any:
-        """获取帖子评论/Get post comments
+        """获取帖子评论（无分页）/Get post comments (no pagination)
 
         ``GET /api/v1/threads/web/fetch_post_comments``
         """
@@ -326,7 +340,7 @@ class AsyncThreadsWeb(AsyncResource):
         query: str,
         end_cursor: str | None = None,
     ) -> Any:
-        """搜索热门内容/Search top content
+        """搜索热门内容（无分页）/Search top content (no pagination)
 
         ``GET /api/v1/threads/web/search_top``
         """
@@ -342,7 +356,7 @@ class AsyncThreadsWeb(AsyncResource):
         query: str,
         end_cursor: str | None = None,
     ) -> Any:
-        """搜索最新内容/Search recent content
+        """搜索最新内容（无分页）/Search recent content (no pagination)
 
         ``GET /api/v1/threads/web/search_recent``
         """
@@ -351,6 +365,20 @@ class AsyncThreadsWeb(AsyncResource):
             "end_cursor": end_cursor,
         })
         return await self._client._request("GET", "/api/v1/threads/web/search_recent", params=params)
+
+    async def search_posts(
+        self,
+        *,
+        query: str,
+    ) -> Any:
+        """搜索帖子/Search posts
+
+        ``GET /api/v1/threads/web/search_posts``
+        """
+        params = _drop_none({
+            "query": query,
+        })
+        return await self._client._request("GET", "/api/v1/threads/web/search_posts", params=params)
 
     async def search_profiles(
         self,

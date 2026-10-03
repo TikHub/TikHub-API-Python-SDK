@@ -1,7 +1,7 @@
 """Example: Twitter-Web-API
 
 SDK attribute: ``client.twitter_web``
-Endpoints: 13
+Endpoints: 25
 
 Usage::
 
@@ -56,11 +56,6 @@ async def main():
         result = await client.twitter_web.fetch_user_tweet_replies(screen_name='elonmusk')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
-        # GET /api/v1/twitter/web/fetch_user_highlights_tweets
-        # 获取用户高光推文/Get user highlights tweets
-        result = await client.twitter_web.fetch_user_highlights_tweets(userId='44196397', count=20)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
         # GET /api/v1/twitter/web/fetch_user_media
         # 获取用户媒体/Get user media
         result = await client.twitter_web.fetch_user_media(screen_name='elonmusk', rest_id='44196397')
@@ -84,6 +79,71 @@ async def main():
         # GET /api/v1/twitter/web/fetch_user_followers
         # 用户粉丝/User Followers
         result = await client.twitter_web.fetch_user_followers(screen_name='elonmusk')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/twitter/web/fetch_community_info
+        # 获取社区详情/Get community info
+        result = await client.twitter_web.fetch_community_info(community_id='1493290339532222469')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/twitter/web/fetch_community_members
+        # 获取社区成员（无分页）/Get community members (no pagination)
+        result = await client.twitter_web.fetch_community_members(community_id='1493290339532222469')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/twitter/web/fetch_community_timeline
+        # 获取社区帖子/Get community timeline
+        result = await client.twitter_web.fetch_community_timeline(community_id='1493290339532222469')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/twitter/web/fetch_search_communities
+        # 搜索社区/Search communities
+        result = await client.twitter_web.fetch_search_communities(keyword='superman')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/twitter/web/fetch_user_about
+        # 获取用户账号档案信息/Get user about profile
+        result = await client.twitter_web.fetch_user_about(screen_name='elonmusk')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/twitter/web/fetch_user_affiliates
+        # 获取用户关联子账号/Get user affiliates
+        result = await client.twitter_web.fetch_user_affiliates(screen_name='NASA')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/twitter/web/fetch_user_profiles_by_rest_ids
+        # 批量根据用户ID获取用户资料/Get profiles by rest ids
+        result = await client.twitter_web.fetch_user_profiles_by_rest_ids(rest_ids='44196397,34743251')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/twitter/web/fetch_check_follow
+        # 检查用户是否关注了另一个用户/Check follow
+        result = await client.twitter_web.fetch_check_follow(user_name='elonmusk', follows='NASA')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/twitter/web/fetch_check_retweet
+        # 检查用户是否转推了某条推文/Check retweet
+        result = await client.twitter_web.fetch_check_retweet(screen_name='elonmusk', tweet_id='1808168603721650364')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/twitter/web/fetch_list_timeline
+        # 获取列表帖子/Get list timeline
+        result = await client.twitter_web.fetch_list_timeline(list_id='84839422')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/twitter/web/fetch_list_members
+        # 获取列表成员/Get list members
+        result = await client.twitter_web.fetch_list_members(list_id='84839422')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/twitter/web/fetch_list_followers
+        # 获取列表关注者/Get list followers
+        result = await client.twitter_web.fetch_list_followers(list_id='84839422')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/twitter/web/fetch_user_live_status
+        # 检查用户是否正在直播/Check user live status
+        result = await client.twitter_web.fetch_user_live_status(rest_id='44196397')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

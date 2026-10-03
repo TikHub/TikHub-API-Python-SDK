@@ -14,8 +14,8 @@ with TikHub(api_key="YOUR_API_KEY") as client:
 
 ## At a glance
 
-- :material-check-circle: **100% endpoint coverage** — 1106 / 1106 endpoints from spec V5.3.2
-- :material-check-circle: **54 resources** — one per OpenAPI tag, flat namespace
+- :material-check-circle: **100% endpoint coverage** — 1048 / 1048 endpoints from spec V5.3.2 (deprecated endpoints excluded)
+- :material-check-circle: **51 resources** — one per OpenAPI tag, flat namespace
 - :material-check-circle: **Async-first** with a parallel sync surface
 - :material-check-circle: **Typed exceptions** with status-code mapping and request-id
 - :material-check-circle: **Built-in retries** with exponential backoff and `Retry-After` honouring

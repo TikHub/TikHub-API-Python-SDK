@@ -5,7 +5,7 @@
 OpenAPI tag: ``TikTok-Shop-Web-API``
 SDK attribute: ``client.tiktok_shop_web`` / ``async_client.tiktok_shop_web``
 
-Endpoints: 13
+Endpoints: 12
 """
 
 from __future__ import annotations
@@ -24,7 +24,39 @@ __all__ = ["AsyncTiktokShopWeb", "TiktokShopWeb"]
 
 
 class TiktokShopWeb(SyncResource):
-    """Sync ``TikTok-Shop-Web-API`` resource (13 endpoints)."""
+    """Sync ``TikTok-Shop-Web-API`` resource (12 endpoints)."""
+
+    def fetch_shop_id_by_share_link(
+        self,
+        *,
+        share_link: str,
+        region: str | None = None,
+    ) -> Any:
+        """通过分享链接获取店铺ID/Get Shop ID by Share Link
+
+        ``GET /api/v1/tiktok/shop/web/fetch_shop_id_by_share_link``
+        """
+        params = _drop_none({
+            "share_link": share_link,
+            "region": region,
+        })
+        return self._client._request("GET", "/api/v1/tiktok/shop/web/fetch_shop_id_by_share_link", params=params)
+
+    def fetch_product_id_by_share_link(
+        self,
+        *,
+        share_link: str,
+        region: str | None = None,
+    ) -> Any:
+        """通过分享链接获取商品ID/Get Product ID by Share Link
+
+        ``GET /api/v1/tiktok/shop/web/fetch_product_id_by_share_link``
+        """
+        params = _drop_none({
+            "share_link": share_link,
+            "region": region,
+        })
+        return self._client._request("GET", "/api/v1/tiktok/shop/web/fetch_product_id_by_share_link", params=params)
 
     def fetch_product_detail(
         self,
@@ -43,24 +75,6 @@ class TiktokShopWeb(SyncResource):
             "region": region,
         })
         return self._client._request("GET", "/api/v1/tiktok/shop/web/fetch_product_detail", params=params)
-
-    def fetch_product_detail_v2(
-        self,
-        *,
-        product_id: str,
-        seller_id: str | None = None,
-        region: str | None = None,
-    ) -> Any:
-        """获取商品详情V2(移动端-数据少)/Get product detail V2 (Less Data)
-
-        ``GET /api/v1/tiktok/shop/web/fetch_product_detail_v2``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-            "seller_id": seller_id,
-            "region": region,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/shop/web/fetch_product_detail_v2", params=params)
 
     def fetch_product_detail_v3(
         self,
@@ -127,7 +141,7 @@ class TiktokShopWeb(SyncResource):
         searchParams: str | None = None,
         region: str | None = None,
     ) -> Any:
-        """获取商家商品列表V2(移动端)/Get seller products list V2 (Mobile)
+        """获取商家商品列表V2(移动端，仅 US)/Get seller products list V2 (Mobile, US only)
 
         ``GET /api/v1/tiktok/shop/web/fetch_seller_products_list_v2``
         """
@@ -137,24 +151,6 @@ class TiktokShopWeb(SyncResource):
             "region": region,
         })
         return self._client._request("GET", "/api/v1/tiktok/shop/web/fetch_seller_products_list_v2", params=params)
-
-    def fetch_search_word_suggestion(
-        self,
-        *,
-        search_word: str,
-        lang: str | None = None,
-        region: str | None = None,
-    ) -> Any:
-        """获取搜索关键词建议V1/Get search keyword suggestions V1
-
-        ``GET /api/v1/tiktok/shop/web/fetch_search_word_suggestion``
-        """
-        params = _drop_none({
-            "search_word": search_word,
-            "lang": lang,
-            "region": region,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/shop/web/fetch_search_word_suggestion", params=params)
 
     def fetch_search_word_suggestion_v2(
         self,
@@ -202,7 +198,7 @@ class TiktokShopWeb(SyncResource):
         page_token: str | None = None,
         region: str | None = None,
     ) -> Any:
-        """搜索商品列表V2(移动端)/Search products list V2 (Mobile)
+        """搜索商品列表V2(移动端，仅 US)/Search products list V2 (Mobile, US only)
 
         ``GET /api/v1/tiktok/shop/web/fetch_search_products_list_v2``
         """
@@ -246,25 +242,41 @@ class TiktokShopWeb(SyncResource):
         })
         return self._client._request("GET", "/api/v1/tiktok/shop/web/fetch_products_by_category_id", params=params)
 
-    def fetch_hot_selling_products_list(
-        self,
-        *,
-        region: str | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取热卖商品列表/Get hot selling products list
-
-        ``GET /api/v1/tiktok/shop/web/fetch_hot_selling_products_list``
-        """
-        params = _drop_none({
-            "region": region,
-            "count": count,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/shop/web/fetch_hot_selling_products_list", params=params)
-
 
 class AsyncTiktokShopWeb(AsyncResource):
-    """Async ``TikTok-Shop-Web-API`` resource (13 endpoints)."""
+    """Async ``TikTok-Shop-Web-API`` resource (12 endpoints)."""
+
+    async def fetch_shop_id_by_share_link(
+        self,
+        *,
+        share_link: str,
+        region: str | None = None,
+    ) -> Any:
+        """通过分享链接获取店铺ID/Get Shop ID by Share Link
+
+        ``GET /api/v1/tiktok/shop/web/fetch_shop_id_by_share_link``
+        """
+        params = _drop_none({
+            "share_link": share_link,
+            "region": region,
+        })
+        return await self._client._request("GET", "/api/v1/tiktok/shop/web/fetch_shop_id_by_share_link", params=params)
+
+    async def fetch_product_id_by_share_link(
+        self,
+        *,
+        share_link: str,
+        region: str | None = None,
+    ) -> Any:
+        """通过分享链接获取商品ID/Get Product ID by Share Link
+
+        ``GET /api/v1/tiktok/shop/web/fetch_product_id_by_share_link``
+        """
+        params = _drop_none({
+            "share_link": share_link,
+            "region": region,
+        })
+        return await self._client._request("GET", "/api/v1/tiktok/shop/web/fetch_product_id_by_share_link", params=params)
 
     async def fetch_product_detail(
         self,
@@ -283,24 +295,6 @@ class AsyncTiktokShopWeb(AsyncResource):
             "region": region,
         })
         return await self._client._request("GET", "/api/v1/tiktok/shop/web/fetch_product_detail", params=params)
-
-    async def fetch_product_detail_v2(
-        self,
-        *,
-        product_id: str,
-        seller_id: str | None = None,
-        region: str | None = None,
-    ) -> Any:
-        """获取商品详情V2(移动端-数据少)/Get product detail V2 (Less Data)
-
-        ``GET /api/v1/tiktok/shop/web/fetch_product_detail_v2``
-        """
-        params = _drop_none({
-            "product_id": product_id,
-            "seller_id": seller_id,
-            "region": region,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/shop/web/fetch_product_detail_v2", params=params)
 
     async def fetch_product_detail_v3(
         self,
@@ -367,7 +361,7 @@ class AsyncTiktokShopWeb(AsyncResource):
         searchParams: str | None = None,
         region: str | None = None,
     ) -> Any:
-        """获取商家商品列表V2(移动端)/Get seller products list V2 (Mobile)
+        """获取商家商品列表V2(移动端，仅 US)/Get seller products list V2 (Mobile, US only)
 
         ``GET /api/v1/tiktok/shop/web/fetch_seller_products_list_v2``
         """
@@ -377,24 +371,6 @@ class AsyncTiktokShopWeb(AsyncResource):
             "region": region,
         })
         return await self._client._request("GET", "/api/v1/tiktok/shop/web/fetch_seller_products_list_v2", params=params)
-
-    async def fetch_search_word_suggestion(
-        self,
-        *,
-        search_word: str,
-        lang: str | None = None,
-        region: str | None = None,
-    ) -> Any:
-        """获取搜索关键词建议V1/Get search keyword suggestions V1
-
-        ``GET /api/v1/tiktok/shop/web/fetch_search_word_suggestion``
-        """
-        params = _drop_none({
-            "search_word": search_word,
-            "lang": lang,
-            "region": region,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/shop/web/fetch_search_word_suggestion", params=params)
 
     async def fetch_search_word_suggestion_v2(
         self,
@@ -442,7 +418,7 @@ class AsyncTiktokShopWeb(AsyncResource):
         page_token: str | None = None,
         region: str | None = None,
     ) -> Any:
-        """搜索商品列表V2(移动端)/Search products list V2 (Mobile)
+        """搜索商品列表V2(移动端，仅 US)/Search products list V2 (Mobile, US only)
 
         ``GET /api/v1/tiktok/shop/web/fetch_search_products_list_v2``
         """
@@ -485,19 +461,3 @@ class AsyncTiktokShopWeb(AsyncResource):
             "region": region,
         })
         return await self._client._request("GET", "/api/v1/tiktok/shop/web/fetch_products_by_category_id", params=params)
-
-    async def fetch_hot_selling_products_list(
-        self,
-        *,
-        region: str | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取热卖商品列表/Get hot selling products list
-
-        ``GET /api/v1/tiktok/shop/web/fetch_hot_selling_products_list``
-        """
-        params = _drop_none({
-            "region": region,
-            "count": count,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/shop/web/fetch_hot_selling_products_list", params=params)

@@ -1,7 +1,7 @@
 """Example: Douyin-Search-API
 
 SDK attribute: ``client.douyin_search``
-Endpoints: 19
+Endpoints: 23
 
 Usage::
 
@@ -31,9 +31,19 @@ async def main():
         result = await client.douyin_search.fetch_general_search_v2(keyword='猫咪', cursor=0, sort_type='0', publish_time='0', filter_duration='0', content_type='0', search_id='', backtrace='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
+        # POST /api/v1/douyin/search/fetch_general_search_v3
+        # 获取综合搜索 V3/Fetch general search V3
+        result = await client.douyin_search.fetch_general_search_v3(keyword='猫咪', offset=0, page=1, search_id='', backtrace='')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
         # POST /api/v1/douyin/search/fetch_search_suggest
         # 获取搜索关键词推荐/Fetch search keyword suggestions
         result = await client.douyin_search.fetch_search_suggest(keyword='人工智能')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # POST /api/v1/douyin/search/fetch_search_suggest_v2
+        # 获取搜索关键词推荐 V2/Fetch search keyword suggestions V2
+        result = await client.douyin_search.fetch_search_suggest_v2(keyword='人工智能', history_words='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # POST /api/v1/douyin/search/fetch_video_search_v1
@@ -44,6 +54,21 @@ async def main():
         # POST /api/v1/douyin/search/fetch_video_search_v2
         # 获取视频搜索 V2/Fetch video search V2
         result = await client.douyin_search.fetch_video_search_v2(keyword='猫咪', cursor=0, sort_type='0', publish_time='0', filter_duration='0', content_type='0', search_id='', backtrace='')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # POST /api/v1/douyin/search/fetch_video_search_v3
+        # 获取视频搜索 V3/Fetch video search V3
+        result = await client.douyin_search.fetch_video_search_v3(query='美食', date_type=0, label_type=0, duration_type=0)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # POST /api/v1/douyin/search/fetch_video_search_v4
+        # 获取视频搜索 V4/Fetch video search V4
+        result = await client.douyin_search.fetch_video_search_v4(keyword='猫咪', cursor=0)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # POST /api/v1/douyin/search/fetch_video_search_v5
+        # 获取视频搜索 V5/Fetch video search V5
+        result = await client.douyin_search.fetch_video_search_v5(keyword='猫咪', offset=0, page=1, search_id='', backtrace='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # POST /api/v1/douyin/search/fetch_multi_search
@@ -71,9 +96,9 @@ async def main():
         result = await client.douyin_search.fetch_image_search_v3(keyword='test', cursor=0, search_id='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
-        # POST /api/v1/douyin/search/fetch_live_search_v1
-        # 获取直播搜索 V1/Fetch live search V1
-        result = await client.douyin_search.fetch_live_search_v1(keyword='猫咪', cursor=0, sort_type='0', publish_time='0', filter_duration='0', content_type='0', search_id='', backtrace='')
+        # POST /api/v1/douyin/search/fetch_live_search_v2
+        # 获取直播搜索 V2/Fetch live search V2
+        result = await client.douyin_search.fetch_live_search_v2(keyword='小耳朵', cursor=0)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # POST /api/v1/douyin/search/fetch_challenge_search_v1
@@ -109,11 +134,6 @@ async def main():
         # POST /api/v1/douyin/search/fetch_school_search
         # 获取学校搜索/Fetch school search
         result = await client.douyin_search.fetch_school_search(keyword='北京')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # POST /api/v1/douyin/search/fetch_vision_search
-        # 获取图像识别搜索/Fetch vision search (image-based search)
-        result = await client.douyin_search.fetch_vision_search(image_uri='test', cursor=0, search_id='', search_source='graphic_detail', detection='0.1,0.1,0.9,0.9', detection_index=0, user_query='', aweme_id='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
 
