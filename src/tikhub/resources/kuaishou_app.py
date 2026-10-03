@@ -5,7 +5,7 @@
 OpenAPI tag: ``Kuaishou-App-API``
 SDK attribute: ``client.kuaishou_app`` / ``async_client.kuaishou_app``
 
-Endpoints: 20
+Endpoints: 26
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncKuaishouApp", "KuaishouApp"]
 
 
 class KuaishouApp(SyncResource):
-    """Sync ``Kuaishou-App-API`` resource (20 endpoints)."""
+    """Sync ``Kuaishou-App-API`` resource (26 endpoints)."""
 
     def fetch_one_video(
         self,
@@ -68,7 +68,30 @@ class KuaishouApp(SyncResource):
         })
         return self._client._request("GET", "/api/v1/kuaishou/app/fetch_one_video_by_url", params=params)
 
-    def fetch_one_video_comment(
+    def fetch_selection_feed(
+        self,
+    ) -> Any:
+        """精选/推荐Feed流/Selection feed
+
+        ``GET /api/v1/kuaishou/app/fetch_selection_feed``
+        """
+        return self._client._request("GET", "/api/v1/kuaishou/app/fetch_selection_feed")
+
+    def generate_kuaishou_share_link(
+        self,
+        *,
+        shareObjectId: str,
+    ) -> Any:
+        """生成快手分享链接/Generate Kuaishou share link
+
+        ``GET /api/v1/kuaishou/app/generate_kuaishou_share_link``
+        """
+        params = _drop_none({
+            "shareObjectId": shareObjectId,
+        })
+        return self._client._request("GET", "/api/v1/kuaishou/app/generate_kuaishou_share_link", params=params)
+
+    def fetch_video_comment(
         self,
         *,
         photo_id: str,
@@ -76,13 +99,33 @@ class KuaishouApp(SyncResource):
     ) -> Any:
         """获取单个作品评论数据/Get single video comment data
 
-        ``GET /api/v1/kuaishou/app/fetch_one_video_comment``
+        ``GET /api/v1/kuaishou/app/fetch_video_comment``
         """
         params = _drop_none({
             "photo_id": photo_id,
             "pcursor": pcursor,
         })
-        return self._client._request("GET", "/api/v1/kuaishou/app/fetch_one_video_comment", params=params)
+        return self._client._request("GET", "/api/v1/kuaishou/app/fetch_video_comment", params=params)
+
+    def fetch_video_sub_comments(
+        self,
+        *,
+        photo_id: str,
+        root_comment_id: str,
+        pcursor: str | None = None,
+        count: int | None = None,
+    ) -> Any:
+        """评论二级回复/Video sub comments
+
+        ``GET /api/v1/kuaishou/app/fetch_video_sub_comments``
+        """
+        params = _drop_none({
+            "photo_id": photo_id,
+            "root_comment_id": root_comment_id,
+            "pcursor": pcursor,
+            "count": count,
+        })
+        return self._client._request("GET", "/api/v1/kuaishou/app/fetch_video_sub_comments", params=params)
 
     def fetch_one_user_v2(
         self,
@@ -98,19 +141,23 @@ class KuaishouApp(SyncResource):
         })
         return self._client._request("GET", "/api/v1/kuaishou/app/fetch_one_user_v2", params=params)
 
-    def fetch_user_live_info(
+    def fetch_user_post_v2(
         self,
         *,
         user_id: str,
+        pcursor: str | None = None,
+        sort: str | None = None,
     ) -> Any:
-        """获取用户直播信息/Get user live info
+        """用户视频列表V2/User video list V2
 
-        ``GET /api/v1/kuaishou/app/fetch_user_live_info``
+        ``GET /api/v1/kuaishou/app/fetch_user_post_v2``
         """
         params = _drop_none({
             "user_id": user_id,
+            "pcursor": pcursor,
+            "sort": sort,
         })
-        return self._client._request("GET", "/api/v1/kuaishou/app/fetch_user_live_info", params=params)
+        return self._client._request("GET", "/api/v1/kuaishou/app/fetch_user_post_v2", params=params)
 
     def fetch_user_hot_post(
         self,
@@ -128,21 +175,19 @@ class KuaishouApp(SyncResource):
         })
         return self._client._request("GET", "/api/v1/kuaishou/app/fetch_user_hot_post", params=params)
 
-    def fetch_user_post_v2(
+    def fetch_user_live_info(
         self,
         *,
         user_id: str,
-        pcursor: str | None = None,
     ) -> Any:
-        """用户视频列表V2/User video list V2
+        """获取用户直播信息/Get user live info
 
-        ``GET /api/v1/kuaishou/app/fetch_user_post_v2``
+        ``GET /api/v1/kuaishou/app/fetch_user_live_info``
         """
         params = _drop_none({
             "user_id": user_id,
-            "pcursor": pcursor,
         })
-        return self._client._request("GET", "/api/v1/kuaishou/app/fetch_user_post_v2", params=params)
+        return self._client._request("GET", "/api/v1/kuaishou/app/fetch_user_live_info", params=params)
 
     def search_comprehensive(
         self,
@@ -152,7 +197,6 @@ class KuaishouApp(SyncResource):
         sort_type: str | None = None,
         publish_time: str | None = None,
         duration: str | None = None,
-        search_scope: str | None = None,
     ) -> Any:
         """综合搜索/Comprehensive search
 
@@ -164,7 +208,6 @@ class KuaishouApp(SyncResource):
             "sort_type": sort_type,
             "publish_time": publish_time,
             "duration": duration,
-            "search_scope": search_scope,
         })
         return self._client._request("GET", "/api/v1/kuaishou/app/search_comprehensive", params=params)
 
@@ -172,7 +215,7 @@ class KuaishouApp(SyncResource):
         self,
         *,
         keyword: str,
-        page: str | None = None,
+        pcursor: str | None = None,
     ) -> Any:
         """搜索视频V2/Search video V2
 
@@ -180,7 +223,7 @@ class KuaishouApp(SyncResource):
         """
         params = _drop_none({
             "keyword": keyword,
-            "page": page,
+            "pcursor": pcursor,
         })
         return self._client._request("GET", "/api/v1/kuaishou/app/search_video_v2", params=params)
 
@@ -188,7 +231,10 @@ class KuaishouApp(SyncResource):
         self,
         *,
         keyword: str,
-        page: str | None = None,
+        pcursor: str | None = None,
+        user_relation: str | None = None,
+        user_gender: str | None = None,
+        fans_sort: str | None = None,
     ) -> Any:
         """搜索用户V2/Search user V2
 
@@ -196,9 +242,118 @@ class KuaishouApp(SyncResource):
         """
         params = _drop_none({
             "keyword": keyword,
-            "page": page,
+            "pcursor": pcursor,
+            "user_relation": user_relation,
+            "user_gender": user_gender,
+            "fans_sort": fans_sort,
         })
         return self._client._request("GET", "/api/v1/kuaishou/app/search_user_v2", params=params)
+
+    def search_image(
+        self,
+        *,
+        keyword: str,
+        pcursor: str | None = None,
+    ) -> Any:
+        """搜索图片作品/Search image
+
+        ``GET /api/v1/kuaishou/app/search_image``
+        """
+        params = _drop_none({
+            "keyword": keyword,
+            "pcursor": pcursor,
+        })
+        return self._client._request("GET", "/api/v1/kuaishou/app/search_image", params=params)
+
+    def search_live(
+        self,
+        *,
+        keyword: str,
+        pcursor: str | None = None,
+    ) -> Any:
+        """搜索直播间/Search live
+
+        ``GET /api/v1/kuaishou/app/search_live``
+        """
+        params = _drop_none({
+            "keyword": keyword,
+            "pcursor": pcursor,
+        })
+        return self._client._request("GET", "/api/v1/kuaishou/app/search_live", params=params)
+
+    def search_music(
+        self,
+        *,
+        keyword: str,
+        pcursor: str | None = None,
+    ) -> Any:
+        """搜索音乐/Search music
+
+        ``GET /api/v1/kuaishou/app/search_music``
+        """
+        params = _drop_none({
+            "keyword": keyword,
+            "pcursor": pcursor,
+        })
+        return self._client._request("GET", "/api/v1/kuaishou/app/search_music", params=params)
+
+    def search_tag(
+        self,
+        *,
+        keyword: str,
+        pcursor: str | None = None,
+    ) -> Any:
+        """搜索话题标签/Search tag
+
+        ``GET /api/v1/kuaishou/app/search_tag``
+        """
+        params = _drop_none({
+            "keyword": keyword,
+            "pcursor": pcursor,
+        })
+        return self._client._request("GET", "/api/v1/kuaishou/app/search_tag", params=params)
+
+    def fetch_tag_feed(
+        self,
+        *,
+        general_tag_id: str,
+        tab: str | None = None,
+        tag_name: str | None = None,
+        tag_type: int | None = None,
+        tag_source: int | None = None,
+        from_photo_id: str | None = None,
+        pcursor: str | None = None,
+    ) -> Any:
+        """话题标签聚合页/Tag feed
+
+        ``GET /api/v1/kuaishou/app/fetch_tag_feed``
+        """
+        params = _drop_none({
+            "general_tag_id": general_tag_id,
+            "tab": tab,
+            "tag_name": tag_name,
+            "tag_type": tag_type,
+            "tag_source": tag_source,
+            "from_photo_id": from_photo_id,
+            "pcursor": pcursor,
+        })
+        return self._client._request("GET", "/api/v1/kuaishou/app/fetch_tag_feed", params=params)
+
+    def fetch_live_top_list(
+        self,
+        *,
+        subTabId: int | None = None,
+        subTabName: str | None = None,
+    ) -> Any:
+        """快手直播榜单/Kuaishou live top list
+
+        ``GET /api/v1/kuaishou/app/fetch_live_top_list``
+        """
+        params = _drop_none({
+            "subTabId": subTabId,
+            "subTabName": subTabName,
+        })
+        return self._client._request("GET", "/api/v1/kuaishou/app/fetch_live_top_list", params=params)
 
     def fetch_hot_board_categories(
         self,
@@ -234,22 +389,6 @@ class KuaishouApp(SyncResource):
         """
         return self._client._request("GET", "/api/v1/kuaishou/app/fetch_hot_search_person")
 
-    def fetch_live_top_list(
-        self,
-        *,
-        subTabId: int | None = None,
-        subTabName: str | None = None,
-    ) -> Any:
-        """快手直播榜单/Kuaishou live top list
-
-        ``GET /api/v1/kuaishou/app/fetch_live_top_list``
-        """
-        params = _drop_none({
-            "subTabId": subTabId,
-            "subTabName": subTabName,
-        })
-        return self._client._request("GET", "/api/v1/kuaishou/app/fetch_live_top_list", params=params)
-
     def fetch_shopping_top_list(
         self,
         *,
@@ -282,55 +421,27 @@ class KuaishouApp(SyncResource):
         })
         return self._client._request("GET", "/api/v1/kuaishou/app/fetch_brand_top_list", params=params)
 
-    def generate_kuaishou_share_link(
+    def fetch_music_ranking(
         self,
         *,
-        shareObjectId: str,
-    ) -> Any:
-        """生成快手分享链接/Generate Kuaishou share link
-
-        ``GET /api/v1/kuaishou/app/generate_kuaishou_share_link``
-        """
-        params = _drop_none({
-            "shareObjectId": shareObjectId,
-        })
-        return self._client._request("GET", "/api/v1/kuaishou/app/generate_kuaishou_share_link", params=params)
-
-    def fetch_magic_face_usage(
-        self,
-        *,
-        magic_face_id: str,
-    ) -> Any:
-        """获取魔法表情使用人数/Fetch magic face usage count
-
-        ``GET /api/v1/kuaishou/app/fetch_magic_face_usage``
-        """
-        params = _drop_none({
-            "magic_face_id": magic_face_id,
-        })
-        return self._client._request("GET", "/api/v1/kuaishou/app/fetch_magic_face_usage", params=params)
-
-    def fetch_magic_face_hot(
-        self,
-        *,
-        magic_face_id: str,
-        pcursor: str | None = None,
+        tab_id: int | None = None,
         count: int | None = None,
+        pcursor: str | None = None,
     ) -> Any:
-        """获取魔法表情热门视频/Fetch magic face hot videos
+        """音乐榜单/Music ranking
 
-        ``GET /api/v1/kuaishou/app/fetch_magic_face_hot``
+        ``GET /api/v1/kuaishou/app/fetch_music_ranking``
         """
         params = _drop_none({
-            "magic_face_id": magic_face_id,
-            "pcursor": pcursor,
+            "tab_id": tab_id,
             "count": count,
+            "pcursor": pcursor,
         })
-        return self._client._request("GET", "/api/v1/kuaishou/app/fetch_magic_face_hot", params=params)
+        return self._client._request("GET", "/api/v1/kuaishou/app/fetch_music_ranking", params=params)
 
 
 class AsyncKuaishouApp(AsyncResource):
-    """Async ``Kuaishou-App-API`` resource (20 endpoints)."""
+    """Async ``Kuaishou-App-API`` resource (26 endpoints)."""
 
     async def fetch_one_video(
         self,
@@ -374,7 +485,30 @@ class AsyncKuaishouApp(AsyncResource):
         })
         return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_one_video_by_url", params=params)
 
-    async def fetch_one_video_comment(
+    async def fetch_selection_feed(
+        self,
+    ) -> Any:
+        """精选/推荐Feed流/Selection feed
+
+        ``GET /api/v1/kuaishou/app/fetch_selection_feed``
+        """
+        return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_selection_feed")
+
+    async def generate_kuaishou_share_link(
+        self,
+        *,
+        shareObjectId: str,
+    ) -> Any:
+        """生成快手分享链接/Generate Kuaishou share link
+
+        ``GET /api/v1/kuaishou/app/generate_kuaishou_share_link``
+        """
+        params = _drop_none({
+            "shareObjectId": shareObjectId,
+        })
+        return await self._client._request("GET", "/api/v1/kuaishou/app/generate_kuaishou_share_link", params=params)
+
+    async def fetch_video_comment(
         self,
         *,
         photo_id: str,
@@ -382,13 +516,33 @@ class AsyncKuaishouApp(AsyncResource):
     ) -> Any:
         """获取单个作品评论数据/Get single video comment data
 
-        ``GET /api/v1/kuaishou/app/fetch_one_video_comment``
+        ``GET /api/v1/kuaishou/app/fetch_video_comment``
         """
         params = _drop_none({
             "photo_id": photo_id,
             "pcursor": pcursor,
         })
-        return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_one_video_comment", params=params)
+        return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_video_comment", params=params)
+
+    async def fetch_video_sub_comments(
+        self,
+        *,
+        photo_id: str,
+        root_comment_id: str,
+        pcursor: str | None = None,
+        count: int | None = None,
+    ) -> Any:
+        """评论二级回复/Video sub comments
+
+        ``GET /api/v1/kuaishou/app/fetch_video_sub_comments``
+        """
+        params = _drop_none({
+            "photo_id": photo_id,
+            "root_comment_id": root_comment_id,
+            "pcursor": pcursor,
+            "count": count,
+        })
+        return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_video_sub_comments", params=params)
 
     async def fetch_one_user_v2(
         self,
@@ -404,19 +558,23 @@ class AsyncKuaishouApp(AsyncResource):
         })
         return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_one_user_v2", params=params)
 
-    async def fetch_user_live_info(
+    async def fetch_user_post_v2(
         self,
         *,
         user_id: str,
+        pcursor: str | None = None,
+        sort: str | None = None,
     ) -> Any:
-        """获取用户直播信息/Get user live info
+        """用户视频列表V2/User video list V2
 
-        ``GET /api/v1/kuaishou/app/fetch_user_live_info``
+        ``GET /api/v1/kuaishou/app/fetch_user_post_v2``
         """
         params = _drop_none({
             "user_id": user_id,
+            "pcursor": pcursor,
+            "sort": sort,
         })
-        return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_user_live_info", params=params)
+        return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_user_post_v2", params=params)
 
     async def fetch_user_hot_post(
         self,
@@ -434,21 +592,19 @@ class AsyncKuaishouApp(AsyncResource):
         })
         return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_user_hot_post", params=params)
 
-    async def fetch_user_post_v2(
+    async def fetch_user_live_info(
         self,
         *,
         user_id: str,
-        pcursor: str | None = None,
     ) -> Any:
-        """用户视频列表V2/User video list V2
+        """获取用户直播信息/Get user live info
 
-        ``GET /api/v1/kuaishou/app/fetch_user_post_v2``
+        ``GET /api/v1/kuaishou/app/fetch_user_live_info``
         """
         params = _drop_none({
             "user_id": user_id,
-            "pcursor": pcursor,
         })
-        return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_user_post_v2", params=params)
+        return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_user_live_info", params=params)
 
     async def search_comprehensive(
         self,
@@ -458,7 +614,6 @@ class AsyncKuaishouApp(AsyncResource):
         sort_type: str | None = None,
         publish_time: str | None = None,
         duration: str | None = None,
-        search_scope: str | None = None,
     ) -> Any:
         """综合搜索/Comprehensive search
 
@@ -470,7 +625,6 @@ class AsyncKuaishouApp(AsyncResource):
             "sort_type": sort_type,
             "publish_time": publish_time,
             "duration": duration,
-            "search_scope": search_scope,
         })
         return await self._client._request("GET", "/api/v1/kuaishou/app/search_comprehensive", params=params)
 
@@ -478,7 +632,7 @@ class AsyncKuaishouApp(AsyncResource):
         self,
         *,
         keyword: str,
-        page: str | None = None,
+        pcursor: str | None = None,
     ) -> Any:
         """搜索视频V2/Search video V2
 
@@ -486,7 +640,7 @@ class AsyncKuaishouApp(AsyncResource):
         """
         params = _drop_none({
             "keyword": keyword,
-            "page": page,
+            "pcursor": pcursor,
         })
         return await self._client._request("GET", "/api/v1/kuaishou/app/search_video_v2", params=params)
 
@@ -494,7 +648,10 @@ class AsyncKuaishouApp(AsyncResource):
         self,
         *,
         keyword: str,
-        page: str | None = None,
+        pcursor: str | None = None,
+        user_relation: str | None = None,
+        user_gender: str | None = None,
+        fans_sort: str | None = None,
     ) -> Any:
         """搜索用户V2/Search user V2
 
@@ -502,9 +659,118 @@ class AsyncKuaishouApp(AsyncResource):
         """
         params = _drop_none({
             "keyword": keyword,
-            "page": page,
+            "pcursor": pcursor,
+            "user_relation": user_relation,
+            "user_gender": user_gender,
+            "fans_sort": fans_sort,
         })
         return await self._client._request("GET", "/api/v1/kuaishou/app/search_user_v2", params=params)
+
+    async def search_image(
+        self,
+        *,
+        keyword: str,
+        pcursor: str | None = None,
+    ) -> Any:
+        """搜索图片作品/Search image
+
+        ``GET /api/v1/kuaishou/app/search_image``
+        """
+        params = _drop_none({
+            "keyword": keyword,
+            "pcursor": pcursor,
+        })
+        return await self._client._request("GET", "/api/v1/kuaishou/app/search_image", params=params)
+
+    async def search_live(
+        self,
+        *,
+        keyword: str,
+        pcursor: str | None = None,
+    ) -> Any:
+        """搜索直播间/Search live
+
+        ``GET /api/v1/kuaishou/app/search_live``
+        """
+        params = _drop_none({
+            "keyword": keyword,
+            "pcursor": pcursor,
+        })
+        return await self._client._request("GET", "/api/v1/kuaishou/app/search_live", params=params)
+
+    async def search_music(
+        self,
+        *,
+        keyword: str,
+        pcursor: str | None = None,
+    ) -> Any:
+        """搜索音乐/Search music
+
+        ``GET /api/v1/kuaishou/app/search_music``
+        """
+        params = _drop_none({
+            "keyword": keyword,
+            "pcursor": pcursor,
+        })
+        return await self._client._request("GET", "/api/v1/kuaishou/app/search_music", params=params)
+
+    async def search_tag(
+        self,
+        *,
+        keyword: str,
+        pcursor: str | None = None,
+    ) -> Any:
+        """搜索话题标签/Search tag
+
+        ``GET /api/v1/kuaishou/app/search_tag``
+        """
+        params = _drop_none({
+            "keyword": keyword,
+            "pcursor": pcursor,
+        })
+        return await self._client._request("GET", "/api/v1/kuaishou/app/search_tag", params=params)
+
+    async def fetch_tag_feed(
+        self,
+        *,
+        general_tag_id: str,
+        tab: str | None = None,
+        tag_name: str | None = None,
+        tag_type: int | None = None,
+        tag_source: int | None = None,
+        from_photo_id: str | None = None,
+        pcursor: str | None = None,
+    ) -> Any:
+        """话题标签聚合页/Tag feed
+
+        ``GET /api/v1/kuaishou/app/fetch_tag_feed``
+        """
+        params = _drop_none({
+            "general_tag_id": general_tag_id,
+            "tab": tab,
+            "tag_name": tag_name,
+            "tag_type": tag_type,
+            "tag_source": tag_source,
+            "from_photo_id": from_photo_id,
+            "pcursor": pcursor,
+        })
+        return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_tag_feed", params=params)
+
+    async def fetch_live_top_list(
+        self,
+        *,
+        subTabId: int | None = None,
+        subTabName: str | None = None,
+    ) -> Any:
+        """快手直播榜单/Kuaishou live top list
+
+        ``GET /api/v1/kuaishou/app/fetch_live_top_list``
+        """
+        params = _drop_none({
+            "subTabId": subTabId,
+            "subTabName": subTabName,
+        })
+        return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_live_top_list", params=params)
 
     async def fetch_hot_board_categories(
         self,
@@ -540,22 +806,6 @@ class AsyncKuaishouApp(AsyncResource):
         """
         return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_hot_search_person")
 
-    async def fetch_live_top_list(
-        self,
-        *,
-        subTabId: int | None = None,
-        subTabName: str | None = None,
-    ) -> Any:
-        """快手直播榜单/Kuaishou live top list
-
-        ``GET /api/v1/kuaishou/app/fetch_live_top_list``
-        """
-        params = _drop_none({
-            "subTabId": subTabId,
-            "subTabName": subTabName,
-        })
-        return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_live_top_list", params=params)
-
     async def fetch_shopping_top_list(
         self,
         *,
@@ -588,48 +838,20 @@ class AsyncKuaishouApp(AsyncResource):
         })
         return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_brand_top_list", params=params)
 
-    async def generate_kuaishou_share_link(
+    async def fetch_music_ranking(
         self,
         *,
-        shareObjectId: str,
-    ) -> Any:
-        """生成快手分享链接/Generate Kuaishou share link
-
-        ``GET /api/v1/kuaishou/app/generate_kuaishou_share_link``
-        """
-        params = _drop_none({
-            "shareObjectId": shareObjectId,
-        })
-        return await self._client._request("GET", "/api/v1/kuaishou/app/generate_kuaishou_share_link", params=params)
-
-    async def fetch_magic_face_usage(
-        self,
-        *,
-        magic_face_id: str,
-    ) -> Any:
-        """获取魔法表情使用人数/Fetch magic face usage count
-
-        ``GET /api/v1/kuaishou/app/fetch_magic_face_usage``
-        """
-        params = _drop_none({
-            "magic_face_id": magic_face_id,
-        })
-        return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_magic_face_usage", params=params)
-
-    async def fetch_magic_face_hot(
-        self,
-        *,
-        magic_face_id: str,
-        pcursor: str | None = None,
+        tab_id: int | None = None,
         count: int | None = None,
+        pcursor: str | None = None,
     ) -> Any:
-        """获取魔法表情热门视频/Fetch magic face hot videos
+        """音乐榜单/Music ranking
 
-        ``GET /api/v1/kuaishou/app/fetch_magic_face_hot``
+        ``GET /api/v1/kuaishou/app/fetch_music_ranking``
         """
         params = _drop_none({
-            "magic_face_id": magic_face_id,
-            "pcursor": pcursor,
+            "tab_id": tab_id,
             "count": count,
+            "pcursor": pcursor,
         })
-        return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_magic_face_hot", params=params)
+        return await self._client._request("GET", "/api/v1/kuaishou/app/fetch_music_ranking", params=params)

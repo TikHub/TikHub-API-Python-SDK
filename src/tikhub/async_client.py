@@ -12,12 +12,15 @@ import httpx
 
 from tikhub._base_client import DEFAULT_TIMEOUT, AsyncBaseClient
 from tikhub.resources.bilibili_app import AsyncBilibiliApp
+from tikhub.resources.bilibili_huahuo import AsyncBilibiliHuahuo
 from tikhub.resources.bilibili_web import AsyncBilibiliWeb
 from tikhub.resources.demo import AsyncDemo
 from tikhub.resources.douyin_app_v3 import AsyncDouyinAppV3
 from tikhub.resources.douyin_billboard import AsyncDouyinBillboard
 from tikhub.resources.douyin_creator import AsyncDouyinCreator
 from tikhub.resources.douyin_creator_v2 import AsyncDouyinCreatorV2
+from tikhub.resources.douyin_douplus import AsyncDouyinDouplus
+from tikhub.resources.douyin_index import AsyncDouyinIndex
 from tikhub.resources.douyin_search import AsyncDouyinSearch
 from tikhub.resources.douyin_web import AsyncDouyinWeb
 from tikhub.resources.douyin_xingtu import AsyncDouyinXingtu
@@ -31,11 +34,10 @@ from tikhub.resources.ios_shortcut import AsyncIosShortcut
 from tikhub.resources.kuaishou_app import AsyncKuaishouApp
 from tikhub.resources.kuaishou_web import AsyncKuaishouWeb
 from tikhub.resources.lemon8_app import AsyncLemon8App
-from tikhub.resources.linkedin_web import AsyncLinkedinWeb
+from tikhub.resources.linkedin_web_v2 import AsyncLinkedinWebV2
 from tikhub.resources.pipixia_app import AsyncPipixiaApp
 from tikhub.resources.reddit_app import AsyncRedditApp
-from tikhub.resources.sora2 import AsyncSora2
-from tikhub.resources.temp_mail import AsyncTempMail
+from tikhub.resources.telegram_web import AsyncTelegramWeb
 from tikhub.resources.threads_web import AsyncThreadsWeb
 from tikhub.resources.tikhub_downloader import AsyncTikhubDownloader
 from tikhub.resources.tikhub_user import AsyncTikhubUser
@@ -43,21 +45,18 @@ from tikhub.resources.tiktok_ads import AsyncTiktokAds
 from tikhub.resources.tiktok_analytics import AsyncTiktokAnalytics
 from tikhub.resources.tiktok_app_v3 import AsyncTiktokAppV3
 from tikhub.resources.tiktok_creator import AsyncTiktokCreator
-from tikhub.resources.tiktok_interaction import AsyncTiktokInteraction
 from tikhub.resources.tiktok_shop_web import AsyncTiktokShopWeb
 from tikhub.resources.tiktok_web import AsyncTiktokWeb
 from tikhub.resources.toutiao_app import AsyncToutiaoApp
 from tikhub.resources.toutiao_web import AsyncToutiaoWeb
 from tikhub.resources.twitter_web import AsyncTwitterWeb
-from tikhub.resources.wechat_channels import AsyncWechatChannels
-from tikhub.resources.wechat_media_platform_web import AsyncWechatMediaPlatformWeb
+from tikhub.resources.wechat_channels_v2 import AsyncWechatChannelsV2
+from tikhub.resources.wechat_media_platform_v2 import AsyncWechatMediaPlatformV2
+from tikhub.resources.wechat_search_v2 import AsyncWechatSearchV2
 from tikhub.resources.weibo_app import AsyncWeiboApp
-from tikhub.resources.weibo_web import AsyncWeiboWeb
 from tikhub.resources.weibo_web_v2 import AsyncWeiboWebV2
-from tikhub.resources.xiaohongshu_app import AsyncXiaohongshuApp
 from tikhub.resources.xiaohongshu_app_v2 import AsyncXiaohongshuAppV2
-from tikhub.resources.xiaohongshu_web import AsyncXiaohongshuWeb
-from tikhub.resources.xiaohongshu_web_v2 import AsyncXiaohongshuWebV2
+from tikhub.resources.xiaohongshu_pgy import AsyncXiaohongshuPgy
 from tikhub.resources.xiaohongshu_web_v3 import AsyncXiaohongshuWebV3
 from tikhub.resources.xigua_app_v2 import AsyncXiguaAppV2
 from tikhub.resources.youtube_web import AsyncYoutubeWeb
@@ -110,12 +109,15 @@ class AsyncTikHub(AsyncBaseClient):
 
         # ----- Resources (one attribute per OpenAPI tag) ------------------
         self.bilibili_app: AsyncBilibiliApp = AsyncBilibiliApp(self)
+        self.bilibili_huahuo: AsyncBilibiliHuahuo = AsyncBilibiliHuahuo(self)
         self.bilibili_web: AsyncBilibiliWeb = AsyncBilibiliWeb(self)
         self.demo: AsyncDemo = AsyncDemo(self)
         self.douyin_app_v3: AsyncDouyinAppV3 = AsyncDouyinAppV3(self)
         self.douyin_billboard: AsyncDouyinBillboard = AsyncDouyinBillboard(self)
         self.douyin_creator: AsyncDouyinCreator = AsyncDouyinCreator(self)
         self.douyin_creator_v2: AsyncDouyinCreatorV2 = AsyncDouyinCreatorV2(self)
+        self.douyin_douplus: AsyncDouyinDouplus = AsyncDouyinDouplus(self)
+        self.douyin_index: AsyncDouyinIndex = AsyncDouyinIndex(self)
         self.douyin_search: AsyncDouyinSearch = AsyncDouyinSearch(self)
         self.douyin_web: AsyncDouyinWeb = AsyncDouyinWeb(self)
         self.douyin_xingtu: AsyncDouyinXingtu = AsyncDouyinXingtu(self)
@@ -129,11 +131,10 @@ class AsyncTikHub(AsyncBaseClient):
         self.kuaishou_app: AsyncKuaishouApp = AsyncKuaishouApp(self)
         self.kuaishou_web: AsyncKuaishouWeb = AsyncKuaishouWeb(self)
         self.lemon8_app: AsyncLemon8App = AsyncLemon8App(self)
-        self.linkedin_web: AsyncLinkedinWeb = AsyncLinkedinWeb(self)
+        self.linkedin_web_v2: AsyncLinkedinWebV2 = AsyncLinkedinWebV2(self)
         self.pipixia_app: AsyncPipixiaApp = AsyncPipixiaApp(self)
         self.reddit_app: AsyncRedditApp = AsyncRedditApp(self)
-        self.sora2: AsyncSora2 = AsyncSora2(self)
-        self.temp_mail: AsyncTempMail = AsyncTempMail(self)
+        self.telegram_web: AsyncTelegramWeb = AsyncTelegramWeb(self)
         self.threads_web: AsyncThreadsWeb = AsyncThreadsWeb(self)
         self.tikhub_downloader: AsyncTikhubDownloader = AsyncTikhubDownloader(self)
         self.tikhub_user: AsyncTikhubUser = AsyncTikhubUser(self)
@@ -141,21 +142,18 @@ class AsyncTikHub(AsyncBaseClient):
         self.tiktok_analytics: AsyncTiktokAnalytics = AsyncTiktokAnalytics(self)
         self.tiktok_app_v3: AsyncTiktokAppV3 = AsyncTiktokAppV3(self)
         self.tiktok_creator: AsyncTiktokCreator = AsyncTiktokCreator(self)
-        self.tiktok_interaction: AsyncTiktokInteraction = AsyncTiktokInteraction(self)
         self.tiktok_shop_web: AsyncTiktokShopWeb = AsyncTiktokShopWeb(self)
         self.tiktok_web: AsyncTiktokWeb = AsyncTiktokWeb(self)
         self.toutiao_app: AsyncToutiaoApp = AsyncToutiaoApp(self)
         self.toutiao_web: AsyncToutiaoWeb = AsyncToutiaoWeb(self)
         self.twitter_web: AsyncTwitterWeb = AsyncTwitterWeb(self)
-        self.wechat_channels: AsyncWechatChannels = AsyncWechatChannels(self)
-        self.wechat_media_platform_web: AsyncWechatMediaPlatformWeb = AsyncWechatMediaPlatformWeb(self)
+        self.wechat_channels_v2: AsyncWechatChannelsV2 = AsyncWechatChannelsV2(self)
+        self.wechat_media_platform_v2: AsyncWechatMediaPlatformV2 = AsyncWechatMediaPlatformV2(self)
+        self.wechat_search_v2: AsyncWechatSearchV2 = AsyncWechatSearchV2(self)
         self.weibo_app: AsyncWeiboApp = AsyncWeiboApp(self)
-        self.weibo_web: AsyncWeiboWeb = AsyncWeiboWeb(self)
         self.weibo_web_v2: AsyncWeiboWebV2 = AsyncWeiboWebV2(self)
-        self.xiaohongshu_app: AsyncXiaohongshuApp = AsyncXiaohongshuApp(self)
         self.xiaohongshu_app_v2: AsyncXiaohongshuAppV2 = AsyncXiaohongshuAppV2(self)
-        self.xiaohongshu_web: AsyncXiaohongshuWeb = AsyncXiaohongshuWeb(self)
-        self.xiaohongshu_web_v2: AsyncXiaohongshuWebV2 = AsyncXiaohongshuWebV2(self)
+        self.xiaohongshu_pgy: AsyncXiaohongshuPgy = AsyncXiaohongshuPgy(self)
         self.xiaohongshu_web_v3: AsyncXiaohongshuWebV3 = AsyncXiaohongshuWebV3(self)
         self.xigua_app_v2: AsyncXiguaAppV2 = AsyncXiguaAppV2(self)
         self.youtube_web: AsyncYoutubeWeb = AsyncYoutubeWeb(self)

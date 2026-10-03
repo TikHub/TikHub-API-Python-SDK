@@ -30,7 +30,7 @@ Dise&ntilde;ado para desarrolladores, cient&iacute;ficos de datos e ingenieros d
 
 ## &iquest;Por qu&eacute; este SDK?
 
-- **Cobertura del 100%** — 1010 / 1010 endpoints de la especificaci&oacute;n OpenAPI V5.3.2, generados y verificados mec&aacute;nicamente
+- **Cobertura del 100%** — 1048 / 1048 endpoints de la especificaci&oacute;n OpenAPI V5.3.2 (sin los endpoints obsoletos), generados y verificados mec&aacute;nicamente
 - **Sync + async** — clientes `TikHub` y `AsyncTikHub` con APIs id&eacute;nticas
 - **Listo para producci&oacute;n** — reintentos autom&aacute;ticos con backoff exponencial, manejo de l&iacute;mites de tasa, jerarqu&iacute;a de errores estructurada
 - **Type-safe** — compatible con `mypy --strict`, construido sobre `httpx` + `pydantic v2`
@@ -42,22 +42,23 @@ Dise&ntilde;ado para desarrolladores, cient&iacute;ficos de datos e ingenieros d
 
 | Plataforma | Recurso | Endpoints |
 |---|---|---|
-| TikTok | `tiktok_web`, `tiktok_app_v3`, `tiktok_creator`, `tiktok_analytics`, `tiktok_ads`, `tiktok_shop_web` | 200+ |
-| Douyin | `douyin_web`, `douyin_app_v3`, `douyin_search`, `douyin_billboard`, `douyin_creator`, `douyin_xingtu` | 400+ |
-| Instagram | `instagram_v1`, `instagram_v2`, `instagram_v3` | 80+ |
-| YouTube | `youtube_web`, `youtube_web_v2` | 50+ |
-| Twitter / X | `twitter_web` | 13+ |
-| Xiaohongshu (Red Note) | `xiaohongshu_web`, `xiaohongshu_app` (+ variantes v2/v3) | 80+ |
-| Bilibili | `bilibili_web`, `bilibili_app` | 40+ |
-| Weibo | `weibo_web`, `weibo_web_v2`, `weibo_app` | 30+ |
-| Threads | `threads_web` | 10+ |
-| LinkedIn | `linkedin_web` | 10+ |
-| Reddit | `reddit_app` | 10+ |
-| Kuaishou | `kuaishou_web`, `kuaishou_app` | 20+ |
-| WeChat | `wechat_channels`, `wechat_media_platform_web` | 20+ |
-| Lemon8 | `lemon8_app` | 10+ |
-| Zhihu | `zhihu_web` | 30+ |
-| Otros | `toutiao_web`, `toutiao_app`, `xigua_app_v2`, `pipixia_app`, `sora2` | 30+ |
+| TikTok | `tiktok_web`, `tiktok_app_v3`, `tiktok_creator`, `tiktok_analytics`, `tiktok_ads`, `tiktok_shop_web` | 162 |
+| Douyin | `douyin_web`, `douyin_app_v3`, `douyin_search`, `douyin_billboard`, `douyin_creator`, `douyin_creator_v2`, `douyin_xingtu`, `douyin_xingtu_v2`, `douyin_index`, `douyin_douplus` | 319 |
+| Instagram | `instagram_v1`, `instagram_v2`, `instagram_v3` | 93 |
+| YouTube | `youtube_web`, `youtube_web_v2` | 34 |
+| Twitter / X | `twitter_web` | 25 |
+| Xiaohongshu (Red Note) | `xiaohongshu_app_v2`, `xiaohongshu_web_v3`, `xiaohongshu_pgy` | 45 |
+| Bilibili | `bilibili_web`, `bilibili_app`, `bilibili_huahuo` | 87 |
+| Weibo | `weibo_web_v2`, `weibo_app` | 56 |
+| Threads | `threads_web` | 12 |
+| LinkedIn | `linkedin_web_v2` | 8 |
+| Telegram | `telegram_web` | 7 |
+| Reddit | `reddit_app` | 28 |
+| Kuaishou | `kuaishou_web`, `kuaishou_app` | 38 |
+| WeChat | `wechat_channels_v2`, `wechat_media_platform_v2`, `wechat_search_v2` | 25 |
+| Lemon8 | `lemon8_app` | 16 |
+| Zhihu | `zhihu_web` | 41 |
+| Otros | `toutiao_web`, `toutiao_app`, `xigua_app_v2`, `pipixia_app` | 31 |
 
 ## Instalaci&oacute;n
 

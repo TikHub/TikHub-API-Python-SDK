@@ -5,7 +5,7 @@
 OpenAPI tag: ``Douyin-Search-API``
 SDK attribute: ``client.douyin_search`` / ``async_client.douyin_search``
 
-Endpoints: 19
+Endpoints: 23
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncDouyinSearch", "DouyinSearch"]
 
 
 class DouyinSearch(SyncResource):
-    """Sync ``Douyin-Search-API`` resource (19 endpoints)."""
+    """Sync ``Douyin-Search-API`` resource (23 endpoints)."""
 
     def fetch_general_search_v1(
         self,
@@ -82,6 +82,28 @@ class DouyinSearch(SyncResource):
         })
         return self._client._request("POST", "/api/v1/douyin/search/fetch_general_search_v2", json=json_body)
 
+    def fetch_general_search_v3(
+        self,
+        *,
+        keyword: str | None = None,
+        offset: int | None = None,
+        page: int | None = None,
+        search_id: str | None = None,
+        backtrace: str | None = None,
+    ) -> Any:
+        """获取综合搜索 V3/Fetch general search V3
+
+        ``POST /api/v1/douyin/search/fetch_general_search_v3``
+        """
+        json_body = _drop_none({
+            "keyword": keyword,
+            "offset": offset,
+            "page": page,
+            "search_id": search_id,
+            "backtrace": backtrace,
+        })
+        return self._client._request("POST", "/api/v1/douyin/search/fetch_general_search_v3", json=json_body)
+
     def fetch_search_suggest(
         self,
         *,
@@ -95,6 +117,22 @@ class DouyinSearch(SyncResource):
             "keyword": keyword,
         })
         return self._client._request("POST", "/api/v1/douyin/search/fetch_search_suggest", json=json_body)
+
+    def fetch_search_suggest_v2(
+        self,
+        *,
+        keyword: str | None = None,
+        history_words: str | None = None,
+    ) -> Any:
+        """获取搜索关键词推荐 V2/Fetch search keyword suggestions V2
+
+        ``POST /api/v1/douyin/search/fetch_search_suggest_v2``
+        """
+        json_body = _drop_none({
+            "keyword": keyword,
+            "history_words": history_words,
+        })
+        return self._client._request("POST", "/api/v1/douyin/search/fetch_search_suggest_v2", json=json_body)
 
     def fetch_video_search_v1(
         self,
@@ -151,6 +189,64 @@ class DouyinSearch(SyncResource):
             "backtrace": backtrace,
         })
         return self._client._request("POST", "/api/v1/douyin/search/fetch_video_search_v2", json=json_body)
+
+    def fetch_video_search_v3(
+        self,
+        *,
+        query: str | None = None,
+        date_type: int | None = None,
+        label_type: int | None = None,
+        duration_type: int | None = None,
+    ) -> Any:
+        """获取视频搜索 V3/Fetch video search V3
+
+        ``POST /api/v1/douyin/search/fetch_video_search_v3``
+        """
+        json_body = _drop_none({
+            "query": query,
+            "date_type": date_type,
+            "label_type": label_type,
+            "duration_type": duration_type,
+        })
+        return self._client._request("POST", "/api/v1/douyin/search/fetch_video_search_v3", json=json_body)
+
+    def fetch_video_search_v4(
+        self,
+        *,
+        keyword: str | None = None,
+        cursor: int | None = None,
+    ) -> Any:
+        """获取视频搜索 V4/Fetch video search V4
+
+        ``POST /api/v1/douyin/search/fetch_video_search_v4``
+        """
+        json_body = _drop_none({
+            "keyword": keyword,
+            "cursor": cursor,
+        })
+        return self._client._request("POST", "/api/v1/douyin/search/fetch_video_search_v4", json=json_body)
+
+    def fetch_video_search_v5(
+        self,
+        *,
+        keyword: str | None = None,
+        offset: int | None = None,
+        page: int | None = None,
+        search_id: str | None = None,
+        backtrace: str | None = None,
+    ) -> Any:
+        """获取视频搜索 V5/Fetch video search V5
+
+        ``POST /api/v1/douyin/search/fetch_video_search_v5``
+        """
+        json_body = _drop_none({
+            "keyword": keyword,
+            "offset": offset,
+            "page": page,
+            "search_id": search_id,
+            "backtrace": backtrace,
+        })
+        return self._client._request("POST", "/api/v1/douyin/search/fetch_video_search_v5", json=json_body)
 
     def fetch_multi_search(
         self,
@@ -264,33 +360,21 @@ class DouyinSearch(SyncResource):
         })
         return self._client._request("POST", "/api/v1/douyin/search/fetch_image_search_v3", json=json_body)
 
-    def fetch_live_search_v1(
+    def fetch_live_search_v2(
         self,
         *,
         keyword: str | None = None,
         cursor: int | None = None,
-        sort_type: str | None = None,
-        publish_time: str | None = None,
-        filter_duration: str | None = None,
-        content_type: str | None = None,
-        search_id: str | None = None,
-        backtrace: str | None = None,
     ) -> Any:
-        """获取直播搜索 V1/Fetch live search V1
+        """获取直播搜索 V2/Fetch live search V2
 
-        ``POST /api/v1/douyin/search/fetch_live_search_v1``
+        ``POST /api/v1/douyin/search/fetch_live_search_v2``
         """
         json_body = _drop_none({
             "keyword": keyword,
             "cursor": cursor,
-            "sort_type": sort_type,
-            "publish_time": publish_time,
-            "filter_duration": filter_duration,
-            "content_type": content_type,
-            "search_id": search_id,
-            "backtrace": backtrace,
         })
-        return self._client._request("POST", "/api/v1/douyin/search/fetch_live_search_v1", json=json_body)
+        return self._client._request("POST", "/api/v1/douyin/search/fetch_live_search_v2", json=json_body)
 
     def fetch_challenge_search_v1(
         self,
@@ -460,37 +544,9 @@ class DouyinSearch(SyncResource):
         })
         return self._client._request("POST", "/api/v1/douyin/search/fetch_school_search", json=json_body)
 
-    def fetch_vision_search(
-        self,
-        *,
-        image_uri: str,
-        cursor: int | None = None,
-        search_id: str | None = None,
-        search_source: str | None = None,
-        detection: str | None = None,
-        detection_index: int | None = None,
-        user_query: str | None = None,
-        aweme_id: str | None = None,
-    ) -> Any:
-        """获取图像识别搜索/Fetch vision search (image-based search)
-
-        ``POST /api/v1/douyin/search/fetch_vision_search``
-        """
-        json_body = _drop_none({
-            "image_uri": image_uri,
-            "cursor": cursor,
-            "search_id": search_id,
-            "search_source": search_source,
-            "detection": detection,
-            "detection_index": detection_index,
-            "user_query": user_query,
-            "aweme_id": aweme_id,
-        })
-        return self._client._request("POST", "/api/v1/douyin/search/fetch_vision_search", json=json_body)
-
 
 class AsyncDouyinSearch(AsyncResource):
-    """Async ``Douyin-Search-API`` resource (19 endpoints)."""
+    """Async ``Douyin-Search-API`` resource (23 endpoints)."""
 
     async def fetch_general_search_v1(
         self,
@@ -548,6 +604,28 @@ class AsyncDouyinSearch(AsyncResource):
         })
         return await self._client._request("POST", "/api/v1/douyin/search/fetch_general_search_v2", json=json_body)
 
+    async def fetch_general_search_v3(
+        self,
+        *,
+        keyword: str | None = None,
+        offset: int | None = None,
+        page: int | None = None,
+        search_id: str | None = None,
+        backtrace: str | None = None,
+    ) -> Any:
+        """获取综合搜索 V3/Fetch general search V3
+
+        ``POST /api/v1/douyin/search/fetch_general_search_v3``
+        """
+        json_body = _drop_none({
+            "keyword": keyword,
+            "offset": offset,
+            "page": page,
+            "search_id": search_id,
+            "backtrace": backtrace,
+        })
+        return await self._client._request("POST", "/api/v1/douyin/search/fetch_general_search_v3", json=json_body)
+
     async def fetch_search_suggest(
         self,
         *,
@@ -561,6 +639,22 @@ class AsyncDouyinSearch(AsyncResource):
             "keyword": keyword,
         })
         return await self._client._request("POST", "/api/v1/douyin/search/fetch_search_suggest", json=json_body)
+
+    async def fetch_search_suggest_v2(
+        self,
+        *,
+        keyword: str | None = None,
+        history_words: str | None = None,
+    ) -> Any:
+        """获取搜索关键词推荐 V2/Fetch search keyword suggestions V2
+
+        ``POST /api/v1/douyin/search/fetch_search_suggest_v2``
+        """
+        json_body = _drop_none({
+            "keyword": keyword,
+            "history_words": history_words,
+        })
+        return await self._client._request("POST", "/api/v1/douyin/search/fetch_search_suggest_v2", json=json_body)
 
     async def fetch_video_search_v1(
         self,
@@ -617,6 +711,64 @@ class AsyncDouyinSearch(AsyncResource):
             "backtrace": backtrace,
         })
         return await self._client._request("POST", "/api/v1/douyin/search/fetch_video_search_v2", json=json_body)
+
+    async def fetch_video_search_v3(
+        self,
+        *,
+        query: str | None = None,
+        date_type: int | None = None,
+        label_type: int | None = None,
+        duration_type: int | None = None,
+    ) -> Any:
+        """获取视频搜索 V3/Fetch video search V3
+
+        ``POST /api/v1/douyin/search/fetch_video_search_v3``
+        """
+        json_body = _drop_none({
+            "query": query,
+            "date_type": date_type,
+            "label_type": label_type,
+            "duration_type": duration_type,
+        })
+        return await self._client._request("POST", "/api/v1/douyin/search/fetch_video_search_v3", json=json_body)
+
+    async def fetch_video_search_v4(
+        self,
+        *,
+        keyword: str | None = None,
+        cursor: int | None = None,
+    ) -> Any:
+        """获取视频搜索 V4/Fetch video search V4
+
+        ``POST /api/v1/douyin/search/fetch_video_search_v4``
+        """
+        json_body = _drop_none({
+            "keyword": keyword,
+            "cursor": cursor,
+        })
+        return await self._client._request("POST", "/api/v1/douyin/search/fetch_video_search_v4", json=json_body)
+
+    async def fetch_video_search_v5(
+        self,
+        *,
+        keyword: str | None = None,
+        offset: int | None = None,
+        page: int | None = None,
+        search_id: str | None = None,
+        backtrace: str | None = None,
+    ) -> Any:
+        """获取视频搜索 V5/Fetch video search V5
+
+        ``POST /api/v1/douyin/search/fetch_video_search_v5``
+        """
+        json_body = _drop_none({
+            "keyword": keyword,
+            "offset": offset,
+            "page": page,
+            "search_id": search_id,
+            "backtrace": backtrace,
+        })
+        return await self._client._request("POST", "/api/v1/douyin/search/fetch_video_search_v5", json=json_body)
 
     async def fetch_multi_search(
         self,
@@ -730,33 +882,21 @@ class AsyncDouyinSearch(AsyncResource):
         })
         return await self._client._request("POST", "/api/v1/douyin/search/fetch_image_search_v3", json=json_body)
 
-    async def fetch_live_search_v1(
+    async def fetch_live_search_v2(
         self,
         *,
         keyword: str | None = None,
         cursor: int | None = None,
-        sort_type: str | None = None,
-        publish_time: str | None = None,
-        filter_duration: str | None = None,
-        content_type: str | None = None,
-        search_id: str | None = None,
-        backtrace: str | None = None,
     ) -> Any:
-        """获取直播搜索 V1/Fetch live search V1
+        """获取直播搜索 V2/Fetch live search V2
 
-        ``POST /api/v1/douyin/search/fetch_live_search_v1``
+        ``POST /api/v1/douyin/search/fetch_live_search_v2``
         """
         json_body = _drop_none({
             "keyword": keyword,
             "cursor": cursor,
-            "sort_type": sort_type,
-            "publish_time": publish_time,
-            "filter_duration": filter_duration,
-            "content_type": content_type,
-            "search_id": search_id,
-            "backtrace": backtrace,
         })
-        return await self._client._request("POST", "/api/v1/douyin/search/fetch_live_search_v1", json=json_body)
+        return await self._client._request("POST", "/api/v1/douyin/search/fetch_live_search_v2", json=json_body)
 
     async def fetch_challenge_search_v1(
         self,
@@ -925,31 +1065,3 @@ class AsyncDouyinSearch(AsyncResource):
             "keyword": keyword,
         })
         return await self._client._request("POST", "/api/v1/douyin/search/fetch_school_search", json=json_body)
-
-    async def fetch_vision_search(
-        self,
-        *,
-        image_uri: str,
-        cursor: int | None = None,
-        search_id: str | None = None,
-        search_source: str | None = None,
-        detection: str | None = None,
-        detection_index: int | None = None,
-        user_query: str | None = None,
-        aweme_id: str | None = None,
-    ) -> Any:
-        """获取图像识别搜索/Fetch vision search (image-based search)
-
-        ``POST /api/v1/douyin/search/fetch_vision_search``
-        """
-        json_body = _drop_none({
-            "image_uri": image_uri,
-            "cursor": cursor,
-            "search_id": search_id,
-            "search_source": search_source,
-            "detection": detection,
-            "detection_index": detection_index,
-            "user_query": user_query,
-            "aweme_id": aweme_id,
-        })
-        return await self._client._request("POST", "/api/v1/douyin/search/fetch_vision_search", json=json_body)

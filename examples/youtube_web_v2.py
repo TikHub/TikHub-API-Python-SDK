@@ -1,7 +1,7 @@
 """Example: YouTube-Web-V2-API
 
 SDK attribute: ``client.youtube_web_v2``
-Endpoints: 19
+Endpoints: 26
 
 Usage::
 
@@ -24,6 +24,11 @@ async def main():
         # GET /api/v1/youtube/web_v2/get_video_info
         # 获取视频详情 /Get video information
         result = await client.youtube_web_v2.get_video_info(video_id='oaSNBz4qMQY', language_code='zh-CN', need_format=True)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/youtube/web_v2/get_video_info_v2
+        # 获取视频详情 V2/Get video information V2
+        result = await client.youtube_web_v2.get_video_info_v2(video_id='dQw4w9WgXcQ', video_url='https://www.youtube.com/watch?v=dQw4w9WgXcQ', need_format=True)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/youtube/web_v2/get_video_comments
@@ -96,6 +101,11 @@ async def main():
         result = await client.youtube_web_v2.get_video_captions(video_id='dQw4w9WgXcQ', video_url='https://www.youtube.com/watch?v=dQw4w9WgXcQ', language_code='en', format='srt')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
+        # GET /api/v1/youtube/web_v2/get_video_captions_result
+        # 获取视频字幕异步任务结果/Get video captions async job result
+        result = await client.youtube_web_v2.get_video_captions_result(job_id='123e4567-e89b-12d3-a456-426614174000', format='srt')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
         # GET /api/v1/youtube/web_v2/get_related_videos
         # 获取视频相似内容/Get related videos
         result = await client.youtube_web_v2.get_related_videos(video_id='dQw4w9WgXcQ', video_url='https://www.youtube.com/watch?v=dQw4w9WgXcQ', need_format=True)
@@ -114,6 +124,31 @@ async def main():
         # GET /api/v1/youtube/web_v2/search_channels
         # 搜索频道/Search channels
         result = await client.youtube_web_v2.search_channels(keyword='Rick Astley', need_format=True)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/youtube/web_v2/get_channel_community_posts
+        # 获取频道帖子列表/Get channel community posts
+        result = await client.youtube_web_v2.get_channel_community_posts(channel_id='UCkRfArvrzheW2E7b6SVT7vQ', language_code='zh-CN', country_code='US', need_format=True)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/youtube/web_v2/get_post_detail
+        # 获取帖子详情/Get post detail
+        result = await client.youtube_web_v2.get_post_detail(post_id='UgkxiCSRfD6g7SPlWGPDa3vbP7aIsytXRkvy', language_code='zh-CN', country_code='US', need_format=True)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/youtube/web_v2/get_post_comments
+        # 获取帖子评论/Get post comments
+        result = await client.youtube_web_v2.get_post_comments(post_id='UgkxiCSRfD6g7SPlWGPDa3vbP7aIsytXRkvy', language_code='zh-CN', country_code='US', need_format=True)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/youtube/web_v2/get_post_comment_replies
+        # 获取帖子评论回复/Get post comment replies
+        result = await client.youtube_web_v2.get_post_comment_replies(continuation_token='test', language_code='zh-CN', country_code='US', need_format=True)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # POST /api/v1/youtube/web_v2/get_video_streams_v3
+        # 使用自带固定出口代理获取下载链接 / Get download URLs with your fixed-exit proxy
+        result = await client.youtube_web_v2.get_video_streams_v3(video_id='test', proxy_url='test', verify_download=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

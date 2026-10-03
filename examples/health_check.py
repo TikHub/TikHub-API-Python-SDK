@@ -1,7 +1,7 @@
 """Example: Health-Check
 
 SDK attribute: ``client.health_check``
-Endpoints: 1
+Endpoints: 2
 
 Usage::
 
@@ -24,6 +24,11 @@ async def main():
         # GET /api/v1/health/check
         # 检查服务器是否正确响应请求 / Check if the server responds to requests correctly
         result = await client.health_check.check()
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/health/deep
+        # 深度健康检查（实测依赖与资源）/ Deep health check (probes dependencies and resources)
+        result = await client.health_check.deep()
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

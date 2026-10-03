@@ -5,7 +5,7 @@
 OpenAPI tag: ``Kuaishou-Web-API``
 SDK attribute: ``client.kuaishou_web`` / ``async_client.kuaishou_web``
 
-Endpoints: 13
+Endpoints: 12
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncKuaishouWeb", "KuaishouWeb"]
 
 
 class KuaishouWeb(SyncResource):
-    """Sync ``Kuaishou-Web-API`` resource (13 endpoints)."""
+    """Sync ``Kuaishou-Web-API`` resource (12 endpoints)."""
 
     def fetch_one_video(
         self,
@@ -130,22 +130,6 @@ class KuaishouWeb(SyncResource):
         })
         return self._client._request("GET", "/api/v1/kuaishou/web/fetch_user_info", params=params)
 
-    def fetch_user_post(
-        self,
-        *,
-        user_id: str,
-        pcursor: str | None = None,
-    ) -> Any:
-        """获取用户发布作品/Fetch user posts
-
-        ``GET /api/v1/kuaishou/web/fetch_user_post``
-        """
-        params = _drop_none({
-            "user_id": user_id,
-            "pcursor": pcursor,
-        })
-        return self._client._request("GET", "/api/v1/kuaishou/web/fetch_user_post", params=params)
-
     def fetch_user_live_replay(
         self,
         *,
@@ -217,7 +201,7 @@ class KuaishouWeb(SyncResource):
 
 
 class AsyncKuaishouWeb(AsyncResource):
-    """Async ``Kuaishou-Web-API`` resource (13 endpoints)."""
+    """Async ``Kuaishou-Web-API`` resource (12 endpoints)."""
 
     async def fetch_one_video(
         self,
@@ -322,22 +306,6 @@ class AsyncKuaishouWeb(AsyncResource):
             "user_id": user_id,
         })
         return await self._client._request("GET", "/api/v1/kuaishou/web/fetch_user_info", params=params)
-
-    async def fetch_user_post(
-        self,
-        *,
-        user_id: str,
-        pcursor: str | None = None,
-    ) -> Any:
-        """获取用户发布作品/Fetch user posts
-
-        ``GET /api/v1/kuaishou/web/fetch_user_post``
-        """
-        params = _drop_none({
-            "user_id": user_id,
-            "pcursor": pcursor,
-        })
-        return await self._client._request("GET", "/api/v1/kuaishou/web/fetch_user_post", params=params)
 
     async def fetch_user_live_replay(
         self,

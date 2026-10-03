@@ -5,7 +5,7 @@
 OpenAPI tag: ``Douyin-App-V3-API``
 SDK attribute: ``client.douyin_app_v3`` / ``async_client.douyin_app_v3``
 
-Endpoints: 47
+Endpoints: 38
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncDouyinAppV3", "DouyinAppV3"]
 
 
 class DouyinAppV3(SyncResource):
-    """Sync ``Douyin-App-V3-API`` resource (47 endpoints)."""
+    """Sync ``Douyin-App-V3-API`` resource (38 endpoints)."""
 
     def fetch_one_video(
         self,
@@ -125,6 +125,7 @@ class DouyinAppV3(SyncResource):
         *,
         aweme_id: str | None = None,
         share_url: str | None = None,
+        region: str | None = None,
     ) -> Any:
         """获取视频的最高画质播放链接/Get the highest quality play URL of the video
 
@@ -133,6 +134,7 @@ class DouyinAppV3(SyncResource):
         params = _drop_none({
             "aweme_id": aweme_id,
             "share_url": share_url,
+            "region": region,
         })
         return self._client._request("GET", "/api/v1/douyin/app/v3/fetch_video_high_quality_play_url", params=params)
 
@@ -140,6 +142,7 @@ class DouyinAppV3(SyncResource):
         self,
         *,
         aweme_ids: str | None = None,
+        region: Any | None = None,
     ) -> Any:
         """批量获取视频的最高画质播放链接/Batch get the highest quality play URL of videos
 
@@ -147,6 +150,7 @@ class DouyinAppV3(SyncResource):
         """
         json_body = _drop_none({
             "aweme_ids": aweme_ids,
+            "region": region,
         })
         return self._client._request("POST", "/api/v1/douyin/app/v3/fetch_multi_video_high_quality_play_url", json=json_body)
 
@@ -177,24 +181,6 @@ class DouyinAppV3(SyncResource):
             "aweme_ids": aweme_ids,
         })
         return self._client._request("GET", "/api/v1/douyin/app/v3/fetch_multi_video_statistics", params=params)
-
-    def add_video_play_count(
-        self,
-        *,
-        aweme_type: int,
-        item_id: str,
-        cookie: str | None = None,
-    ) -> Any:
-        """根据视频ID来增加作品的播放数/Increase the number of plays of the work according to the video ID
-
-        ``GET /api/v1/douyin/app/v3/add_video_play_count``
-        """
-        params = _drop_none({
-            "aweme_type": aweme_type,
-            "item_id": item_id,
-            "cookie": cookie,
-        })
-        return self._client._request("GET", "/api/v1/douyin/app/v3/add_video_play_count", params=params)
 
     def handler_user_profile(
         self,
@@ -228,26 +214,6 @@ class DouyinAppV3(SyncResource):
         })
         return self._client._request("GET", "/api/v1/douyin/app/v3/fetch_user_fans_list", params=params)
 
-    def fetch_user_following_list(
-        self,
-        *,
-        sec_user_id: str | None = None,
-        max_time: str | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取用户关注列表 (弃用，使用 /api/v1/douyin/web/fetch_user_following_list 替代)/Get user following list (Deprecated, use /api/v1/douyin/web/fetch_user_following_list instead)
-
-        ``GET /api/v1/douyin/app/v3/fetch_user_following_list``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "sec_user_id": sec_user_id,
-            "max_time": max_time,
-            "count": count,
-        })
-        return self._client._request("GET", "/api/v1/douyin/app/v3/fetch_user_following_list", params=params)
-
     def fetch_user_post_videos(
         self,
         *,
@@ -255,6 +221,7 @@ class DouyinAppV3(SyncResource):
         max_cursor: int | None = None,
         count: int | None = None,
         sort_type: int | None = None,
+        channel: str | None = None,
     ) -> Any:
         """获取用户主页作品数据/Get user homepage video data
 
@@ -265,6 +232,7 @@ class DouyinAppV3(SyncResource):
             "max_cursor": max_cursor,
             "count": count,
             "sort_type": sort_type,
+            "channel": channel,
         })
         return self._client._request("GET", "/api/v1/douyin/app/v3/fetch_user_post_videos", params=params)
 
@@ -403,170 +371,6 @@ class DouyinAppV3(SyncResource):
             "series_id": series_id,
         })
         return self._client._request("GET", "/api/v1/douyin/app/v3/fetch_series_detail", params=params)
-
-    def fetch_general_search_result(
-        self,
-        *,
-        keyword: str,
-        offset: int | None = None,
-        count: int | None = None,
-        sort_type: str | None = None,
-        publish_time: str | None = None,
-        filter_duration: str | None = None,
-        content_type: str | None = None,
-    ) -> Any:
-        """获取指定关键词的综合搜索结果（弃用，替代接口见下方文档说明）/Get comprehensive search results of specified keywords (deprecated, see the documentation below for alternative interfaces)
-
-        ``GET /api/v1/douyin/app/v3/fetch_general_search_result``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "offset": offset,
-            "count": count,
-            "sort_type": sort_type,
-            "publish_time": publish_time,
-            "filter_duration": filter_duration,
-            "content_type": content_type,
-        })
-        return self._client._request("GET", "/api/v1/douyin/app/v3/fetch_general_search_result", params=params)
-
-    def fetch_video_search_result(
-        self,
-        *,
-        keyword: str,
-        offset: int | None = None,
-        count: int | None = None,
-        sort_type: str | None = None,
-        publish_time: str | None = None,
-        filter_duration: str | None = None,
-    ) -> Any:
-        """获取指定关键词的视频搜索结果（弃用，替代接口见下方文档说明）/Get video search results of specified keywords (deprecated, see the documentation below for alternative interfaces)
-
-        ``GET /api/v1/douyin/app/v3/fetch_video_search_result``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "offset": offset,
-            "count": count,
-            "sort_type": sort_type,
-            "publish_time": publish_time,
-            "filter_duration": filter_duration,
-        })
-        return self._client._request("GET", "/api/v1/douyin/app/v3/fetch_video_search_result", params=params)
-
-    def fetch_video_search_result_v2(
-        self,
-        *,
-        keyword: str,
-        sort_type: str | None = None,
-        publish_time: str | None = None,
-        filter_duration: str | None = None,
-        page: int | None = None,
-        search_id: str | None = None,
-    ) -> Any:
-        """获取指定关键词的视频搜索结果 V2 （弃用，替代接口见下方文档说明）/Get video search results of specified keywords V2 (deprecated, see the documentation below for alternative interfaces)
-
-        ``GET /api/v1/douyin/app/v3/fetch_video_search_result_v2``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "sort_type": sort_type,
-            "publish_time": publish_time,
-            "filter_duration": filter_duration,
-            "page": page,
-            "search_id": search_id,
-        })
-        return self._client._request("GET", "/api/v1/douyin/app/v3/fetch_video_search_result_v2", params=params)
-
-    def fetch_user_search_result(
-        self,
-        *,
-        keyword: str,
-        offset: int | None = None,
-        count: int | None = None,
-        douyin_user_fans: str | None = None,
-        douyin_user_type: str | None = None,
-    ) -> Any:
-        """获取指定关键词的用户搜索结果（弃用，替代接口见下方文档说明）/Get user search results of specified keywords (deprecated, see the documentation below for alternative interfaces)
-
-        ``GET /api/v1/douyin/app/v3/fetch_user_search_result``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "offset": offset,
-            "count": count,
-            "douyin_user_fans": douyin_user_fans,
-            "douyin_user_type": douyin_user_type,
-        })
-        return self._client._request("GET", "/api/v1/douyin/app/v3/fetch_user_search_result", params=params)
-
-    def fetch_live_search_result(
-        self,
-        *,
-        keyword: str,
-        cursor: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取指定关键词的直播搜索结果（弃用，替代接口见下方文档说明）/Get live search results of specified keywords (deprecated, see the documentation below for alternative interfaces)
-
-        ``GET /api/v1/douyin/app/v3/fetch_live_search_result``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "cursor": cursor,
-            "count": count,
-        })
-        return self._client._request("GET", "/api/v1/douyin/app/v3/fetch_live_search_result", params=params)
-
-    def fetch_music_search_result(
-        self,
-        *,
-        keyword: str,
-        offset: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取指定关键词的音乐搜索结果（弃用，替代接口见下方文档说明）/Get music search results of specified keywords (deprecated, see the documentation below for alternative interfaces)
-
-        ``GET /api/v1/douyin/app/v3/fetch_music_search_result``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "offset": offset,
-            "count": count,
-        })
-        return self._client._request("GET", "/api/v1/douyin/app/v3/fetch_music_search_result", params=params)
-
-    def fetch_hashtag_search_result(
-        self,
-        *,
-        keyword: str,
-        offset: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取指定关键词的话题搜索结果（弃用，替代接口见下方文档说明）/Get hashtag search results of specified keywords (deprecated, see the documentation below for alternative interfaces)
-
-        ``GET /api/v1/douyin/app/v3/fetch_hashtag_search_result``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "offset": offset,
-            "count": count,
-        })
-        return self._client._request("GET", "/api/v1/douyin/app/v3/fetch_hashtag_search_result", params=params)
 
     def fetch_music_detail(
         self,
@@ -802,7 +606,7 @@ class DouyinAppV3(SyncResource):
 
 
 class AsyncDouyinAppV3(AsyncResource):
-    """Async ``Douyin-App-V3-API`` resource (47 endpoints)."""
+    """Async ``Douyin-App-V3-API`` resource (38 endpoints)."""
 
     async def fetch_one_video(
         self,
@@ -903,6 +707,7 @@ class AsyncDouyinAppV3(AsyncResource):
         *,
         aweme_id: str | None = None,
         share_url: str | None = None,
+        region: str | None = None,
     ) -> Any:
         """获取视频的最高画质播放链接/Get the highest quality play URL of the video
 
@@ -911,6 +716,7 @@ class AsyncDouyinAppV3(AsyncResource):
         params = _drop_none({
             "aweme_id": aweme_id,
             "share_url": share_url,
+            "region": region,
         })
         return await self._client._request("GET", "/api/v1/douyin/app/v3/fetch_video_high_quality_play_url", params=params)
 
@@ -918,6 +724,7 @@ class AsyncDouyinAppV3(AsyncResource):
         self,
         *,
         aweme_ids: str | None = None,
+        region: Any | None = None,
     ) -> Any:
         """批量获取视频的最高画质播放链接/Batch get the highest quality play URL of videos
 
@@ -925,6 +732,7 @@ class AsyncDouyinAppV3(AsyncResource):
         """
         json_body = _drop_none({
             "aweme_ids": aweme_ids,
+            "region": region,
         })
         return await self._client._request("POST", "/api/v1/douyin/app/v3/fetch_multi_video_high_quality_play_url", json=json_body)
 
@@ -955,24 +763,6 @@ class AsyncDouyinAppV3(AsyncResource):
             "aweme_ids": aweme_ids,
         })
         return await self._client._request("GET", "/api/v1/douyin/app/v3/fetch_multi_video_statistics", params=params)
-
-    async def add_video_play_count(
-        self,
-        *,
-        aweme_type: int,
-        item_id: str,
-        cookie: str | None = None,
-    ) -> Any:
-        """根据视频ID来增加作品的播放数/Increase the number of plays of the work according to the video ID
-
-        ``GET /api/v1/douyin/app/v3/add_video_play_count``
-        """
-        params = _drop_none({
-            "aweme_type": aweme_type,
-            "item_id": item_id,
-            "cookie": cookie,
-        })
-        return await self._client._request("GET", "/api/v1/douyin/app/v3/add_video_play_count", params=params)
 
     async def handler_user_profile(
         self,
@@ -1006,26 +796,6 @@ class AsyncDouyinAppV3(AsyncResource):
         })
         return await self._client._request("GET", "/api/v1/douyin/app/v3/fetch_user_fans_list", params=params)
 
-    async def fetch_user_following_list(
-        self,
-        *,
-        sec_user_id: str | None = None,
-        max_time: str | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取用户关注列表 (弃用，使用 /api/v1/douyin/web/fetch_user_following_list 替代)/Get user following list (Deprecated, use /api/v1/douyin/web/fetch_user_following_list instead)
-
-        ``GET /api/v1/douyin/app/v3/fetch_user_following_list``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "sec_user_id": sec_user_id,
-            "max_time": max_time,
-            "count": count,
-        })
-        return await self._client._request("GET", "/api/v1/douyin/app/v3/fetch_user_following_list", params=params)
-
     async def fetch_user_post_videos(
         self,
         *,
@@ -1033,6 +803,7 @@ class AsyncDouyinAppV3(AsyncResource):
         max_cursor: int | None = None,
         count: int | None = None,
         sort_type: int | None = None,
+        channel: str | None = None,
     ) -> Any:
         """获取用户主页作品数据/Get user homepage video data
 
@@ -1043,6 +814,7 @@ class AsyncDouyinAppV3(AsyncResource):
             "max_cursor": max_cursor,
             "count": count,
             "sort_type": sort_type,
+            "channel": channel,
         })
         return await self._client._request("GET", "/api/v1/douyin/app/v3/fetch_user_post_videos", params=params)
 
@@ -1181,170 +953,6 @@ class AsyncDouyinAppV3(AsyncResource):
             "series_id": series_id,
         })
         return await self._client._request("GET", "/api/v1/douyin/app/v3/fetch_series_detail", params=params)
-
-    async def fetch_general_search_result(
-        self,
-        *,
-        keyword: str,
-        offset: int | None = None,
-        count: int | None = None,
-        sort_type: str | None = None,
-        publish_time: str | None = None,
-        filter_duration: str | None = None,
-        content_type: str | None = None,
-    ) -> Any:
-        """获取指定关键词的综合搜索结果（弃用，替代接口见下方文档说明）/Get comprehensive search results of specified keywords (deprecated, see the documentation below for alternative interfaces)
-
-        ``GET /api/v1/douyin/app/v3/fetch_general_search_result``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "offset": offset,
-            "count": count,
-            "sort_type": sort_type,
-            "publish_time": publish_time,
-            "filter_duration": filter_duration,
-            "content_type": content_type,
-        })
-        return await self._client._request("GET", "/api/v1/douyin/app/v3/fetch_general_search_result", params=params)
-
-    async def fetch_video_search_result(
-        self,
-        *,
-        keyword: str,
-        offset: int | None = None,
-        count: int | None = None,
-        sort_type: str | None = None,
-        publish_time: str | None = None,
-        filter_duration: str | None = None,
-    ) -> Any:
-        """获取指定关键词的视频搜索结果（弃用，替代接口见下方文档说明）/Get video search results of specified keywords (deprecated, see the documentation below for alternative interfaces)
-
-        ``GET /api/v1/douyin/app/v3/fetch_video_search_result``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "offset": offset,
-            "count": count,
-            "sort_type": sort_type,
-            "publish_time": publish_time,
-            "filter_duration": filter_duration,
-        })
-        return await self._client._request("GET", "/api/v1/douyin/app/v3/fetch_video_search_result", params=params)
-
-    async def fetch_video_search_result_v2(
-        self,
-        *,
-        keyword: str,
-        sort_type: str | None = None,
-        publish_time: str | None = None,
-        filter_duration: str | None = None,
-        page: int | None = None,
-        search_id: str | None = None,
-    ) -> Any:
-        """获取指定关键词的视频搜索结果 V2 （弃用，替代接口见下方文档说明）/Get video search results of specified keywords V2 (deprecated, see the documentation below for alternative interfaces)
-
-        ``GET /api/v1/douyin/app/v3/fetch_video_search_result_v2``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "sort_type": sort_type,
-            "publish_time": publish_time,
-            "filter_duration": filter_duration,
-            "page": page,
-            "search_id": search_id,
-        })
-        return await self._client._request("GET", "/api/v1/douyin/app/v3/fetch_video_search_result_v2", params=params)
-
-    async def fetch_user_search_result(
-        self,
-        *,
-        keyword: str,
-        offset: int | None = None,
-        count: int | None = None,
-        douyin_user_fans: str | None = None,
-        douyin_user_type: str | None = None,
-    ) -> Any:
-        """获取指定关键词的用户搜索结果（弃用，替代接口见下方文档说明）/Get user search results of specified keywords (deprecated, see the documentation below for alternative interfaces)
-
-        ``GET /api/v1/douyin/app/v3/fetch_user_search_result``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "offset": offset,
-            "count": count,
-            "douyin_user_fans": douyin_user_fans,
-            "douyin_user_type": douyin_user_type,
-        })
-        return await self._client._request("GET", "/api/v1/douyin/app/v3/fetch_user_search_result", params=params)
-
-    async def fetch_live_search_result(
-        self,
-        *,
-        keyword: str,
-        cursor: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取指定关键词的直播搜索结果（弃用，替代接口见下方文档说明）/Get live search results of specified keywords (deprecated, see the documentation below for alternative interfaces)
-
-        ``GET /api/v1/douyin/app/v3/fetch_live_search_result``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "cursor": cursor,
-            "count": count,
-        })
-        return await self._client._request("GET", "/api/v1/douyin/app/v3/fetch_live_search_result", params=params)
-
-    async def fetch_music_search_result(
-        self,
-        *,
-        keyword: str,
-        offset: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取指定关键词的音乐搜索结果（弃用，替代接口见下方文档说明）/Get music search results of specified keywords (deprecated, see the documentation below for alternative interfaces)
-
-        ``GET /api/v1/douyin/app/v3/fetch_music_search_result``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "offset": offset,
-            "count": count,
-        })
-        return await self._client._request("GET", "/api/v1/douyin/app/v3/fetch_music_search_result", params=params)
-
-    async def fetch_hashtag_search_result(
-        self,
-        *,
-        keyword: str,
-        offset: int | None = None,
-        count: int | None = None,
-    ) -> Any:
-        """获取指定关键词的话题搜索结果（弃用，替代接口见下方文档说明）/Get hashtag search results of specified keywords (deprecated, see the documentation below for alternative interfaces)
-
-        ``GET /api/v1/douyin/app/v3/fetch_hashtag_search_result``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "offset": offset,
-            "count": count,
-        })
-        return await self._client._request("GET", "/api/v1/douyin/app/v3/fetch_hashtag_search_result", params=params)
 
     async def fetch_music_detail(
         self,

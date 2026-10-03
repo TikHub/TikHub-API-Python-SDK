@@ -5,7 +5,7 @@
 OpenAPI tag: ``Twitter-Web-API``
 SDK attribute: ``client.twitter_web`` / ``async_client.twitter_web``
 
-Endpoints: 13
+Endpoints: 25
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncTwitterWeb", "TwitterWeb"]
 
 
 class TwitterWeb(SyncResource):
-    """Sync ``Twitter-Web-API`` resource (13 endpoints)."""
+    """Sync ``Twitter-Web-API`` resource (25 endpoints)."""
 
     def fetch_tweet_detail(
         self,
@@ -140,26 +140,6 @@ class TwitterWeb(SyncResource):
         })
         return self._client._request("GET", "/api/v1/twitter/web/fetch_user_tweet_replies", params=params)
 
-    def fetch_user_highlights_tweets(
-        self,
-        *,
-        userId: str,
-        count: int | None = None,
-        cursor: str | None = None,
-    ) -> Any:
-        """获取用户高光推文/Get user highlights tweets
-
-        ``GET /api/v1/twitter/web/fetch_user_highlights_tweets``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "userId": userId,
-            "count": count,
-            "cursor": cursor,
-        })
-        return self._client._request("GET", "/api/v1/twitter/web/fetch_user_highlights_tweets", params=params)
-
     def fetch_user_media(
         self,
         *,
@@ -240,9 +220,211 @@ class TwitterWeb(SyncResource):
         })
         return self._client._request("GET", "/api/v1/twitter/web/fetch_user_followers", params=params)
 
+    def fetch_community_info(
+        self,
+        *,
+        community_id: str,
+    ) -> Any:
+        """获取社区详情/Get community info
+
+        ``GET /api/v1/twitter/web/fetch_community_info``
+        """
+        params = _drop_none({
+            "community_id": community_id,
+        })
+        return self._client._request("GET", "/api/v1/twitter/web/fetch_community_info", params=params)
+
+    def fetch_community_members(
+        self,
+        *,
+        community_id: str,
+        cursor: str | None = None,
+    ) -> Any:
+        """获取社区成员（无分页）/Get community members (no pagination)
+
+        ``GET /api/v1/twitter/web/fetch_community_members``
+        """
+        params = _drop_none({
+            "community_id": community_id,
+            "cursor": cursor,
+        })
+        return self._client._request("GET", "/api/v1/twitter/web/fetch_community_members", params=params)
+
+    def fetch_community_timeline(
+        self,
+        *,
+        community_id: str,
+        ranking: str | None = None,
+        cursor: str | None = None,
+    ) -> Any:
+        """获取社区帖子/Get community timeline
+
+        ``GET /api/v1/twitter/web/fetch_community_timeline``
+        """
+        params = _drop_none({
+            "community_id": community_id,
+            "ranking": ranking,
+            "cursor": cursor,
+        })
+        return self._client._request("GET", "/api/v1/twitter/web/fetch_community_timeline", params=params)
+
+    def fetch_search_communities(
+        self,
+        *,
+        keyword: str,
+        cursor: str | None = None,
+    ) -> Any:
+        """搜索社区/Search communities
+
+        ``GET /api/v1/twitter/web/fetch_search_communities``
+        """
+        params = _drop_none({
+            "keyword": keyword,
+            "cursor": cursor,
+        })
+        return self._client._request("GET", "/api/v1/twitter/web/fetch_search_communities", params=params)
+
+    def fetch_user_about(
+        self,
+        *,
+        screen_name: str,
+    ) -> Any:
+        """获取用户账号档案信息/Get user about profile
+
+        ``GET /api/v1/twitter/web/fetch_user_about``
+        """
+        params = _drop_none({
+            "screen_name": screen_name,
+        })
+        return self._client._request("GET", "/api/v1/twitter/web/fetch_user_about", params=params)
+
+    def fetch_user_affiliates(
+        self,
+        *,
+        screen_name: str,
+        cursor: str | None = None,
+    ) -> Any:
+        """获取用户关联子账号/Get user affiliates
+
+        ``GET /api/v1/twitter/web/fetch_user_affiliates``
+        """
+        params = _drop_none({
+            "screen_name": screen_name,
+            "cursor": cursor,
+        })
+        return self._client._request("GET", "/api/v1/twitter/web/fetch_user_affiliates", params=params)
+
+    def fetch_user_profiles_by_rest_ids(
+        self,
+        *,
+        rest_ids: str,
+    ) -> Any:
+        """批量根据用户ID获取用户资料/Get profiles by rest ids
+
+        ``GET /api/v1/twitter/web/fetch_user_profiles_by_rest_ids``
+        """
+        params = _drop_none({
+            "rest_ids": rest_ids,
+        })
+        return self._client._request("GET", "/api/v1/twitter/web/fetch_user_profiles_by_rest_ids", params=params)
+
+    def fetch_check_follow(
+        self,
+        *,
+        user_name: str,
+        follows: str,
+    ) -> Any:
+        """检查用户是否关注了另一个用户/Check follow
+
+        ``GET /api/v1/twitter/web/fetch_check_follow``
+        """
+        params = _drop_none({
+            "user_name": user_name,
+            "follows": follows,
+        })
+        return self._client._request("GET", "/api/v1/twitter/web/fetch_check_follow", params=params)
+
+    def fetch_check_retweet(
+        self,
+        *,
+        screen_name: str,
+        tweet_id: str,
+    ) -> Any:
+        """检查用户是否转推了某条推文/Check retweet
+
+        ``GET /api/v1/twitter/web/fetch_check_retweet``
+        """
+        params = _drop_none({
+            "screen_name": screen_name,
+            "tweet_id": tweet_id,
+        })
+        return self._client._request("GET", "/api/v1/twitter/web/fetch_check_retweet", params=params)
+
+    def fetch_list_timeline(
+        self,
+        *,
+        list_id: str,
+        cursor: str | None = None,
+    ) -> Any:
+        """获取列表帖子/Get list timeline
+
+        ``GET /api/v1/twitter/web/fetch_list_timeline``
+        """
+        params = _drop_none({
+            "list_id": list_id,
+            "cursor": cursor,
+        })
+        return self._client._request("GET", "/api/v1/twitter/web/fetch_list_timeline", params=params)
+
+    def fetch_list_members(
+        self,
+        *,
+        list_id: str,
+        cursor: str | None = None,
+    ) -> Any:
+        """获取列表成员/Get list members
+
+        ``GET /api/v1/twitter/web/fetch_list_members``
+        """
+        params = _drop_none({
+            "list_id": list_id,
+            "cursor": cursor,
+        })
+        return self._client._request("GET", "/api/v1/twitter/web/fetch_list_members", params=params)
+
+    def fetch_list_followers(
+        self,
+        *,
+        list_id: str,
+        cursor: str | None = None,
+    ) -> Any:
+        """获取列表关注者/Get list followers
+
+        ``GET /api/v1/twitter/web/fetch_list_followers``
+        """
+        params = _drop_none({
+            "list_id": list_id,
+            "cursor": cursor,
+        })
+        return self._client._request("GET", "/api/v1/twitter/web/fetch_list_followers", params=params)
+
+    def fetch_user_live_status(
+        self,
+        *,
+        rest_id: str,
+    ) -> Any:
+        """检查用户是否正在直播/Check user live status
+
+        ``GET /api/v1/twitter/web/fetch_user_live_status``
+        """
+        params = _drop_none({
+            "rest_id": rest_id,
+        })
+        return self._client._request("GET", "/api/v1/twitter/web/fetch_user_live_status", params=params)
+
 
 class AsyncTwitterWeb(AsyncResource):
-    """Async ``Twitter-Web-API`` resource (13 endpoints)."""
+    """Async ``Twitter-Web-API`` resource (25 endpoints)."""
 
     async def fetch_tweet_detail(
         self,
@@ -358,26 +540,6 @@ class AsyncTwitterWeb(AsyncResource):
         })
         return await self._client._request("GET", "/api/v1/twitter/web/fetch_user_tweet_replies", params=params)
 
-    async def fetch_user_highlights_tweets(
-        self,
-        *,
-        userId: str,
-        count: int | None = None,
-        cursor: str | None = None,
-    ) -> Any:
-        """获取用户高光推文/Get user highlights tweets
-
-        ``GET /api/v1/twitter/web/fetch_user_highlights_tweets``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "userId": userId,
-            "count": count,
-            "cursor": cursor,
-        })
-        return await self._client._request("GET", "/api/v1/twitter/web/fetch_user_highlights_tweets", params=params)
-
     async def fetch_user_media(
         self,
         *,
@@ -457,3 +619,205 @@ class AsyncTwitterWeb(AsyncResource):
             "cursor": cursor,
         })
         return await self._client._request("GET", "/api/v1/twitter/web/fetch_user_followers", params=params)
+
+    async def fetch_community_info(
+        self,
+        *,
+        community_id: str,
+    ) -> Any:
+        """获取社区详情/Get community info
+
+        ``GET /api/v1/twitter/web/fetch_community_info``
+        """
+        params = _drop_none({
+            "community_id": community_id,
+        })
+        return await self._client._request("GET", "/api/v1/twitter/web/fetch_community_info", params=params)
+
+    async def fetch_community_members(
+        self,
+        *,
+        community_id: str,
+        cursor: str | None = None,
+    ) -> Any:
+        """获取社区成员（无分页）/Get community members (no pagination)
+
+        ``GET /api/v1/twitter/web/fetch_community_members``
+        """
+        params = _drop_none({
+            "community_id": community_id,
+            "cursor": cursor,
+        })
+        return await self._client._request("GET", "/api/v1/twitter/web/fetch_community_members", params=params)
+
+    async def fetch_community_timeline(
+        self,
+        *,
+        community_id: str,
+        ranking: str | None = None,
+        cursor: str | None = None,
+    ) -> Any:
+        """获取社区帖子/Get community timeline
+
+        ``GET /api/v1/twitter/web/fetch_community_timeline``
+        """
+        params = _drop_none({
+            "community_id": community_id,
+            "ranking": ranking,
+            "cursor": cursor,
+        })
+        return await self._client._request("GET", "/api/v1/twitter/web/fetch_community_timeline", params=params)
+
+    async def fetch_search_communities(
+        self,
+        *,
+        keyword: str,
+        cursor: str | None = None,
+    ) -> Any:
+        """搜索社区/Search communities
+
+        ``GET /api/v1/twitter/web/fetch_search_communities``
+        """
+        params = _drop_none({
+            "keyword": keyword,
+            "cursor": cursor,
+        })
+        return await self._client._request("GET", "/api/v1/twitter/web/fetch_search_communities", params=params)
+
+    async def fetch_user_about(
+        self,
+        *,
+        screen_name: str,
+    ) -> Any:
+        """获取用户账号档案信息/Get user about profile
+
+        ``GET /api/v1/twitter/web/fetch_user_about``
+        """
+        params = _drop_none({
+            "screen_name": screen_name,
+        })
+        return await self._client._request("GET", "/api/v1/twitter/web/fetch_user_about", params=params)
+
+    async def fetch_user_affiliates(
+        self,
+        *,
+        screen_name: str,
+        cursor: str | None = None,
+    ) -> Any:
+        """获取用户关联子账号/Get user affiliates
+
+        ``GET /api/v1/twitter/web/fetch_user_affiliates``
+        """
+        params = _drop_none({
+            "screen_name": screen_name,
+            "cursor": cursor,
+        })
+        return await self._client._request("GET", "/api/v1/twitter/web/fetch_user_affiliates", params=params)
+
+    async def fetch_user_profiles_by_rest_ids(
+        self,
+        *,
+        rest_ids: str,
+    ) -> Any:
+        """批量根据用户ID获取用户资料/Get profiles by rest ids
+
+        ``GET /api/v1/twitter/web/fetch_user_profiles_by_rest_ids``
+        """
+        params = _drop_none({
+            "rest_ids": rest_ids,
+        })
+        return await self._client._request("GET", "/api/v1/twitter/web/fetch_user_profiles_by_rest_ids", params=params)
+
+    async def fetch_check_follow(
+        self,
+        *,
+        user_name: str,
+        follows: str,
+    ) -> Any:
+        """检查用户是否关注了另一个用户/Check follow
+
+        ``GET /api/v1/twitter/web/fetch_check_follow``
+        """
+        params = _drop_none({
+            "user_name": user_name,
+            "follows": follows,
+        })
+        return await self._client._request("GET", "/api/v1/twitter/web/fetch_check_follow", params=params)
+
+    async def fetch_check_retweet(
+        self,
+        *,
+        screen_name: str,
+        tweet_id: str,
+    ) -> Any:
+        """检查用户是否转推了某条推文/Check retweet
+
+        ``GET /api/v1/twitter/web/fetch_check_retweet``
+        """
+        params = _drop_none({
+            "screen_name": screen_name,
+            "tweet_id": tweet_id,
+        })
+        return await self._client._request("GET", "/api/v1/twitter/web/fetch_check_retweet", params=params)
+
+    async def fetch_list_timeline(
+        self,
+        *,
+        list_id: str,
+        cursor: str | None = None,
+    ) -> Any:
+        """获取列表帖子/Get list timeline
+
+        ``GET /api/v1/twitter/web/fetch_list_timeline``
+        """
+        params = _drop_none({
+            "list_id": list_id,
+            "cursor": cursor,
+        })
+        return await self._client._request("GET", "/api/v1/twitter/web/fetch_list_timeline", params=params)
+
+    async def fetch_list_members(
+        self,
+        *,
+        list_id: str,
+        cursor: str | None = None,
+    ) -> Any:
+        """获取列表成员/Get list members
+
+        ``GET /api/v1/twitter/web/fetch_list_members``
+        """
+        params = _drop_none({
+            "list_id": list_id,
+            "cursor": cursor,
+        })
+        return await self._client._request("GET", "/api/v1/twitter/web/fetch_list_members", params=params)
+
+    async def fetch_list_followers(
+        self,
+        *,
+        list_id: str,
+        cursor: str | None = None,
+    ) -> Any:
+        """获取列表关注者/Get list followers
+
+        ``GET /api/v1/twitter/web/fetch_list_followers``
+        """
+        params = _drop_none({
+            "list_id": list_id,
+            "cursor": cursor,
+        })
+        return await self._client._request("GET", "/api/v1/twitter/web/fetch_list_followers", params=params)
+
+    async def fetch_user_live_status(
+        self,
+        *,
+        rest_id: str,
+    ) -> Any:
+        """检查用户是否正在直播/Check user live status
+
+        ``GET /api/v1/twitter/web/fetch_user_live_status``
+        """
+        params = _drop_none({
+            "rest_id": rest_id,
+        })
+        return await self._client._request("GET", "/api/v1/twitter/web/fetch_user_live_status", params=params)

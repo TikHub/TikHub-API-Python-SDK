@@ -1,7 +1,7 @@
 """Example: TikTok-App-V3-API
 
 SDK attribute: ``client.tiktok_app_v3``
-Endpoints: 75
+Endpoints: 58
 
 Usage::
 
@@ -88,7 +88,7 @@ async def main():
 
         # GET /api/v1/tiktok/app/v3/fetch_user_post_videos
         # 获取用户主页作品数据 V1/Get user homepage video data V1
-        result = await client.tiktok_app_v3.fetch_user_post_videos(sec_user_id='MS4wLjABAAAAv7iSuuXDJGDvJkmH_vz1qkDZYo1apxgzaxdBSeIuPiM', unique_id='', max_cursor=0, count=20, sort_type=0)
+        result = await client.tiktok_app_v3.fetch_user_post_videos(sec_user_id='MS4wLjABAAAAv7iSuuXDJGDvJkmH_vz1qkDZYo1apxgzaxdBSeIuPiM', unique_id='', max_cursor=0, count=20, sort_type=0, region='US')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/tiktok/app/v3/fetch_user_post_videos_v2
@@ -163,12 +163,12 @@ async def main():
 
         # GET /api/v1/tiktok/app/v3/fetch_hashtag_detail
         # 获取指定话题的详情数据/Get details of specified hashtag
-        result = await client.tiktok_app_v3.fetch_hashtag_detail(ch_id='7551')
+        result = await client.tiktok_app_v3.fetch_hashtag_detail(ch_id='7551', region='US')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/tiktok/app/v3/fetch_hashtag_video_list
         # 获取指定话题的作品数据/Get video list of specified hashtag
-        result = await client.tiktok_app_v3.fetch_hashtag_video_list(ch_id='7551', cursor=0, count=10)
+        result = await client.tiktok_app_v3.fetch_hashtag_video_list(ch_id='7551', cursor=0, count=10, region='US')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/tiktok/app/v3/fetch_user_follower_list
@@ -246,89 +246,9 @@ async def main():
         result = await client.tiktok_app_v3.fetch_share_qr_code(object_id='6762244951259661318', schema_type=4)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
-        # GET /api/v1/tiktok/app/v3/fetch_product_search
-        # 获取商品搜索结果/Get product search results
-        result = await client.tiktok_app_v3.fetch_product_search(keyword='Cat Toy', cursor=0, count=12, sort_type=1, customer_review_four_star=False, have_discount=False, min_price='', max_price='')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
         # GET /api/v1/tiktok/app/v3/fetch_creator_info
         # 获取带货创作者信息/Get shopping creator information
         result = await client.tiktok_app_v3.fetch_creator_info(creator_uid='6555451606845243393')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/app/v3/fetch_creator_showcase_product_list
-        # 获取创作者橱窗商品列表/Get creator showcase product list
-        result = await client.tiktok_app_v3.fetch_creator_showcase_product_list(kol_id='MS4wLjABAAAARujvKaVWqgbVCwuxQghA99TUa5I-4g6jVzMXZd9FJIXSdJwJM47vm4-2T1K3gsux', count=20, next_scroll_param='')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/app/v3/fetch_shop_id_by_share_link
-        # 通过分享链接获取店铺ID/Get Shop ID by Share Link
-        result = await client.tiktok_app_v3.fetch_shop_id_by_share_link(share_link='https://vt.tiktok.com/ZT2AHoGsE/')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/app/v3/fetch_product_id_by_share_link
-        # 通过分享链接获取商品ID/Get Product ID by Share Link
-        result = await client.tiktok_app_v3.fetch_product_id_by_share_link(share_link='https://www.tiktok.com/t/ZT98v9dPs6aEC-qHWeW/')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/app/v3/fetch_product_detail
-        # 获取商品详情数据（即将弃用，使用 fetch_product_detail_v2 代替）/Get product detail data (will be deprecated, use fetch_
-        result = await client.tiktok_app_v3.fetch_product_detail(product_id='1729385239712731370')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/app/v3/fetch_product_detail_v2
-        # 获取商品详情数据V2/Get product detail data V2
-        result = await client.tiktok_app_v3.fetch_product_detail_v2(product_id='1729385239712731370')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/app/v3/fetch_product_detail_v3
-        # 获取商品详情数据V3 / Get product detail data V3
-        result = await client.tiktok_app_v3.fetch_product_detail_v3(product_id='1729385239712731370', region='US')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/app/v3/fetch_product_detail_v4
-        # 获取商品详情数据V4 / Get product detail data V4
-        result = await client.tiktok_app_v3.fetch_product_detail_v4(product_id='1729385239712731370', region='US')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/app/v3/fetch_product_review
-        # 获取商品评价数据/Get product review data
-        result = await client.tiktok_app_v3.fetch_product_review(product_id='1729448812983194615', cursor=0, size=10, filter_id=0, sort_type=0)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/app/v3/fetch_shop_home_page_list
-        # 获取商家主页Page列表数据/Get shop home page list data
-        result = await client.tiktok_app_v3.fetch_shop_home_page_list(seller_id='8646929864612614278')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/app/v3/fetch_shop_home
-        # 获取商家主页数据/Get shop home page data
-        result = await client.tiktok_app_v3.fetch_shop_home(page_id='7314705727611930410', seller_id='8646929864612614278')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/app/v3/fetch_shop_product_recommend
-        # 获取商家商品推荐数据/Get shop product recommend data
-        result = await client.tiktok_app_v3.fetch_shop_product_recommend(seller_id='8646929864612614278', scroll_param='', page_size=10)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/app/v3/fetch_shop_product_list
-        # 获取商家商品列表数据/Get shop product list data
-        result = await client.tiktok_app_v3.fetch_shop_product_list(seller_id='8646929864612614278', scroll_params='', page_size=10, sort_field=1, sort_order=0)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/app/v3/fetch_shop_product_list_v2
-        # 获取商家商品列表数据 V2/Get shop product list data V2
-        result = await client.tiktok_app_v3.fetch_shop_product_list_v2(seller_id='8646929864612614278', scroll_params='', page_size=10, sort_field=1, sort_order=0)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/app/v3/fetch_shop_info
-        # 获取商家信息数据/Get shop information data
-        result = await client.tiktok_app_v3.fetch_shop_info(shop_id='8646942781241463007')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/app/v3/fetch_shop_product_category
-        # 获取商家产品分类数据/Get shop product category data
-        result = await client.tiktok_app_v3.fetch_shop_product_category(seller_id='7495294980909468039')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/tiktok/app/v3/fetch_live_daily_rank
@@ -364,11 +284,6 @@ async def main():
         # GET /api/v1/tiktok/app/v3/fetch_live_room_product_list_v2
         # 获取直播间商品列表数据 V2 /Get live room product list data V2
         result = await client.tiktok_app_v3.fetch_live_room_product_list_v2(room_id='7420741353250507562', author_id='7408859677050274859', page_size=15, offset=0, region='US', cookie='')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/app/v3/add_video_play_count
-        # 根据视频ID来增加作品的播放数/Increase the number of plays of the work according to the video ID
-        result = await client.tiktok_app_v3.add_video_play_count(aweme_type=0, item_id='7419966340443819295')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # POST /api/v1/tiktok/app/v3/encrypt_decrypt_login_request

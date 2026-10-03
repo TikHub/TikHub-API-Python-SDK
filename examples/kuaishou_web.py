@@ -1,7 +1,7 @@
 """Example: Kuaishou-Web-API
 
 SDK attribute: ``client.kuaishou_web``
-Endpoints: 13
+Endpoints: 12
 
 Usage::
 
@@ -54,11 +54,6 @@ async def main():
         # GET /api/v1/kuaishou/web/fetch_user_info
         # 获取用户信息/Fetch user info
         result = await client.kuaishou_web.fetch_user_info(user_id='3xz63mn6fngqtiq')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/kuaishou/web/fetch_user_post
-        # 获取用户发布作品/Fetch user posts
-        result = await client.kuaishou_web.fetch_user_post(user_id='3xz63mn6fngqtiq')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/kuaishou/web/fetch_user_live_replay

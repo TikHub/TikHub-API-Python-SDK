@@ -5,7 +5,7 @@
 OpenAPI tag: ``TikTok-Ads-API``
 SDK attribute: ``client.tiktok_ads`` / ``async_client.tiktok_ads``
 
-Endpoints: 31
+Endpoints: 16
 """
 
 from __future__ import annotations
@@ -24,27 +24,41 @@ __all__ = ["AsyncTiktokAds", "TiktokAds"]
 
 
 class TiktokAds(SyncResource):
-    """Sync ``TikTok-Ads-API`` resource (31 endpoints)."""
+    """Sync ``TikTok-Ads-API`` resource (16 endpoints)."""
 
     def get_ads_detail(
         self,
         *,
         ads_id: str,
+        cookie: str | None = None,
     ) -> Any:
         """获取单个广告详情/Get single ad detail
 
-        ``GET /api/v1/tiktok/ads/get_ads_detail``
+        ``POST /api/v1/tiktok/ads/get_ads_detail``
         """
-        params = _drop_none({
+        json_body = _drop_none({
             "ads_id": ads_id,
+            "cookie": cookie,
         })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_ads_detail", params=params)
+        return self._client._request("POST", "/api/v1/tiktok/ads/get_ads_detail", json=json_body)
+
+    def get_top_ads_filters(
+        self,
+        *,
+        body: Any = None,
+    ) -> Any:
+        """获取热门广告筛选项/Get Top Ads filters
+
+        ``POST /api/v1/tiktok/ads/get_top_ads_filters``
+        """
+        json_body = body
+        return self._client._request("POST", "/api/v1/tiktok/ads/get_top_ads_filters", json=json_body)
 
     def search_ads(
         self,
         *,
-        objective: int | None = None,
-        like: int | None = None,
+        objective: Any | None = None,
+        like: Any | None = None,
         period: int | None = None,
         industry: str | None = None,
         keyword: str | None = None,
@@ -52,15 +66,18 @@ class TiktokAds(SyncResource):
         limit: int | None = None,
         order_by: str | None = None,
         country_code: str | None = None,
-        ad_format: int | None = None,
-        ad_language: str | None = None,
+        ad_format: Any | None = None,
+        ad_language: Any | None = None,
+        duration: Any | None = None,
+        pattern_label: Any | None = None,
         search_id: str | None = None,
+        cookie: str | None = None,
     ) -> Any:
         """搜索广告/Search ads
 
-        ``GET /api/v1/tiktok/ads/search_ads``
+        ``POST /api/v1/tiktok/ads/search_ads``
         """
-        params = _drop_none({
+        json_body = _drop_none({
             "objective": objective,
             "like": like,
             "period": period,
@@ -72,147 +89,12 @@ class TiktokAds(SyncResource):
             "country_code": country_code,
             "ad_format": ad_format,
             "ad_language": ad_language,
+            "duration": duration,
+            "pattern_label": pattern_label,
             "search_id": search_id,
+            "cookie": cookie,
         })
-        return self._client._request("GET", "/api/v1/tiktok/ads/search_ads", params=params)
-
-    def get_keyword_insights(
-        self,
-        *,
-        page: int | None = None,
-        limit: int | None = None,
-        period: int | None = None,
-        country_code: str | None = None,
-        order_by: str | None = None,
-        order_type: str | None = None,
-        industry: str | None = None,
-        objective: str | None = None,
-        keyword_type: str | None = None,
-        keyword: str | None = None,
-    ) -> Any:
-        """获取关键词洞察数据/Get keyword insights data
-
-        ``GET /api/v1/tiktok/ads/get_keyword_insights``
-        """
-        params = _drop_none({
-            "page": page,
-            "limit": limit,
-            "period": period,
-            "country_code": country_code,
-            "order_by": order_by,
-            "order_type": order_type,
-            "industry": industry,
-            "objective": objective,
-            "keyword_type": keyword_type,
-            "keyword": keyword,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_keyword_insights", params=params)
-
-    def get_top_products(
-        self,
-        *,
-        last: int | None = None,
-        page: int | None = None,
-        limit: int | None = None,
-        country_code: str | None = None,
-        first_ecom_category_id: str | None = None,
-        ecom_type: str | None = None,
-        period_type: str | None = None,
-        order_by: str | None = None,
-        order_type: str | None = None,
-    ) -> Any:
-        """获取热门产品列表/Get top products list
-
-        ``GET /api/v1/tiktok/ads/get_top_products``
-        """
-        params = _drop_none({
-            "last": last,
-            "page": page,
-            "limit": limit,
-            "country_code": country_code,
-            "first_ecom_category_id": first_ecom_category_id,
-            "ecom_type": ecom_type,
-            "period_type": period_type,
-            "order_by": order_by,
-            "order_type": order_type,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_top_products", params=params)
-
-    def get_hashtag_list(
-        self,
-        *,
-        page: int | None = None,
-        limit: int | None = None,
-        period: int | None = None,
-        country_code: str | None = None,
-        sort_by: str | None = None,
-        industry_id: str | None = None,
-        filter_by: str | None = None,
-    ) -> Any:
-        """获取热门标签列表/Get popular hashtags list
-
-        ``GET /api/v1/tiktok/ads/get_hashtag_list``
-        """
-        params = _drop_none({
-            "page": page,
-            "limit": limit,
-            "period": period,
-            "country_code": country_code,
-            "sort_by": sort_by,
-            "industry_id": industry_id,
-            "filter_by": filter_by,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_hashtag_list", params=params)
-
-    def get_sound_rank_list(
-        self,
-        *,
-        period: int | None = None,
-        page: int | None = None,
-        limit: int | None = None,
-        rank_type: str | None = None,
-        new_on_board: bool | None = None,
-        commercial_music: bool | None = None,
-        country_code: str | None = None,
-    ) -> Any:
-        """获取热门音乐排行榜/Get popular sound rankings
-
-        ``GET /api/v1/tiktok/ads/get_sound_rank_list``
-        """
-        params = _drop_none({
-            "period": period,
-            "page": page,
-            "limit": limit,
-            "rank_type": rank_type,
-            "new_on_board": new_on_board,
-            "commercial_music": commercial_music,
-            "country_code": country_code,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_sound_rank_list", params=params)
-
-    def get_keyword_list(
-        self,
-        *,
-        keyword: str | None = None,
-        period: int | None = None,
-        page: int | None = None,
-        limit: int | None = None,
-        country_code: str | None = None,
-        industry: str | None = None,
-    ) -> Any:
-        """获取关键词列表/Get keyword list
-
-        ``GET /api/v1/tiktok/ads/get_keyword_list``
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "period": period,
-            "page": page,
-            "limit": limit,
-            "country_code": country_code,
-            "industry": industry,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_keyword_list", params=params)
+        return self._client._request("POST", "/api/v1/tiktok/ads/search_ads", json=json_body)
 
     def get_top_ads_spotlight(
         self,
@@ -220,33 +102,37 @@ class TiktokAds(SyncResource):
         industry: str | None = None,
         page: int | None = None,
         limit: int | None = None,
+        cookie: str | None = None,
     ) -> Any:
         """获取热门广告聚光灯/Get top ads spotlight
 
-        ``GET /api/v1/tiktok/ads/get_top_ads_spotlight``
+        ``POST /api/v1/tiktok/ads/get_top_ads_spotlight``
         """
-        params = _drop_none({
+        json_body = _drop_none({
             "industry": industry,
             "page": page,
             "limit": limit,
+            "cookie": cookie,
         })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_top_ads_spotlight", params=params)
+        return self._client._request("POST", "/api/v1/tiktok/ads/get_top_ads_spotlight", json=json_body)
 
     def get_ad_keyframe_analysis(
         self,
         *,
         material_id: str,
         metric: str | None = None,
+        cookie: str | None = None,
     ) -> Any:
         """获取广告关键帧分析/Get ad keyframe analysis
 
-        ``GET /api/v1/tiktok/ads/get_ad_keyframe_analysis``
+        ``POST /api/v1/tiktok/ads/get_ad_keyframe_analysis``
         """
-        params = _drop_none({
+        json_body = _drop_none({
             "material_id": material_id,
             "metric": metric,
+            "cookie": cookie,
         })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_ad_keyframe_analysis", params=params)
+        return self._client._request("POST", "/api/v1/tiktok/ads/get_ad_keyframe_analysis", json=json_body)
 
     def get_ad_percentile(
         self,
@@ -254,17 +140,19 @@ class TiktokAds(SyncResource):
         material_id: str,
         metric: str | None = None,
         period_type: int | None = None,
+        cookie: str | None = None,
     ) -> Any:
         """获取广告百分位数据/Get ad percentile data
 
-        ``GET /api/v1/tiktok/ads/get_ad_percentile``
+        ``POST /api/v1/tiktok/ads/get_ad_percentile``
         """
-        params = _drop_none({
+        json_body = _drop_none({
             "material_id": material_id,
             "metric": metric,
             "period_type": period_type,
+            "cookie": cookie,
         })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_ad_percentile", params=params)
+        return self._client._request("POST", "/api/v1/tiktok/ads/get_ad_percentile", json=json_body)
 
     def get_ad_interactive_analysis(
         self,
@@ -272,17 +160,19 @@ class TiktokAds(SyncResource):
         material_id: str,
         metric_type: str | None = None,
         period_type: int | None = None,
+        cookie: str | None = None,
     ) -> Any:
         """获取广告互动分析/Get ad interactive analysis
 
-        ``GET /api/v1/tiktok/ads/get_ad_interactive_analysis``
+        ``POST /api/v1/tiktok/ads/get_ad_interactive_analysis``
         """
-        params = _drop_none({
+        json_body = _drop_none({
             "material_id": material_id,
             "metric_type": metric_type,
             "period_type": period_type,
+            "cookie": cookie,
         })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_ad_interactive_analysis", params=params)
+        return self._client._request("POST", "/api/v1/tiktok/ads/get_ad_interactive_analysis", json=json_body)
 
     def get_recommended_ads(
         self,
@@ -290,411 +180,219 @@ class TiktokAds(SyncResource):
         material_id: str,
         industry: str | None = None,
         country_code: str | None = None,
+        cookie: str | None = None,
     ) -> Any:
         """获取推荐广告/Get recommended ads
 
-        ``GET /api/v1/tiktok/ads/get_recommended_ads``
+        ``POST /api/v1/tiktok/ads/get_recommended_ads``
         """
-        params = _drop_none({
+        json_body = _drop_none({
             "material_id": material_id,
             "industry": industry,
             "country_code": country_code,
+            "cookie": cookie,
         })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_recommended_ads", params=params)
+        return self._client._request("POST", "/api/v1/tiktok/ads/get_recommended_ads", json=json_body)
 
     def get_query_suggestions(
         self,
         *,
+        query: str | None = None,
         count: int | None = None,
         scenario: int | None = None,
+        country_code: str | None = None,
+        cookie: str | None = None,
     ) -> Any:
         """获取查询建议/Get query suggestions
 
-        ``GET /api/v1/tiktok/ads/get_query_suggestions``
+        ``POST /api/v1/tiktok/ads/get_query_suggestions``
         """
-        params = _drop_none({
+        json_body = _drop_none({
+            "query": query,
             "count": count,
             "scenario": scenario,
+            "country_code": country_code,
+            "cookie": cookie,
         })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_query_suggestions", params=params)
+        return self._client._request("POST", "/api/v1/tiktok/ads/get_query_suggestions", json=json_body)
 
-    def get_keyword_filters(
-        self,
-    ) -> Any:
-        """获取关键词筛选器/Get keyword filters
-
-        ``GET /api/v1/tiktok/ads/get_keyword_filters``
-        """
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_keyword_filters")
-
-    def get_related_keywords(
+    def get_configure_safety(
         self,
         *,
-        keyword: str | None = None,
-        period: int | None = None,
+        body: Any = None,
+    ) -> Any:
+        """获取搜索板块配置/Get search modules config
+
+        ``POST /api/v1/tiktok/ads/get_configure_safety``
+        """
+        json_body = body
+        return self._client._request("POST", "/api/v1/tiktok/ads/get_configure_safety", json=json_body)
+
+    def get_location_list(
+        self,
+        *,
+        body: Any = None,
+    ) -> Any:
+        """获取支持的国家地区列表/Get supported location list
+
+        ``POST /api/v1/tiktok/ads/get_location_list``
+        """
+        json_body = body
+        return self._client._request("POST", "/api/v1/tiktok/ads/get_location_list", json=json_body)
+
+    def get_trends_hashtag_list(
+        self,
+        *,
+        time_range: int | None = None,
         country_code: str | None = None,
-        rank_type: str | None = None,
-        content_type: str | None = None,
         page: int | None = None,
         limit: int | None = None,
+        industry_id: int | None = None,
+        cookie: str | None = None,
     ) -> Any:
-        """获取相关关键词/Get related keywords
+        """获取热门标签榜单(趋势)/Get trending hashtag list
 
-        ``GET /api/v1/tiktok/ads/get_related_keywords``
+        ``POST /api/v1/tiktok/ads/get_trends_hashtag_list``
         """
-        params = _drop_none({
-            "keyword": keyword,
-            "period": period,
+        json_body = _drop_none({
+            "time_range": time_range,
             "country_code": country_code,
-            "rank_type": rank_type,
-            "content_type": content_type,
             "page": page,
             "limit": limit,
+            "industry_id": industry_id,
+            "cookie": cookie,
         })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_related_keywords", params=params)
+        return self._client._request("POST", "/api/v1/tiktok/ads/get_trends_hashtag_list", json=json_body)
 
-    def get_keyword_details(
+    def get_trends_hashtag_detail(
         self,
         *,
-        keyword: str | None = None,
+        hashtag_id: str,
+        time_range: int | None = None,
+        country_code: str | None = None,
+        cookie: str | None = None,
+    ) -> Any:
+        """获取热门标签详情(趋势)/Get trending hashtag detail
+
+        ``POST /api/v1/tiktok/ads/get_trends_hashtag_detail``
+        """
+        json_body = _drop_none({
+            "hashtag_id": hashtag_id,
+            "time_range": time_range,
+            "country_code": country_code,
+            "cookie": cookie,
+        })
+        return self._client._request("POST", "/api/v1/tiktok/ads/get_trends_hashtag_detail", json=json_body)
+
+    def get_top_contents_list(
+        self,
+        *,
+        period_end_timestamp: int,
+        period_dimension: int | None = None,
+        country_code: str | None = None,
+        content_label_ids: str | None = None,
+        order_by_metric: int | None = None,
+        organic_only: bool | None = None,
         page: int | None = None,
         limit: int | None = None,
-        period: int | None = None,
-        country_code: str | None = None,
-        order_by: str | None = None,
-        order_type: str | None = None,
-        industry: str | None = None,
-        objective: str | None = None,
-        keyword_type: str | None = None,
+        cookie: str | None = None,
     ) -> Any:
-        """获取关键词详细信息/Get keyword details
+        """获取热门视频榜单/Get top contents list
 
-        ``GET /api/v1/tiktok/ads/get_keyword_details``
+        ``POST /api/v1/tiktok/ads/get_top_contents_list``
         """
-        params = _drop_none({
-            "keyword": keyword,
+        json_body = _drop_none({
+            "period_end_timestamp": period_end_timestamp,
+            "period_dimension": period_dimension,
+            "country_code": country_code,
+            "content_label_ids": content_label_ids,
+            "order_by_metric": order_by_metric,
+            "organic_only": organic_only,
             "page": page,
             "limit": limit,
-            "period": period,
-            "country_code": country_code,
-            "order_by": order_by,
-            "order_type": order_type,
-            "industry": industry,
-            "objective": objective,
-            "keyword_type": keyword_type,
+            "cookie": cookie,
         })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_keyword_details", params=params)
+        return self._client._request("POST", "/api/v1/tiktok/ads/get_top_contents_list", json=json_body)
 
-    def get_creative_patterns(
+    def get_top_contents_item_detail(
         self,
         *,
-        first_industry_id: str | None = None,
-        period_type: str | None = None,
-        order_field: str | None = None,
-        order_type: str | None = None,
-        week: str | None = None,
-        page: int | None = None,
-        limit: int | None = None,
-    ) -> Any:
-        """获取创意模式排行榜/Get creative pattern rankings
-
-        ``GET /api/v1/tiktok/ads/get_creative_patterns``
-        """
-        params = _drop_none({
-            "first_industry_id": first_industry_id,
-            "period_type": period_type,
-            "order_field": order_field,
-            "order_type": order_type,
-            "week": week,
-            "page": page,
-            "limit": limit,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_creative_patterns", params=params)
-
-    def get_product_filters(
-        self,
-    ) -> Any:
-        """获取产品筛选器/Get product filters
-
-        ``GET /api/v1/tiktok/ads/get_product_filters``
-        """
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_product_filters")
-
-    def get_product_metrics(
-        self,
-        *,
-        id: str,
-        last: int | None = None,
-        metrics: str | None = None,
-        ecom_type: str | None = None,
-        period_type: str | None = None,
+        item_id: str,
+        period_end_timestamp: int,
+        period_dimension: int | None = None,
         country_code: str | None = None,
+        cookie: str | None = None,
     ) -> Any:
-        """获取产品指标数据/Get product metrics
+        """获取热门视频详情/Get top contents item detail
 
-        ``GET /api/v1/tiktok/ads/get_product_metrics``
+        ``POST /api/v1/tiktok/ads/get_top_contents_item_detail``
         """
-        params = _drop_none({
-            "id": id,
-            "last": last,
-            "metrics": metrics,
-            "ecom_type": ecom_type,
-            "period_type": period_type,
+        json_body = _drop_none({
+            "item_id": item_id,
+            "period_end_timestamp": period_end_timestamp,
+            "period_dimension": period_dimension,
             "country_code": country_code,
+            "cookie": cookie,
         })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_product_metrics", params=params)
+        return self._client._request("POST", "/api/v1/tiktok/ads/get_top_contents_item_detail", json=json_body)
 
-    def get_product_detail(
+    def get_creators_card(
         self,
         *,
-        id: str,
-        last: int | None = None,
-        ecom_type: str | None = None,
-        period_type: str | None = None,
-        country_code: str | None = None,
+        tt_uids: list[Any] | None = None,
+        need_loader_list: list[Any] | None = None,
+        creator_type: int | None = None,
+        cookie: str | None = None,
     ) -> Any:
-        """获取产品详细信息/Get product detail
+        """批量获取创作者卡片/Get creators card
 
-        ``GET /api/v1/tiktok/ads/get_product_detail``
+        ``POST /api/v1/tiktok/ads/get_creators_card``
         """
-        params = _drop_none({
-            "id": id,
-            "last": last,
-            "ecom_type": ecom_type,
-            "period_type": period_type,
-            "country_code": country_code,
+        json_body = _drop_none({
+            "tt_uids": tt_uids,
+            "need_loader_list": need_loader_list,
+            "creator_type": creator_type,
+            "cookie": cookie,
         })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_product_detail", params=params)
-
-    def get_hashtag_filters(
-        self,
-    ) -> Any:
-        """获取标签筛选器/Get hashtag filters
-
-        ``GET /api/v1/tiktok/ads/get_hashtag_filters``
-        """
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_hashtag_filters")
-
-    def get_hashtag_creator(
-        self,
-        *,
-        hashtag: str,
-    ) -> Any:
-        """获取标签创作者信息/Get hashtag creator info
-
-        ``GET /api/v1/tiktok/ads/get_hashtag_creator``
-        """
-        params = _drop_none({
-            "hashtag": hashtag,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_hashtag_creator", params=params)
-
-    def get_sound_filters(
-        self,
-        *,
-        rank_type: str | None = None,
-    ) -> Any:
-        """获取音乐筛选器/Get sound filters
-
-        ``GET /api/v1/tiktok/ads/get_sound_filters``
-        """
-        params = _drop_none({
-            "rank_type": rank_type,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_sound_filters", params=params)
-
-    def get_sound_detail(
-        self,
-        *,
-        clip_id: str,
-        period: int | None = None,
-        country_code: str | None = None,
-    ) -> Any:
-        """获取音乐详情/Get sound detail
-
-        ``GET /api/v1/tiktok/ads/get_sound_detail``
-        """
-        params = _drop_none({
-            "clip_id": clip_id,
-            "period": period,
-            "country_code": country_code,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_sound_detail", params=params)
-
-    def search_sound_hint(
-        self,
-        *,
-        keyword: str,
-        period: int | None = None,
-        page: int | None = None,
-        limit: int | None = None,
-        rank_type: str | None = None,
-        country_code: str | None = None,
-        filter_by_checked: bool | None = None,
-        commercial_music: bool | None = None,
-    ) -> Any:
-        """搜索音乐提示/Search sound hints
-
-        ``GET /api/v1/tiktok/ads/search_sound_hint``
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "period": period,
-            "page": page,
-            "limit": limit,
-            "rank_type": rank_type,
-            "country_code": country_code,
-            "filter_by_checked": filter_by_checked,
-            "commercial_music": commercial_music,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/ads/search_sound_hint", params=params)
-
-    def search_sound(
-        self,
-        *,
-        keyword: str,
-        period: int | None = None,
-        page: int | None = None,
-        limit: int | None = None,
-        rank_type: str | None = None,
-        new_on_board: bool | None = None,
-        commercial_music: bool | None = None,
-        country_code: str | None = None,
-    ) -> Any:
-        """搜索音乐/Search sounds
-
-        ``GET /api/v1/tiktok/ads/search_sound``
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "period": period,
-            "page": page,
-            "limit": limit,
-            "rank_type": rank_type,
-            "new_on_board": new_on_board,
-            "commercial_music": commercial_music,
-            "country_code": country_code,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/ads/search_sound", params=params)
-
-    def get_sound_recommendations(
-        self,
-        *,
-        clip_id: str,
-        limit: int | None = None,
-    ) -> Any:
-        """获取音乐推荐/Get sound recommendations
-
-        ``GET /api/v1/tiktok/ads/get_sound_recommendations``
-        """
-        params = _drop_none({
-            "clip_id": clip_id,
-            "limit": limit,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_sound_recommendations", params=params)
-
-    def get_creator_filters(
-        self,
-    ) -> Any:
-        """获取创作者筛选器/Get creator filters
-
-        ``GET /api/v1/tiktok/ads/get_creator_filters``
-        """
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_creator_filters")
-
-    def get_creator_list(
-        self,
-        *,
-        page: int | None = None,
-        limit: int | None = None,
-        sort_by: str | None = None,
-        creator_country: str | None = None,
-        audience_country: str | None = None,
-        audience_count: int | None = None,
-        keyword: str | None = None,
-    ) -> Any:
-        """获取创作者列表/Get creator list
-
-        ``GET /api/v1/tiktok/ads/get_creator_list``
-        """
-        params = _drop_none({
-            "page": page,
-            "limit": limit,
-            "sort_by": sort_by,
-            "creator_country": creator_country,
-            "audience_country": audience_country,
-            "audience_count": audience_count,
-            "keyword": keyword,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_creator_list", params=params)
-
-    def search_creators(
-        self,
-        *,
-        keyword: str,
-        page: int | None = None,
-        limit: int | None = None,
-        sort_by: str | None = None,
-        creator_country: str | None = None,
-    ) -> Any:
-        """搜索创作者/Search creators
-
-        ``GET /api/v1/tiktok/ads/search_creators``
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "page": page,
-            "limit": limit,
-            "sort_by": sort_by,
-            "creator_country": creator_country,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/ads/search_creators", params=params)
-
-    def get_popular_trends(
-        self,
-        *,
-        period: int | None = None,
-        page: int | None = None,
-        limit: int | None = None,
-        order_by: str | None = None,
-        country_code: str | None = None,
-    ) -> Any:
-        """获取流行趋势视频/Get popular trend videos
-
-        ``GET /api/v1/tiktok/ads/get_popular_trends``
-        """
-        params = _drop_none({
-            "period": period,
-            "page": page,
-            "limit": limit,
-            "order_by": order_by,
-            "country_code": country_code,
-        })
-        return self._client._request("GET", "/api/v1/tiktok/ads/get_popular_trends", params=params)
+        return self._client._request("POST", "/api/v1/tiktok/ads/get_creators_card", json=json_body)
 
 
 class AsyncTiktokAds(AsyncResource):
-    """Async ``TikTok-Ads-API`` resource (31 endpoints)."""
+    """Async ``TikTok-Ads-API`` resource (16 endpoints)."""
 
     async def get_ads_detail(
         self,
         *,
         ads_id: str,
+        cookie: str | None = None,
     ) -> Any:
         """获取单个广告详情/Get single ad detail
 
-        ``GET /api/v1/tiktok/ads/get_ads_detail``
+        ``POST /api/v1/tiktok/ads/get_ads_detail``
         """
-        params = _drop_none({
+        json_body = _drop_none({
             "ads_id": ads_id,
+            "cookie": cookie,
         })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_ads_detail", params=params)
+        return await self._client._request("POST", "/api/v1/tiktok/ads/get_ads_detail", json=json_body)
+
+    async def get_top_ads_filters(
+        self,
+        *,
+        body: Any = None,
+    ) -> Any:
+        """获取热门广告筛选项/Get Top Ads filters
+
+        ``POST /api/v1/tiktok/ads/get_top_ads_filters``
+        """
+        json_body = body
+        return await self._client._request("POST", "/api/v1/tiktok/ads/get_top_ads_filters", json=json_body)
 
     async def search_ads(
         self,
         *,
-        objective: int | None = None,
-        like: int | None = None,
+        objective: Any | None = None,
+        like: Any | None = None,
         period: int | None = None,
         industry: str | None = None,
         keyword: str | None = None,
@@ -702,15 +400,18 @@ class AsyncTiktokAds(AsyncResource):
         limit: int | None = None,
         order_by: str | None = None,
         country_code: str | None = None,
-        ad_format: int | None = None,
-        ad_language: str | None = None,
+        ad_format: Any | None = None,
+        ad_language: Any | None = None,
+        duration: Any | None = None,
+        pattern_label: Any | None = None,
         search_id: str | None = None,
+        cookie: str | None = None,
     ) -> Any:
         """搜索广告/Search ads
 
-        ``GET /api/v1/tiktok/ads/search_ads``
+        ``POST /api/v1/tiktok/ads/search_ads``
         """
-        params = _drop_none({
+        json_body = _drop_none({
             "objective": objective,
             "like": like,
             "period": period,
@@ -722,147 +423,12 @@ class AsyncTiktokAds(AsyncResource):
             "country_code": country_code,
             "ad_format": ad_format,
             "ad_language": ad_language,
+            "duration": duration,
+            "pattern_label": pattern_label,
             "search_id": search_id,
+            "cookie": cookie,
         })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/search_ads", params=params)
-
-    async def get_keyword_insights(
-        self,
-        *,
-        page: int | None = None,
-        limit: int | None = None,
-        period: int | None = None,
-        country_code: str | None = None,
-        order_by: str | None = None,
-        order_type: str | None = None,
-        industry: str | None = None,
-        objective: str | None = None,
-        keyword_type: str | None = None,
-        keyword: str | None = None,
-    ) -> Any:
-        """获取关键词洞察数据/Get keyword insights data
-
-        ``GET /api/v1/tiktok/ads/get_keyword_insights``
-        """
-        params = _drop_none({
-            "page": page,
-            "limit": limit,
-            "period": period,
-            "country_code": country_code,
-            "order_by": order_by,
-            "order_type": order_type,
-            "industry": industry,
-            "objective": objective,
-            "keyword_type": keyword_type,
-            "keyword": keyword,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_keyword_insights", params=params)
-
-    async def get_top_products(
-        self,
-        *,
-        last: int | None = None,
-        page: int | None = None,
-        limit: int | None = None,
-        country_code: str | None = None,
-        first_ecom_category_id: str | None = None,
-        ecom_type: str | None = None,
-        period_type: str | None = None,
-        order_by: str | None = None,
-        order_type: str | None = None,
-    ) -> Any:
-        """获取热门产品列表/Get top products list
-
-        ``GET /api/v1/tiktok/ads/get_top_products``
-        """
-        params = _drop_none({
-            "last": last,
-            "page": page,
-            "limit": limit,
-            "country_code": country_code,
-            "first_ecom_category_id": first_ecom_category_id,
-            "ecom_type": ecom_type,
-            "period_type": period_type,
-            "order_by": order_by,
-            "order_type": order_type,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_top_products", params=params)
-
-    async def get_hashtag_list(
-        self,
-        *,
-        page: int | None = None,
-        limit: int | None = None,
-        period: int | None = None,
-        country_code: str | None = None,
-        sort_by: str | None = None,
-        industry_id: str | None = None,
-        filter_by: str | None = None,
-    ) -> Any:
-        """获取热门标签列表/Get popular hashtags list
-
-        ``GET /api/v1/tiktok/ads/get_hashtag_list``
-        """
-        params = _drop_none({
-            "page": page,
-            "limit": limit,
-            "period": period,
-            "country_code": country_code,
-            "sort_by": sort_by,
-            "industry_id": industry_id,
-            "filter_by": filter_by,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_hashtag_list", params=params)
-
-    async def get_sound_rank_list(
-        self,
-        *,
-        period: int | None = None,
-        page: int | None = None,
-        limit: int | None = None,
-        rank_type: str | None = None,
-        new_on_board: bool | None = None,
-        commercial_music: bool | None = None,
-        country_code: str | None = None,
-    ) -> Any:
-        """获取热门音乐排行榜/Get popular sound rankings
-
-        ``GET /api/v1/tiktok/ads/get_sound_rank_list``
-        """
-        params = _drop_none({
-            "period": period,
-            "page": page,
-            "limit": limit,
-            "rank_type": rank_type,
-            "new_on_board": new_on_board,
-            "commercial_music": commercial_music,
-            "country_code": country_code,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_sound_rank_list", params=params)
-
-    async def get_keyword_list(
-        self,
-        *,
-        keyword: str | None = None,
-        period: int | None = None,
-        page: int | None = None,
-        limit: int | None = None,
-        country_code: str | None = None,
-        industry: str | None = None,
-    ) -> Any:
-        """获取关键词列表/Get keyword list
-
-        ``GET /api/v1/tiktok/ads/get_keyword_list``
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "period": period,
-            "page": page,
-            "limit": limit,
-            "country_code": country_code,
-            "industry": industry,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_keyword_list", params=params)
+        return await self._client._request("POST", "/api/v1/tiktok/ads/search_ads", json=json_body)
 
     async def get_top_ads_spotlight(
         self,
@@ -870,33 +436,37 @@ class AsyncTiktokAds(AsyncResource):
         industry: str | None = None,
         page: int | None = None,
         limit: int | None = None,
+        cookie: str | None = None,
     ) -> Any:
         """获取热门广告聚光灯/Get top ads spotlight
 
-        ``GET /api/v1/tiktok/ads/get_top_ads_spotlight``
+        ``POST /api/v1/tiktok/ads/get_top_ads_spotlight``
         """
-        params = _drop_none({
+        json_body = _drop_none({
             "industry": industry,
             "page": page,
             "limit": limit,
+            "cookie": cookie,
         })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_top_ads_spotlight", params=params)
+        return await self._client._request("POST", "/api/v1/tiktok/ads/get_top_ads_spotlight", json=json_body)
 
     async def get_ad_keyframe_analysis(
         self,
         *,
         material_id: str,
         metric: str | None = None,
+        cookie: str | None = None,
     ) -> Any:
         """获取广告关键帧分析/Get ad keyframe analysis
 
-        ``GET /api/v1/tiktok/ads/get_ad_keyframe_analysis``
+        ``POST /api/v1/tiktok/ads/get_ad_keyframe_analysis``
         """
-        params = _drop_none({
+        json_body = _drop_none({
             "material_id": material_id,
             "metric": metric,
+            "cookie": cookie,
         })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_ad_keyframe_analysis", params=params)
+        return await self._client._request("POST", "/api/v1/tiktok/ads/get_ad_keyframe_analysis", json=json_body)
 
     async def get_ad_percentile(
         self,
@@ -904,17 +474,19 @@ class AsyncTiktokAds(AsyncResource):
         material_id: str,
         metric: str | None = None,
         period_type: int | None = None,
+        cookie: str | None = None,
     ) -> Any:
         """获取广告百分位数据/Get ad percentile data
 
-        ``GET /api/v1/tiktok/ads/get_ad_percentile``
+        ``POST /api/v1/tiktok/ads/get_ad_percentile``
         """
-        params = _drop_none({
+        json_body = _drop_none({
             "material_id": material_id,
             "metric": metric,
             "period_type": period_type,
+            "cookie": cookie,
         })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_ad_percentile", params=params)
+        return await self._client._request("POST", "/api/v1/tiktok/ads/get_ad_percentile", json=json_body)
 
     async def get_ad_interactive_analysis(
         self,
@@ -922,17 +494,19 @@ class AsyncTiktokAds(AsyncResource):
         material_id: str,
         metric_type: str | None = None,
         period_type: int | None = None,
+        cookie: str | None = None,
     ) -> Any:
         """获取广告互动分析/Get ad interactive analysis
 
-        ``GET /api/v1/tiktok/ads/get_ad_interactive_analysis``
+        ``POST /api/v1/tiktok/ads/get_ad_interactive_analysis``
         """
-        params = _drop_none({
+        json_body = _drop_none({
             "material_id": material_id,
             "metric_type": metric_type,
             "period_type": period_type,
+            "cookie": cookie,
         })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_ad_interactive_analysis", params=params)
+        return await self._client._request("POST", "/api/v1/tiktok/ads/get_ad_interactive_analysis", json=json_body)
 
     async def get_recommended_ads(
         self,
@@ -940,384 +514,178 @@ class AsyncTiktokAds(AsyncResource):
         material_id: str,
         industry: str | None = None,
         country_code: str | None = None,
+        cookie: str | None = None,
     ) -> Any:
         """获取推荐广告/Get recommended ads
 
-        ``GET /api/v1/tiktok/ads/get_recommended_ads``
+        ``POST /api/v1/tiktok/ads/get_recommended_ads``
         """
-        params = _drop_none({
+        json_body = _drop_none({
             "material_id": material_id,
             "industry": industry,
             "country_code": country_code,
+            "cookie": cookie,
         })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_recommended_ads", params=params)
+        return await self._client._request("POST", "/api/v1/tiktok/ads/get_recommended_ads", json=json_body)
 
     async def get_query_suggestions(
         self,
         *,
+        query: str | None = None,
         count: int | None = None,
         scenario: int | None = None,
+        country_code: str | None = None,
+        cookie: str | None = None,
     ) -> Any:
         """获取查询建议/Get query suggestions
 
-        ``GET /api/v1/tiktok/ads/get_query_suggestions``
+        ``POST /api/v1/tiktok/ads/get_query_suggestions``
         """
-        params = _drop_none({
+        json_body = _drop_none({
+            "query": query,
             "count": count,
             "scenario": scenario,
+            "country_code": country_code,
+            "cookie": cookie,
         })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_query_suggestions", params=params)
+        return await self._client._request("POST", "/api/v1/tiktok/ads/get_query_suggestions", json=json_body)
 
-    async def get_keyword_filters(
-        self,
-    ) -> Any:
-        """获取关键词筛选器/Get keyword filters
-
-        ``GET /api/v1/tiktok/ads/get_keyword_filters``
-        """
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_keyword_filters")
-
-    async def get_related_keywords(
+    async def get_configure_safety(
         self,
         *,
-        keyword: str | None = None,
-        period: int | None = None,
+        body: Any = None,
+    ) -> Any:
+        """获取搜索板块配置/Get search modules config
+
+        ``POST /api/v1/tiktok/ads/get_configure_safety``
+        """
+        json_body = body
+        return await self._client._request("POST", "/api/v1/tiktok/ads/get_configure_safety", json=json_body)
+
+    async def get_location_list(
+        self,
+        *,
+        body: Any = None,
+    ) -> Any:
+        """获取支持的国家地区列表/Get supported location list
+
+        ``POST /api/v1/tiktok/ads/get_location_list``
+        """
+        json_body = body
+        return await self._client._request("POST", "/api/v1/tiktok/ads/get_location_list", json=json_body)
+
+    async def get_trends_hashtag_list(
+        self,
+        *,
+        time_range: int | None = None,
         country_code: str | None = None,
-        rank_type: str | None = None,
-        content_type: str | None = None,
         page: int | None = None,
         limit: int | None = None,
+        industry_id: int | None = None,
+        cookie: str | None = None,
     ) -> Any:
-        """获取相关关键词/Get related keywords
+        """获取热门标签榜单(趋势)/Get trending hashtag list
 
-        ``GET /api/v1/tiktok/ads/get_related_keywords``
+        ``POST /api/v1/tiktok/ads/get_trends_hashtag_list``
         """
-        params = _drop_none({
-            "keyword": keyword,
-            "period": period,
+        json_body = _drop_none({
+            "time_range": time_range,
             "country_code": country_code,
-            "rank_type": rank_type,
-            "content_type": content_type,
             "page": page,
             "limit": limit,
+            "industry_id": industry_id,
+            "cookie": cookie,
         })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_related_keywords", params=params)
+        return await self._client._request("POST", "/api/v1/tiktok/ads/get_trends_hashtag_list", json=json_body)
 
-    async def get_keyword_details(
+    async def get_trends_hashtag_detail(
         self,
         *,
-        keyword: str | None = None,
+        hashtag_id: str,
+        time_range: int | None = None,
+        country_code: str | None = None,
+        cookie: str | None = None,
+    ) -> Any:
+        """获取热门标签详情(趋势)/Get trending hashtag detail
+
+        ``POST /api/v1/tiktok/ads/get_trends_hashtag_detail``
+        """
+        json_body = _drop_none({
+            "hashtag_id": hashtag_id,
+            "time_range": time_range,
+            "country_code": country_code,
+            "cookie": cookie,
+        })
+        return await self._client._request("POST", "/api/v1/tiktok/ads/get_trends_hashtag_detail", json=json_body)
+
+    async def get_top_contents_list(
+        self,
+        *,
+        period_end_timestamp: int,
+        period_dimension: int | None = None,
+        country_code: str | None = None,
+        content_label_ids: str | None = None,
+        order_by_metric: int | None = None,
+        organic_only: bool | None = None,
         page: int | None = None,
         limit: int | None = None,
-        period: int | None = None,
-        country_code: str | None = None,
-        order_by: str | None = None,
-        order_type: str | None = None,
-        industry: str | None = None,
-        objective: str | None = None,
-        keyword_type: str | None = None,
+        cookie: str | None = None,
     ) -> Any:
-        """获取关键词详细信息/Get keyword details
+        """获取热门视频榜单/Get top contents list
 
-        ``GET /api/v1/tiktok/ads/get_keyword_details``
+        ``POST /api/v1/tiktok/ads/get_top_contents_list``
         """
-        params = _drop_none({
-            "keyword": keyword,
+        json_body = _drop_none({
+            "period_end_timestamp": period_end_timestamp,
+            "period_dimension": period_dimension,
+            "country_code": country_code,
+            "content_label_ids": content_label_ids,
+            "order_by_metric": order_by_metric,
+            "organic_only": organic_only,
             "page": page,
             "limit": limit,
-            "period": period,
-            "country_code": country_code,
-            "order_by": order_by,
-            "order_type": order_type,
-            "industry": industry,
-            "objective": objective,
-            "keyword_type": keyword_type,
+            "cookie": cookie,
         })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_keyword_details", params=params)
+        return await self._client._request("POST", "/api/v1/tiktok/ads/get_top_contents_list", json=json_body)
 
-    async def get_creative_patterns(
+    async def get_top_contents_item_detail(
         self,
         *,
-        first_industry_id: str | None = None,
-        period_type: str | None = None,
-        order_field: str | None = None,
-        order_type: str | None = None,
-        week: str | None = None,
-        page: int | None = None,
-        limit: int | None = None,
-    ) -> Any:
-        """获取创意模式排行榜/Get creative pattern rankings
-
-        ``GET /api/v1/tiktok/ads/get_creative_patterns``
-        """
-        params = _drop_none({
-            "first_industry_id": first_industry_id,
-            "period_type": period_type,
-            "order_field": order_field,
-            "order_type": order_type,
-            "week": week,
-            "page": page,
-            "limit": limit,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_creative_patterns", params=params)
-
-    async def get_product_filters(
-        self,
-    ) -> Any:
-        """获取产品筛选器/Get product filters
-
-        ``GET /api/v1/tiktok/ads/get_product_filters``
-        """
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_product_filters")
-
-    async def get_product_metrics(
-        self,
-        *,
-        id: str,
-        last: int | None = None,
-        metrics: str | None = None,
-        ecom_type: str | None = None,
-        period_type: str | None = None,
+        item_id: str,
+        period_end_timestamp: int,
+        period_dimension: int | None = None,
         country_code: str | None = None,
+        cookie: str | None = None,
     ) -> Any:
-        """获取产品指标数据/Get product metrics
+        """获取热门视频详情/Get top contents item detail
 
-        ``GET /api/v1/tiktok/ads/get_product_metrics``
+        ``POST /api/v1/tiktok/ads/get_top_contents_item_detail``
         """
-        params = _drop_none({
-            "id": id,
-            "last": last,
-            "metrics": metrics,
-            "ecom_type": ecom_type,
-            "period_type": period_type,
+        json_body = _drop_none({
+            "item_id": item_id,
+            "period_end_timestamp": period_end_timestamp,
+            "period_dimension": period_dimension,
             "country_code": country_code,
+            "cookie": cookie,
         })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_product_metrics", params=params)
+        return await self._client._request("POST", "/api/v1/tiktok/ads/get_top_contents_item_detail", json=json_body)
 
-    async def get_product_detail(
+    async def get_creators_card(
         self,
         *,
-        id: str,
-        last: int | None = None,
-        ecom_type: str | None = None,
-        period_type: str | None = None,
-        country_code: str | None = None,
+        tt_uids: list[Any] | None = None,
+        need_loader_list: list[Any] | None = None,
+        creator_type: int | None = None,
+        cookie: str | None = None,
     ) -> Any:
-        """获取产品详细信息/Get product detail
+        """批量获取创作者卡片/Get creators card
 
-        ``GET /api/v1/tiktok/ads/get_product_detail``
+        ``POST /api/v1/tiktok/ads/get_creators_card``
         """
-        params = _drop_none({
-            "id": id,
-            "last": last,
-            "ecom_type": ecom_type,
-            "period_type": period_type,
-            "country_code": country_code,
+        json_body = _drop_none({
+            "tt_uids": tt_uids,
+            "need_loader_list": need_loader_list,
+            "creator_type": creator_type,
+            "cookie": cookie,
         })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_product_detail", params=params)
-
-    async def get_hashtag_filters(
-        self,
-    ) -> Any:
-        """获取标签筛选器/Get hashtag filters
-
-        ``GET /api/v1/tiktok/ads/get_hashtag_filters``
-        """
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_hashtag_filters")
-
-    async def get_hashtag_creator(
-        self,
-        *,
-        hashtag: str,
-    ) -> Any:
-        """获取标签创作者信息/Get hashtag creator info
-
-        ``GET /api/v1/tiktok/ads/get_hashtag_creator``
-        """
-        params = _drop_none({
-            "hashtag": hashtag,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_hashtag_creator", params=params)
-
-    async def get_sound_filters(
-        self,
-        *,
-        rank_type: str | None = None,
-    ) -> Any:
-        """获取音乐筛选器/Get sound filters
-
-        ``GET /api/v1/tiktok/ads/get_sound_filters``
-        """
-        params = _drop_none({
-            "rank_type": rank_type,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_sound_filters", params=params)
-
-    async def get_sound_detail(
-        self,
-        *,
-        clip_id: str,
-        period: int | None = None,
-        country_code: str | None = None,
-    ) -> Any:
-        """获取音乐详情/Get sound detail
-
-        ``GET /api/v1/tiktok/ads/get_sound_detail``
-        """
-        params = _drop_none({
-            "clip_id": clip_id,
-            "period": period,
-            "country_code": country_code,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_sound_detail", params=params)
-
-    async def search_sound_hint(
-        self,
-        *,
-        keyword: str,
-        period: int | None = None,
-        page: int | None = None,
-        limit: int | None = None,
-        rank_type: str | None = None,
-        country_code: str | None = None,
-        filter_by_checked: bool | None = None,
-        commercial_music: bool | None = None,
-    ) -> Any:
-        """搜索音乐提示/Search sound hints
-
-        ``GET /api/v1/tiktok/ads/search_sound_hint``
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "period": period,
-            "page": page,
-            "limit": limit,
-            "rank_type": rank_type,
-            "country_code": country_code,
-            "filter_by_checked": filter_by_checked,
-            "commercial_music": commercial_music,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/search_sound_hint", params=params)
-
-    async def search_sound(
-        self,
-        *,
-        keyword: str,
-        period: int | None = None,
-        page: int | None = None,
-        limit: int | None = None,
-        rank_type: str | None = None,
-        new_on_board: bool | None = None,
-        commercial_music: bool | None = None,
-        country_code: str | None = None,
-    ) -> Any:
-        """搜索音乐/Search sounds
-
-        ``GET /api/v1/tiktok/ads/search_sound``
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "period": period,
-            "page": page,
-            "limit": limit,
-            "rank_type": rank_type,
-            "new_on_board": new_on_board,
-            "commercial_music": commercial_music,
-            "country_code": country_code,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/search_sound", params=params)
-
-    async def get_sound_recommendations(
-        self,
-        *,
-        clip_id: str,
-        limit: int | None = None,
-    ) -> Any:
-        """获取音乐推荐/Get sound recommendations
-
-        ``GET /api/v1/tiktok/ads/get_sound_recommendations``
-        """
-        params = _drop_none({
-            "clip_id": clip_id,
-            "limit": limit,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_sound_recommendations", params=params)
-
-    async def get_creator_filters(
-        self,
-    ) -> Any:
-        """获取创作者筛选器/Get creator filters
-
-        ``GET /api/v1/tiktok/ads/get_creator_filters``
-        """
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_creator_filters")
-
-    async def get_creator_list(
-        self,
-        *,
-        page: int | None = None,
-        limit: int | None = None,
-        sort_by: str | None = None,
-        creator_country: str | None = None,
-        audience_country: str | None = None,
-        audience_count: int | None = None,
-        keyword: str | None = None,
-    ) -> Any:
-        """获取创作者列表/Get creator list
-
-        ``GET /api/v1/tiktok/ads/get_creator_list``
-        """
-        params = _drop_none({
-            "page": page,
-            "limit": limit,
-            "sort_by": sort_by,
-            "creator_country": creator_country,
-            "audience_country": audience_country,
-            "audience_count": audience_count,
-            "keyword": keyword,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_creator_list", params=params)
-
-    async def search_creators(
-        self,
-        *,
-        keyword: str,
-        page: int | None = None,
-        limit: int | None = None,
-        sort_by: str | None = None,
-        creator_country: str | None = None,
-    ) -> Any:
-        """搜索创作者/Search creators
-
-        ``GET /api/v1/tiktok/ads/search_creators``
-        """
-        params = _drop_none({
-            "keyword": keyword,
-            "page": page,
-            "limit": limit,
-            "sort_by": sort_by,
-            "creator_country": creator_country,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/search_creators", params=params)
-
-    async def get_popular_trends(
-        self,
-        *,
-        period: int | None = None,
-        page: int | None = None,
-        limit: int | None = None,
-        order_by: str | None = None,
-        country_code: str | None = None,
-    ) -> Any:
-        """获取流行趋势视频/Get popular trend videos
-
-        ``GET /api/v1/tiktok/ads/get_popular_trends``
-        """
-        params = _drop_none({
-            "period": period,
-            "page": page,
-            "limit": limit,
-            "order_by": order_by,
-            "country_code": country_code,
-        })
-        return await self._client._request("GET", "/api/v1/tiktok/ads/get_popular_trends", params=params)
+        return await self._client._request("POST", "/api/v1/tiktok/ads/get_creators_card", json=json_body)

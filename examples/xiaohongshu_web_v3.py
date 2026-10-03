@@ -1,7 +1,7 @@
 """Example: Xiaohongshu-Web-V3-API
 
 SDK attribute: ``client.xiaohongshu_web_v3``
-Endpoints: 11
+Endpoints: 5
 
 Usage::
 
@@ -23,32 +23,7 @@ async def main():
 
         # GET /api/v1/xiaohongshu/web_v3/fetch_note_detail
         # 获取笔记详情/Fetch note detail
-        result = await client.xiaohongshu_web_v3.fetch_note_detail(note_id='697ee7f5000000001a0225c1', xsec_token='ABkR6BvFSbUES4IbFcbjZrtCRa3FSqpqsa1KjFLyurW8U=')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/xiaohongshu/web_v3/fetch_note_comments
-        # 获取笔记评论/Fetch note comments
-        result = await client.xiaohongshu_web_v3.fetch_note_comments(note_id='651ccaa9000000001f03d7f7', cursor='')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/xiaohongshu/web_v3/fetch_sub_comments
-        # 获取子评论/Fetch sub comments
-        result = await client.xiaohongshu_web_v3.fetch_sub_comments(note_id='673c894c0000000007033f92', root_comment_id='673ecdfc000000001503bf8b', num=10, cursor='')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/xiaohongshu/web_v3/fetch_search_notes
-        # 搜索笔记/Search notes
-        result = await client.xiaohongshu_web_v3.fetch_search_notes(keyword='口红', page=1, sort='general', note_type=0)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/xiaohongshu/web_v3/fetch_search_users
-        # 搜索用户/Search users
-        result = await client.xiaohongshu_web_v3.fetch_search_users(keyword='口红', page=1)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/xiaohongshu/web_v3/fetch_trending
-        # 获取热搜词/Fetch trending keywords
-        result = await client.xiaohongshu_web_v3.fetch_trending()
+        result = await client.xiaohongshu_web_v3.fetch_note_detail(note_id='6a2f423d000000001003cb36', xsec_token='ABtexB6bX5HgLD42SFrK1scGUmSO8YV5_isaLrDy9sLxQ=')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/xiaohongshu/web_v3/fetch_search_suggest
@@ -69,11 +44,6 @@ async def main():
         # GET /api/v1/xiaohongshu/web_v3/fetch_user_info
         # 获取用户信息/Fetch user info
         result = await client.xiaohongshu_web_v3.fetch_user_info(user_id='5e3a8ee700000000010070c6')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/xiaohongshu/web_v3/fetch_user_notes
-        # 获取用户笔记列表/Fetch user notes
-        result = await client.xiaohongshu_web_v3.fetch_user_notes(user_id='5e3a8ee700000000010070c6', cursor='', num=30)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

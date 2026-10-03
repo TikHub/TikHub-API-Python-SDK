@@ -5,7 +5,7 @@
 OpenAPI tag: ``Douyin-Xingtu-V2-API``
 SDK attribute: ``client.douyin_xingtu_v2`` / ``async_client.douyin_xingtu_v2``
 
-Endpoints: 21
+Endpoints: 50
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncDouyinXingtuV2", "DouyinXingtuV2"]
 
 
 class DouyinXingtuV2(SyncResource):
-    """Sync ``Douyin-Xingtu-V2-API`` resource (21 endpoints)."""
+    """Sync ``Douyin-Xingtu-V2-API`` resource (50 endpoints)."""
 
     def get_ranking_list_catalog(
         self,
@@ -50,7 +50,6 @@ class DouyinXingtuV2(SyncResource):
         version: str | None = None,
         period: int | None = None,
         date: str | None = None,
-        limit: int | None = None,
     ) -> Any:
         """获取星图达人商业榜数据/Get Ranking List Data
 
@@ -62,7 +61,6 @@ class DouyinXingtuV2(SyncResource):
             "version": version,
             "period": period,
             "date": date,
-            "limit": limit,
         })
         return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_ranking_list_data", params=params)
 
@@ -83,7 +81,6 @@ class DouyinXingtuV2(SyncResource):
         qualifier: str | None = None,
         period: int | None = None,
         date: str | None = None,
-        limit: int | None = None,
     ) -> Any:
         """获取短剧演员热榜/Get Playlet Actor Rank List
 
@@ -95,7 +92,6 @@ class DouyinXingtuV2(SyncResource):
             "qualifier": qualifier,
             "period": period,
             "date": date,
-            "limit": limit,
         })
         return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_playlet_actor_rank_list", params=params)
 
@@ -112,6 +108,236 @@ class DouyinXingtuV2(SyncResource):
             "market_scene": market_scene,
         })
         return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_market_fields", params=params)
+
+    def get_search_field_options(
+        self,
+        *,
+        platform_source: int | None = None,
+        task_category: int | None = None,
+    ) -> Any:
+        """获取达人广场筛选项取值/Get Search Field Options
+
+        ``GET /api/v1/douyin/xingtu_v2/get_search_field_options``
+        """
+        params = _drop_none({
+            "platform_source": platform_source,
+            "task_category": task_category,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_search_field_options", params=params)
+
+    def search_creator(
+        self,
+        *,
+        keyword: str | None = None,
+        seach_type: Any | None = None,
+        time_range_days: Any | None = None,
+        page: int | None = None,
+        sort_field: str | None = None,
+        sort_type: int | None = None,
+        task_category: int | None = None,
+        marketing_target: int | None = None,
+        first_industry_id: int | None = None,
+        author_list_id: Any | None = None,
+        price_type: Any | None = None,
+        price_min: Any | None = None,
+        price_max: Any | None = None,
+        tag: Any | None = None,
+        persona_tags: Any | None = None,
+        gender: Any | None = None,
+        fans_min: Any | None = None,
+        fans_max: Any | None = None,
+        expected_play_min: Any | None = None,
+        expected_play_max: Any | None = None,
+        cpm_min: Any | None = None,
+        cpm_max: Any | None = None,
+        cpe_min: Any | None = None,
+        cpe_max: Any | None = None,
+        interact_rate_min: Any | None = None,
+        interact_rate_max: Any | None = None,
+        play_over_rate_min: Any | None = None,
+        play_over_rate_max: Any | None = None,
+        burst_text_rate_min: Any | None = None,
+        burst_text_rate_max: Any | None = None,
+        extra_filter: Any | None = None,
+    ) -> Any:
+        """达人搜索/Search Creator
+
+        ``GET /api/v1/douyin/xingtu_v2/search_creator``
+        """
+        params = _drop_none({
+            "keyword": keyword,
+            "seach_type": seach_type,
+            "time_range_days": time_range_days,
+            "page": page,
+            "sort_field": sort_field,
+            "sort_type": sort_type,
+            "task_category": task_category,
+            "marketing_target": marketing_target,
+            "first_industry_id": first_industry_id,
+            "author_list_id": author_list_id,
+            "price_type": price_type,
+            "price_min": price_min,
+            "price_max": price_max,
+            "tag": tag,
+            "persona_tags": persona_tags,
+            "gender": gender,
+            "fans_min": fans_min,
+            "fans_max": fans_max,
+            "expected_play_min": expected_play_min,
+            "expected_play_max": expected_play_max,
+            "cpm_min": cpm_min,
+            "cpm_max": cpm_max,
+            "cpe_min": cpe_min,
+            "cpe_max": cpe_max,
+            "interact_rate_min": interact_rate_min,
+            "interact_rate_max": interact_rate_max,
+            "play_over_rate_min": play_over_rate_min,
+            "play_over_rate_max": play_over_rate_max,
+            "burst_text_rate_min": burst_text_rate_min,
+            "burst_text_rate_max": burst_text_rate_max,
+            "extra_filter": extra_filter,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/search_creator", params=params)
+
+    def search_anchor(
+        self,
+        *,
+        keyword: str,
+        page: int | None = None,
+        sort_field: str | None = None,
+        sort_type: int | None = None,
+        task_category: int | None = None,
+        marketing_target: int | None = None,
+        first_industry_id: Any | None = None,
+        author_list_id: Any | None = None,
+        price_type: Any | None = None,
+        price_min: Any | None = None,
+        price_max: Any | None = None,
+        tag: Any | None = None,
+        persona_tags: Any | None = None,
+        gender: Any | None = None,
+        fans_min: Any | None = None,
+        fans_max: Any | None = None,
+        expected_play_min: Any | None = None,
+        expected_play_max: Any | None = None,
+        cpm_min: Any | None = None,
+        cpm_max: Any | None = None,
+        cpe_min: Any | None = None,
+        cpe_max: Any | None = None,
+        interact_rate_min: Any | None = None,
+        interact_rate_max: Any | None = None,
+        play_over_rate_min: Any | None = None,
+        play_over_rate_max: Any | None = None,
+        burst_text_rate_min: Any | None = None,
+        burst_text_rate_max: Any | None = None,
+        extra_filter: Any | None = None,
+    ) -> Any:
+        """主播搜索/Search Anchor
+
+        ``GET /api/v1/douyin/xingtu_v2/search_anchor``
+        """
+        params = _drop_none({
+            "keyword": keyword,
+            "page": page,
+            "sort_field": sort_field,
+            "sort_type": sort_type,
+            "task_category": task_category,
+            "marketing_target": marketing_target,
+            "first_industry_id": first_industry_id,
+            "author_list_id": author_list_id,
+            "price_type": price_type,
+            "price_min": price_min,
+            "price_max": price_max,
+            "tag": tag,
+            "persona_tags": persona_tags,
+            "gender": gender,
+            "fans_min": fans_min,
+            "fans_max": fans_max,
+            "expected_play_min": expected_play_min,
+            "expected_play_max": expected_play_max,
+            "cpm_min": cpm_min,
+            "cpm_max": cpm_max,
+            "cpe_min": cpe_min,
+            "cpe_max": cpe_max,
+            "interact_rate_min": interact_rate_min,
+            "interact_rate_max": interact_rate_max,
+            "play_over_rate_min": play_over_rate_min,
+            "play_over_rate_max": play_over_rate_max,
+            "burst_text_rate_min": burst_text_rate_min,
+            "burst_text_rate_max": burst_text_rate_max,
+            "extra_filter": extra_filter,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/search_anchor", params=params)
+
+    def search_toutiao_creator(
+        self,
+        *,
+        keyword: str,
+        page: int | None = None,
+        sort_field: str | None = None,
+        sort_type: int | None = None,
+        task_category: int | None = None,
+        marketing_target: int | None = None,
+        first_industry_id: Any | None = None,
+        author_list_id: Any | None = None,
+        price_type: Any | None = None,
+        price_min: Any | None = None,
+        price_max: Any | None = None,
+        tag: Any | None = None,
+        persona_tags: Any | None = None,
+        gender: Any | None = None,
+        fans_min: Any | None = None,
+        fans_max: Any | None = None,
+        expected_play_min: Any | None = None,
+        expected_play_max: Any | None = None,
+        cpm_min: Any | None = None,
+        cpm_max: Any | None = None,
+        cpe_min: Any | None = None,
+        cpe_max: Any | None = None,
+        interact_rate_min: Any | None = None,
+        interact_rate_max: Any | None = None,
+        play_over_rate_min: Any | None = None,
+        play_over_rate_max: Any | None = None,
+        burst_text_rate_min: Any | None = None,
+        burst_text_rate_max: Any | None = None,
+        extra_filter: Any | None = None,
+    ) -> Any:
+        """头条创作者搜索/Search Toutiao Creator
+
+        ``GET /api/v1/douyin/xingtu_v2/search_toutiao_creator``
+        """
+        params = _drop_none({
+            "keyword": keyword,
+            "page": page,
+            "sort_field": sort_field,
+            "sort_type": sort_type,
+            "task_category": task_category,
+            "marketing_target": marketing_target,
+            "first_industry_id": first_industry_id,
+            "author_list_id": author_list_id,
+            "price_type": price_type,
+            "price_min": price_min,
+            "price_max": price_max,
+            "tag": tag,
+            "persona_tags": persona_tags,
+            "gender": gender,
+            "fans_min": fans_min,
+            "fans_max": fans_max,
+            "expected_play_min": expected_play_min,
+            "expected_play_max": expected_play_max,
+            "cpm_min": cpm_min,
+            "cpm_max": cpm_max,
+            "cpe_min": cpe_min,
+            "cpe_max": cpe_max,
+            "interact_rate_min": interact_rate_min,
+            "interact_rate_max": interact_rate_max,
+            "play_over_rate_min": play_over_rate_min,
+            "play_over_rate_max": play_over_rate_max,
+            "burst_text_rate_min": burst_text_rate_min,
+            "burst_text_rate_max": burst_text_rate_max,
+            "extra_filter": extra_filter,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/search_toutiao_creator", params=params)
 
     def get_author_base_info(
         self,
@@ -177,7 +403,6 @@ class DouyinXingtuV2(SyncResource):
         o_author_id: str,
         platform_source: int | None = None,
         platform_channel: int | None = None,
-        limit: int | None = None,
         only_assign: bool | None = None,
         flow_type: int | None = None,
     ) -> Any:
@@ -189,11 +414,86 @@ class DouyinXingtuV2(SyncResource):
             "o_author_id": o_author_id,
             "platform_source": platform_source,
             "platform_channel": platform_channel,
-            "limit": limit,
             "only_assign": only_assign,
             "flow_type": flow_type,
         })
         return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_show_items", params=params)
+
+    def get_author_homepage_videos(
+        self,
+        *,
+        o_author_id: str,
+        page: int | None = None,
+        is_star_item: Any | None = None,
+        start_time: Any | None = None,
+        end_time: Any | None = None,
+    ) -> Any:
+        """获取创作者主页作品列表/Get Author Homepage Videos
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_homepage_videos``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "page": page,
+            "is_star_item": is_star_item,
+            "start_time": start_time,
+            "end_time": end_time,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_homepage_videos", params=params)
+
+    def get_author_fans_distribution(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+    ) -> Any:
+        """获取创作者粉丝画像分布/Get Author Fans Distribution
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_fans_distribution``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_fans_distribution", params=params)
+
+    def get_author_touch_distribution(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+    ) -> Any:
+        """获取创作者视频触达分布/Get Author Touch Distribution
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_touch_distribution``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_touch_distribution", params=params)
+
+    def multi_get_author_info(
+        self,
+        *,
+        author_ids: list[Any],
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+    ) -> Any:
+        """批量获取创作者信息/Multi Get Author Info
+
+        ``POST /api/v1/douyin/xingtu_v2/multi_get_author_info``
+        """
+        json_body = _drop_none({
+            "author_ids": author_ids,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+        })
+        return self._client._request("POST", "/api/v1/douyin/xingtu_v2/multi_get_author_info", json=json_body)
 
     def get_author_hot_comment_tokens(
         self,
@@ -235,7 +535,6 @@ class DouyinXingtuV2(SyncResource):
         author_ids: list[Any],
         similar_type: str | None = None,
         page: int | None = None,
-        limit: int | None = None,
     ) -> Any:
         """获取相似创作者推荐/Get Recommend Similar Star Authors
 
@@ -245,7 +544,6 @@ class DouyinXingtuV2(SyncResource):
             "author_ids": author_ids,
             "similar_type": similar_type,
             "page": page,
-            "limit": limit,
         })
         return self._client._request("POST", "/api/v1/douyin/xingtu_v2/get_recommend_for_star_authors", json=json_body)
 
@@ -288,6 +586,108 @@ class DouyinXingtuV2(SyncResource):
             "range": range,
         })
         return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_spread_info", params=params)
+
+    def get_author_video_distribution(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+    ) -> Any:
+        """获取创作者视频内容分布/Get Author Video Distribution
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_video_distribution``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_video_distribution", params=params)
+
+    def get_author_spread_videos(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+    ) -> Any:
+        """获取创作者传播表现视频/Get Author Spread Videos
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_spread_videos``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_spread_videos", params=params)
+
+    def get_author_daily_link(
+        self,
+        *,
+        o_author_id: str,
+        link_type: int,
+        start_date: str,
+        end_date: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+        industry_id: int | None = None,
+    ) -> Any:
+        """获取创作者连接指标日趋势/Get Author Daily Link
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_daily_link``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "link_type": link_type,
+            "start_date": start_date,
+            "end_date": end_date,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+            "industry_id": industry_id,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_daily_link", params=params)
+
+    def get_author_daily_link_score(
+        self,
+        *,
+        o_author_id: str,
+        link_score_type: int,
+        start_date: str,
+        end_date: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+        industry_id: int | None = None,
+    ) -> Any:
+        """获取创作者连接指数日趋势/Get Author Daily Link Score
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_daily_link_score``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "link_score_type": link_score_type,
+            "start_date": start_date,
+            "end_date": end_date,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+            "industry_id": industry_id,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_daily_link_score", params=params)
+
+    def get_author_commerce_spread_info(
+        self,
+        *,
+        o_author_id: str,
+    ) -> Any:
+        """获取创作者性价比与效果预估/Get Author Commerce Spread Info
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_commerce_spread_info``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_commerce_spread_info", params=params)
 
     def get_user_profile_qrcode(
         self,
@@ -378,7 +778,6 @@ class DouyinXingtuV2(SyncResource):
         *,
         mcn_name: str | None = None,
         page: int | None = None,
-        limit: int | None = None,
         order_by: str | None = None,
     ) -> Any:
         """搜索MCN机构列表/Get Demander MCN List
@@ -388,14 +787,293 @@ class DouyinXingtuV2(SyncResource):
         params = _drop_none({
             "mcn_name": mcn_name,
             "page": page,
-            "limit": limit,
             "order_by": order_by,
         })
         return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_demander_mcn_list", params=params)
 
+    def get_xingtu_kolid_by_uid(
+        self,
+        *,
+        uid: str,
+    ) -> Any:
+        """抖音UID转星图达人ID/Get Xingtu Author ID by Douyin UID
+
+        ``GET /api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_uid``
+        """
+        params = _drop_none({
+            "uid": uid,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_uid", params=params)
+
+    def get_xingtu_kolid_by_sec_user_id(
+        self,
+        *,
+        sec_user_id: str,
+    ) -> Any:
+        """抖音sec_user_id转星图达人ID/Get Xingtu Author ID by Douyin sec_user_id
+
+        ``GET /api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_sec_user_id``
+        """
+        params = _drop_none({
+            "sec_user_id": sec_user_id,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_sec_user_id", params=params)
+
+    def get_xingtu_kolid_by_unique_id(
+        self,
+        *,
+        unique_id: str,
+    ) -> Any:
+        """抖音号转星图达人ID/Get Xingtu Author ID by Douyin unique_id
+
+        ``GET /api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_unique_id``
+        """
+        params = _drop_none({
+            "unique_id": unique_id,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_unique_id", params=params)
+
+    def get_author_audience_distribution(
+        self,
+        *,
+        o_author_id: str,
+        link_type: int,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+    ) -> Any:
+        """获取创作者受众画像分布/Get Author Audience Distribution
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_audience_distribution``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+            "link_type": link_type,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_audience_distribution", params=params)
+
+    def get_author_rec_videos_v2(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+    ) -> Any:
+        """获取创作者推荐视频/Get Author Recommended Videos V2
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_rec_videos_v2``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_rec_videos_v2", params=params)
+
+    def get_author_daily_fans(
+        self,
+        *,
+        author_id: str,
+        platform_source: int | None = None,
+        start_date: Any | None = None,
+        end_date: Any | None = None,
+        author_type: Any | None = None,
+    ) -> Any:
+        """获取创作者每日粉丝趋势/Get Author Daily Fans
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_daily_fans``
+        """
+        params = _drop_none({
+            "author_id": author_id,
+            "platform_source": platform_source,
+            "start_date": start_date,
+            "end_date": end_date,
+            "author_type": author_type,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_daily_fans", params=params)
+
+    def get_author_convert_ability(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+        industry_id: int | None = None,
+        time_range: int | None = None,
+    ) -> Any:
+        """获取创作者转化能力/Get Author Convert Ability
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_convert_ability``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+            "industry_id": industry_id,
+            "time_range": time_range,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_convert_ability", params=params)
+
+    def get_author_cp_info(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+    ) -> Any:
+        """获取创作者CP合作信息/Get Author CP Info
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_cp_info``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_cp_info", params=params)
+
+    def get_author_convert_videos_or_products(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+        detail_type: int | None = None,
+        industry_id: int | None = None,
+        time_range: int | None = None,
+        page: int | None = None,
+    ) -> Any:
+        """获取创作者转化视频/商品明细/Get Author Convert Videos or Products
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_convert_videos_or_products``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+            "detail_type": detail_type,
+            "industry_id": industry_id,
+            "time_range": time_range,
+            "page": page,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_convert_videos_or_products", params=params)
+
+    def get_author_link_info(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+        industy_tag: int | None = None,
+    ) -> Any:
+        """获取创作者星图连接指数/Get Author Link Info
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_link_info``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+            "industy_tag": industy_tag,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_link_info", params=params)
+
+    def get_item_play_count(
+        self,
+        *,
+        item_id: str,
+        platform_source: int | None = None,
+        need_cover_url: bool | None = None,
+    ) -> Any:
+        """获取单个视频播放量(含详情)/Get Item Play Count
+
+        ``GET /api/v1/douyin/xingtu_v2/get_item_play_count``
+        """
+        params = _drop_none({
+            "item_id": item_id,
+            "platform_source": platform_source,
+            "need_cover_url": need_cover_url,
+        })
+        return self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_item_play_count", params=params)
+
+    def multi_get_item_stats(
+        self,
+        *,
+        item_ids: list[Any],
+        platform_source: int | None = None,
+        need_cover_url: bool | None = None,
+    ) -> Any:
+        """批量获取视频数据(播放量/点赞等)/Multi Get Item Stats
+
+        ``POST /api/v1/douyin/xingtu_v2/multi_get_item_stats``
+        """
+        json_body = _drop_none({
+            "item_ids": item_ids,
+            "platform_source": platform_source,
+            "need_cover_url": need_cover_url,
+        })
+        return self._client._request("POST", "/api/v1/douyin/xingtu_v2/multi_get_item_stats", json=json_body)
+
+    def get_item_report_detail(
+        self,
+        *,
+        item_id: str,
+    ) -> Any:
+        """获取视频详情报告/Get Item Report Detail
+
+        ``POST /api/v1/douyin/xingtu_v2/get_item_report_detail``
+        """
+        json_body = _drop_none({
+            "item_id": item_id,
+        })
+        return self._client._request("POST", "/api/v1/douyin/xingtu_v2/get_item_report_detail", json=json_body)
+
+    def get_item_report_th_analysis(
+        self,
+        *,
+        item_id: str,
+    ) -> Any:
+        """获取视频互动分析/Get Item Report Interaction Analysis
+
+        ``POST /api/v1/douyin/xingtu_v2/get_item_report_th_analysis``
+        """
+        json_body = _drop_none({
+            "item_id": item_id,
+        })
+        return self._client._request("POST", "/api/v1/douyin/xingtu_v2/get_item_report_th_analysis", json=json_body)
+
+    def get_item_report_trend(
+        self,
+        *,
+        item_id: str,
+    ) -> Any:
+        """获取视频整体表现趋势/Get Item Report Trend
+
+        ``POST /api/v1/douyin/xingtu_v2/get_item_report_trend``
+        """
+        json_body = _drop_none({
+            "item_id": item_id,
+        })
+        return self._client._request("POST", "/api/v1/douyin/xingtu_v2/get_item_report_trend", json=json_body)
+
+    def get_item_report_comments(
+        self,
+        *,
+        item_id: str,
+    ) -> Any:
+        """获取视频评论分析/Get Item Report Comments
+
+        ``POST /api/v1/douyin/xingtu_v2/get_item_report_comments``
+        """
+        json_body = _drop_none({
+            "item_id": item_id,
+        })
+        return self._client._request("POST", "/api/v1/douyin/xingtu_v2/get_item_report_comments", json=json_body)
+
 
 class AsyncDouyinXingtuV2(AsyncResource):
-    """Async ``Douyin-Xingtu-V2-API`` resource (21 endpoints)."""
+    """Async ``Douyin-Xingtu-V2-API`` resource (50 endpoints)."""
 
     async def get_ranking_list_catalog(
         self,
@@ -421,7 +1099,6 @@ class AsyncDouyinXingtuV2(AsyncResource):
         version: str | None = None,
         period: int | None = None,
         date: str | None = None,
-        limit: int | None = None,
     ) -> Any:
         """获取星图达人商业榜数据/Get Ranking List Data
 
@@ -433,7 +1110,6 @@ class AsyncDouyinXingtuV2(AsyncResource):
             "version": version,
             "period": period,
             "date": date,
-            "limit": limit,
         })
         return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_ranking_list_data", params=params)
 
@@ -454,7 +1130,6 @@ class AsyncDouyinXingtuV2(AsyncResource):
         qualifier: str | None = None,
         period: int | None = None,
         date: str | None = None,
-        limit: int | None = None,
     ) -> Any:
         """获取短剧演员热榜/Get Playlet Actor Rank List
 
@@ -466,7 +1141,6 @@ class AsyncDouyinXingtuV2(AsyncResource):
             "qualifier": qualifier,
             "period": period,
             "date": date,
-            "limit": limit,
         })
         return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_playlet_actor_rank_list", params=params)
 
@@ -483,6 +1157,236 @@ class AsyncDouyinXingtuV2(AsyncResource):
             "market_scene": market_scene,
         })
         return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_market_fields", params=params)
+
+    async def get_search_field_options(
+        self,
+        *,
+        platform_source: int | None = None,
+        task_category: int | None = None,
+    ) -> Any:
+        """获取达人广场筛选项取值/Get Search Field Options
+
+        ``GET /api/v1/douyin/xingtu_v2/get_search_field_options``
+        """
+        params = _drop_none({
+            "platform_source": platform_source,
+            "task_category": task_category,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_search_field_options", params=params)
+
+    async def search_creator(
+        self,
+        *,
+        keyword: str | None = None,
+        seach_type: Any | None = None,
+        time_range_days: Any | None = None,
+        page: int | None = None,
+        sort_field: str | None = None,
+        sort_type: int | None = None,
+        task_category: int | None = None,
+        marketing_target: int | None = None,
+        first_industry_id: int | None = None,
+        author_list_id: Any | None = None,
+        price_type: Any | None = None,
+        price_min: Any | None = None,
+        price_max: Any | None = None,
+        tag: Any | None = None,
+        persona_tags: Any | None = None,
+        gender: Any | None = None,
+        fans_min: Any | None = None,
+        fans_max: Any | None = None,
+        expected_play_min: Any | None = None,
+        expected_play_max: Any | None = None,
+        cpm_min: Any | None = None,
+        cpm_max: Any | None = None,
+        cpe_min: Any | None = None,
+        cpe_max: Any | None = None,
+        interact_rate_min: Any | None = None,
+        interact_rate_max: Any | None = None,
+        play_over_rate_min: Any | None = None,
+        play_over_rate_max: Any | None = None,
+        burst_text_rate_min: Any | None = None,
+        burst_text_rate_max: Any | None = None,
+        extra_filter: Any | None = None,
+    ) -> Any:
+        """达人搜索/Search Creator
+
+        ``GET /api/v1/douyin/xingtu_v2/search_creator``
+        """
+        params = _drop_none({
+            "keyword": keyword,
+            "seach_type": seach_type,
+            "time_range_days": time_range_days,
+            "page": page,
+            "sort_field": sort_field,
+            "sort_type": sort_type,
+            "task_category": task_category,
+            "marketing_target": marketing_target,
+            "first_industry_id": first_industry_id,
+            "author_list_id": author_list_id,
+            "price_type": price_type,
+            "price_min": price_min,
+            "price_max": price_max,
+            "tag": tag,
+            "persona_tags": persona_tags,
+            "gender": gender,
+            "fans_min": fans_min,
+            "fans_max": fans_max,
+            "expected_play_min": expected_play_min,
+            "expected_play_max": expected_play_max,
+            "cpm_min": cpm_min,
+            "cpm_max": cpm_max,
+            "cpe_min": cpe_min,
+            "cpe_max": cpe_max,
+            "interact_rate_min": interact_rate_min,
+            "interact_rate_max": interact_rate_max,
+            "play_over_rate_min": play_over_rate_min,
+            "play_over_rate_max": play_over_rate_max,
+            "burst_text_rate_min": burst_text_rate_min,
+            "burst_text_rate_max": burst_text_rate_max,
+            "extra_filter": extra_filter,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/search_creator", params=params)
+
+    async def search_anchor(
+        self,
+        *,
+        keyword: str,
+        page: int | None = None,
+        sort_field: str | None = None,
+        sort_type: int | None = None,
+        task_category: int | None = None,
+        marketing_target: int | None = None,
+        first_industry_id: Any | None = None,
+        author_list_id: Any | None = None,
+        price_type: Any | None = None,
+        price_min: Any | None = None,
+        price_max: Any | None = None,
+        tag: Any | None = None,
+        persona_tags: Any | None = None,
+        gender: Any | None = None,
+        fans_min: Any | None = None,
+        fans_max: Any | None = None,
+        expected_play_min: Any | None = None,
+        expected_play_max: Any | None = None,
+        cpm_min: Any | None = None,
+        cpm_max: Any | None = None,
+        cpe_min: Any | None = None,
+        cpe_max: Any | None = None,
+        interact_rate_min: Any | None = None,
+        interact_rate_max: Any | None = None,
+        play_over_rate_min: Any | None = None,
+        play_over_rate_max: Any | None = None,
+        burst_text_rate_min: Any | None = None,
+        burst_text_rate_max: Any | None = None,
+        extra_filter: Any | None = None,
+    ) -> Any:
+        """主播搜索/Search Anchor
+
+        ``GET /api/v1/douyin/xingtu_v2/search_anchor``
+        """
+        params = _drop_none({
+            "keyword": keyword,
+            "page": page,
+            "sort_field": sort_field,
+            "sort_type": sort_type,
+            "task_category": task_category,
+            "marketing_target": marketing_target,
+            "first_industry_id": first_industry_id,
+            "author_list_id": author_list_id,
+            "price_type": price_type,
+            "price_min": price_min,
+            "price_max": price_max,
+            "tag": tag,
+            "persona_tags": persona_tags,
+            "gender": gender,
+            "fans_min": fans_min,
+            "fans_max": fans_max,
+            "expected_play_min": expected_play_min,
+            "expected_play_max": expected_play_max,
+            "cpm_min": cpm_min,
+            "cpm_max": cpm_max,
+            "cpe_min": cpe_min,
+            "cpe_max": cpe_max,
+            "interact_rate_min": interact_rate_min,
+            "interact_rate_max": interact_rate_max,
+            "play_over_rate_min": play_over_rate_min,
+            "play_over_rate_max": play_over_rate_max,
+            "burst_text_rate_min": burst_text_rate_min,
+            "burst_text_rate_max": burst_text_rate_max,
+            "extra_filter": extra_filter,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/search_anchor", params=params)
+
+    async def search_toutiao_creator(
+        self,
+        *,
+        keyword: str,
+        page: int | None = None,
+        sort_field: str | None = None,
+        sort_type: int | None = None,
+        task_category: int | None = None,
+        marketing_target: int | None = None,
+        first_industry_id: Any | None = None,
+        author_list_id: Any | None = None,
+        price_type: Any | None = None,
+        price_min: Any | None = None,
+        price_max: Any | None = None,
+        tag: Any | None = None,
+        persona_tags: Any | None = None,
+        gender: Any | None = None,
+        fans_min: Any | None = None,
+        fans_max: Any | None = None,
+        expected_play_min: Any | None = None,
+        expected_play_max: Any | None = None,
+        cpm_min: Any | None = None,
+        cpm_max: Any | None = None,
+        cpe_min: Any | None = None,
+        cpe_max: Any | None = None,
+        interact_rate_min: Any | None = None,
+        interact_rate_max: Any | None = None,
+        play_over_rate_min: Any | None = None,
+        play_over_rate_max: Any | None = None,
+        burst_text_rate_min: Any | None = None,
+        burst_text_rate_max: Any | None = None,
+        extra_filter: Any | None = None,
+    ) -> Any:
+        """头条创作者搜索/Search Toutiao Creator
+
+        ``GET /api/v1/douyin/xingtu_v2/search_toutiao_creator``
+        """
+        params = _drop_none({
+            "keyword": keyword,
+            "page": page,
+            "sort_field": sort_field,
+            "sort_type": sort_type,
+            "task_category": task_category,
+            "marketing_target": marketing_target,
+            "first_industry_id": first_industry_id,
+            "author_list_id": author_list_id,
+            "price_type": price_type,
+            "price_min": price_min,
+            "price_max": price_max,
+            "tag": tag,
+            "persona_tags": persona_tags,
+            "gender": gender,
+            "fans_min": fans_min,
+            "fans_max": fans_max,
+            "expected_play_min": expected_play_min,
+            "expected_play_max": expected_play_max,
+            "cpm_min": cpm_min,
+            "cpm_max": cpm_max,
+            "cpe_min": cpe_min,
+            "cpe_max": cpe_max,
+            "interact_rate_min": interact_rate_min,
+            "interact_rate_max": interact_rate_max,
+            "play_over_rate_min": play_over_rate_min,
+            "play_over_rate_max": play_over_rate_max,
+            "burst_text_rate_min": burst_text_rate_min,
+            "burst_text_rate_max": burst_text_rate_max,
+            "extra_filter": extra_filter,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/search_toutiao_creator", params=params)
 
     async def get_author_base_info(
         self,
@@ -548,7 +1452,6 @@ class AsyncDouyinXingtuV2(AsyncResource):
         o_author_id: str,
         platform_source: int | None = None,
         platform_channel: int | None = None,
-        limit: int | None = None,
         only_assign: bool | None = None,
         flow_type: int | None = None,
     ) -> Any:
@@ -560,11 +1463,86 @@ class AsyncDouyinXingtuV2(AsyncResource):
             "o_author_id": o_author_id,
             "platform_source": platform_source,
             "platform_channel": platform_channel,
-            "limit": limit,
             "only_assign": only_assign,
             "flow_type": flow_type,
         })
         return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_show_items", params=params)
+
+    async def get_author_homepage_videos(
+        self,
+        *,
+        o_author_id: str,
+        page: int | None = None,
+        is_star_item: Any | None = None,
+        start_time: Any | None = None,
+        end_time: Any | None = None,
+    ) -> Any:
+        """获取创作者主页作品列表/Get Author Homepage Videos
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_homepage_videos``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "page": page,
+            "is_star_item": is_star_item,
+            "start_time": start_time,
+            "end_time": end_time,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_homepage_videos", params=params)
+
+    async def get_author_fans_distribution(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+    ) -> Any:
+        """获取创作者粉丝画像分布/Get Author Fans Distribution
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_fans_distribution``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_fans_distribution", params=params)
+
+    async def get_author_touch_distribution(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+    ) -> Any:
+        """获取创作者视频触达分布/Get Author Touch Distribution
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_touch_distribution``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_touch_distribution", params=params)
+
+    async def multi_get_author_info(
+        self,
+        *,
+        author_ids: list[Any],
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+    ) -> Any:
+        """批量获取创作者信息/Multi Get Author Info
+
+        ``POST /api/v1/douyin/xingtu_v2/multi_get_author_info``
+        """
+        json_body = _drop_none({
+            "author_ids": author_ids,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+        })
+        return await self._client._request("POST", "/api/v1/douyin/xingtu_v2/multi_get_author_info", json=json_body)
 
     async def get_author_hot_comment_tokens(
         self,
@@ -606,7 +1584,6 @@ class AsyncDouyinXingtuV2(AsyncResource):
         author_ids: list[Any],
         similar_type: str | None = None,
         page: int | None = None,
-        limit: int | None = None,
     ) -> Any:
         """获取相似创作者推荐/Get Recommend Similar Star Authors
 
@@ -616,7 +1593,6 @@ class AsyncDouyinXingtuV2(AsyncResource):
             "author_ids": author_ids,
             "similar_type": similar_type,
             "page": page,
-            "limit": limit,
         })
         return await self._client._request("POST", "/api/v1/douyin/xingtu_v2/get_recommend_for_star_authors", json=json_body)
 
@@ -659,6 +1635,108 @@ class AsyncDouyinXingtuV2(AsyncResource):
             "range": range,
         })
         return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_spread_info", params=params)
+
+    async def get_author_video_distribution(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+    ) -> Any:
+        """获取创作者视频内容分布/Get Author Video Distribution
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_video_distribution``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_video_distribution", params=params)
+
+    async def get_author_spread_videos(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+    ) -> Any:
+        """获取创作者传播表现视频/Get Author Spread Videos
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_spread_videos``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_spread_videos", params=params)
+
+    async def get_author_daily_link(
+        self,
+        *,
+        o_author_id: str,
+        link_type: int,
+        start_date: str,
+        end_date: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+        industry_id: int | None = None,
+    ) -> Any:
+        """获取创作者连接指标日趋势/Get Author Daily Link
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_daily_link``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "link_type": link_type,
+            "start_date": start_date,
+            "end_date": end_date,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+            "industry_id": industry_id,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_daily_link", params=params)
+
+    async def get_author_daily_link_score(
+        self,
+        *,
+        o_author_id: str,
+        link_score_type: int,
+        start_date: str,
+        end_date: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+        industry_id: int | None = None,
+    ) -> Any:
+        """获取创作者连接指数日趋势/Get Author Daily Link Score
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_daily_link_score``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "link_score_type": link_score_type,
+            "start_date": start_date,
+            "end_date": end_date,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+            "industry_id": industry_id,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_daily_link_score", params=params)
+
+    async def get_author_commerce_spread_info(
+        self,
+        *,
+        o_author_id: str,
+    ) -> Any:
+        """获取创作者性价比与效果预估/Get Author Commerce Spread Info
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_commerce_spread_info``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_commerce_spread_info", params=params)
 
     async def get_user_profile_qrcode(
         self,
@@ -749,7 +1827,6 @@ class AsyncDouyinXingtuV2(AsyncResource):
         *,
         mcn_name: str | None = None,
         page: int | None = None,
-        limit: int | None = None,
         order_by: str | None = None,
     ) -> Any:
         """搜索MCN机构列表/Get Demander MCN List
@@ -759,7 +1836,286 @@ class AsyncDouyinXingtuV2(AsyncResource):
         params = _drop_none({
             "mcn_name": mcn_name,
             "page": page,
-            "limit": limit,
             "order_by": order_by,
         })
         return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_demander_mcn_list", params=params)
+
+    async def get_xingtu_kolid_by_uid(
+        self,
+        *,
+        uid: str,
+    ) -> Any:
+        """抖音UID转星图达人ID/Get Xingtu Author ID by Douyin UID
+
+        ``GET /api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_uid``
+        """
+        params = _drop_none({
+            "uid": uid,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_uid", params=params)
+
+    async def get_xingtu_kolid_by_sec_user_id(
+        self,
+        *,
+        sec_user_id: str,
+    ) -> Any:
+        """抖音sec_user_id转星图达人ID/Get Xingtu Author ID by Douyin sec_user_id
+
+        ``GET /api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_sec_user_id``
+        """
+        params = _drop_none({
+            "sec_user_id": sec_user_id,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_sec_user_id", params=params)
+
+    async def get_xingtu_kolid_by_unique_id(
+        self,
+        *,
+        unique_id: str,
+    ) -> Any:
+        """抖音号转星图达人ID/Get Xingtu Author ID by Douyin unique_id
+
+        ``GET /api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_unique_id``
+        """
+        params = _drop_none({
+            "unique_id": unique_id,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_xingtu_kolid_by_unique_id", params=params)
+
+    async def get_author_audience_distribution(
+        self,
+        *,
+        o_author_id: str,
+        link_type: int,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+    ) -> Any:
+        """获取创作者受众画像分布/Get Author Audience Distribution
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_audience_distribution``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+            "link_type": link_type,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_audience_distribution", params=params)
+
+    async def get_author_rec_videos_v2(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+    ) -> Any:
+        """获取创作者推荐视频/Get Author Recommended Videos V2
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_rec_videos_v2``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_rec_videos_v2", params=params)
+
+    async def get_author_daily_fans(
+        self,
+        *,
+        author_id: str,
+        platform_source: int | None = None,
+        start_date: Any | None = None,
+        end_date: Any | None = None,
+        author_type: Any | None = None,
+    ) -> Any:
+        """获取创作者每日粉丝趋势/Get Author Daily Fans
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_daily_fans``
+        """
+        params = _drop_none({
+            "author_id": author_id,
+            "platform_source": platform_source,
+            "start_date": start_date,
+            "end_date": end_date,
+            "author_type": author_type,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_daily_fans", params=params)
+
+    async def get_author_convert_ability(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+        industry_id: int | None = None,
+        time_range: int | None = None,
+    ) -> Any:
+        """获取创作者转化能力/Get Author Convert Ability
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_convert_ability``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+            "industry_id": industry_id,
+            "time_range": time_range,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_convert_ability", params=params)
+
+    async def get_author_cp_info(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+    ) -> Any:
+        """获取创作者CP合作信息/Get Author CP Info
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_cp_info``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_cp_info", params=params)
+
+    async def get_author_convert_videos_or_products(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+        detail_type: int | None = None,
+        industry_id: int | None = None,
+        time_range: int | None = None,
+        page: int | None = None,
+    ) -> Any:
+        """获取创作者转化视频/商品明细/Get Author Convert Videos or Products
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_convert_videos_or_products``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+            "detail_type": detail_type,
+            "industry_id": industry_id,
+            "time_range": time_range,
+            "page": page,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_convert_videos_or_products", params=params)
+
+    async def get_author_link_info(
+        self,
+        *,
+        o_author_id: str,
+        platform_source: int | None = None,
+        platform_channel: int | None = None,
+        industy_tag: int | None = None,
+    ) -> Any:
+        """获取创作者星图连接指数/Get Author Link Info
+
+        ``GET /api/v1/douyin/xingtu_v2/get_author_link_info``
+        """
+        params = _drop_none({
+            "o_author_id": o_author_id,
+            "platform_source": platform_source,
+            "platform_channel": platform_channel,
+            "industy_tag": industy_tag,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_author_link_info", params=params)
+
+    async def get_item_play_count(
+        self,
+        *,
+        item_id: str,
+        platform_source: int | None = None,
+        need_cover_url: bool | None = None,
+    ) -> Any:
+        """获取单个视频播放量(含详情)/Get Item Play Count
+
+        ``GET /api/v1/douyin/xingtu_v2/get_item_play_count``
+        """
+        params = _drop_none({
+            "item_id": item_id,
+            "platform_source": platform_source,
+            "need_cover_url": need_cover_url,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/xingtu_v2/get_item_play_count", params=params)
+
+    async def multi_get_item_stats(
+        self,
+        *,
+        item_ids: list[Any],
+        platform_source: int | None = None,
+        need_cover_url: bool | None = None,
+    ) -> Any:
+        """批量获取视频数据(播放量/点赞等)/Multi Get Item Stats
+
+        ``POST /api/v1/douyin/xingtu_v2/multi_get_item_stats``
+        """
+        json_body = _drop_none({
+            "item_ids": item_ids,
+            "platform_source": platform_source,
+            "need_cover_url": need_cover_url,
+        })
+        return await self._client._request("POST", "/api/v1/douyin/xingtu_v2/multi_get_item_stats", json=json_body)
+
+    async def get_item_report_detail(
+        self,
+        *,
+        item_id: str,
+    ) -> Any:
+        """获取视频详情报告/Get Item Report Detail
+
+        ``POST /api/v1/douyin/xingtu_v2/get_item_report_detail``
+        """
+        json_body = _drop_none({
+            "item_id": item_id,
+        })
+        return await self._client._request("POST", "/api/v1/douyin/xingtu_v2/get_item_report_detail", json=json_body)
+
+    async def get_item_report_th_analysis(
+        self,
+        *,
+        item_id: str,
+    ) -> Any:
+        """获取视频互动分析/Get Item Report Interaction Analysis
+
+        ``POST /api/v1/douyin/xingtu_v2/get_item_report_th_analysis``
+        """
+        json_body = _drop_none({
+            "item_id": item_id,
+        })
+        return await self._client._request("POST", "/api/v1/douyin/xingtu_v2/get_item_report_th_analysis", json=json_body)
+
+    async def get_item_report_trend(
+        self,
+        *,
+        item_id: str,
+    ) -> Any:
+        """获取视频整体表现趋势/Get Item Report Trend
+
+        ``POST /api/v1/douyin/xingtu_v2/get_item_report_trend``
+        """
+        json_body = _drop_none({
+            "item_id": item_id,
+        })
+        return await self._client._request("POST", "/api/v1/douyin/xingtu_v2/get_item_report_trend", json=json_body)
+
+    async def get_item_report_comments(
+        self,
+        *,
+        item_id: str,
+    ) -> Any:
+        """获取视频评论分析/Get Item Report Comments
+
+        ``POST /api/v1/douyin/xingtu_v2/get_item_report_comments``
+        """
+        json_body = _drop_none({
+            "item_id": item_id,
+        })
+        return await self._client._request("POST", "/api/v1/douyin/xingtu_v2/get_item_report_comments", json=json_body)

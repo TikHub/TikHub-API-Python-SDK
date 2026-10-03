@@ -1,7 +1,7 @@
 """Example: Douyin-Xingtu-API
 
 SDK attribute: ``client.douyin_xingtu``
-Endpoints: 22
+Endpoints: 23
 
 Usage::
 
@@ -129,6 +129,11 @@ async def main():
         # GET /api/v1/douyin/xingtu/author_content_hot_comment_keywords_v1
         # 获取kol热词分析内容V1/Get Author Content Hot Comment Keywords V1
         result = await client.douyin_xingtu.author_content_hot_comment_keywords_v1(kolId='7048929565493690398')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/xingtu/author_homepage_videos_v1
+        # 获取达人主页视频列表V1/Get Author Homepage Videos V1
+        result = await client.douyin_xingtu.author_homepage_videos_v1(oAuthorId='7386881810501730341', page=1, videoType='ALL', onlyAssign=False)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
 

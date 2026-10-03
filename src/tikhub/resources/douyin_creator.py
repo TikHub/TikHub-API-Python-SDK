@@ -5,7 +5,7 @@
 OpenAPI tag: ``Douyin-Creator-API``
 SDK attribute: ``client.douyin_creator`` / ``async_client.douyin_creator``
 
-Endpoints: 16
+Endpoints: 17
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncDouyinCreator", "DouyinCreator"]
 
 
 class DouyinCreator(SyncResource):
-    """Sync ``Douyin-Creator-API`` resource (16 endpoints)."""
+    """Sync ``Douyin-Creator-API`` resource (17 endpoints)."""
 
     def fetch_creator_activity_list(
         self,
@@ -82,6 +82,26 @@ class DouyinCreator(SyncResource):
             "time_filter": time_filter,
         })
         return self._client._request("GET", "/api/v1/douyin/creator/fetch_creator_material_center_billboard", params=params)
+
+    def fetch_creator_material_center_related(
+        self,
+        *,
+        query_id: str,
+        billboard_type: int | None = None,
+        limit: int | None = None,
+        offset: int | None = None,
+    ) -> Any:
+        """获取话题/热点相关视频/Get topic or hot spot related videos
+
+        ``GET /api/v1/douyin/creator/fetch_creator_material_center_related``
+        """
+        params = _drop_none({
+            "query_id": query_id,
+            "billboard_type": billboard_type,
+            "limit": limit,
+            "offset": offset,
+        })
+        return self._client._request("GET", "/api/v1/douyin/creator/fetch_creator_material_center_related", params=params)
 
     def fetch_creator_hot_spot_billboard(
         self,
@@ -296,7 +316,7 @@ class DouyinCreator(SyncResource):
 
 
 class AsyncDouyinCreator(AsyncResource):
-    """Async ``Douyin-Creator-API`` resource (16 endpoints)."""
+    """Async ``Douyin-Creator-API`` resource (17 endpoints)."""
 
     async def fetch_creator_activity_list(
         self,
@@ -354,6 +374,26 @@ class AsyncDouyinCreator(AsyncResource):
             "time_filter": time_filter,
         })
         return await self._client._request("GET", "/api/v1/douyin/creator/fetch_creator_material_center_billboard", params=params)
+
+    async def fetch_creator_material_center_related(
+        self,
+        *,
+        query_id: str,
+        billboard_type: int | None = None,
+        limit: int | None = None,
+        offset: int | None = None,
+    ) -> Any:
+        """获取话题/热点相关视频/Get topic or hot spot related videos
+
+        ``GET /api/v1/douyin/creator/fetch_creator_material_center_related``
+        """
+        params = _drop_none({
+            "query_id": query_id,
+            "billboard_type": billboard_type,
+            "limit": limit,
+            "offset": offset,
+        })
+        return await self._client._request("GET", "/api/v1/douyin/creator/fetch_creator_material_center_related", params=params)
 
     async def fetch_creator_hot_spot_billboard(
         self,

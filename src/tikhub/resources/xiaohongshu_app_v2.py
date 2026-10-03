@@ -5,7 +5,7 @@
 OpenAPI tag: ``Xiaohongshu-App-V2-API``
 SDK attribute: ``client.xiaohongshu_app_v2`` / ``async_client.xiaohongshu_app_v2``
 
-Endpoints: 21
+Endpoints: 20
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncXiaohongshuAppV2", "XiaohongshuAppV2"]
 
 
 class XiaohongshuAppV2(SyncResource):
-    """Sync ``Xiaohongshu-App-V2-API`` resource (21 endpoints)."""
+    """Sync ``Xiaohongshu-App-V2-API`` resource (20 endpoints)."""
 
     def get_image_note_detail(
         self,
@@ -57,22 +57,6 @@ class XiaohongshuAppV2(SyncResource):
             "share_text": share_text,
         })
         return self._client._request("GET", "/api/v1/xiaohongshu/app_v2/get_video_note_detail", params=params)
-
-    def get_mixed_note_detail(
-        self,
-        *,
-        note_id: str | None = None,
-        share_text: str | None = None,
-    ) -> Any:
-        """获取首页推荐流笔记详情/Get mixed note detail from feed
-
-        ``GET /api/v1/xiaohongshu/app_v2/get_mixed_note_detail``
-        """
-        params = _drop_none({
-            "note_id": note_id,
-            "share_text": share_text,
-        })
-        return self._client._request("GET", "/api/v1/xiaohongshu/app_v2/get_mixed_note_detail", params=params)
 
     def get_note_comments(
         self,
@@ -442,7 +426,7 @@ class XiaohongshuAppV2(SyncResource):
 
 
 class AsyncXiaohongshuAppV2(AsyncResource):
-    """Async ``Xiaohongshu-App-V2-API`` resource (21 endpoints)."""
+    """Async ``Xiaohongshu-App-V2-API`` resource (20 endpoints)."""
 
     async def get_image_note_detail(
         self,
@@ -475,22 +459,6 @@ class AsyncXiaohongshuAppV2(AsyncResource):
             "share_text": share_text,
         })
         return await self._client._request("GET", "/api/v1/xiaohongshu/app_v2/get_video_note_detail", params=params)
-
-    async def get_mixed_note_detail(
-        self,
-        *,
-        note_id: str | None = None,
-        share_text: str | None = None,
-    ) -> Any:
-        """获取首页推荐流笔记详情/Get mixed note detail from feed
-
-        ``GET /api/v1/xiaohongshu/app_v2/get_mixed_note_detail``
-        """
-        params = _drop_none({
-            "note_id": note_id,
-            "share_text": share_text,
-        })
-        return await self._client._request("GET", "/api/v1/xiaohongshu/app_v2/get_mixed_note_detail", params=params)
 
     async def get_note_comments(
         self,

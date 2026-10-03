@@ -1,7 +1,7 @@
 """Example: TikTok-Web-API
 
 SDK attribute: ``client.tiktok_web``
-Endpoints: 59
+Endpoints: 58
 
 Usage::
 
@@ -23,22 +23,22 @@ async def main():
 
         # GET /api/v1/tiktok/web/fetch_post_detail
         # 获取单个作品数据/Get single video data
-        result = await client.tiktok_web.fetch_post_detail(itemId='7339393672959757570')
+        result = await client.tiktok_web.fetch_post_detail(itemId='7339393672959757570', region='US')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/tiktok/web/fetch_post_detail_v2
         # 获取单个作品数据 V2/Get single video data V2
-        result = await client.tiktok_web.fetch_post_detail_v2(itemId='7339393672959757570')
+        result = await client.tiktok_web.fetch_post_detail_v2(itemId='7339393672959757570', region='US')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/tiktok/web/fetch_post_ai_article
+        # 获取单个作品的AI长文内容/Get AI-generated article of a single video
+        result = await client.tiktok_web.fetch_post_ai_article(itemId='7651935877744168194')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/tiktok/web/fetch_explore_post
         # 获取探索作品数据/Get explore video data
         result = await client.tiktok_web.fetch_explore_post(categoryType='120', count=16)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/web/fetch_trending_post
-        # 获取每日热门内容作品数据/Get daily trending video data
-        result = await client.tiktok_web.fetch_trending_post()
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/tiktok/web/fetch_trending_searchwords
@@ -53,7 +53,7 @@ async def main():
 
         # GET /api/v1/tiktok/web/fetch_user_post
         # 获取用户的作品列表/Get user posts
-        result = await client.tiktok_web.fetch_user_post(secUid='MS4wLjABAAAAv7iSuuXDJGDvJkmH_vz1qkDZYo1apxgzaxdBSeIuPiM', cursor=0, count=20, coverFormat=2, post_item_list_request_type=0)
+        result = await client.tiktok_web.fetch_user_post(secUid='MS4wLjABAAAAv7iSuuXDJGDvJkmH_vz1qkDZYo1apxgzaxdBSeIuPiM', cursor=0, count=15, coverFormat=2, post_item_list_request_type=0)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/tiktok/web/fetch_user_repost
@@ -148,7 +148,7 @@ async def main():
 
         # POST /api/v1/tiktok/web/fetch_home_feed
         # 首页推荐作品/Home Feed
-        result = await client.tiktok_web.fetch_home_feed(count=15)
+        result = await client.tiktok_web.fetch_home_feed(count=15, region='US')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/tiktok/web/generate_real_msToken
@@ -243,7 +243,12 @@ async def main():
 
         # GET /api/v1/tiktok/web/fetch_live_im_fetch
         # TikTok直播间弹幕参数获取/tiktok live room danmaku parameters
-        result = await client.tiktok_web.fetch_live_im_fetch(room_id='7382517534467115826', user_unique_id='7382524529011246630')
+        result = await client.tiktok_web.fetch_live_im_fetch(room_id='7382517534467115826', user_unique_id='7382524529011246630', resp_content_type='protobuf')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/tiktok/web/generate_wss_xb_signature
+        # 生成TikTok WSS X-Bogus签名/Generate TikTok WSS X-Bogus signature
+        result = await client.tiktok_web.generate_wss_xb_signature(user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/tiktok/web/get_live_room_id
@@ -271,24 +276,14 @@ async def main():
         result = await client.tiktok_web.fetch_live_recommend(related_live_tag='VALORANT')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
+        # GET /api/v1/tiktok/web/fetch_live_recommend_tabs
+        # 获取直播间首页推荐可用标签/Get available tags for live room homepage recommendation
+        result = await client.tiktok_web.fetch_live_recommend_tabs(logid='')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
         # GET /api/v1/tiktok/web/fetch_live_gift_list
         # 获取直播间礼物列表/Get live room gift list
         result = await client.tiktok_web.fetch_live_gift_list(room_id='7381444193462078214')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/web/fetch_sso_login_qrcode
-        # 获取SSO登录二维码/Get SSO login QR code
-        result = await client.tiktok_web.fetch_sso_login_qrcode(device_id='7481276116461831688', region='US', proxy='None')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/web/fetch_sso_login_status
-        # 获取SSO登录状态/Get SSO login status
-        result = await client.tiktok_web.fetch_sso_login_status(token='jiHRabSoJdwNrsvJvlRKj4hecTstR2xsn2NmtmKMN8o=_useast5', device_id='7481276116461831688', verifyFp='verify_m8909xlr_d7UEdRqf_mA73_4So4_B0RT_L1gFyzsKr7IL', region='US', proxy='None')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/tiktok/web/fetch_sso_login_auth
-        # 认证SSO登录/Authenticate SSO login
-        result = await client.tiktok_web.fetch_sso_login_auth(device_id='7481276116461831688', verifyFp='verify_m8909xlr_d7UEdRqf_mA73_4So4_B0RT_L1gFyzsKr7IL', region='US', proxy='None')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/tiktok/web/generate_hashed_id

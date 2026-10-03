@@ -56,30 +56,28 @@ def _async_capture_handler() -> tuple[list[httpx.Request], httpx.MockTransport]:
         "douyin_creator_v2",
         "douyin_xingtu",
         "douyin_xingtu_v2",
+        "douyin_douplus",
         "tiktok_web",
         "tiktok_app_v3",
         "tiktok_creator",
         "tiktok_analytics",
         "tiktok_ads",
         "tiktok_shop_web",
-        "tiktok_interaction",
-        "xiaohongshu_web",
-        "xiaohongshu_web_v2",
         "xiaohongshu_web_v3",
-        "xiaohongshu_app",
         "xiaohongshu_app_v2",
+        "xiaohongshu_pgy",
         "lemon8_app",
         "bilibili_web",
         "bilibili_app",
-        "sora2",
+        "bilibili_huahuo",
         "kuaishou_web",
         "kuaishou_app",
         "pipixia_app",
-        "weibo_web",
         "weibo_web_v2",
         "weibo_app",
-        "wechat_channels",
-        "wechat_media_platform_web",
+        "wechat_channels_v2",
+        "wechat_media_platform_v2",
+        "wechat_search_v2",
         "instagram_v1",
         "instagram_v2",
         "instagram_v3",
@@ -88,7 +86,8 @@ def _async_capture_handler() -> tuple[list[httpx.Request], httpx.MockTransport]:
         "twitter_web",
         "threads_web",
         "reddit_app",
-        "linkedin_web",
+        "linkedin_web_v2",
+        "telegram_web",
         "zhihu_web",
         "toutiao_web",
         "toutiao_app",
@@ -96,7 +95,6 @@ def _async_capture_handler() -> tuple[list[httpx.Request], httpx.MockTransport]:
         "hybrid_parsing",
         "tikhub_user",
         "tikhub_downloader",
-        "temp_mail",
         "ios_shortcut",
         "health_check",
         "demo",
@@ -108,8 +106,24 @@ def test_resource_attribute_present(attr: str):
         assert hasattr(client, attr), f"Missing resource: {attr}"
 
 
+def _spec_endpoint_count() -> int:
+    """Count unique non-deprecated ``(method, path)`` endpoints in the committed spec."""
+    import json
+    from pathlib import Path
+
+    spec_path = Path(__file__).resolve().parents[2] / "spec" / "openapi.json"
+    spec = json.loads(spec_path.read_text())
+    endpoints: set[tuple[str, str]] = set()
+    for path, methods in spec["paths"].items():
+        for m, op in methods.items():
+            if m.lower() in {"get", "post", "put", "delete", "patch"} and not op.get("deprecated"):
+                endpoints.add((m.upper(), path))
+    return len(endpoints)
+
+
 def test_total_endpoint_count():
-    """We expose exactly 1010 callable methods across all resources."""
+    """We expose exactly one callable method per spec endpoint."""
+    expected = _spec_endpoint_count()
     with TikHub(api_key="sk-test") as client:
         total = 0
         for attr in dir(client):
@@ -123,7 +137,7 @@ def test_total_endpoint_count():
                     continue
                 if callable(getattr(obj, name, None)):
                     total += 1
-    assert total == 1010, f"expected 1010, got {total}"
+    assert total == expected, f"expected {expected}, got {total}"
 
 
 # ---------------------------------------------------------------------------

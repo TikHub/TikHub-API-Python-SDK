@@ -1,7 +1,7 @@
 """Example: Xiaohongshu-App-V2-API
 
 SDK attribute: ``client.xiaohongshu_app_v2``
-Endpoints: 21
+Endpoints: 20
 
 Usage::
 
@@ -29,11 +29,6 @@ async def main():
         # GET /api/v1/xiaohongshu/app_v2/get_video_note_detail
         # 获取视频笔记详情/Get video note detail
         result = await client.xiaohongshu_app_v2.get_video_note_detail(note_id='697c0eee000000000a03c308', share_text='http://xhslink.com/o/8GqargIxrko')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/xiaohongshu/app_v2/get_mixed_note_detail
-        # 获取首页推荐流笔记详情/Get mixed note detail from feed
-        result = await client.xiaohongshu_app_v2.get_mixed_note_detail(note_id='697c0eee000000000a03c308', share_text='http://xhslink.com/o/8GqargIxrko')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/xiaohongshu/app_v2/get_note_comments

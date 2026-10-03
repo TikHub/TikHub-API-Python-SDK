@@ -30,7 +30,7 @@
 
 ## 为什么选择这个 SDK？
 
-- **100% 接口覆盖** — OpenAPI 规范 V5.3.2 的 1010 / 1010 个接口，机械化生成并验证
+- **100% 接口覆盖** — OpenAPI 规范 V5.3.2 的 1048 / 1048 个接口（不含已弃用接口），机械化生成并验证
 - **同步 + 异步** — `TikHub` 和 `AsyncTikHub` 客户端，API 完全一致
 - **生产就绪** — 自动重试（指数退避）、速率限制处理、结构化异常体系（含完整调试上下文）
 - **类型安全** — `mypy --strict` 通过，基于 `httpx` + `pydantic v2` 构建
@@ -42,22 +42,23 @@
 
 | 平台 | 资源 | 接口数 |
 |---|---|---|
-| TikTok | `tiktok_web`, `tiktok_app_v3`, `tiktok_creator`, `tiktok_analytics`, `tiktok_ads`, `tiktok_shop_web` | 200+ |
-| 抖音 | `douyin_web`, `douyin_app_v3`, `douyin_search`, `douyin_billboard`, `douyin_creator`, `douyin_xingtu` | 400+ |
-| Instagram | `instagram_v1`, `instagram_v2`, `instagram_v3` | 80+ |
-| YouTube | `youtube_web`, `youtube_web_v2` | 50+ |
-| Twitter / X | `twitter_web` | 13+ |
-| 小红书 | `xiaohongshu_web`, `xiaohongshu_app`（+ v2/v3 变体） | 80+ |
-| B站 | `bilibili_web`, `bilibili_app` | 40+ |
-| 微博 | `weibo_web`, `weibo_web_v2`, `weibo_app` | 30+ |
-| Threads | `threads_web` | 10+ |
-| LinkedIn | `linkedin_web` | 10+ |
-| Reddit | `reddit_app` | 10+ |
-| 快手 | `kuaishou_web`, `kuaishou_app` | 20+ |
-| 微信 | `wechat_channels`, `wechat_media_platform_web` | 20+ |
-| Lemon8 | `lemon8_app` | 10+ |
-| 知乎 | `zhihu_web` | 30+ |
-| 其他 | `toutiao_web`, `toutiao_app`, `xigua_app_v2`, `pipixia_app`, `sora2` | 30+ |
+| TikTok | `tiktok_web`, `tiktok_app_v3`, `tiktok_creator`, `tiktok_analytics`, `tiktok_ads`, `tiktok_shop_web` | 162 |
+| 抖音 | `douyin_web`, `douyin_app_v3`, `douyin_search`, `douyin_billboard`, `douyin_creator`, `douyin_creator_v2`, `douyin_xingtu`, `douyin_xingtu_v2`, `douyin_index`, `douyin_douplus` | 319 |
+| Instagram | `instagram_v1`, `instagram_v2`, `instagram_v3` | 93 |
+| YouTube | `youtube_web`, `youtube_web_v2` | 34 |
+| Twitter / X | `twitter_web` | 25 |
+| 小红书 | `xiaohongshu_app_v2`, `xiaohongshu_web_v3`, `xiaohongshu_pgy` | 45 |
+| B站 | `bilibili_web`, `bilibili_app`, `bilibili_huahuo` | 87 |
+| 微博 | `weibo_web_v2`, `weibo_app` | 56 |
+| Threads | `threads_web` | 12 |
+| LinkedIn | `linkedin_web_v2` | 8 |
+| Telegram | `telegram_web` | 7 |
+| Reddit | `reddit_app` | 28 |
+| 快手 | `kuaishou_web`, `kuaishou_app` | 38 |
+| 微信 | `wechat_channels_v2`, `wechat_media_platform_v2`, `wechat_search_v2` | 25 |
+| Lemon8 | `lemon8_app` | 16 |
+| 知乎 | `zhihu_web` | 41 |
+| 其他 | `toutiao_web`, `toutiao_app`, `xigua_app_v2`, `pipixia_app` | 31 |
 
 ## 安装
 
@@ -160,17 +161,17 @@ SDK 由 TikHub OpenAPI 规范机械化生成。两条规则：
 
 | | |
 |---|---|
-| 资源 | **52**（每个 OpenAPI 标签一个） |
-| 接口 | **1010 / 1010** |
-| 测试 | 110 个通过 |
-| 类型检查 | mypy `--strict` 71 个源文件全部通过 |
+| 资源 | **51**（每个 OpenAPI 标签一个） |
+| 接口 | **1048 / 1048** |
+| 测试 | 108 个通过 |
+| 类型检查 | mypy `--strict` 70 个源文件全部通过 |
 | 代码检查 | ruff 通过 |
 
 资源层由 `spec/openapi.json` **机械化生成**。当 TikHub 规范更新后，运行以下命令刷新：
 
 ```bash
 python scripts/refresh_spec.py        # 拉取最新 openapi.json，打印差异
-python scripts/generate_resources.py  # 重新生成所有 52 个资源文件 + 客户端
+python scripts/generate_resources.py  # 重新生成所有 51 个资源文件 + 客户端
 python scripts/generate_docs.py       # 重新生成 docs/reference.md
 python scripts/verify_coverage.py     # 验证 100% 覆盖
 pytest -q                             # 110 个测试
@@ -193,7 +194,7 @@ tikhub user usage                             # 今日请求量
 
 ## 文档
 
-完整文档（mkdocs-material）：身份认证、异步、异常处理、分页、重试、日志、CLI、迁移指南、命名规则，以及所有 1010 个接口的自动生成参考文档。
+完整文档（mkdocs-material）：身份认证、异步、异常处理、分页、重试、日志、CLI、迁移指南、命名规则，以及所有 1048 个接口的自动生成参考文档。
 
 ```bash
 pip install -e ".[docs]"

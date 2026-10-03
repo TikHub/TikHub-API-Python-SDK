@@ -1,7 +1,7 @@
 """Example: Douyin-Web-API
 
 SDK attribute: ``client.douyin_web``
-Endpoints: 76
+Endpoints: 55
 
 Usage::
 
@@ -38,12 +38,12 @@ async def main():
 
         # GET /api/v1/douyin/web/fetch_video_high_quality_play_url
         # 获取视频的最高画质播放链接/Get the highest quality play URL of the video
-        result = await client.douyin_web.fetch_video_high_quality_play_url(aweme_id='7512756548356492544', share_url='https://www.douyin.com/video/7512756548356492544')
+        result = await client.douyin_web.fetch_video_high_quality_play_url(aweme_id='7512756548356492544', share_url='https://www.douyin.com/video/7512756548356492544', region='CN')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # POST /api/v1/douyin/web/fetch_multi_video_high_quality_play_url
         # 批量获取视频的最高画质播放链接/Batch get the highest quality play URL of videos
-        result = await client.douyin_web.fetch_multi_video_high_quality_play_url(aweme_ids='7512756548356492544,7448118827402972455,7126745726494821640')
+        result = await client.douyin_web.fetch_multi_video_high_quality_play_url(aweme_ids='7512756548356492544,7448118827402972455,7126745726494821640', region='CN')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # POST /api/v1/douyin/web/fetch_multi_video
@@ -56,9 +56,9 @@ async def main():
         result = await client.douyin_web.fetch_one_video_danmaku(item_id='7355433624046472498', duration=15134, end_time=15133, start_time=0)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
-        # GET /api/v1/douyin/web/fetch_home_feed
+        # POST /api/v1/douyin/web/fetch_home_feed
         # 获取首页推荐数据/Get home feed data
-        result = await client.douyin_web.fetch_home_feed(count=10, refresh_index=0)
+        result = await client.douyin_web.fetch_home_feed(count=10, refresh_index=0, cookie='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/douyin/web/fetch_related_posts
@@ -106,11 +106,6 @@ async def main():
         result = await client.douyin_web.fetch_user_live_videos_by_sec_uid(sec_uid='MS4wLjABAAAAAIKOBr_x6p2fPVKOAhqG8LrC1lwwdWChifKEsl-TXFS-kGSGqpMBRexJdzoAfvUF')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
-        # GET /api/v1/douyin/web/fetch_user_live_videos_by_room_id
-        # 通过room_id获取指定用户的直播流数据 V1/Get live video data of specified user by room_id V1
-        result = await client.douyin_web.fetch_user_live_videos_by_room_id(room_id='7318296342189919011')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
         # GET /api/v1/douyin/web/fetch_user_live_videos_by_room_id_v2
         # 通过room_id获取指定用户的直播流数据 V2/Gets the live stream data of the specified user by room_id V2
         result = await client.douyin_web.fetch_user_live_videos_by_room_id_v2(room_id='7462723839303093032')
@@ -119,36 +114,6 @@ async def main():
         # GET /api/v1/douyin/web/fetch_live_gift_ranking
         # 获取直播间送礼用户排行榜/Get live room gift user ranking
         result = await client.douyin_web.fetch_live_gift_ranking(room_id='7356585666190461731', rank_type=30)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/douyin/web/fetch_live_room_product_result
-        # 抖音直播间商品信息/Douyin live room product information
-        result = await client.douyin_web.fetch_live_room_product_result(room_id='7360830184578091776', author_id='1714858898241277', offset=0, limit=20)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/douyin/web/fetch_product_detail
-        # 获取商品详情/Get product detail
-        result = await client.douyin_web.fetch_product_detail(product_id='3654018325143066950', aweme_id='7546956331878501673', sec_user_id='MS4wLjABAAAALoWx-cZWuQVWWvvlE-HiKgm9jel_nmwMcjAMIaEAwFq25sskN1Zgqy_T3x4D0Goy')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/douyin/web/fetch_product_sku_list
-        # 获取商品SKU列表/Get product SKU list
-        result = await client.douyin_web.fetch_product_sku_list(product_id='3770337983790711029', author_id='3109048548866375')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/douyin/web/fetch_product_coupon
-        # 获取商品优惠券信息/Get product coupon information
-        result = await client.douyin_web.fetch_product_coupon(product_id='3770337983790711029', shop_id='129508461', price='1490', author_id='3109048548866375', sec_user_id='MS4wLjABAAAALoWx-cZWuQVWWvvlE-HiKgm9jel_nmwMcjAMIaEAwFq25sskN1Zgqy_T3x4D0Goy')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/douyin/web/fetch_product_review_score
-        # 获取商品评价评分/Get product review score
-        result = await client.douyin_web.fetch_product_review_score(product_id='3770337983790711029', shop_id='129508461')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/douyin/web/fetch_product_review_list
-        # 获取商品评价列表/Get product review list
-        result = await client.douyin_web.fetch_product_review_list(product_id='3770337983790711029', shop_id='129508461', cursor=0, count=20, sort_type=0)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/douyin/web/fetch_user_profile_by_uid
@@ -226,46 +191,6 @@ async def main():
         result = await client.douyin_web.fetch_video_comment_replies(item_id='7354666303006723354', comment_id='7354669356632638218', cursor=0, count=20)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
-        # GET /api/v1/douyin/web/fetch_general_search_result
-        # [已弃用/Deprecated] 获取指定关键词的综合搜索结果/Get comprehensive search results of specified keywords
-        result = await client.douyin_web.fetch_general_search_result(keyword='中华娘', offset=0, count=20, sort_type='0', publish_time='0', filter_duration='0', search_range='0', content_type='0', search_id='')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/douyin/web/fetch_video_search_result
-        # [已弃用/Deprecated] 获取指定关键词的视频搜索结果/Get video search results of specified keywords
-        result = await client.douyin_web.fetch_video_search_result(keyword='游戏', offset=0, count=20, sort_type='0', publish_time='0', filter_duration='0', search_id='')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/douyin/web/fetch_video_search_result_v2
-        # 获取指定关键词的视频搜索结果 V2 （废弃，替代接口请参考下方文档）/Get video search results of specified keywords V2 (Deprecated, pl
-        result = await client.douyin_web.fetch_video_search_result_v2(keyword='中华娘', sort_type='_0', publish_time='_0', filter_duration='_0', page=1, search_id='')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/douyin/web/fetch_user_search_result
-        # 获取指定关键词的用户搜索结果(废弃，替代接口请参考下方文档)/Get user search results of specified keywords (deprecated, please ref
-        result = await client.douyin_web.fetch_user_search_result(keyword='中华娘', offset=0, count=20, douyin_user_fans='', douyin_user_type='', search_id='')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/douyin/web/fetch_user_search_result_v2
-        # 获取指定关键词的用户搜索结果 V2 (已弃用，替代接口请参考下方文档)/Get user search results of specified keywords V2 (deprecated, pl
-        result = await client.douyin_web.fetch_user_search_result_v2(keyword='中华娘', cursor=0)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/douyin/web/fetch_user_search_result_v3
-        # 获取指定关键词的用户搜索结果 V3 (已弃用，替代接口请参考下方文档)/Get user search results of specified keywords V3 (deprecated, pl
-        result = await client.douyin_web.fetch_user_search_result_v3(keyword='中华娘', cursor='0', douyin_user_type='', douyin_user_fans='')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/douyin/web/fetch_live_search_result
-        # [已弃用/Deprecated] 获取指定关键词的直播搜索结果/Get live search results of specified keywords
-        result = await client.douyin_web.fetch_live_search_result(keyword='中华娘', offset=0, count=20, search_id='')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # POST /api/v1/douyin/web/fetch_search_challenge
-        # [已弃用/Deprecated] 搜索话题/Search Challenge
-        result = await client.douyin_web.fetch_search_challenge(keyword='游戏', cursor=0, count=30, cookie='')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
         # POST /api/v1/douyin/web/fetch_challenge_posts
         # 话题作品/Challenge Posts
         result = await client.douyin_web.fetch_challenge_posts(challenge_id='1608846127610893', sort_type=0, cursor=0, count=20, cookie='')
@@ -286,11 +211,6 @@ async def main():
         result = await client.douyin_web.fetch_douyin_web_guest_cookie(user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
-        # GET /api/v1/douyin/web/generate_real_msToken
-        # 生成真实msToken/Generate real msToken
-        result = await client.douyin_web.generate_real_msToken()
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
         # GET /api/v1/douyin/web/generate_ttwid
         # 生成ttwid/Generate ttwid
         result = await client.douyin_web.generate_ttwid(user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0')
@@ -301,29 +221,9 @@ async def main():
         result = await client.douyin_web.fetch_query_user(body=None)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
-        # GET /api/v1/douyin/web/generate_verify_fp
-        # 生成verify_fp/Generate verify_fp
-        result = await client.douyin_web.generate_verify_fp()
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/douyin/web/generate_s_v_web_id
-        # 生成s_v_web_id/Generate s_v_web_id
-        result = await client.douyin_web.generate_s_v_web_id()
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
         # GET /api/v1/douyin/web/generate_wss_xb_signature
         # 生成弹幕xb签名/Generate barrage xb signature
         result = await client.douyin_web.generate_wss_xb_signature(user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0', room_id='7382517534467115826', user_unique_id='7382524529011246630')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # POST /api/v1/douyin/web/generate_x_bogus
-        # 使用接口网址生成X-Bogus参数/Generate X-Bogus parameter using API URL
-        result = await client.douyin_web.generate_x_bogus(url='https://www.douyin.com/aweme/v1/web/aweme/detail/?aweme_id=7148736076176215311&device_platform=webapp&aid=6383&channel=channel_pc_web&pc_client_type=1&version_code=170400&version_name=17.4.0&cookie_enabled=true&screen_width=1920&screen_height=1080&browser_language=zh-CN&browser_platform=Win32&browser_name=Edge&browser_version=117.0.2045.47&browser_online=true&engine_name=Blink&engine_version=117.0.0.0&os_name=Windows&os_version=10&cpu_core_num=128&device_memory=10240&platform=PC&downlink=10&effective_type=4g&round_trip_time=100', user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # POST /api/v1/douyin/web/generate_a_bogus
-        # 使用接口网址生成A-Bogus参数/Generate A-Bogus parameter using API URL
-        result = await client.douyin_web.generate_a_bogus(url='https://www.douyin.com/aweme/v1/web/general/search/single/?device_platform=webapp&aid=6383&channel=channel_pc_web&search_channel=aweme_general&enable_history=1&keyword=%E4%B8%AD%E5%8D%8E%E5%A8%98&search_source=normal_search&query_correct_type=1&is_filter_search=0&from_group_id=7346905902554844468&offset=0&count=15&need_filter_settings=1&pc_client_type=1&version_code=190600&version_name=19.6.0&cookie_enabled=true&screen_width=1280&screen_height=800&browser_language=zh-CN&browser_platform=Win32&browser_name=Firefox&browser_version=124.0&browser_online=true&engine_name=Gecko&engine_version=124.0&os_name=Windows&os_version=10&cpu_core_num=16&device_memory=&platform=PC&webid=7348962975497324070&msToken=YCTVM6YGmjFdIpQAN9ykXLBXiSiuHdZkOkEQWTeqVOHBEPmOcM0lNwE0Kd9vgHPMPigSndZDHfAq9k-6lDmH3Jqz6mHHxmn-BzQjmLMIfLIPgirgnOixM9x4PwgcNQ%3D%3D', data='', user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36', index_0=0, index_1=1, index_2=14)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/douyin/web/get_sec_user_id
@@ -359,11 +259,6 @@ async def main():
         # GET /api/v1/douyin/web/webcast_id_2_room_id
         # 直播间号转房间号/Webcast id to room id
         result = await client.douyin_web.webcast_id_2_room_id(webcast_id='775841227732')
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-        # GET /api/v1/douyin/web/douyin_live_room
-        # 提取直播间弹幕/Extract live room danmaku
-        result = await client.douyin_web.douyin_live_room(live_room_url='https://live.douyin.com/834624950943', danmaku_type='WebcastRoomMessage')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/douyin/web/fetch_live_im_fetch

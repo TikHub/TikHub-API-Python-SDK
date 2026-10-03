@@ -26,7 +26,7 @@ The **last segment of the OpenAPI path, verbatim**. We never strip `fetch_` / `g
 | `/api/v1/douyin/web/handler_user_profile` | `client.douyin_web.handler_user_profile(...)` |
 | `/api/v1/douyin/web/handler_user_profile_v2` | `client.douyin_web.handler_user_profile_v2(...)` |
 | `/api/v1/tiktok/web/generate_xbogus` | `client.tiktok_web.generate_xbogus(...)` |
-| `/api/v1/sora2/upload_image` | `client.sora2.upload_image(...)` |
+| `/api/v1/tiktok/app/v3/TTencrypt_algorithm` | `client.tiktok_app_v3.TTencrypt_algorithm(...)` |
 
 ## Rule 3 (corollary): Parameter names = OpenAPI parameter names
 

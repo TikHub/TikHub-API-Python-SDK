@@ -1,7 +1,7 @@
 """Example: Douyin-Creator-API
 
 SDK attribute: ``client.douyin_creator``
-Endpoints: 16
+Endpoints: 17
 
 Usage::
 
@@ -39,6 +39,11 @@ async def main():
         # GET /api/v1/douyin/creator/fetch_creator_material_center_billboard
         # 获取创作者中心热门视频榜单/Get creator material center billboard
         result = await client.douyin_creator.fetch_creator_material_center_billboard(billboard_tag=0, order_key=1, time_filter=1)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/douyin/creator/fetch_creator_material_center_related
+        # 获取话题/热点相关视频/Get topic or hot spot related videos
+        result = await client.douyin_creator.fetch_creator_material_center_related(query_id='2488260', billboard_type=2, limit=20, offset=0)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/douyin/creator/fetch_creator_hot_spot_billboard

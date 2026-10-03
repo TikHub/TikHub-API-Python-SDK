@@ -1,7 +1,7 @@
 """Example: Bilibili-Web-API
 
 SDK attribute: ``client.bilibili_web``
-Endpoints: 30
+Endpoints: 31
 
 Usage::
 
@@ -73,7 +73,12 @@ async def main():
 
         # GET /api/v1/bilibili/web/fetch_user_post_videos
         # 获取用户主页作品数据/Get user homepage video data
-        result = await client.bilibili_web.fetch_user_post_videos(uid='178360345', pn=1, order='pubdate')
+        result = await client.bilibili_web.fetch_user_post_videos(uid='178360345', pn=1, ps=25, order='pubdate')
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+
+        # GET /api/v1/bilibili/web/fetch_user_post_videos_v2
+        # 获取用户主页作品数据V2/Get user homepage video data V2
+        result = await client.bilibili_web.fetch_user_post_videos_v2(uid='178360345', pn=1, ps=30, keyword='')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/bilibili/web/fetch_collect_folders
@@ -92,7 +97,7 @@ async def main():
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/bilibili/web/fetch_user_up_stat
-        # 获取UP主状态统计/Get UP stat (total likes and views)
+        # 获取UP主状态统计/Get UP stat (total views and likes)
         result = await client.bilibili_web.fetch_user_up_stat(uid='178360345')
         print(json.dumps(result, indent=2, ensure_ascii=False))
 

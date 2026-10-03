@@ -33,7 +33,13 @@ def _endpoints(spec: dict) -> set[tuple[str, str]]:
 
 def main() -> int:
     print(f"Fetching {SPEC_URL} ...")
-    with urllib.request.urlopen(SPEC_URL) as resp:
+    # The API gateway rejects urllib's default ``Python-urllib/x.y`` UA with a
+    # 403, so present a browser-like User-Agent.
+    req = urllib.request.Request(
+        SPEC_URL,
+        headers={"User-Agent": "Mozilla/5.0 (compatible; tikhub-sdk-refresh/1.0)"},
+    )
+    with urllib.request.urlopen(req) as resp:
         new_text = resp.read().decode("utf-8")
 
     new_spec = json.loads(new_text)

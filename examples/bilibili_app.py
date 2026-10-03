@@ -58,12 +58,12 @@ async def main():
 
         # GET /api/v1/bilibili/app/fetch_search_all
         # 综合搜索/search all
-        result = await client.bilibili_app.fetch_search_all(keyword='原神', page=1, page_size=20, order=0)
+        result = await client.bilibili_app.fetch_search_all(keyword='原神', cursor='', page_size=20, order=0)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/bilibili/app/fetch_search_by_type
         # 分类搜索/ search by type
-        result = await client.bilibili_app.fetch_search_by_type(keyword='原神', search_type='video', page=1, page_size=20, order=0)
+        result = await client.bilibili_app.fetch_search_by_type(keyword='原神', search_type='video', cursor='', page_size=20, order=0)
         print(json.dumps(result, indent=2, ensure_ascii=False))
 
         # GET /api/v1/bilibili/app/fetch_cinema_tab

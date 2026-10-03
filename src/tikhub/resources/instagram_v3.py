@@ -5,7 +5,7 @@
 OpenAPI tag: ``Instagram-V3-API``
 SDK attribute: ``client.instagram_v3`` / ``async_client.instagram_v3``
 
-Endpoints: 32
+Endpoints: 37
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ __all__ = ["AsyncInstagramV3", "InstagramV3"]
 
 
 class InstagramV3(SyncResource):
-    """Sync ``Instagram-V3-API`` resource (32 endpoints)."""
+    """Sync ``Instagram-V3-API`` resource (37 endpoints)."""
 
     def search_users(
         self,
@@ -57,24 +57,6 @@ class InstagramV3(SyncResource):
             "rank_token": rank_token,
         })
         return self._client._request("GET", "/api/v1/instagram/v3/search_hashtags", params=params)
-
-    def search_places(
-        self,
-        *,
-        query: str,
-        rank_token: str | None = None,
-    ) -> Any:
-        """搜索地点/Search places
-
-        ``GET /api/v1/instagram/v3/search_places``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "query": query,
-            "rank_token": rank_token,
-        })
-        return self._client._request("GET", "/api/v1/instagram/v3/search_places", params=params)
 
     def general_search(
         self,
@@ -110,18 +92,30 @@ class InstagramV3(SyncResource):
         })
         return self._client._request("GET", "/api/v1/instagram/v3/get_user_id_by_username", params=params)
 
+    def user_id_to_username(
+        self,
+        *,
+        user_id: str,
+    ) -> Any:
+        """通过用户ID获取用户信息/Get user info by user ID
+
+        ``GET /api/v1/instagram/v3/user_id_to_username``
+        """
+        params = _drop_none({
+            "user_id": user_id,
+        })
+        return self._client._request("GET", "/api/v1/instagram/v3/user_id_to_username", params=params)
+
     def get_user_profile(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
     ) -> Any:
         """获取用户信息/Get user profile
 
         ``GET /api/v1/instagram/v3/get_user_profile``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
         })
         return self._client._request("GET", "/api/v1/instagram/v3/get_user_profile", params=params)
@@ -169,8 +163,7 @@ class InstagramV3(SyncResource):
     def get_user_tagged_posts(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
         first: int | None = None,
         after: str | None = None,
         before: str | None = None,
@@ -182,7 +175,6 @@ class InstagramV3(SyncResource):
         ``GET /api/v1/instagram/v3/get_user_tagged_posts``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
             "first": first,
             "after": after,
@@ -195,8 +187,7 @@ class InstagramV3(SyncResource):
     def get_user_reels(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
         first: int | None = None,
         after: str | None = None,
         before: str | None = None,
@@ -208,7 +199,6 @@ class InstagramV3(SyncResource):
         ``GET /api/v1/instagram/v3/get_user_reels``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
             "first": first,
             "after": after,
@@ -221,8 +211,7 @@ class InstagramV3(SyncResource):
     def get_user_highlights(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
         first: int | None = None,
         after: str | None = None,
         before: str | None = None,
@@ -233,7 +222,6 @@ class InstagramV3(SyncResource):
         ``GET /api/v1/instagram/v3/get_user_highlights``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
             "first": first,
             "after": after,
@@ -265,15 +253,13 @@ class InstagramV3(SyncResource):
     def get_user_about(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
     ) -> Any:
         """获取用户账户简介/Get user about info
 
         ``GET /api/v1/instagram/v3/get_user_about``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
         })
         return self._client._request("GET", "/api/v1/instagram/v3/get_user_about", params=params)
@@ -281,15 +267,13 @@ class InstagramV3(SyncResource):
     def get_user_former_usernames(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
     ) -> Any:
-        """获取用户曾用用户名/Get user former usernames
+        """获取用户账号名更改次数/Get username change count
 
         ``GET /api/v1/instagram/v3/get_user_former_usernames``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
         })
         return self._client._request("GET", "/api/v1/instagram/v3/get_user_former_usernames", params=params)
@@ -297,15 +281,13 @@ class InstagramV3(SyncResource):
     def get_user_stories(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
     ) -> Any:
         """获取用户Stories（快拍）/Get user stories
 
         ``GET /api/v1/instagram/v3/get_user_stories``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
         })
         return self._client._request("GET", "/api/v1/instagram/v3/get_user_stories", params=params)
@@ -329,7 +311,8 @@ class InstagramV3(SyncResource):
     def get_post_info(
         self,
         *,
-        media_id: str,
+        media_id: Any | None = None,
+        url: Any | None = None,
     ) -> Any:
         """获取帖子详情/Get post info (media_id or URL)
 
@@ -337,6 +320,7 @@ class InstagramV3(SyncResource):
         """
         params = _drop_none({
             "media_id": media_id,
+            "url": url,
         })
         return self._client._request("GET", "/api/v1/instagram/v3/get_post_info", params=params)
 
@@ -453,8 +437,7 @@ class InstagramV3(SyncResource):
     def get_user_following(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
         count: int | None = None,
         max_id: str | None = None,
     ) -> Any:
@@ -463,7 +446,6 @@ class InstagramV3(SyncResource):
         ``GET /api/v1/instagram/v3/get_user_following``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
             "count": count,
             "max_id": max_id,
@@ -473,8 +455,7 @@ class InstagramV3(SyncResource):
     def get_user_followers(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
         count: int | None = None,
         max_id: str | None = None,
     ) -> Any:
@@ -483,7 +464,6 @@ class InstagramV3(SyncResource):
         ``GET /api/v1/instagram/v3/get_user_followers``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
             "count": count,
             "max_id": max_id,
@@ -584,9 +564,85 @@ class InstagramV3(SyncResource):
         })
         return self._client._request("GET", "/api/v1/instagram/v3/extract_shortcode", params=params)
 
+    def get_post_likes(
+        self,
+        *,
+        code: str,
+    ) -> Any:
+        """获取帖子点赞用户列表/Get post likes
+
+        ``GET /api/v1/instagram/v3/get_post_likes``
+        """
+        params = _drop_none({
+            "code": code,
+        })
+        return self._client._request("GET", "/api/v1/instagram/v3/get_post_likes", params=params)
+
+    def get_similar_users(
+        self,
+        *,
+        user_id: str,
+    ) -> Any:
+        """获取相似账号推荐/Get similar users
+
+        ``GET /api/v1/instagram/v3/get_similar_users``
+        """
+        params = _drop_none({
+            "user_id": user_id,
+        })
+        return self._client._request("GET", "/api/v1/instagram/v3/get_similar_users", params=params)
+
+    def search_by_coordinates(
+        self,
+        *,
+        latitude: float,
+        longitude: float,
+    ) -> Any:
+        """按坐标搜索附近地点/Search locations by coordinates
+
+        ``GET /api/v1/instagram/v3/search_by_coordinates``
+        """
+        params = _drop_none({
+            "latitude": latitude,
+            "longitude": longitude,
+        })
+        return self._client._request("GET", "/api/v1/instagram/v3/search_by_coordinates", params=params)
+
+    def get_hashtag_posts(
+        self,
+        *,
+        tag: str,
+        max_id: str | None = None,
+    ) -> Any:
+        """获取话题标签帖子列表/Get hashtag posts
+
+        ``GET /api/v1/instagram/v3/get_hashtag_posts``
+        """
+        params = _drop_none({
+            "tag": tag,
+            "max_id": max_id,
+        })
+        return self._client._request("GET", "/api/v1/instagram/v3/get_hashtag_posts", params=params)
+
+    def get_music_posts(
+        self,
+        *,
+        audio_cluster_id: str,
+        max_id: str | None = None,
+    ) -> Any:
+        """获取音频下的Reels列表/Get music (audio) posts
+
+        ``GET /api/v1/instagram/v3/get_music_posts``
+        """
+        params = _drop_none({
+            "audio_cluster_id": audio_cluster_id,
+            "max_id": max_id,
+        })
+        return self._client._request("GET", "/api/v1/instagram/v3/get_music_posts", params=params)
+
 
 class AsyncInstagramV3(AsyncResource):
-    """Async ``Instagram-V3-API`` resource (32 endpoints)."""
+    """Async ``Instagram-V3-API`` resource (37 endpoints)."""
 
     async def search_users(
         self,
@@ -619,24 +675,6 @@ class AsyncInstagramV3(AsyncResource):
             "rank_token": rank_token,
         })
         return await self._client._request("GET", "/api/v1/instagram/v3/search_hashtags", params=params)
-
-    async def search_places(
-        self,
-        *,
-        query: str,
-        rank_token: str | None = None,
-    ) -> Any:
-        """搜索地点/Search places
-
-        ``GET /api/v1/instagram/v3/search_places``
-
-        .. deprecated:: this endpoint is marked deprecated upstream.
-        """
-        params = _drop_none({
-            "query": query,
-            "rank_token": rank_token,
-        })
-        return await self._client._request("GET", "/api/v1/instagram/v3/search_places", params=params)
 
     async def general_search(
         self,
@@ -672,18 +710,30 @@ class AsyncInstagramV3(AsyncResource):
         })
         return await self._client._request("GET", "/api/v1/instagram/v3/get_user_id_by_username", params=params)
 
+    async def user_id_to_username(
+        self,
+        *,
+        user_id: str,
+    ) -> Any:
+        """通过用户ID获取用户信息/Get user info by user ID
+
+        ``GET /api/v1/instagram/v3/user_id_to_username``
+        """
+        params = _drop_none({
+            "user_id": user_id,
+        })
+        return await self._client._request("GET", "/api/v1/instagram/v3/user_id_to_username", params=params)
+
     async def get_user_profile(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
     ) -> Any:
         """获取用户信息/Get user profile
 
         ``GET /api/v1/instagram/v3/get_user_profile``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
         })
         return await self._client._request("GET", "/api/v1/instagram/v3/get_user_profile", params=params)
@@ -731,8 +781,7 @@ class AsyncInstagramV3(AsyncResource):
     async def get_user_tagged_posts(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
         first: int | None = None,
         after: str | None = None,
         before: str | None = None,
@@ -744,7 +793,6 @@ class AsyncInstagramV3(AsyncResource):
         ``GET /api/v1/instagram/v3/get_user_tagged_posts``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
             "first": first,
             "after": after,
@@ -757,8 +805,7 @@ class AsyncInstagramV3(AsyncResource):
     async def get_user_reels(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
         first: int | None = None,
         after: str | None = None,
         before: str | None = None,
@@ -770,7 +817,6 @@ class AsyncInstagramV3(AsyncResource):
         ``GET /api/v1/instagram/v3/get_user_reels``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
             "first": first,
             "after": after,
@@ -783,8 +829,7 @@ class AsyncInstagramV3(AsyncResource):
     async def get_user_highlights(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
         first: int | None = None,
         after: str | None = None,
         before: str | None = None,
@@ -795,7 +840,6 @@ class AsyncInstagramV3(AsyncResource):
         ``GET /api/v1/instagram/v3/get_user_highlights``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
             "first": first,
             "after": after,
@@ -827,15 +871,13 @@ class AsyncInstagramV3(AsyncResource):
     async def get_user_about(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
     ) -> Any:
         """获取用户账户简介/Get user about info
 
         ``GET /api/v1/instagram/v3/get_user_about``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
         })
         return await self._client._request("GET", "/api/v1/instagram/v3/get_user_about", params=params)
@@ -843,15 +885,13 @@ class AsyncInstagramV3(AsyncResource):
     async def get_user_former_usernames(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
     ) -> Any:
-        """获取用户曾用用户名/Get user former usernames
+        """获取用户账号名更改次数/Get username change count
 
         ``GET /api/v1/instagram/v3/get_user_former_usernames``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
         })
         return await self._client._request("GET", "/api/v1/instagram/v3/get_user_former_usernames", params=params)
@@ -859,15 +899,13 @@ class AsyncInstagramV3(AsyncResource):
     async def get_user_stories(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
     ) -> Any:
         """获取用户Stories（快拍）/Get user stories
 
         ``GET /api/v1/instagram/v3/get_user_stories``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
         })
         return await self._client._request("GET", "/api/v1/instagram/v3/get_user_stories", params=params)
@@ -891,7 +929,8 @@ class AsyncInstagramV3(AsyncResource):
     async def get_post_info(
         self,
         *,
-        media_id: str,
+        media_id: Any | None = None,
+        url: Any | None = None,
     ) -> Any:
         """获取帖子详情/Get post info (media_id or URL)
 
@@ -899,6 +938,7 @@ class AsyncInstagramV3(AsyncResource):
         """
         params = _drop_none({
             "media_id": media_id,
+            "url": url,
         })
         return await self._client._request("GET", "/api/v1/instagram/v3/get_post_info", params=params)
 
@@ -1015,8 +1055,7 @@ class AsyncInstagramV3(AsyncResource):
     async def get_user_following(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
         count: int | None = None,
         max_id: str | None = None,
     ) -> Any:
@@ -1025,7 +1064,6 @@ class AsyncInstagramV3(AsyncResource):
         ``GET /api/v1/instagram/v3/get_user_following``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
             "count": count,
             "max_id": max_id,
@@ -1035,8 +1073,7 @@ class AsyncInstagramV3(AsyncResource):
     async def get_user_followers(
         self,
         *,
-        user_id: str | None = None,
-        username: str | None = None,
+        username: str,
         count: int | None = None,
         max_id: str | None = None,
     ) -> Any:
@@ -1045,7 +1082,6 @@ class AsyncInstagramV3(AsyncResource):
         ``GET /api/v1/instagram/v3/get_user_followers``
         """
         params = _drop_none({
-            "user_id": user_id,
             "username": username,
             "count": count,
             "max_id": max_id,
@@ -1145,3 +1181,79 @@ class AsyncInstagramV3(AsyncResource):
             "url": url,
         })
         return await self._client._request("GET", "/api/v1/instagram/v3/extract_shortcode", params=params)
+
+    async def get_post_likes(
+        self,
+        *,
+        code: str,
+    ) -> Any:
+        """获取帖子点赞用户列表/Get post likes
+
+        ``GET /api/v1/instagram/v3/get_post_likes``
+        """
+        params = _drop_none({
+            "code": code,
+        })
+        return await self._client._request("GET", "/api/v1/instagram/v3/get_post_likes", params=params)
+
+    async def get_similar_users(
+        self,
+        *,
+        user_id: str,
+    ) -> Any:
+        """获取相似账号推荐/Get similar users
+
+        ``GET /api/v1/instagram/v3/get_similar_users``
+        """
+        params = _drop_none({
+            "user_id": user_id,
+        })
+        return await self._client._request("GET", "/api/v1/instagram/v3/get_similar_users", params=params)
+
+    async def search_by_coordinates(
+        self,
+        *,
+        latitude: float,
+        longitude: float,
+    ) -> Any:
+        """按坐标搜索附近地点/Search locations by coordinates
+
+        ``GET /api/v1/instagram/v3/search_by_coordinates``
+        """
+        params = _drop_none({
+            "latitude": latitude,
+            "longitude": longitude,
+        })
+        return await self._client._request("GET", "/api/v1/instagram/v3/search_by_coordinates", params=params)
+
+    async def get_hashtag_posts(
+        self,
+        *,
+        tag: str,
+        max_id: str | None = None,
+    ) -> Any:
+        """获取话题标签帖子列表/Get hashtag posts
+
+        ``GET /api/v1/instagram/v3/get_hashtag_posts``
+        """
+        params = _drop_none({
+            "tag": tag,
+            "max_id": max_id,
+        })
+        return await self._client._request("GET", "/api/v1/instagram/v3/get_hashtag_posts", params=params)
+
+    async def get_music_posts(
+        self,
+        *,
+        audio_cluster_id: str,
+        max_id: str | None = None,
+    ) -> Any:
+        """获取音频下的Reels列表/Get music (audio) posts
+
+        ``GET /api/v1/instagram/v3/get_music_posts``
+        """
+        params = _drop_none({
+            "audio_cluster_id": audio_cluster_id,
+            "max_id": max_id,
+        })
+        return await self._client._request("GET", "/api/v1/instagram/v3/get_music_posts", params=params)
