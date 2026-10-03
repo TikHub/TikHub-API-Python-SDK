@@ -4,6 +4,8 @@ All notable changes to `tikhub` will be documented in this file. The format is b
 
 ## [Unreleased]
 
+## [2.2.0] — 2026-10-02
+
 ### Changed
 
 - **Spec sync to the live OpenAPI spec (1050 operations, 51 tags).** The SDK
